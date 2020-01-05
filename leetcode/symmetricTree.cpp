@@ -91,30 +91,54 @@ struct TreeNode {
 //  3     4    4     3
 //5   6            6   5
 
-bool isSymmetric_iteration(TreeNode* root) {
+bool isSymmetric_iteration1(TreeNode* root) {
     if (root == nullptr) return true;
     
+    queue<TreeNode*> s;
+    s.push(root);
+    s.push(root);
+    while (!s.empty()) {
+        auto l = s.front();
+        s.pop();
+        auto r = s.front();
+        s.pop();
+        if (l == nullptr && r == nullptr) continue;
+        if (l == nullptr || r == nullptr) return false;
+
+        if (l->val != r->val) return false;
+
+        s.push(l->left);
+        s.push(r->right);
+        s.push(l->right);
+        s.push(r->left);
+    }
+    
+    return true;
+}
+
+bool isSymmetric_iteration2(TreeNode* root) {
+    if (root == nullptr) return true;
+    
+    queue<TreeNode*> s;
     auto l = root;
     auto r = root;
 
-    stack<TreeNode*> ls;
-    stack<TreeNode*> rs;
-    while (!ls.empty() || l != nullptr) {
+    while (!s.empty() || l != nullptr) {
         if ((l != nullptr && r == nullptr) || (l == nullptr && r != nullptr)) return false;
         
         if (l != nullptr)
         {
-            ls.push(l);
-            rs.push(r);
+            s.push(l);
+            s.push(r);
             l = l->left;
             r = r->right;
         }
         else
         {
-            l = ls.top();
-            r = rs.top();
-            ls.pop();
-            rs.pop();
+            l = s.front();
+            s.pop();
+            r = s.front();
+            s.pop();
 
             if (l->val != r->val) return false;
 
@@ -138,7 +162,7 @@ bool isSymmetric_recursion(TreeNode* s, TreeNode* t) {
 }
 
 bool isSymmetric(TreeNode* root) {
-    return isSymmetric_iteration(root);
+    return isSymmetric_iteration1(root);
     //return isSymmetric_recursion(root, root);
 }
 
