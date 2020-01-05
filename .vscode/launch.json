@@ -27,7 +27,8 @@
             "name": "Launch",
             "type": "lldb",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "preLaunchTask": "clang++ build active file",
+            "program": "${workspaceFolder}/output_/${fileBasenameNoExtension}",
         }
     ]
 }
