@@ -3,7 +3,7 @@
 #include <cassert>
 #include <stack>
 #include <queue>
-#include "../../utils.h"
+#include "../utils.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #include <vector>
 #include <cassert>
 #include <stack>
-#include "../../utils.h"
+#include "../utils.h"
 
 using namespace std;
 

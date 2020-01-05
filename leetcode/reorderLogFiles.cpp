@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cassert>
-#include "../../utils.h"
+#include "../utils.h"
 
 #include <vector>
 #include <sstream>
