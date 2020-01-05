@@ -2,10 +2,80 @@
 #include <vector>
 #include <cassert>
 #include <stack>
+#include <queue>
 #include "../../utils.h"
 
 using namespace std;
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode (int v)
+    : val(v)
+    , left(nullptr)
+    , right(nullptr)
+    {
+        
+    }
+    TreeNode (vector<int> vals)
+    : val(-1)
+    , left(nullptr)
+    , right(nullptr)
+    {
+        auto h = false;
+        auto l = false;
+        queue<TreeNode*> q;
+        for (auto v : vals) {
+            
+            if (!h)
+            {
+                val = v;
+                h = true;
+                q.push(this);
+            }
+            else
+            {
+                auto nxt = (v != -1) ? new TreeNode(v) : nullptr;
+                l = !l;
+                
+                auto cur = q.front();
+                if (!l)
+                {
+                    if (cur != nullptr)
+                        cur->right = nxt;
+                    q.pop();
+                }
+                else
+                {
+                    if (cur != nullptr)
+                        cur->left = nxt;
+                }
+                
+                q.push(nxt);
+            }
+        }
+    }
+
+    bool operator==(const TreeNode& r) const
+    {
+        auto result = val == r.val;
+        result &= (left != nullptr) ? r.left != nullptr : r.left == nullptr;
+        result &= (right != nullptr) ? r.right != nullptr : r.right == nullptr;
+        if (result)
+        {
+            if (left != nullptr)
+            {
+                result &= *left == *r.left;
+            }
+            if (right != nullptr)
+            {
+                result &= *right == *r.right;
+            }
+        }
+        return result;
+    }
+};
 struct ListNode {
     int val;
     ListNode *next;
@@ -31,75 +101,57 @@ struct ListNode {
     }
 };
 
-// -1                    1     2     3     4    5
-// prehead  pre         head
-// k(4)
-// j(1)
-// temp = 1 (pre->next)
-// -1(pre)      -> 2 (head->next)
-// 2(pre->next) -> temp(1)
-// 1(head)      -> 3 (head->next->next)
-// -1                    2     1     3     4    5
-// prehead  pre               head
-// j(2)
-// temp = 2 (pre->next)
-// -1(pre)      -> 3 (head->next)
-// 3(pre->next) -> temp(2)
-// 1(head)      -> 4 (head->next->next)
-// -1                    3     2     1     4    5
-// prehead  pre                     head
-// j(3)
-// temp = 3 (pre->next)
-// -1(pre)      -> 4 (head->next)
-// 1(head)      -> 5 (head->next->next)
-// 4(pre->next) -> temp(3)
-// -1                    4     3     2     1    5
-// prehead  pre                           head
+//       5
+//   3       7
+// 1   4   6   8
 
-// prehead                                 pre  head
+//       5
+//   3       7
+// 1   2   9   8
 
+bool isValidBST(TreeNode* root, TreeNode* min, TreeNode* max) {
+    if (!root) return true;
 
-ListNode* reverseKGroup(ListNode* head, int k) {
-    if (head == nullptr || k == 1) return head;
+    auto val = root->val;
+    if (min != nullptr && val <= min->val) return false;
+    if (max != nullptr && val >= max->val) return false;
 
-    auto cur = head;
-    auto num = 0;
-    while (cur != nullptr)
-    {
-        num++;
-        cur = cur->next;
-    }
+    if (!isValidBST(root->left, min, root)) return false;
+    if (!isValidBST(root->right, root, max)) return false;
 
-    auto prehead = new ListNode(-1);
-    prehead->next = head;
-
-    auto pre = prehead;
-    while (num >= k) {
-        for (int i=1; i<k; i++) {
-            auto a = pre->next;
-            auto b = head->next;
-            auto c = head->next->next;
-            pre->next = b;
-            b->next = a;
-            head->next = c;
-        }
-        num -= k;
-        pre = head;
-        head = head->next;
-    }
-
-    return prehead->next;
+    return true;
 }
+
+bool isValidBST(TreeNode* root) {
+    return isValidBST(root, nullptr, nullptr);
+}
+
+
+// bool isValidBST(TreeNode* root, TreeNode* minNode, TreeNode* maxNode) {
+//     if(!root) return true;
+//     if(minNode && root->val <= minNode->val || maxNode && root->val >= maxNode->val)
+//         return false;
+//     return isValidBST(root->left, minNode, root) && isValidBST(root->right, root, maxNode);
+// }
+
+
+// bool isValidBST(TreeNode* root) {
+//     return isValidBST(root, NULL, NULL);
+// }
 
 int main()
 {
-    assert(*reverseKGroup(
-        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
-        2)
-        == *(new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(3, new ListNode(5)))))));
-    assert(*reverseKGroup(
-        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
-        3)
-        == *(new ListNode(3, new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(5)))))));
+    assert(isValidBST(
+        new TreeNode(vector<int>{2,1,3}))
+        == true);
+    assert(isValidBST(
+        new TreeNode(vector<int>{5,1,4,-1,-1,3,6}))
+        == false);
+    assert(isValidBST(
+        new TreeNode(vector<int>{2147483647}))
+        == true);
+    assert(isValidBST(
+        new TreeNode(vector<int>{-2147483648, -1, 2147483647}))
+        == true);
     return 0;
 }
