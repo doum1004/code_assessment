@@ -109,21 +109,52 @@ struct ListNode {
 //   3       7
 // 1   2   9   8
 
-bool isValidBST(TreeNode* root, TreeNode* min, TreeNode* max) {
+bool isValidBST_iteration(TreeNode* root) {
+    if (!root) return true;
+
+    bool flag = false;
+    int l_v;
+    stack<TreeNode*> s;
+    while (!s.empty() || root != nullptr) {
+        if (root != nullptr) {
+            s.push(root);
+            root = root->left;
+        }
+        else
+        {
+            root = s.top();
+            s.pop();
+            if (!flag) {
+                flag = true;
+            }
+            else if (l_v >= root->val)
+            {
+                return false;
+            }
+            l_v = root->val;
+            root = root->right;
+        }
+    }
+
+    return true;
+}
+
+bool isValidBST_recursion(TreeNode* root, TreeNode* min, TreeNode* max) {
     if (!root) return true;
 
     auto val = root->val;
     if (min != nullptr && val <= min->val) return false;
     if (max != nullptr && val >= max->val) return false;
 
-    if (!isValidBST(root->left, min, root)) return false;
-    if (!isValidBST(root->right, root, max)) return false;
+    if (!isValidBST_recursion(root->left, min, root)) return false;
+    if (!isValidBST_recursion(root->right, root, max)) return false;
 
     return true;
 }
 
 bool isValidBST(TreeNode* root) {
-    return isValidBST(root, nullptr, nullptr);
+    return isValidBST_iteration(root);
+    //return isValidBST_recursion(root, nullptr, nullptr);
 }
 
 
