@@ -109,11 +109,15 @@ struct ListNode {
 //   3       7
 // 1   2   9   8
 
+//       5
+//   1       4
+//         3   6
+
 bool isValidBST_iteration(TreeNode* root) {
+    // inorder
     if (!root) return true;
 
-    bool flag = false;
-    int l_v;
+    auto l_v = -INT64_MAX;
     stack<TreeNode*> s;
     while (!s.empty() || root != nullptr) {
         if (root != nullptr) {
@@ -124,13 +128,9 @@ bool isValidBST_iteration(TreeNode* root) {
         {
             root = s.top();
             s.pop();
-            if (!flag) {
-                flag = true;
-            }
-            else if (l_v >= root->val)
-            {
-                return false;
-            }
+            
+            if (l_v >= root->val) return false;
+            
             l_v = root->val;
             root = root->right;
         }
