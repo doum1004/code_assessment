@@ -63,6 +63,7 @@
         "*.tcc": "cpp",
         "cinttypes": "cpp",
         "__functional_03": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "queue": "cpp"
     }
 }
