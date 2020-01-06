@@ -128,7 +128,7 @@ class Solution {
         return -1;
     }
 
-    int ladderLength_bidirectional(string beginWord, string endWord, vector<string>& wordList) {
+    int ladderLength_bidirectional2(string beginWord, string endWord, vector<string>& wordList) {
         if (find(wordList.begin(), wordList.end(), endWord) == wordList.end()) return 0;
 
         // map for transformed words
@@ -165,6 +165,51 @@ class Solution {
             auto ans2 = visitWord(n, transformedWords, e_q, e_visited, b_visited);
             if (ans2 > -1)
                 return ans2;
+        }
+
+        return 0;
+    }
+
+    int ladderLength_bidirectional(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> dict(wordList.begin(), wordList.end());
+        unordered_set<string> head, tail, *phead, *ptail;
+        if (dict.find(endWord) == dict.end()) {
+            return 0;
+        }
+
+        head.insert(beginWord);
+        tail.insert(endWord);
+        int level = 2;
+        while (!head.empty() && !tail.empty()) {
+            if (head.size() < tail.size()) {
+                phead = &head;
+                ptail = &tail;
+            }
+            else {
+                phead = &tail;
+                ptail = &head;
+            }
+
+            unordered_set<string> temp;
+            for (auto word : *phead) {
+                for (int i=0; i<word.size(); i++) {
+                    auto new_word = word;
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        new_word[i] = c;
+                        if (ptail->find(new_word) != ptail->end()) {
+                            return level;
+                        }
+                        
+                        if (dict.find(new_word) != dict.end()) {
+                            temp.insert(new_word);
+                            dict.erase(new_word);
+                        }
+                    }
+                }
+            }
+
+            level++;
+            phead->swap(temp);
         }
 
         return 0;
