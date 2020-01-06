@@ -5,7 +5,7 @@
 #include <cassert>
 
 using namespace std;
-
+// test commit
 void printVector(vector<bool> arr) {
     for (auto v : arr) {
         cout << v << ", ";
