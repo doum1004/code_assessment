@@ -26,7 +26,7 @@ public:
         return -1;
     }
 
-    int search(vector<int>& nums, int target) {
+    int searchTwoPath(vector<int>& nums, int target) {
         auto n = nums.size();
         if (n == 0) return -1;
         if (n == 1) return nums[0] == target ? 0 : -1;
@@ -61,6 +61,28 @@ public:
         }
         
         return binSearch(nums, target, 0, pivot);
+    }
+
+    int searchOnePath(vector<int>& nums, int target) {
+        // int start = 0, end = nums.size() - 1;
+        // while (start <= end) {
+        //     int mid = start + (end - start) / 2;
+        //     if (nums[mid] == target) return mid;
+        //     else if (nums[mid] >= nums[start]) {
+        //         if (target >= nums[start] && target < nums[mid]) end = mid - 1;
+        //         else start = mid + 1;
+        //     }
+        //     else {
+        //         if (target <= nums[end] && target > nums[mid]) start = mid + 1;
+        //         else end = mid - 1;
+        //     }
+        // }
+        // return -1;
+    }
+
+    int search(vector<int>& nums, int target) {
+        return searchOnePath(nums, target);
+        //return searchTwoPath(nums, target);
     }
 };
 
