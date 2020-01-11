@@ -64,6 +64,7 @@
         "cinttypes": "cpp",
         "__functional_03": "cpp",
         "stack": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "list": "cpp"
     }
 }
