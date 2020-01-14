@@ -5,41 +5,34 @@
 
 using namespace std;
 
-int maxArea2(vector<int> height) {
-    auto n = height.size();
-    auto ans = 0;
+// https://leetcode.com/problems/container-with-most-water/
 
-    auto map = unordered_map<int, int>();
-    for (int x = 0; x < n-1; x++)
-    {
-        auto y = height[x];
-        for (int x2 = x + 1; x2 < n; x2++)
-        {
-            auto y2 = height[x2];
-            ans = max(ans, abs(x2 - x) * min(y2, y));
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        // two-points sliding window
+        // time: o(n)
+        // space: o(1)
+
+        int ans = 0;
+        int i = 0, j = height.size() - 1;
+        while (i < j) {
+            ans = max(ans, (j - i) * min(height[i], height[j]));
+            if (height[i] < height[j])
+                i++;
+            else
+                j--;
         }
+
+        return ans;
     }
-
-    return ans;
-}
-
-int maxArea(vector<int> height) {
-    auto n = height.size();
-    int ans = 0, l = 0, r = n - 1;
-    while (l < r) {
-        ans = max(ans, (r - l) * min(height[r], height[l]));
-        if (height[r] > height[l])
-            l++;
-        else
-            r--;
-    }
-
-    return ans;
-}
+};
 
 int main()
 {
-    assert(maxArea(vector<int>{1,8,6,2,5,4,8,3,7}) == 49);
-    assert(maxArea(vector<int>{1,2,4,3}) == 49);
+    auto input1 = vector<int>{1,8,6,2,5,4,8,3,7};
+    auto input2 = vector<int>{1,2,4,3};
+    assert(Solution().maxArea(input1) == 49);
+    assert(Solution().maxArea(input2) == 4);
     return 0;
 }
