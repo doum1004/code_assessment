@@ -5,113 +5,61 @@
 
 using namespace std;
 
-int myAtoi(string str) {
-    int ans = 0;
-    bool neg = false;
-    bool digit_flag = false;
-    for (auto c : str)
-    {
-        if (isspace(c))
-        {
-            if (digit_flag)
-                break;
+// https://leetcode.com/problems/string-to-integer-atoi/
 
-            continue;
-        }
-        else if (isdigit(c))
-        {
-            digit_flag = true;
-            auto digit = c - '0';
-            if (neg && ans < (INT_MIN + digit) / 10)
+class Solution {
+public:
+    int myAtoi(string str) {
+        // visit str and store
+        // time: o(n)
+        // space: o(1)
+
+        int ans = 0;
+        bool neg = false;
+        bool digit_flag = false;
+        bool neg_falg = false;
+
+        for (auto c : str) {
+            if (isspace(c))
             {
-                return INT_MIN;
+                if (digit_flag || neg_falg) break;
             }
-            else if (!neg && -ans > (INT_MAX - digit) / 10)
+            else if (isdigit(c))
             {
-                return INT_MAX;
-            }
-            ans = ans * 10 - digit;
-        }
-        else if (c == '-' || c == '+')
-        {
-            if (digit_flag)
-                break;
-
-            digit_flag = true;
-            if (c == '-')
-                neg = true;
-        }
-        else
-        {
-            break;
-        }
-    }
-
-    return neg ? ans : -ans;
-}
-
-int myAtoi2(string str) {
-    auto map = unordered_map<char, int>();
-    auto i = 0;
-    for (auto c : "0123456789")
-    {
-        map[c] = i++;
-    }
-    auto assigned = false;
-    auto sign = 1;
-    unsigned long ans = 0;
-    for (auto s : str)
-    {
-        if (map.find(s) != map.end())
-        {
-            assigned = true;
-            ans *= 10;
-            ans += map[s];
-            if (ans > (INT_MAX))
-            {
-                if (sign > 0)
-                {
-                    return INT_MAX;
+                digit_flag = true;
+                auto n = c - '0';
+                if ((ans < INT_MIN / 10) || ((ans == INT_MIN / 10) && ((!neg) ? n > 7 : n > 8))) {
+                    return (!neg) ? INT_MAX : INT_MIN;
                 }
-                else
-                {
-                    return INT_MIN;
-                }
+                ans = ans * 10 - n;
             }
-        }
-        else
-        {
-            if (!assigned && (s == '+' || s == '-'))
+            else if (c == '-' || c == '+')
             {
-                assigned = true;
-                if (s == '-')
-                {
-                    sign *= -1;
-                }
-            }
-            else if (!assigned && s == ' ')
-            {
-                continue;
+                if (digit_flag || neg_falg) break;
+                neg_falg = true;
+
+                if (c == '-') neg = !neg;
             }
             else
             {
                 break;
             }
+            
         }
-    }
 
-    return ans * sign;
-}
+        return (!neg) ? ans * -1 : ans;
+    }
+};
 
 int main()
 {
-    assert(myAtoi("42") == 42);
-    assert(myAtoi("   -42") == -42);
-    assert(myAtoi("4193 with words") == 4193);
-    assert(myAtoi("words and 987") == 0);
-    assert(myAtoi("-91283472332") == -2147483648);
-    assert(myAtoi("+-2") == 0);
-    assert(myAtoi("   +0 123") == 0);
-    assert(myAtoi("-2147483648") == -2147483648);
+    assert(Solution().myAtoi("42") == 42);
+    assert(Solution().myAtoi("   -42") == -42);
+    assert(Solution().myAtoi("4193 with words") == 4193);
+    assert(Solution().myAtoi("words and 987") == 0);
+    assert(Solution().myAtoi("-91283472332") == -2147483648);
+    assert(Solution().myAtoi("+-2") == 0);
+    assert(Solution().myAtoi("   +0 123") == 0);
+    assert(Solution().myAtoi("-2147483648") == -2147483648);
     return 0;
 }
