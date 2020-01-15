@@ -4,88 +4,52 @@
 
 #include <vector>
 #include <sstream>
-
+#include <unordered_set>
 #include <cctype>
 
 using namespace std;
 
-string mostCommonWord(string paragraph, vector<string> banned) {
-    unordered_set<string> bannedset(banned.begin(), banned.end());
-    unordered_map<string, int> word_count;
-
-    for (char &c: paragraph)
-    {
-        if (isalpha(c))
-            c = tolower(c);
-        else
-            c = ' ';
-    }
-    istringstream iss(paragraph);
-    string w;
-    pair<string, int> ans;
-    while (iss >> w)
-    {
-        if (bannedset.find(w) == bannedset.end() && ++word_count[w] > ans.second)
-        {
-            ans = pair(w, word_count[w]);
-        }
-    }
-
-    return ans.first;
-}
-
-string mostCommonWord2(string paragraph, vector<string> banned) {
-    for (char &c: paragraph)
-    {
-        if (isalpha(c))
-            c = tolower(c);
-        else
-            c = ' ';
-    }
-    paragraph += ".";
-    
-    unordered_set<string> bannedset(banned.begin(), banned.end());
-    auto map = unordered_map<string, int>();
-
-    int l = 0, r = 0;
-    string ans = "";
-    int max = 0;
-    for (int i=0; i<paragraph.size(); i++)
-    {
-        auto c = paragraph.at(i);
-        if (!isspace(c) && isalpha(c))
-        {
-            r++;
-        }
-        else
-        {
-            if (l != r)
-            {
-                auto str = paragraph.substr(l, r - l);
-                if (bannedset.find(str) == bannedset.end())
-                {
-                    map[str]++;
-                    if (max < map[str])
-                    {
-                        ans = str;
-                        max = map[str];
-                    }
-                }
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        // set, map, pair, istringstream
+        // o(banded+p) = o(banded) + o(p) + o(p) + o(1)
+        // o(banded+p) = o(banded) + o(p)
+        unordered_set<string> bannedSet(banned.begin(), banned.end());
+        for (auto &c : paragraph) {
+            if (isalpha(c)) {
+                c = tolower(c);
             }
-            l = r = i + 1;
+            else {
+                c = ' ';
+            }
         }
-    }
 
-    return ans;
-}
+        unordered_map<string, int> matched;
+
+        pair<string, int> ans;
+        istringstream iss(paragraph);
+        string s;
+        while (iss >> s) {
+            if (bannedSet.find(s) == bannedSet.end() && ++matched[s] > ans.second) {
+                ans = pair(s, matched[s]);
+            }
+        }
+
+        return ans.first;
+    }
+};
 
 int main()
 {
-    assert(mostCommonWord(
+    auto input1 = vector<string>{"hit"};
+    assert(Solution().mostCommonWord(
         "Bob hit a ball, the hit BALL flew far after it was hit.",
-        vector<string>{"hit"}) == "ball");
-    assert(mostCommonWord(
+        input1) == "ball");
+
+    auto input2 = vector<string>{""};
+    assert(Solution().mostCommonWord(
         "Bob",
-        vector<string>{}) == "bob");
+        input2) == "bob");
     return 0;
 }
