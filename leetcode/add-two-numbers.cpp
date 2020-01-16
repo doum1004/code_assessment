@@ -5,6 +5,55 @@
 
 using namespace std;
 
+// (2, 4, 3)
+// (5, 6, 4)
+// (7, 0, 7+1)
+//     c=1
+// Recursive(node r, node l, node r, c)
+// v = l.v + r.v + c
+// c = v > 10 ? 1 : 0;
+// v = v % 10;
+// Iterative()
+// l(0) -> l(end)
+// r(0) -> r(end)
+
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int v)
+    : val(v), next(NULL) {}
+};
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        auto dummyAns = new ListNode(-1);
+        auto cur = dummyAns;
+
+        int c = 0;
+        while (l1 != nullptr || l2 != nullptr) {
+            int v = c;
+            if (l1 != nullptr) {
+                v += l1->val;
+                l1 = l1->next;
+            }
+            if (l2 != nullptr) {
+                v += l2->val;
+                l2 = l2->next;
+            }
+
+            c = v / 10;
+            cur->next = new ListNode(v % 10);
+            cur = cur->next;
+        }
+
+        if (c != 0)
+            cur->next = new ListNode(c);
+
+        return dummyAns->next;
+    }
+};
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -64,6 +113,11 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
 int main()
 {
+    assert(*addTwoNumbers(
+        new ListNode(2, new ListNode(4, new ListNode(3))),
+        new ListNode(5, new ListNode(6, new ListNode(4))))
+        == *(new ListNode(7, new ListNode(0, new ListNode(8)))));
+
     assert(*addTwoNumbers(
         new ListNode(2, new ListNode(4, new ListNode(3))),
         new ListNode(5, new ListNode(6, new ListNode(4))))
