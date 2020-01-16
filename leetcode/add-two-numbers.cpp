@@ -28,6 +28,11 @@ struct ListNode {
     : val(v), next(NULL) {}
 };
 
+bool isEqual(ListNode* l, ListNode* r) {
+    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->next, r->next));
+    return (l == nullptr && r == nullptr) ? true : false;
+}
+
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -57,11 +62,6 @@ public:
         return dummyAns->next;
     }
 };
-
-bool isEqual(ListNode* l, ListNode* r) {
-    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->next, r->next));
-    return (l == nullptr && r == nullptr) ? true : false;
-}
 
 int main()
 {

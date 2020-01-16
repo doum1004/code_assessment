@@ -5,14 +5,20 @@
 
 using namespace std;
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
+// https://leetcode.com/problems/merge-two-sorted-lists/
+
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int v)
+    : val(v), next(NULL) {}
+};
+
+bool isEqual(ListNode* l, ListNode* r) {
+    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->next, r->next));
+    return (l == nullptr && r == nullptr) ? true : false;
+}
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
