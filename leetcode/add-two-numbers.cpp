@@ -54,81 +54,23 @@ public:
     }
 };
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode (int x, ListNode *next = nullptr)
-    : val(x)
-    , next (next)
-    {
-
-    }
-
-    bool operator==(const ListNode& r) const
-    {
-        auto result = val == r.val;
-        if (next != nullptr && r.next != nullptr)
-        {
-            result &= *next == *r.next;
-        }
-        else
-        {
-            result &= (next == nullptr && r.next == nullptr);
-        }
-        return result;
-    }
-};
-
-ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-    auto dummy = new ListNode(0);
-    auto l = l1;
-    auto r = l2;
-    auto cur = dummy;
-    
-    auto c = 0;
-    while (l != nullptr || r != nullptr)
-    {
-        auto sum = c;
-        if (l != nullptr)
-        {
-            sum += l->val;
-            l = l->next;
-        }
-        if (r != nullptr)
-        {
-            sum += r->val;
-            r = r->next;
-        }
-
-        c = sum / 10;
-        cur->next = new ListNode(sum % 10);
-        cur = cur->next;
-    }
-
-    if (c != 0)
-        cur->next = new ListNode(c);
-
-    return dummy->next;
+bool isEqual(ListNode* l, ListNode* r) {
+    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->next, r->next));
+    return (l == nullptr && r == nullptr) ? true : false;
 }
 
 int main()
 {
-    assert(*addTwoNumbers(
-        new ListNode(2, new ListNode(4, new ListNode(3))),
-        new ListNode(5, new ListNode(6, new ListNode(4))))
-        == *(new ListNode(7, new ListNode(0, new ListNode(8)))));
+    auto input1_1 = new ListNode(2);
+    input1_1->next = new ListNode(4);
+    input1_1->next->next = new ListNode(3);
+    auto input1_2 = new ListNode(5);
+    input1_2->next = new ListNode(6);
+    input1_2->next->next = new ListNode(4);
+    auto expected1 = new ListNode(7);
+    expected1->next = new ListNode(0);
+    expected1->next->next = new ListNode(8);
+    assert(isEqual(Solution().addTwoNumbers(input1_1, input1_2), expected1));
 
-    assert(*addTwoNumbers(
-        new ListNode(2, new ListNode(4, new ListNode(3))),
-        new ListNode(5, new ListNode(6, new ListNode(4))))
-        == *(new ListNode(7, new ListNode(0, new ListNode(8)))));
-    assert(*addTwoNumbers(
-        new ListNode(5),
-        new ListNode(5))
-        == *(new ListNode(0, new ListNode(1))));
-    assert(*addTwoNumbers(
-        new ListNode(1, new ListNode(8)),
-        new ListNode(0))
-        == *(new ListNode(1, new ListNode(8))));
     return 0;
 }
