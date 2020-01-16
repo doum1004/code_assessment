@@ -16,6 +16,8 @@ using namespace std;
 // Iterative()
 // l(0) -> l(end)
 // r(0) -> r(end)
+// time: o(max(n,m))
+// space: o(max(n,m))
 
 struct ListNode {
     int val;
