@@ -10,6 +10,50 @@
 
 using namespace std;
 
+// sliding window approch
+// l, r points
+// 0 1 0 2 1 0 1 3 2 1 2 1
+//             l r      
+//       lm      rm
+// ans += 1
+// ans += 1
+// ans += 1
+// ans += 2
+// ans ++ 1
+// time o(n)
+// space o(1)
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int l = 0, r = height.size() - 1;
+        int lm_h = 0, rm_h = 0;
+        int ans = 0;
+        while (l < r) {
+            if (height[l] < height[r]) {
+                if (height[l] > lm_h) {
+                    lm_h = height[l];
+                }
+                else {
+                    ans += lm_h - height[l];
+                }
+                l++;
+            }
+            else
+            {
+                if (height[r] > rm_h) {
+                    rm_h = height[r];
+                }
+                else {
+                    ans += rm_h - height[r];
+                }
+                r--;
+            }
+        }
+        return ans;
+    }
+};
+
 int trapRainWater(vector<int> height) {
     int l = 0, r = height.size() - 1;
     int ans = 0, l_m = 0, r_m = 0;
@@ -65,14 +109,14 @@ int trapRainWater_stack(vector<int> height) {
 
 int main()
 {
-    assert(trapRainWater(
-        vector<int> {0,1,0,2,1,0,1,3,2,1,2,1})
+    auto input1 = vector<int> {0,1,0,2,1,0,1,3,2,1,2,1};
+    assert(Solution().trap(input1)
         == 6);
-    assert(trapRainWater(
-        vector<int> {0,1,0,2,1,0,1,3,2,1,2,1,4})
+    auto input2 = vector<int> {0,1,0,2,1,0,1,3,2,1,2,1,4};
+    assert(Solution().trap(input2)
         == 11);
-    assert(trapRainWater(
-        vector<int> {4,2,3})
+    auto input3 = vector<int> {4,2,3};
+    assert(Solution().trap(input3)
         == 1);
     return 0;
 }
