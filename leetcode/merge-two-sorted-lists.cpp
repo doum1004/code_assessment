@@ -19,89 +19,56 @@ bool isEqual(ListNode* l, ListNode* r) {
     return (l == nullptr && r == nullptr) ? true : false;
 }
 
+// Iternative
+// time: o(n+m)
+// space: o(1)
+
+// 1 2 4
+//     *
+// 1 3 4
+//       *
+
+// 1 1 2 3 4 l1
+
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        
+        auto ansDummy = new ListNode(-1);
+        auto cur = ansDummy;
+        while (l1 != nullptr && l2 != nullptr) {
+            if (l1->val < l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            }
+            else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        }
+
+        cur->next = (l1 == nullptr) ? l2 : l1;
+
+        return ansDummy->next;
     }
 };
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode (int x, ListNode *next = nullptr)
-    : val(x)
-    , next (next)
-    {
-
-    }
-
-    bool operator==(const ListNode& r) const
-    {
-        auto result = val == r.val;
-        if (next != nullptr && r.next != nullptr)
-        {
-            result &= *next == *r.next;
-        }
-        else
-        {
-            result &= (next == nullptr && r.next == nullptr);
-        }
-        return result;
-    }
-};
-
-ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-    // recursion
-    if (l1 == nullptr)
-    {
-        return l2;
-    }
-    else if (l2 == nullptr)
-    {
-        return l1;
-    }
-    else if (l1->val <= l2->val)
-    {
-        l1->next = mergeTwoLists(l1->next, l2);
-        return l1;
-    }
-    else
-    {
-        l2->next = mergeTwoLists(l1, l2->next);
-        return l2;
-    }
-}
-
-ListNode* mergeTwoLists_Iteration(ListNode* l1, ListNode* l2) {
-    // iteration
-    auto ans_dummy = new ListNode(0);
-    auto cur = ans_dummy;
-    while (l1 != nullptr && l2 != nullptr)
-    {
-        if (l1->val <= l2->val)
-        {
-            cur->next = l1;
-            if (l1 != nullptr) l1 = l1->next;
-        }
-        else
-        {
-            cur->next = l2;
-            if (l2 != nullptr) l2 = l2->next;
-        }
-        cur = cur->next;
-    }
-    
-    cur->next = l1 == nullptr ? l2 : l1;
-
-    return ans_dummy->next;
-}
 
 int main()
 {
-    assert(*mergeTwoLists(
-        new ListNode(1, new ListNode(2, new ListNode(4))),
-        new ListNode(1, new ListNode(3, new ListNode(4))))
-        == *(new ListNode(1, new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(4))))))));
+    auto input1_1 = new ListNode(1);
+    input1_1->next = new ListNode(2);
+    input1_1->next->next = new ListNode(4);
+    auto input1_2 = new ListNode(1);
+    input1_2->next = new ListNode(3);
+    input1_2->next->next = new ListNode(4);
+    auto expected1 = new ListNode(1);
+    expected1->next = new ListNode(1);
+    expected1->next->next = new ListNode(2);
+    expected1->next->next->next = new ListNode(3);
+    expected1->next->next->next->next = new ListNode(4);
+    expected1->next->next->next->next->next = new ListNode(4);
+    assert(isEqual(Solution().mergeTwoLists(input1_1, input1_2), expected1));
+
     return 0;
 }
