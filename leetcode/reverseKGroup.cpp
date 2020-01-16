@@ -8,98 +8,84 @@ using namespace std;
 
 struct ListNode {
     int val;
-    ListNode *next;
-    ListNode (int x, ListNode *next = nullptr)
-    : val(x)
-    , next (next)
-    {
+    ListNode* next;
+    ListNode(int v)
+    : val(v), next(NULL) {}
+};
 
-    }
+bool isEqual(ListNode* l, ListNode* r) {
+    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->next, r->next));
+    return (l == nullptr && r == nullptr) ? true : false;
+}
 
-    bool operator==(const ListNode& r) const
-    {
-        auto result = val == r.val;
-        if (next != nullptr && r.next != nullptr)
-        {
-            result &= *next == *r.next;
+// iterative
+// points and swap
+// time: o(n)
+// space: o(1)
+// dummy   1 2 3 4 5
+//  k(3)
+//   h     c n t
+// hn = h->next
+// h->next = n
+// n->next = hn
+// c->next = t
+
+// dummy   2 1 3 4 5
+//   h       c n t
+// hn = h->next
+// h->next = n
+// n->next = hn
+// c->next = t
+
+// dummy   3 2 1 4 5 
+//   h         c n t
+//             h c n t 
+
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        auto n = 0;
+        auto cur = head;
+        while (cur != nullptr) {
+            n++;
+            cur = cur->next;
         }
-        else
-        {
-            result &= (next == nullptr && r.next == nullptr);
+
+        auto dummyHead = new ListNode(-1);
+        dummyHead->next = head;
+
+        auto pre = dummyHead;
+        while (n >= k) {
+            for (int i=1; i<k; ++i) {
+                auto n = head->next;
+                auto t = n->next;
+
+                auto pre_next = pre->next;
+                pre->next = n;
+                n->next = pre_next;
+                head->next = t;
+            }
+            n -= k;
+            pre = head;
+            head = pre->next;
         }
-        return result;
+
+        return dummyHead->next;
     }
 };
 
-// -1                    1     2     3     4    5
-// prehead  pre         head
-// k(4)
-// j(1)
-// temp = 1 (pre->next)
-// -1(pre)      -> 2 (head->next)
-// 2(pre->next) -> temp(1)
-// 1(head)      -> 3 (head->next->next)
-// -1                    2     1     3     4    5
-// prehead  pre               head
-// j(2)
-// temp = 2 (pre->next)
-// -1(pre)      -> 3 (head->next)
-// 3(pre->next) -> temp(2)
-// 1(head)      -> 4 (head->next->next)
-// -1                    3     2     1     4    5
-// prehead  pre                     head
-// j(3)
-// temp = 3 (pre->next)
-// -1(pre)      -> 4 (head->next)
-// 1(head)      -> 5 (head->next->next)
-// 4(pre->next) -> temp(3)
-// -1                    4     3     2     1    5
-// prehead  pre                           head
-
-// prehead                                 pre  head
-
-
-ListNode* reverseKGroup(ListNode* head, int k) {
-    if (head == nullptr || k == 1) return head;
-
-    auto cur = head;
-    auto num = 0;
-    while (cur != nullptr)
-    {
-        num++;
-        cur = cur->next;
-    }
-
-    auto prehead = new ListNode(-1);
-    prehead->next = head;
-
-    auto pre = prehead;
-    while (num >= k) {
-        for (int i=1; i<k; i++) {
-            auto a = pre->next;
-            auto b = head->next;
-            auto c = head->next->next;
-            pre->next = b;
-            b->next = a;
-            head->next = c;
-        }
-        num -= k;
-        pre = head;
-        head = head->next;
-    }
-
-    return prehead->next;
-}
-
 int main()
 {
-    assert(*reverseKGroup(
-        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
-        2)
-        == *(new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(3, new ListNode(5)))))));
-    assert(*reverseKGroup(
-        new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))),
-        3)
-        == *(new ListNode(3, new ListNode(2, new ListNode(1, new ListNode(4, new ListNode(5)))))));
+    auto input1_1 = new ListNode(1);
+    input1_1->next = new ListNode(2);
+    input1_1->next->next = new ListNode(3);
+    input1_1->next->next->next = new ListNode(4);
+    input1_1->next->next->next->next = new ListNode(5);
+    auto expected1 = new ListNode(2);
+    expected1->next = new ListNode(1);
+    expected1->next->next = new ListNode(4);
+    expected1->next->next->next = new ListNode(3);
+    expected1->next->next->next->next = new ListNode(5);
+    assert(isEqual(Solution().reverseKGroup(input1_1, 2), expected1));
     return 0;
 }
