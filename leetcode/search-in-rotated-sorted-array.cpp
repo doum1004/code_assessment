@@ -6,83 +6,79 @@
 using namespace std;
 
 // https://leetcode.com/problems/search-in-rotated-sorted-array/
+// o(log(n)) -> bin search
+// find pivot by bin search
+// 4 5 6 7 0 1 2
+//     p (n)       -> v[p] > v[n] = false -> v[0] < v[p] ? right : left
+//           p (n)
+//       p (n) -> bingo
+// pivot_index = 5
+
+// find target (0)
+// 4 5 6 7 0 1 2
+// v[0] < t ? left : right of rotation
+//           p
+//         p -> bingo
+// return p
+
 
 class Solution {
 public:
-    int binSearch(vector<int>& nums, int target, int l, int r) {
-        while (l <= r) {
-            auto mid = (l + r) / 2;
+    int binsearch(vector<int>& nums, int target, int l, int r) {
+        if (l < 0 || l > r || r >= nums.size()) return -1;
+        
+        while (l<=r) {
+            auto mid = (l+r) / 2;
             if (nums[mid] == target) {
                 return mid;
             }
-            else if (nums[mid] < target) {
+            if (nums[mid] < target) {
                 l = mid + 1;
             }
             else {
                 r = mid - 1;
             }
         }
-
+        
         return -1;
     }
-
-    int searchTwoPath(vector<int>& nums, int target) {
-        auto n = nums.size();
-        if (n == 0) return -1;
-        if (n == 1) return nums[0] == target ? 0 : -1;
-
-        // find the smalleaset
-        int l = 0, r = n - 1;
-        auto pivot = 0;
-        if (nums[l] < nums[r]) {
-            pivot = 0;
+    
+    int search(vector<int>& nums, int target) {
+        if (nums.size() == 0) return -1;
+        if (nums.size() == 1) {
+            return nums[0] == target ? 0 : -1;
         }
-        else {
+        
+        // find pivot
+        auto pivot = 0;
+        int l = 0, r = nums.size()-1;
+        if (nums[l] > nums[r]) {
             while (l<=r) {
-                pivot = (l + r) / 2;
-                if (nums[pivot] > nums[pivot + 1]) {
-                    pivot++;
+                auto mid = (l + r) / 2;
+                if (nums[mid] > nums[mid + 1]) {
+                    pivot = mid + 1;
                     break;
                 }
-                if (nums[pivot] < nums[l]) {
-                    r = pivot - 1;
+                
+                if (nums[l] > nums[mid]) {
+                    r = mid - 1;
                 }
                 else {
-                    l = pivot + 1;
+                    l = mid + 1;
                 }
             }
         }
-
-        if (pivot == 0) {
-            return binSearch(nums, target, 0, nums.size() - 1);
-        }
-        else if (target < nums[0]) {
-            return binSearch(nums, target, pivot, n - 1);
-        }
         
-        return binSearch(nums, target, 0, pivot);
-    }
-
-    int searchOnePath(vector<int>& nums, int target) {
-        // int start = 0, end = nums.size() - 1;
-        // while (start <= end) {
-        //     int mid = start + (end - start) / 2;
-        //     if (nums[mid] == target) return mid;
-        //     else if (nums[mid] >= nums[start]) {
-        //         if (target >= nums[start] && target < nums[mid]) end = mid - 1;
-        //         else start = mid + 1;
-        //     }
-        //     else {
-        //         if (target <= nums[end] && target > nums[mid]) start = mid + 1;
-        //         else end = mid - 1;
-        //     }
-        // }
-        // return -1;
-    }
-
-    int search(vector<int>& nums, int target) {
-        return searchOnePath(nums, target);
-        //return searchTwoPath(nums, target);
+        l = 0, r = nums.size() - 1;
+        if (pivot != 0) {
+            if (nums[0] > target) {
+                l = pivot;
+            }
+            else {
+                r = pivot-1;
+            }
+        }
+        return binsearch(nums, target, l, r);
     }
 };
 
