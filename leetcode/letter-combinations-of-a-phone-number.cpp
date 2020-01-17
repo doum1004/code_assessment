@@ -7,37 +7,44 @@
 
 using namespace std;
 
-// Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
-// A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
-
-// Example:
-
-// Input: "23"
-// Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
-// Note:
-
-// Although the above answer is in lexicographical order, your answer could be in any order you want.
+// backtracking to find all possibility 
+// o(3N x 4M)
+// o(3N x 4M)
+// map
+// [2] = vector<char> {'a', 'b', 'c'}
+// [3] = vector<char> ...
+// vector<strig> ans;
+// backtrack(map, str, digits)
+//  if (digits == "") ans.push_back(str);
+//  else
+//      cur = digits.substr(0,1)
+//      if (map.find(cur))
+//          for (auto& c:map[cur])
+//              backtrack(map, str + c, digits.substr(1))
+//  
+//
+// back(map, "", digits)
 
 class Solution {
-public:
-    void backtracking(unordered_map<string, string> &phone, vector<string> &output, string combination, string next_digits) {
-        if (next_digits == "")
-        {
-            output.push_back(combination);
+private:
+    vector<string> ans;
+    void letterCombinations(unordered_map<string, string>& map, string combi, string digits) {
+        if (digits == "") {
+            ans.push_back(combi);
         }
-        else
-        {
-            auto cur_digit = next_digits.substr(0,1);
-            if (phone.find(cur_digit) != phone.end()) {
-                auto chars = phone[cur_digit];
-                for (auto &c : chars) {
-                    backtracking(phone, output, combination + c, next_digits.substr(1));
+        else {
+            auto cur = digits.substr(0, 1);
+            if (map.find(cur) != map.end()) {
+                for (auto& c : map[cur]) {
+                    letterCombinations(map, combi + c, digits.substr(1));
                 }
             }
         }
     }
-
+    
+public:
     vector<string> letterCombinations(string digits) {
         auto phone = unordered_map<string, string>();
         phone["2"] = "abc";
@@ -48,10 +55,8 @@ public:
         phone["7"] = "pqrs";
         phone["8"] = "tuv";
         phone["9"] = "wxyz";
-        
-        vector<string> ans;
         if (digits != "")
-            backtracking(phone, ans, "", digits);
+            letterCombinations(phone, "", digits);
         return ans;
     }
 };
