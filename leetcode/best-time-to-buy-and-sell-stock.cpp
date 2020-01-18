@@ -7,17 +7,31 @@ using namespace std;
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
+// one path linear
+// time: o(n)
+// space: o(1)
+
+// minPrice = prices[0]
+// maxProfit = 0
+// 7,1,5,3,6,4
+//   i          maxProfit=0 minPrice=1
+//     i        maxProfit=4 minPrice=1
+//      ...i    maxProfit=5 minPrice=1
+
+
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         if (prices.size() < 2) return 0;
         
-        auto maxProfit = 0, minPrice = prices[0];
+        int minPrice = prices[0];
+        int maxProfit = 0;
         for (int i=1; i<prices.size(); ++i) {
-            if (minPrice > prices[i]) minPrice = prices[i];
-            else maxProfit = max(maxProfit, prices[i] - minPrice);
+            maxProfit = max(maxProfit, prices[i] - minPrice);
+            minPrice = min(minPrice, prices[i]);
         }
-
+        
         return maxProfit;
     }
 };
