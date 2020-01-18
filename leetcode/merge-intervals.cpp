@@ -8,6 +8,9 @@ using namespace std;
 // https://leetcode.com/problems/merge-intervals/
 
 // sort and merge
+// time: o(nlogn) sort
+// space: o(n) ans vector
+
 // [1,3], [2,6], [8,10], [15,18]
 // sort
 // [1,3], [2,6], [8,10], [15,18]
