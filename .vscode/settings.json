@@ -66,6 +66,7 @@
         "stack": "cpp",
         "queue": "cpp",
         "list": "cpp",
-        "climits": "cpp"
+        "climits": "cpp",
+        "cassert": "cpp"
     }
 }
