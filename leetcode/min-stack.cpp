@@ -8,6 +8,18 @@ using namespace std;
 
 // https://leetcode.com/problems/min-stack/
 
+// push, pop, top, getMin o(1)
+// push(-2)
+// stack: (-2, -2)
+// push(0)
+// stack: (-2, -2) (0, -2)
+// push(-3)
+// stack: (-2, -2) (0, -2) (-3, -3)
+// getmin()
+// -3
+
+// stack: stack<value, min(value, stack.top().getmin())>
+
 class MinStack {
 public:
     /** initialize your data structure here. */
@@ -16,8 +28,7 @@ public:
     }
     
     void push(int x) {
-        auto min_v = stack_.size() > 0 ? min(x, stack_.top().second) : x;
-        stack_.push(pair(x, min_v));
+        stack_.push({x, min(getMin(), x)});
     }
     
     void pop() {
@@ -29,9 +40,9 @@ public:
     }
     
     int getMin() {
-        return stack_.top().second;
+        return (stack_.size() > 0) ? stack_.top().second : INT_MAX;
     }
-
+    
 private:
     stack<pair<int, int>> stack_;
 };
