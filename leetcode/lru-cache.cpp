@@ -7,52 +7,83 @@
 using namespace std;
 
 // https://leetcode.com/problems/lru-cache/
+
+// map for cache, list for used
+// time: o(1) // map: get/set o(1), list: erase by iterator and add front/back o(1)
+// space: o(capacity)
+
+// cache.put(1, 1);
+// cache: 1
+
+// cache.put(2, 2);
+// cache: 1 2
+
+// cache.get(1);
+// cache: 2 1
+
+// cache.put(3, 3);
+// cache: 1 3
+
+// cache.get(2);
+// -1
+
+// cache.put(4, 4);
+// cache: 3 4
+
+// cache.get(1);
+// -1
+
+// used: list<key> (bidirectlist)
+// map: map<key, pair<value, used::iterator>>
+
 class LRUCache {
 public:
-    LRUCache(int capacity) : capacity_(capacity) {
-        
-    }
+    LRUCache(int capacity) : capacity_(capacity) {}
     
     int get(int key) {
-        if (key < 1) return -1;
-
         auto it = cache_.find(key);
-        if (it == cache_.end()) return -1;
-        updateUsed(it);
+        if (it == cache_.end()) {
+            return -1;
+        }
+        
+        UpdateUsed(it);
         return it->second.first;
     }
     
     void put(int key, int value) {
-        if (key < 1) return;
         auto it = cache_.find(key);
         if (it != cache_.end()) {
-            updateUsed(it);
+            UpdateUsed(it);
         }
         else {
             if (used_.size() == capacity_) {
+                // erase used
                 cache_.erase(used_.back());
                 used_.pop_back();
             }
             used_.push_front(key);
         }
+        
         cache_[key] = {value, used_.begin()};
     }
+    
+private:
+    typedef int KEY;
+    typedef int VALUE;
+    typedef list<KEY> LK;
+    typedef pair<VALUE, LK::iterator> PVI;
+    typedef unordered_map<KEY, PVI> M_KPVI;
+    
+    int capacity_;
+    LK used_;
+    M_KPVI cache_;
 
 private:
-    typedef list<int> LI;
-    typedef pair<int, LI::iterator> PII;
-    typedef unordered_map<int, PII> MIPII;
-
-    void updateUsed(MIPII::iterator it) {
-        auto key = it->first;
+    void UpdateUsed(M_KPVI::iterator it) {
         used_.erase(it->second.second);
-        used_.push_front(key);
+        used_.push_front(it->first);
         it->second.second = used_.begin();
     }
-
-    int capacity_;
-    LI used_;
-    MIPII cache_;
 };
 
 /**
