@@ -9,35 +9,43 @@ using namespace std;
 
 // https://leetcode.com/problems/roman-to-integer/
 
-// Symbol       Value
-// I             1
-// V             5
-// X             10
-// L             50
-// C             100
-// D             500
-// M             1000
+// iterate stores to subtract data
+// time: o(n) : number of romans table * max(1,3)
+// space: o(n) : number of romans in table
+//
+// l = 0
+// iterate vector (romans)
+// roman : romans
+//  while (s.substr(l, roman.first.size()) == roman.first)
+//      l += roman.first.size()
+//      ans += roman.second;
 
 class Solution {
 public:
     int romanToInt(string s) {
-        // arrays for values, symbols
-        // time: o(n)
-        // space: o(1)
-
-        int values[] =      {1000,  900,    500,    400,    100,    90,     50,     40,     10,     9,      5,      4,      1};
-        string symbols[] =  {"M",   "CM",   "D",    "CD",   "C",    "XC",   "L",    "XL",   "X",    "IX",   "V",    "IV",   "I"};
-
-        auto ans = 0;
-        auto j = 0;
-        for (int i=0; i<13; ++i) {
-            auto size = symbols[i].size();
-            while (j < (int)s.size() && symbols[i] == s.substr(j, size)) {
-                j += size;
-                ans += values[i];
+        vector<pair<string, int>> romans;
+        romans.push_back({"M", 1000});
+        romans.push_back({"CM", 900});
+        romans.push_back({"D", 500});
+        romans.push_back({"CD", 400});
+        romans.push_back({"C", 100});
+        romans.push_back({"XC", 90});
+        romans.push_back({"L", 50});
+        romans.push_back({"XL", 40});
+        romans.push_back({"X", 10});
+        romans.push_back({"IX", 9});
+        romans.push_back({"V", 5});
+        romans.push_back({"IV", 4});
+        romans.push_back({"I", 1});
+        
+        int ans = 0;
+        int l = 0;
+        for (auto &roman : romans) {
+            while (s.substr(l, roman.first.size()) == roman.first) {
+                l += roman.first.size();
+                ans += roman.second;
             }
         }
-
         return ans;
     }
 };
