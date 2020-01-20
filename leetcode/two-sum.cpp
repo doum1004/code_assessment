@@ -7,27 +7,24 @@ using namespace std;
 
 // https://leetcode.com/problems/two-sum/
 
+// [2, 7, 11, 15] t = 9
+// Solution. one-path map, two-path map
+// answerMap
+// time: o(n): one-path(iternate and put o(n)) two-path(generate and iterate o(2n))
+// space: o(n)
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        //two path hash table (it can be one path)
-        //time complexcity: o(n) + (o(n) * o(1)) -> o(n)
-        //space complexcityL o(n)
-
-        if (nums.size() < 2) return vector<int>();
-
-        auto diff = unordered_map<int, int>();
+        // one path map
+        auto map = unordered_map<int, int>();
         for (int i=0; i<nums.size(); ++i) {
-            diff[target - nums[i]] = i;
-        }
-        
-        for (int i=0; i<nums.size(); ++i) {
-            auto num = nums[i];
-            if (diff.find(num) != diff.end() && i != diff[num]) {
-                return vector<int> {i, diff[num]};
+            if (map.find(nums[i]) != map.end()) {
+                return vector<int> {map[nums[i]], i};
             }
+            auto ans = target - nums[i];
+            map[ans] = i;
         }
-
         return vector<int>();
     }
 };
