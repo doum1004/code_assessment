@@ -7,47 +7,67 @@ using namespace std;
 
 // https://leetcode.com/problems/string-to-integer-atoi/
 
+// Solution. Iterate string
+// time o(n)
+// space o(1)
+
+// "42"  42
+// "   -42"  -42
+// skip empty
+// first none num should be + or -
+// char after num ends
+// limit for int
+
+// ans = 0
+// neg = false
+// firstNoneWhiteSpace = false
+// iterate c: str
+//  if (isspace(c))
+//      continue
+//  else
+//      if (isdigit())
+//          auto digit = c - '0'
+//          if (!neg && (ans < INT_MIN / 10) || (ans == INT_MIN / 10) digit>7) return INT_MAX;
+//          if (neg && (ans < INT_MIN / 10) || (ans == INT_MIN / 10) digit>8) return INT_MIN;
+//          ans = ans * 10 - digit
+//      else
+//          if (firstNoneWhiteSpace) break;
+//          if (c == "-" || c == "+") neg = c == "-"
+//          else break;
+//          
+//      firstNoneWhiteSpace = true
+//  
+
 class Solution {
 public:
     int myAtoi(string str) {
-        // visit str and store
-        // time: o(n)
-        // space: o(1)
-
+        if (str.size() < 1) return 0;
+        int n = str.size();
         int ans = 0;
         bool neg = false;
-        bool digit_flag = false;
-        bool neg_falg = false;
-
-        for (auto c : str) {
-            if (isspace(c))
-            {
-                if (digit_flag || neg_falg) break;
+        bool firstNoneWhiteSpace = false;
+        
+        for (auto &c : str) {
+            if (isspace(c)) {
+                if (firstNoneWhiteSpace) break;
             }
-            else if (isdigit(c))
-            {
-                digit_flag = true;
-                auto n = c - '0';
-                if ((ans < INT_MIN / 10) || ((ans == INT_MIN / 10) && ((!neg) ? n > 7 : n > 8))) {
-                    return (!neg) ? INT_MAX : INT_MIN;
+            else {
+                if (isdigit(c)) {
+                    auto digit = c - '0';
+                    if (!neg && (ans < INT_MIN / 10 || ((ans == INT_MIN / 10) && digit > 7))) return INT_MAX;
+                    if (neg && (ans < INT_MIN / 10 || ((ans == INT_MIN / 10) && digit > 8))) return INT_MIN;
+                    ans = ans * 10 - digit; // negative holds more !!!!
                 }
-                ans = ans * 10 - n;
+                else {
+                    if (firstNoneWhiteSpace) break;
+                    if (c == '-' || c == '+') neg = c == '-';
+                    else break;
+                }
+                firstNoneWhiteSpace = true;
             }
-            else if (c == '-' || c == '+')
-            {
-                if (digit_flag || neg_falg) break;
-                neg_falg = true;
-
-                if (c == '-') neg = !neg;
-            }
-            else
-            {
-                break;
-            }
-            
         }
-
-        return (!neg) ? ans * -1 : ans;
+        
+        return (neg) ? ans : ans * -1;
     }
 };
 
