@@ -10,102 +10,59 @@
 
 using namespace std;
 
-// sliding window approch
-// l, r points
-// 0 1 0 2 1 0 1 3 2 1 2 1
-//             l r      
-//       lm      rm
-// ans += 1
-// ans += 1
-// ans += 1
-// ans += 2
-// ans ++ 1
-// time o(n)
-// space o(1)
+// Soultion1. Two points. sliding window
+// time: o(n)
+// space: o(1)
+
+// leftMax, rightMax
+// 0 1 0 2 1 0 1
+// l           r    water = 0  lhMax = 0, rhMax = 1
+//   l         r    water = 0  lhMax = 1, rhMax = 1
+//   l       r      water = 1 (min(lhMax, rhMax) - curh)
+//   l     r        water = 1
+//   l   r                                rhMax = 2
+//     l            water = 2
+
+// Solution 2. Stack
+// time: o(n)
+// space: o(n)
+// 0 1 0 2 1 0 1 2
+// l                                                                        stack(0) -> 0 index
+//   l              remove(0)                                               stack(1) 
+//     l                                                                    stack(1,2)
+//       l          pop stack (2) -> water dist*(min(top,cur)-h[2])         stack(3)            water = 1
+//           l                                                              stack(3, 4, 5)
+//             l    pop stack (5) -> water dist*(min(top,cur)-h[5])         stack(3, 4 6)       water = 2
+//               l  pop stack (6 4) -> water dist*(min(top,cur)-h[5])       stack(7)            water = 5           
 
 class Solution {
 public:
     int trap(vector<int>& height) {
+        if (height.size() < 3) return 0;
         int l = 0, r = height.size() - 1;
-        int lm_h = 0, rm_h = 0;
+        int lhMax = height[l], rhMax = height[r];
+        
         int ans = 0;
-        while (l < r) {
+        while (l<r) {
+            auto h = 0;
+            
             if (height[l] < height[r]) {
-                if (height[l] > lm_h) {
-                    lm_h = height[l];
-                }
-                else {
-                    ans += lm_h - height[l];
-                }
-                l++;
+                lhMax = max(height[++l], lhMax);
+                h = height[l];
             }
-            else
-            {
-                if (height[r] > rm_h) {
-                    rm_h = height[r];
-                }
-                else {
-                    ans += rm_h - height[r];
-                }
-                r--;
+            else {
+                rhMax = max(height[--r], rhMax);
+                h = height[r];
+            }
+            auto h2 = min(lhMax, rhMax);
+            if (h2 > h) {
+                ans += h2 - h;
             }
         }
+        
         return ans;
     }
 };
-
-int trapRainWater(vector<int> height) {
-    int l = 0, r = height.size() - 1;
-    int ans = 0, l_m = 0, r_m = 0;
-    while (l < r)
-    {
-        if (height[l] < height[r])
-        {
-            if (height[l] > l_m)
-            {
-                l_m = height[l];
-            }
-            else
-            {
-                ans += l_m - height[l];
-            }
-            l++;
-        }
-        else
-        {
-            if (height[r] > r_m)
-            {
-                r_m = height[r];
-            }
-            else
-            {
-                ans += r_m - height[r];
-            }
-            r--;
-        }
-    }
-    return ans;
-}
-
-int trapRainWater_stack(vector<int> height) {
-    stack<int> st;
-    int ans = 0, cur = 0;
-    while (cur < height.size()) {
-        while (!st.empty() && height[cur] > height[st.top()]) {
-            auto top = st.top();
-            st.pop();
-            if (st.empty())
-                break;
-
-            auto dis = cur - st.top() - 1;
-            auto bounded_h = min(height[cur], height[st.top()]) - height[top];
-            ans += dis * bounded_h;
-        }
-        st.push(cur++);
-    }
-
-    return ans;
-}
 
 int main()
 {
