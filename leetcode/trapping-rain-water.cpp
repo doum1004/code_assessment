@@ -10,6 +10,8 @@
 
 using namespace std;
 
+// https://leetcode.com/problems/trapping-rain-water/
+
 // Soultion1. Two points. sliding window
 // time: o(n)
 // space: o(1)

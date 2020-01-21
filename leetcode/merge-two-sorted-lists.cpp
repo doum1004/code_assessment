@@ -5,8 +5,6 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/merge-two-sorted-lists/
-
 struct ListNode {
     int val;
     ListNode* next;
@@ -19,17 +17,34 @@ bool isEqual(ListNode* l, ListNode* r) {
     return (l == nullptr && r == nullptr) ? true : false;
 }
 
-// Iternative
-// time: o(n+m)
-// space: o(1)
+/**
+https://leetcode.com/problems/merge-two-sorted-lists/
 
-// 1 2 4
-//     *
-// 1 3 4
-//       *
+1 2 4
+    l
+1 3 4
+      r
+-----
+1 1 2 3 4 ... l
 
-// 1 1 2 3 4 l1
+Solution1. iterate l1, l2. and compare and add
+time: o(max(m, n))
+space: o(1)
 
+ansDummy = new listnode;
+cur = ansDummy;
+while (l1 != NULL && l2 != NULL)
+    if (l1->v > l2->v)
+        cur->next = l2
+        l2 = l2->next
+    else
+        cur->next = l1
+        l1 = l1->next
+    cur = cur->next
+if (l1 != NULL) cur->next = l1
+else cur->next = l2
+return cur
+**/
 
 class Solution {
 public:
@@ -37,19 +52,19 @@ public:
         auto ansDummy = new ListNode(-1);
         auto cur = ansDummy;
         while (l1 != nullptr && l2 != nullptr) {
-            if (l1->val < l2->val) {
-                cur->next = l1;
-                l1 = l1->next;
-            }
-            else {
+            if (l1->val > l2->val) {
                 cur->next = l2;
                 l2 = l2->next;
             }
+            else {
+                cur->next = l1;
+                l1 = l1->next;
+            }
             cur = cur->next;
         }
-
-        cur->next = (l1 == nullptr) ? l2 : l1;
-
+        if (l1 != NULL) cur->next = l1;
+        else cur->next = l2;
+        
         return ansDummy->next;
     }
 };

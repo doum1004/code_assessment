@@ -5,27 +5,10 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/add-two-numbers/
-
-// (2, 4, 3)
-// (5, 6, 4)
-// (7, 0, 7+1)
-//     c=1
-// Recursive(node r, node l, node r, c)
-// v = l.v + r.v + c
-// c = v > 10 ? 1 : 0;
-// v = v % 10;
-// Iterative()
-// l(0) -> l(end)
-// r(0) -> r(end)
-// time: o(max(n,m))
-// space: o(max(n,m))
-
 struct ListNode {
     int val;
     ListNode* next;
-    ListNode(int v)
-    : val(v), next(NULL) {}
+    ListNode(int v) : val(v), next(NULL) {}
 };
 
 bool isEqual(ListNode* l, ListNode* r) {
@@ -33,33 +16,54 @@ bool isEqual(ListNode* l, ListNode* r) {
     return (l == nullptr && r == nullptr) ? true : false;
 }
 
+// https://leetcode.com/problems/add-two-numbers/
+
+/**
+iterate both LinkedList. Add sum on ans. And carry if sum exceed 9
+time: o(max(n,m))
+space: o(max(n,m))
+
+    2 4 3
+    5 6 4
+---------
+    7 0 8
+  c     1
+
+**/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        auto dummyAns = new ListNode(-1);
-        auto cur = dummyAns;
-
-        int c = 0;
+        auto ansDummy = new ListNode(-1);
+        auto cur = ansDummy;
+        auto c = 0;
         while (l1 != nullptr || l2 != nullptr) {
-            int v = c;
+            auto sum = c;
             if (l1 != nullptr) {
-                v += l1->val;
+                sum += l1->val;
                 l1 = l1->next;
             }
             if (l2 != nullptr) {
-                v += l2->val;
+                sum += l2->val;
                 l2 = l2->next;
             }
-
-            c = v / 10;
-            cur->next = new ListNode(v % 10);
+            c = sum >= 10 ? 1 : 0;
+            cur->next = new ListNode(sum % 10);
             cur = cur->next;
         }
-
         if (c != 0)
             cur->next = new ListNode(c);
-
-        return dummyAns->next;
+        
+        return ansDummy->next;
     }
 };
 
