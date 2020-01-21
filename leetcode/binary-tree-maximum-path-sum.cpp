@@ -8,49 +8,37 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/binary-tree-maximum-path-sum/
+/**
+https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
-//     1(6)
-//2(2)    3(3)
+DFS postorder
+time: o(n)
+space: o(n)
+     1(6)
+2(2)   3(3)  
 
-//        -10 (34)
-//  9(9)            20(42, 35)
-//           15(15)      7(7)
+        -10 (34)
+9(9)            20(42, 35)
+        15(15)      7(7)
 
-// DFS post order
-// Recursive
-// time: o(n)
-// space: o(n)
-
-// ans_max = INT_MIN;
-// int sum(node)
-//   if (node == nullptr) return 0;
-//
-//   l = sum(node->left)
-//   r = sum(node->right)
-//   ans_max = max(ans_max, l + r + node->val)
-//   return node->val + max(l, r)
-// sum(root)
-// return ans;
+**/
 
 class Solution {
-private:
-    int ans = INT_MIN;
-
 public:
-    int getMax(TreeNode* root) {
+    int maxSum = INT_MIN;
+    int maxPathSum_recursive(TreeNode* root) {
         if (root == nullptr) return 0;
         
-        auto l = max(getMax(root->left), 0);
-        auto r = max(getMax(root->right), 0);
-        ans = max(ans, l + r + root->val);
-
-        return root->val + max(l, r);
+        auto l = max(maxPathSum_recursive(root->left), 0);
+        auto r = max(maxPathSum_recursive(root->right), 0);
+        maxSum = max(maxSum, l+r+root->val);
+        
+        return root->val + max(l,r);
     }
-
+    
     int maxPathSum(TreeNode* root) {
-        getMax(root);
-        return ans;
+        maxPathSum_recursive(root);
+        return maxSum;
     }
 };
 
