@@ -44,12 +44,33 @@ q: 2 3
 q: 4 5 6 7
 4->5->6->7
 
-// Solution 2. !! need to look
+// Solution 2. using previously established next pointers
+     1
+   2    3
+ 4  5 6  7
+
+1
+    2->3
+2
+    4->5
+    5->6
+        6->7
+
+l = root
+while (l->left != null)
+    h = l
+    while (h != null)
+        h->left->next = h->right // conncetion1
+        if (h->next != null) h->right->next = h->next->left // connection2
+        h = h->next
+    l = l.left
+
+        
 
 **/
 class Solution {
 public:
-    Node* connect(Node* root) {
+    Node* connect_1(Node* root) {
         if (root == nullptr) return root;
         queue<Node*> q;
         q.push(root);
@@ -67,6 +88,28 @@ public:
         }
         
         return root;
+    }
+    
+    Node* connect_2(Node* root) {
+        if (root == nullptr) return root;
+        
+        auto l = root;
+        while (l->left != nullptr) {
+            auto h = l;
+            while (h != nullptr) {
+                h->left->next = h->right;
+                if (h->next != nullptr) h->right->next = h->next->left;
+                h = h->next;
+            }
+            l = l->left;
+        }
+        
+        return root;
+    }
+    
+    Node* connect(Node* root) {
+        //return connect_1(root);
+        return connect_2(root);
     }
 };
 
