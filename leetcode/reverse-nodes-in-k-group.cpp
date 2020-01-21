@@ -18,59 +18,81 @@ bool isEqual(ListNode* l, ListNode* r) {
     return (l == nullptr && r == nullptr) ? true : false;
 }
 
-// iterative
-// points and swap
-// time: o(n)
-// space: o(1)
-// dummy   1 2 3 4 5
-//  k(3)
-//   h     c n t
-// hn = h->next
-// h->next = n
-// n->next = hn
-// c->next = t
+/**
+https://leetcode.com/problems/reverse-nodes-in-k-group/
 
-// dummy   2 1 3 4 5
-//   h       c n t
-// hn = h->next
-// h->next = n
-// n->next = hn
-// c->next = t
+Iterate and swap
+time: o(n)
+space: o(1)
 
-// dummy   3 2 1 4 5 
-//   h         c n t
-//             h c n t 
+h 1 2 3 4 5
+h 2 1 4 3 5 k = 2
+h 3 2 1 4 5 k = 3
 
+     1 2 3 4 5
+preh c n nn 
+1) preh -> 2, 2 -> 1, 1 -> 3
+     2 1 3 4 5
+preh   c n nn
+2) preh -> 3, 3 -> 2, 1 -> 4
+     3 2 1 4 5
+preh     c n nn
+
+while (num >= k)
+    for (int=1; i=k)
+        ph 1 2 3 4 5
+           c n nn
+        1) ph -> n, n -> hn, c -> nn
+        ph 2 1 3 4 5
+             c n nn
+        2) ph -> n, n -> hn, c -> nn
+        ph  3 2 1 4 5
+                c n nn
+    
+    3 2 1 4 5
+    ph c n nn
+    n-=k
+
+**/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        auto n = 0;
+        // get num
+        int num = 0;
         auto cur = head;
         while (cur != nullptr) {
-            n++;
+            num++;
             cur = cur->next;
         }
-
-        auto dummyHead = new ListNode(-1);
-        dummyHead->next = head;
-
-        auto pre = dummyHead;
-        while (n >= k) {
+        
+        // h, hn, c, cn, cnn
+        auto ansDummy = new ListNode(-1);
+        ansDummy->next = head;
+        
+        auto prehead = ansDummy;
+        while (num >= k) {
             for (int i=1; i<k; ++i) {
+                auto hn = prehead->next;
                 auto n = head->next;
-                auto t = n->next;
-
-                auto pre_next = pre->next;
-                pre->next = n;
-                n->next = pre_next;
-                head->next = t;
+                auto nn = n->next;
+                prehead->next = n;
+                n->next = hn;
+                head->next = nn;
             }
-            n -= k;
-            pre = head;
-            head = pre->next;
+            prehead = head;
+            head = prehead->next;
+            num -= k;
         }
-
-        return dummyHead->next;
+        return ansDummy->next;
     }
 };
 
