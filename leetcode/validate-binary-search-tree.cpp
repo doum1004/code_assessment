@@ -8,59 +8,74 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/validate-binary-search-tree/
+/**
+https://leetcode.com/problems/validate-binary-search-tree/
 
-// [2 1 3]
-// recursion (DFS inorder)
+ 2
+1 3
+
+ 5
+1  4
+  3 6
+
+// Recursion DFS (inorder)
 // time: o(n)
 // space: o(n)
 
-// isValidBST(node, mintree, maxtree)
-// if (node == null) return true
-// if (!isValidBST(node->left, mintree, node) return false
-// if (node->val > min->val && node->val < max->val)
-// if (!isValidBST(node->right, node, maxtree)
-// isValidBST(root, nullptr, nullptr)
+isValidBST(parentNode, minNode, maxNode)
+    if (parentNode == nullptr) return true;
 
-// iterative (BFS inorder)
+    if (!isValidBst(parentNode->left, minNode, parentNode)) return false;
+    if (minNode != nullptr && parentNode->val < minNode->val) return false;
+    if (maxNode != nullptr && parentNode->val > maxNode->val) return false;
+    if (!isValidBst(parentNode->right, parentNode, maxNode)) return false;
+
+    return true
+
+isValidBST(root, nullptr, nullptr)
+
+// Iterative DFS inorder
 // time: o(n)
 // space: o(n) stack
 
-// min_v = INT64_MIN
-// stack<int> s
-// while (!s.empty() || r != nullptr)
-// if (r != nullptr)
-//   s.push(r)
-//   r = r->left
-// else
-//   r = s->top(); s->pop();
-// if (min_v <= r->val) return false;
-// min_v = r->val
-// r = r->right
+minval = INT64_MIN;
+while (!s.empty() && r != nullptr) {
+    if (r != nullptr) {
+        s.push(r);
+        r = r->left;
+    }
+    else {
+        r = s.top();
+        s.pop();
+        if (minval >= r->val) return false;
+        minval = r->val;
+        r = r->right;
+    }
+}
 
-// stack 2 1
-//       r
-// min_v = r->val
-// r = r->right
 
+**/
 
 class Solution {
 public:
-    bool isValidBST(TreeNode* root, TreeNode* min, TreeNode* max) {
-        if (root == nullptr) return true;
+    bool isValidBST_recursive(TreeNode* parentNode, TreeNode* minNode, TreeNode* maxNode) {
+        if (parentNode == nullptr) return true;
+        
+        if (!isValidBST_recursive(parentNode->left, minNode, parentNode)) return false;
+        if (!isValidBST_recursive(parentNode->right, parentNode, maxNode)) return false;
 
-        if (!isValidBST(root->left, min, root)) return false;
-        if (min != nullptr && min->val >= root->val) return false;
-        if (max != nullptr && max->val <= root->val) return false;
-        if (!isValidBST(root->right, root, max)) return false;
+        if (minNode != nullptr && parentNode->val <= minNode->val) return false;
+        if (maxNode != nullptr && parentNode->val >= maxNode->val) return false;
 
         return true;
     }
-
-    bool isValidBST_I(TreeNode* root) {
-        auto min_v = INT64_MIN;
+    
+    bool isValidBST_iterative(TreeNode* root) {
+        if (root == nullptr) return true;
+        
         stack<TreeNode*> s;
-
+        auto minval = INT64_MIN;
+        
         while (!s.empty() || root != nullptr) {
             if (root != nullptr) {
                 s.push(root);
@@ -69,20 +84,18 @@ public:
             else {
                 root = s.top();
                 s.pop();
-
-                if (min_v >= root->val) return false;
-
-                min_v = root->val;
+                if (minval >= root->val) return false;
+                minval = root->val;
                 root = root->right;
             }
         }
-
+        
         return true;
     }
-
+    
     bool isValidBST(TreeNode* root) {
-        return isValidBST_I(root);
-        //return isValidBST(root, nullptr, nullptr);
+        //return isValidBST_recursive(root, nullptr, nullptr);
+        return isValidBST_iterative(root);
     }
 };
 
