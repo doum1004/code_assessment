@@ -5,30 +5,33 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+/**
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
-// [2,7,11,15] target(9) 
-// map for answer
-// time: o(2n) -> o(n)
-// space: o(1)
+input: 2 7 11 15. target=9
+output: vector [1, 2]
 
-// [7] = 0
-// [2] = 1 ...
-// [-3] = 2
-// [-6] = 3
-// iterate nums and find answer index
-// 2(0) -> [2](1)
+1. if not sorted
+svae answer for each elements
 
-//
-// sliding door (final)
-// time: o(n)
-// space: o(1)
+2. if it is sorted
+sling window
+time: o(n)
+space: o(1)
 
-// [2,7,11,15]
-//  l .     r
-//  l + r = target done
-//  l + r > target --r
-//  else ++l
+2 7 11 15
+l       r
+2+15 > 9 -> r--;
+
+2 7 11 15
+l    r
+2+11 > 9 -> r--;
+
+2 7 11 15
+l r
+2+7 > 9 -> r--;
+
+*/
 
 
 class Solution {

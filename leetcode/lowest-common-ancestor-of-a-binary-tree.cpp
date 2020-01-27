@@ -8,74 +8,60 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-
 /**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
-//      3(l, r)
-//   5      1
-// 6   2   0  8
-//   7   4
-// p=5, q=1
-
-// DFS (postorder)
-// 3(t) 1(t)
+// DFS post order
 // time: o(n)
-// space: o(n) recursion
+// space: o(n)
 
-//      3(l, r)
-//   5      1
-// 6   2   0  8
-//   7   4
-// p=5, q=4
+    5(0,2)
+6(1)   2(1)
+    7(0) 4(0)
+p=6, q=2
+ 
+  5(1,2)
+6   2(0,1)
+ 7(0) 4(1)
+p = 5, q = 4
 
-// DFS
-// 3, 5(t) 2, 4(t)
-
-// TreeNode* ans;
-// bool lca(root, p, q)
-//      if (root == nullptr) return 0;
-//      int left = lca(root->left, p, q);
-//      int right = lca(root->right, p, q);
-//      int mid = (root == p || root == q) ? 1 : 0;
-//      if (mid + left + right >= 2)
-//          ans = root;
-//      return (mid + left + right > 0);
-// lca(root, p, q)
-// return ans;
-
+ */
 class Solution {
-private:
-    TreeNode* ans;
-    bool lca(TreeNode* node, TreeNode* p, TreeNode* q) {
-        if (node == nullptr) return false;
-        
-        auto l = lca(node->left, p, q) ? 1 : 0;
-        auto r = lca(node->right, p, q) ? 1 : 0;
-        auto mid = (node == p || node == q) ? 1 : 0;
-        if (l + r + mid >= 2) {
-            this->ans = node;
+public:
+    TreeNode* output = nullptr;
+    int lca(TreeNode* node, TreeNode* p, TreeNode* q) {
+        if (node == NULL) return 0;
+
+        int left = lca(node->left, p, q);
+        int right = lca(node->right, p, q);
+        int valid = (node == p || node == q) ? 1 : 0;
+        if (left + right + valid == 2) {
+            output = node;
         }
-        
-        return l + r + mid > 0;
+
+        return (left + right + valid > 0) ? 1 : 0;
     }
     
-public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         lca(root, p, q);
-        return ans;
+        return output;
     }
 };
 
 int main()
 {
+    auto input1 = new TreeNode(3);
+    input1->left = new TreeNode(5);
+    input1->left->left = new TreeNode(6);
+    input1->left->right = new TreeNode(2);
+    input1->left->right->left = new TreeNode(7);
+    input1->left->right->right = new TreeNode(4);
+    input1->right = new TreeNode(1);
+    input1->right->left = new TreeNode(0);
+    input1->right->right = new TreeNode(8);
+    assert(Solution().lowestCommonAncestor(input1, input1->left, input1->right)
+        == input1);
+    assert(Solution().lowestCommonAncestor(input1, input1->left, input1->left->right->right)
+        == input1->left);
     return 0;
 }

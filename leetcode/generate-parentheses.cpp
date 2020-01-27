@@ -7,43 +7,64 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/generate-parentheses/
+/**
+https://leetcode.com/problems/generate-parentheses/solution/
 
-// n = 1
-// o=0 c=0
-// (
-// o=1 c=0
-// ()
-// o=1 c=1
-// 
+// backtraking
+// time: o(4^n/squre(n))  ?????
+// space: o(4^n/squre(n)) + o(n)
 
-// n = 2
-// o=0
-// (
-// o=1
-// o
-// (()), ()()
+// The way I like to think about the runtime of backtracking algorithms is O(b^d), where b is the branching factor and d is the maximum depth of recursion. ... WTF
 
-// tiem: O(b^d), backtracking algorithms where b is the branching factor and d is the maximum depth of recursion.
-// Backtracking is characterized by a number of decisions b that can be made at each level of recursion. If you visualize the recursion tree, this is the number of children each internal node has. You can also think of b as standing for "base", which can help you remember that b is the base of the exponential.
-// If we can make b decisions at each level of recursion, and we expand the recursion tree to d levels (ie: each path has a length of d), then we get b^d nodes. Since backtracking is exhaustive and must visit each one of these nodes, the runtime is O(b^d).
+n = 3
+o = 3
+c = 3
+open
+o < n
+close
+c < o
+
+n = 1
+()
+
+n = 2
+()()
+(())
+
+vector<string> ans;
+generate(int n, str result, int n_o, int n_c)
+    if (n_o == n && n_c == n) {
+        ans.push_back(result);
+    }
+    else {
+        if (n_o < n)
+            generate(n, result + "(", n_o + 1, n_c);
+        if (n_c < n_o)
+            generate(n, result + ")", n_o, n_c + 1);
+    }
+    
+    
+generate(n, "", 0, 0)
+return ans;
+*/
 
 class Solution {
 public:
     vector<string> ans;
-    void generateParenthesis(string s, int n, int o, int c) {
-        if (n == o && n == c)
-        {
-            ans.push_back(s);
-            return;
+    void generateParenthesis(int n, string result, int n_o, int n_c) {
+        if (n_o == n && n_c == n) {
+            ans.push_back(result);
         }
-        
-        if (o < n) generateParenthesis(s + "(", n, o + 1, c);
-        if (c < o) generateParenthesis(s + ")", n, o, c + 1);
+        else {
+            if (n_o < n)
+                generateParenthesis(n, result + "(", n_o + 1, n_c);
+            if (n_c < n_o)
+                generateParenthesis(n, result + ")", n_o, n_c + 1);
+        }
     }
     
     vector<string> generateParenthesis(int n) {
-        generateParenthesis("", n, 0, 0);
+        generateParenthesis(n, "", 0, 0);
         return ans;
     }
 };

@@ -7,82 +7,86 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/number-of-islands/
+/**
+https://leetcode.com/problems/number-of-islands/submissions/
 
-// 11110
-// 11010
-// 11000
-// 00000
+// DFS Recursion preorder
+// time: o(n) : rows * colmn
+// space: o(n) : rows * colmn
+check all visit by DFS top, right, bottom, left
+and move to next
 
-// vector<vector<char>> grid
-// find unvisited '1' and visit all adjacents and mark as visited
-// 1 -> 0 I don't need extra space
-// graph DFS serach
-// time: o(row * col)
-// space: o(row * col) recursion
+11110
+11010
+11000
+00000
+(0,0) -> BFS preorder. visit and mark all nodes to the end
 
-// BFS
-// using queue<pair<int, int>>
-// time: o(m+n)
-// space: o(min(m,n)) can go futher
-// offset[] = {0, 1, 0, -1, 0}
-// for
-//   for
-//     if ([i][j] == '1')
-//       [][] = '0'
-//       queue<pair<int, int>> q
-//       q.push(i,j)
-//       while (!q.empty())
-//         auto p = q.front()
-//         q.pop()
-//         for (int k=0; i<4; k++)
-//           r = p.first + offset[k]
-//           c = p.second + offset[k+1]
-//           if (r >= 0 && r <size .... grid[i][j] == '1')
-//              grid[r][c] = '0'
-//              q.push({r,c});
+// BFS iteractive
+// time: o(r*c)
+// space: o(min(r,c)) : because queue can grow up to min(r,c)
+iterate space
+    if find land, push into queue
+    iterate queue
+        q: (0,0)
+        q: (1,0), (1,0)
+        q: (1,1), (2,0) (1,1) (0,2)
+        q: (2,1), (0,3)
+        q: (1,3)
+
+
+**/
 
 class Solution {
 public:
-    int numIslands_DFS(vector<vector<char>>& grid) {
+    void checkLand(vector<vector<char>>& grid, int row, int col) {
+        if (row < 0 || row >= grid.size() || col < 0 || col >= grid[0].size() || grid[row][col] == '0') return;
+
+        grid[row][col] = '0';
+        checkLand(grid, row-1, col);
+        checkLand(grid, row, col+1);
+        checkLand(grid, row+1, col);
+        checkLand(grid, row, col-1);
+    }
+
+    int numIslands_recursion_dfs(vector<vector<char>>& grid) {
         if (grid.size() < 1 || grid[0].size() < 1) return 0;
-
-        int n_r = grid.size();
-        int n_c = grid[0].size();
-        int count = 0;
-
-        for (int i=0; i<n_r; ++i) {
-            for (int j=0; j<n_c; ++j) {
+        int ans = 0;
+        for (int i=0; i<grid.size(); ++i) {
+            for (int j=0; j<grid[i].size(); ++j) {
                 if (grid[i][j] == '1') {
-                    count++;
-                    visitIsland(grid, i, j);
+                    ans++;
+                    checkLand(grid, i, j);
                 }
             }
         }
-
-        return count;
+        return ans;
     }
 
-    int numIslands_BFS(vector<vector<char>>& grid) {
+    int numIslands_iteration_bfs(vector<vector<char>>& grid) {
         if (grid.size() < 1 || grid[0].size() < 1) return 0;
+        
+        int offset[] = {0, 1, 0, -1, 0};
         auto n_r = grid.size();
         auto n_c = grid[0].size();
-        int offset[] = {0, 1, 0, -1, 0};
-
-        auto count = 0;
+        
+        int ans = 0;
         for (int i=0; i<n_r; ++i) {
             for (int j=0; j<n_c; ++j) {
                 if (grid[i][j] == '1') {
-                    count++;
                     grid[i][j] = '0';
+                    ans++;
                     queue<pair<int,int>> q;
-                    q.push({i,j});
+                    q.push({i, j});
+                    
                     while (!q.empty()) {
                         auto p = q.front();
                         q.pop();
-                        for (auto k=0; k<4; ++k) {
+                        
+                        for (int k=0; k<4; ++k) {
                             auto r = p.first + offset[k];
                             auto c = p.second + offset[k+1];
+                            
                             if (r >= 0 && r<n_r && c >= 0 && c<n_c && grid[r][c] == '1') {
                                 grid[r][c] = '0';
                                 q.push({r,c});
@@ -92,26 +96,12 @@ public:
                 }
             }
         }
-
-        return count;
+        return ans;
     }
-
+    
     int numIslands(vector<vector<char>>& grid) {
-        //return numIslands_DFS(grid);
-        return numIslands_BFS(grid);
-    }
-
-private:
-    void visitIsland(vector<vector<char>>& grid, int i, int j) {
-        int n_r = grid.size();
-        int n_c = grid[0].size();
-        if (i < 0 || i >= n_r || j < 0 || j >= n_c || grid[i][j] == '0') return;
-
-        grid[i][j] = '0';
-        visitIsland(grid, i-1, j);
-        visitIsland(grid, i, j-1);
-        visitIsland(grid, i, j+1);
-        visitIsland(grid, i+1, j);
+        //return numIslands_recursion_dfs(grid);
+        return numIslands_iteration_bfs(grid);
     }
 };
 

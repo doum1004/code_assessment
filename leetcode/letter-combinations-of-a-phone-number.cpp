@@ -10,7 +10,7 @@ using namespace std;
 // https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 
 // backtracking to find all possibility 
-// o(3N x 4M)
+// o(3N x 4M): number digit that contain 3 words and number digit that contain 4 words
 // o(3N x 4M)
 // map
 // [2] = vector<char> {'a', 'b', 'c'}
