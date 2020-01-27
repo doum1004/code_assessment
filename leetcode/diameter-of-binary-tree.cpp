@@ -1,11 +1,8 @@
 #include <iostream>
 #include <cassert>
-
 #include <vector>
-#include <sstream>
-
-#include <cctype>
 #include <stack>
+#include <unordered_map>
 
 #include "../tree.h"
 
