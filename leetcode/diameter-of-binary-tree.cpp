@@ -130,7 +130,7 @@ int main()
     input1->left = new TreeNode(2);
     input1->left->left = new TreeNode(4);
     input1->left->right = new TreeNode(5);
-    input1->right->left = new TreeNode(3);
+    input1->right = new TreeNode(3);
 
 
     assert(Solution().diameterOfBinaryTree(input1) == (3));
