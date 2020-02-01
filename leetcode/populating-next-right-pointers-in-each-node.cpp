@@ -3,113 +3,71 @@
 #include <cassert>
 #include <stack>
 #include <queue>
-#include "../utils.h"
-#include "../tree.h"
+#include "../nodenext.h"
 
 using namespace std;
-
-class Node {
-public:
-    int val;
-    Node* left;
-    Node* right;
-    Node* next;
-
-    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
-
-    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
-
-    Node(int _val, Node* _left, Node* _right, Node* _next)
-        : val(_val), left(_left), right(_right), next(_next) {}
-
-    int operator ==(const Node* r) {
-        return 0;
-    }
-};
 
 /**
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 
-// Solution 1. Iteration BSF right to the left
+// Solution1. Recursion with DSF preorder. give next (left, right) (right, next->left)
 // time: o(n)
-// space: o(n) : n/2
+// space: o(1) : o(logn) perfect bin but this doesn't count here
 
-   1
- 2   3
-4 5 6 7
+r(node, nextnode)
+    node->next = nextnode
+    r(node->left, node->right)
+    r(node->right, node->next->left)
 
-q: 1
-q: 2 3
-2->3
-q: 4 5 6 7
-4->5->6->7
+// Solution2. Iteration inner interate for next
+// time: o(n)
+// space: o(1)
 
-// Solution 2. using previously established next pointers
-     1
-   2    3
- 4  5 6  7
+1. iterate from cur(root)
+    2. left.next = right
+    3. if it has next, right.next = next.left
+    4. move to next and do the same 2~3
+    5. cur = cur->left
 
-1
-    2->3
-2
-    4->5
-    5->6
-        6->7
 
-l = root
-while (l->left != null)
-    h = l
-    while (h != null)
-        h->left->next = h->right // conncetion1
-        if (h->next != null) h->right->next = h->next->left // connection2
-        h = h->next
-    l = l.left
-
-        
-
-**/
+*/
 class Solution {
 public:
-    Node* connect_1(Node* root) {
-        if (root == nullptr) return root;
-        queue<Node*> q;
-        q.push(root);
-        
-        while (!q.empty()) {
-            auto n = q.size();
-            for (int i=0; i<n; ++i) {
-                auto node = q.front();
-                q.pop();
-                if (i < n-1) node->next = q.front();
-                
-                if (node->left != nullptr) q.push(node->left);
-                if (node->right != nullptr) q.push(node->right);
-            }
-        }
-        
+    void recursive(Node* node, Node* nextnode) {
+        if (!node) return;
+        node->next = nextnode;
+        recursive(node->left, node->right);
+        recursive(node->right, (node->next) ? node->next->left : nullptr);
+    }
+    
+    Node* connect_recursive(Node* root) {
+        recursive(root, nullptr);
         return root;
     }
     
-    Node* connect_2(Node* root) {
-        if (root == nullptr) return root;
+    Node* connect_iteration(Node* root) {
+        if (!root) return nullptr;
         
-        auto l = root;
-        while (l->left != nullptr) {
-            auto h = l;
-            while (h != nullptr) {
-                h->left->next = h->right;
-                if (h->next != nullptr) h->right->next = h->next->left;
-                h = h->next;
+        auto cur = root;
+        while (cur) {
+            if (cur->left) {
+                auto head = cur;
+                while (head) {
+                    head->left->next = head->right;
+                    if (head->next) {
+                        head->right->next = head->next->left;
+                    }
+                    head = head->next;
+                }
             }
-            l = l->left;
+            cur = cur->left;
         }
-        
         return root;
     }
     
     Node* connect(Node* root) {
-        //return connect_1(root);
-        return connect_2(root);
+        //return connect_recursive(root);
+        return connect_iteration(root);
     }
 };
 

@@ -12,13 +12,20 @@ using namespace std;
 /**
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
-// Solution1. set for visited v1, v2
+// Solution1. hash for visited (two hash)
 // time: o(n + m)
-// space: o(n or m)
+// space: o(n + m)
 
-// Solution2. two pointers. check total nums of each. and move one till diff and traverse to compare to find same node
+// Solution2. two pointers. find size diffrence.
+// Make a pointer wait till the size diff and traverse to find matched one.
 // time: o(n + m)
 // space: o(1)
+
+a b c d e : 5
+  e c d e : 4
+p1(p2 wait for 1 which is diff of 5 and 4)
+  p1
+  p2
 
 */
 class Solution {
@@ -40,34 +47,34 @@ public:
     }
     
     ListNode *getIntersectionNode_diff(ListNode *headA, ListNode *headB) {
-        auto diffcnt = 0;
+        if (headA == headB) return headA;
+        
+        int na = 0;
+        int nb = 0;
         auto curA = headA;
         auto curB = headB;
-        while (curA != nullptr || curB != nullptr) {
-            if (curA == nullptr || curB == nullptr) {
-                if (curA == nullptr) diffcnt--;
-                else diffcnt++;
+        while (curA || curB) {
+            if (curA) {
+                na++;
+                curA = curA->next;
             }
-            if (curA != nullptr) curA = curA->next;
-            if (curB != nullptr) curB = curB->next;
+            if (curB) {
+                nb++;
+                curB = curB->next;
+            }
         }
         
-        while (headA != nullptr && headB != nullptr) {
-            if (abs(diffcnt) != 0) {
-                if (diffcnt < 0) {
-                    headB = headB->next;
-                    diffcnt++;
-                }
-                else {
-                    headA = headA->next;
-                    diffcnt--;
-                }
-            }
-            else {
-                if (headA == headB) return headA;
-                headA = headA->next;
-                headB = headB->next;
-            }
+        curA = headA;
+        curB = headB;
+        for (int i=0; i<abs(na-nb); ++i) {
+            if (na > nb) curA = curA->next;
+            else curB = curB->next;
+        }
+        
+        while (curA && curB) {
+            if (curA == curB) return curA;
+            curA = curA->next;
+            curB = curB->next;
         }
         
         return nullptr;

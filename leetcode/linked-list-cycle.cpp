@@ -12,16 +12,21 @@ using namespace std;
 /**
 https://leetcode.com/problems/linked-list-cycle/
 
-// Solution1. Iteration. Hashmap to check visited
+// Solution1. hash map to check visited
 // time: o(n)
 // space: o(n)
 
-// how to improve to space: o(1)?
-// Soultion2. Iteration. Two points. slow and fast. If there is cycle eventually they will meet in some point.
-// time: o(n) : o(n + k) none cyclic length n + cyclic length K (fast will follow up)
+// Solution2. two pointer slow, fast
+// time: o(n) : n + k (none cyclic length n + cyclic length k)
 // space: o(1)
+slow -> step 1
+fast -> step 2
+3 | 2 0 4 2 0 4 2 0 4 2 0 4
+s   s s s s(!)
+f     f     f   f(!)
 
 */
+
 class Solution {
 public:
     bool hasCycle_solution1(ListNode *head) {
@@ -35,13 +40,16 @@ public:
     }
     
     bool hasCycle_solution2(ListNode *head) {
+        if (!head) return false;
+        
         auto slow = head;
         auto fast = head;
-        while (slow != nullptr && fast != nullptr && fast->next != nullptr) {
+        while (fast->next && fast->next->next) {
             slow = slow->next;
             fast = fast->next->next;
             if (slow == fast) return true;
         }
+        
         return false;
     }
     
