@@ -67,6 +67,10 @@
         "queue": "cpp",
         "list": "cpp",
         "climits": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "map": "cpp",
+        "set": "cpp"
     }
 }

@@ -7,75 +7,79 @@
 using namespace std;
 
 /**
-// https://leetcode.com/problems/house-robber/
+https://leetcode.com/problems/house-robber/
 
-1 2 3 1
-max: 1 3
+// Solution1. Recursive (give index 2, 3 steps futher and sum of money)
+// time o(2^n)
+// space o(2^n)
+ans = 0
+recursive(nums, i, money)
+    if (i >= nums.size()) {
+       ans = max(ans, money) 
+    }
+    money += nums[i];
+    recursive(nums, i+2, money)
+    recursive(nums, i+3, money)
 
-1 2 3 1 1 5
-max: 1 3 5
+// Solution2. Iterative with dp (presum, cursum, ans)
+// time o(n)
+// space o(1)
 
-// iteration with dp
-// time: o(n)
-// space: o(1)
-pre: 2 index before maxsum
-cur: just before maxsum
-cur = max(pre+n, cur) take one between just before or 2 index before + n
+     1 2 3 1
+p 0
+c 0
+a    1
 
-iteration n
-    temp = cur
-    cur = max(cur, pre + n)
-    pre = temp
-    
-        1   2   3   1   1   5
-tmp     0   1   2   4   4   5
-cur     1   2   4   4   5   9 (ans)
-pre     0   1   2   4   4   5
+p 0
+c 1
+a      2
 
-// recursion
-// time: o(n^2)
-// space: o(n^2)
-r (nums, sum, i, &ans)
-    if (nums.size() <= i) return;
-    sum = sum + nums[i]
-    ans = max(sum, anx)
-    r(nums, sum, i + 2)
-    r(nums, sum, i + 3)
-ans
-r(nums, ans)
+p 1
+c 2
+a        4
+
+p 2
+c 4
+a         4
+
+     2 6 9 3 1
+p 0
+c 0
+a    2
+
+p 0
+c 2
+a      6
+
+p 2
+c 6
+a        11
+
+p 6
+c 11
+a          11
+
+p 11
+c 11
+a            12
 
 */
 
 class Solution {
 public:
-    void rob_recursion(vector<int>& nums, int sum, int i, int& maxSum) {
-        if (nums.size() <= i) return;
-        sum += nums[i];
-        maxSum = max(maxSum, sum);
-        rob_recursion(nums, sum, i + 2, maxSum);
-        rob_recursion(nums, sum, i + 3, maxSum);
-    }
-    
-    int rob_recursion(vector<int>& nums) {
-        int maxSum = 0;
-        rob_recursion(nums, 0, 0, maxSum);
-        rob_recursion(nums, 0, 1, maxSum);
-        return maxSum;
-    }
-    
     int rob_iteration(vector<int>& nums) {
-        auto pre = 0;
-        auto cur = 0;
-        for (auto &n : nums) {
+        if (nums.size() < 1) return 0;
+        
+        auto pre = 0, cur = 0;
+        for (auto &n:nums) {
             auto t = cur;
-            cur = max(cur, pre + n);
+            cur = max(pre + n, cur);
             pre = t;
         }
         return cur;
     }
     
     int rob(vector<int>& nums) {
-        //return rob_recursion(nums);
         return rob_iteration(nums);
     }
 };

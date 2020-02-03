@@ -7,53 +7,78 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/reverse-linked-list/
-// Iteration pre, cur cur->pre move to next
-// time: o(n)
-// space: o(1)
-Node* pre = NULL;
-while (bead != nullptr)
-    auto t = head->next
-    head->next = pre
-    pre = head
-    head = t
-return pre
+https://leetcode.com/problems/reverse-linked-list
 
-// recursion. node->next->next = node. node->next = null. return last element
-// time: o(n)
-// space: o(n)
-recursion(node)
-    if (node == nullptr || node->next == nullptr) return node;
-    auto last = recursion(node->next)
-    node->next->next = node
-    node->next = NULL
-    return last;
+// Soluiton1. Recursive
+// time o(n)
+// space o(n)
+ListNode* recursive(ListNode* node)
+    if (node == nullptr) return nullptr;
+    if (node->next == nullptr) return node;
+    auto tail = recursive(node->next);
+    node->next->next = node;
+    node->next = nullptr;
+    return tail;
+    
+// Soluiton2. Iteration with stack
+// time o(n)
+// space o(n) stack
+s 1 2 3 4 5
+tail = s.top
+pre = nullptr
+while (!s.empty())
+    auto cur = s.pop();
+    if (pre) pre->next = cur;
+    pre = cur;
+    cur->next = null
+return tail
+
+// Solution3. Iteration without stack
+// time o(n)
+// space o(1)
+use two pointers to change next
+  1 2 3 4 5
+p c n
+  p c n
+    p c n
+      p c n
+        p c n
+c->p
+p = c
+c = n
+n = n->next
+
 */
+
 class Solution {
 public:
-    ListNode* reverseList_iterative(ListNode* head) {
+    ListNode* reverseList_recursive(ListNode* node) {
+        if (node == nullptr || node->next == nullptr) return node;
+        
+        auto tail = reverseList_recursive(node->next);
+        node->next->next = node;
+        node->next = nullptr;
+        return tail;
+    }
+    
+    ListNode* reverseList_iteration(ListNode* node) {
+        if (node == nullptr || node->next == nullptr) return node;
+        
         ListNode* pre = nullptr;
-        auto cur = head;
-        while (cur != nullptr) {
-            auto t = cur->next;
+        auto cur = node;
+        while (cur) {
+            auto next = cur->next;
             cur->next = pre;
             pre = cur;
-            cur = t;
+            cur = next;
         }
+        
         return pre;
     }
     
-    ListNode* reverseList_recursion(ListNode* node) {
-        if (node == nullptr || node->next == nullptr) return node;
-        auto p = reverseList_recursion(node->next);
-        node->next->next = node;
-        node->next = nullptr;
-        return p;
-    }
-    
-    ListNode* reverseList_iterative(ListNode* head) {
-        //return reverseList_recursion(head);
-        return reverseList_iterative(head);
+    ListNode* reverseList(ListNode* head) {
+        //return reverseList_recursive(head);
+        return reverseList_iteration(head);
     }
 };
 
@@ -71,7 +96,7 @@ int main()
     expect1->next->next->next = new ListNode(2);
     expect1->next->next->next->next = new ListNode(1);
 
-    assert(isEqual(Solution().reverseList_iterative(
+    assert(isEqual(Solution().reverseList(
         input1_1), expect1));
     return 0;
 }

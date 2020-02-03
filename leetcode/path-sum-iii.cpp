@@ -39,9 +39,12 @@ r(root, sum, vector<int>())
 // Solution2: recursion DSF preorder with dp(hash). store sum of all path of parent. And find parent sum equal to cursum - target
 // time: o(n)
 // space: o(n)
-
-10 -> [10: 1]
-5 -> [10: 1, 15: 1]
+                        10  (target 8)
+            5                   -3
+    3           2                   11
+3       -2          1
+10 -> [10: 1] 0-8
+5 -> [10: 1, 15: 1]  10-5=5
 3 -> [10: 1, 15: 1, 18: 1] 18-8 = 10. cnt = 1, rcnt = 1. total 2
 3 -> [10, 1, 15: 1, 18: 1, 21: 1]
 -2 -> [10, 1, 15: 1, 18: 1, 21: 0, 16: 1]

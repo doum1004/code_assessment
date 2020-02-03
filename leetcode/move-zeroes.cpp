@@ -13,23 +13,45 @@ using namespace std;
 /**
 https://leetcode.com/problems/move-zeroes/
 
-// Solution1. iteration
+// Soluiton1 iterate vector and erase and pushback
 // time: o(n)
 // space: o(1)
-iterate nums and erase and push back if num is 0
 
+for (int i=0; i<nums.size(); ++i) {
+    if (nums[i] == 0) {
+        nums.erase(nums.begin() + i);
+        nums.push_back(nums[i]);
+        i--;
+    }
+}
+
+// Soluiton2 iterate swap none zero nums on left
+// time: o(n)
+// space: o(1)
+
+auto l=0;
+for (auto &n:nums) { if (n !=0) swap(n, nums[l++])}
 */
+
 class Solution {
 public:
-    void moveZeroes(vector<int>& nums) {
-        if (nums.size() < 2) return;
+    void moveZeroes1(vector<int>& nums) {
         auto n = nums.size();
         for (int i=0; i<n; ++i) {
             if (nums[i] == 0) {
-                nums.push_back(0);
                 nums.erase(nums.begin() + i);
+                nums.push_back(0);
                 i--;
                 n--;
+            }
+        }
+    }
+    
+    void moveZeroes(vector<int>& nums) {
+        auto l = 0;
+        for (auto &n:nums) {
+            if (n != 0) {
+                swap(n, nums[l++]);
             }
         }
     }

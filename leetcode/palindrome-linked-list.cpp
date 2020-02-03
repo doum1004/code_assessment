@@ -12,104 +12,149 @@ using namespace std;
 /**
 https://leetcode.com/problems/palindrome-linked-list/
 
-// Solution1. copy vals in vector and two points compare in vector
+// Solution1. Iteration using stack
+// time: o(n) : n + n
+// space: o(n)
+1. push in stack and compare in next iteration
+s: 1 2 false
+s: 1 2 2 1 true
+
+// Solution2. Recursion DSF postorder
 // time: o(n)
 // space: o(n)
+t = head
+bool r(node)
+    if (!t) t = node;
+    if (!node) return true;
+    auto result = r(node->next);
+    result &= temp->val == node->val;
+    temp = temp->next;
+    return result;
 
-// Solution2. Recursion. DSF inorder/postorder compare temp(head) and next
-// time: o(n)
-// space: o(n)
-
-// Solution3. two points
-// 1. find half by slow / fast
-// 2. reserve slow->next and slow->next = nullptr
-// 3. iterate reserved and head and compare
-// time: o(n) : o(1/2) + o(1/2) + o(1/2)
+// Solution3. two pointers. find half with slow/faster. and reverse second half and iterate to compare
+// time: o(n) : n + n + n
 // space: o(1)
-
+1. find half (slow/fast)
+1 2 1
+  s
+    f
+1 2 2 1
+  s
+    f
 1 2 3 2 1
-s
-f
     s
         f
-reverse 
+        
+2. reverse second half using two pointer
+1 2 2 1
+second half 2 1
+  2 1
+p c n
+c->p
+c = n
+p = c
 
-1 2 3 3 2 1
-s
-f
-    s
-        f
+result: 1 2 / 1 2
+
+3. iterate to compare
+
+
+// Sudo code
+// find half
+auto s = head;
+auto f = head;
+while (f->next && f->next->next)
+    s = s->next;
+    f = f->next->next;
+
+// reverse second half
+s = s->next
+pre = null
+while (s)
+    auto n = s->next
+    s->next = pre
+    pre = s
+    s = n
+    
+auto firsthalf = head
+auto secondhalf = pre
+
+while (firsthalf && secondhalf)
+    if (firsthalf != secondhalf) return false;
+    firsthalf = firsthalf->next
+    secondhalf = secondhalf->next
+
+return true
 
 */
 class Solution {
 public:
-    bool isPalindrome_copy(ListNode* head) {
-        if (head == nullptr) return true;
+    bool isPalindrome_iteration_stack(ListNode* head) {
+        if (!head || !head->next) return true;
         
-        vector<int> v;
+        stack<ListNode*> s;
         auto cur = head;
-        while (cur != nullptr) {
-            v.push_back(cur->val);
+        while (cur) {
+            s.push(cur);
             cur = cur->next;
         }
         
-        int l=0, r=v.size()-1;
-        while (l<r) {
-            if (v[l] != v[r]) return false;
-            l++;
-            r--;
+        cur = head;
+        while (cur) {
+            if (cur->val != s.top()->val) return false;
+            s.pop();
+            cur = cur->next;
         }
         
         return true;
     }
     
-    ListNode* temp = nullptr;
+    ListNode* temp_head = nullptr;
     bool isPalindrome_recursion(ListNode* head) {
-        if (temp == nullptr) temp = head;
-        if (head == nullptr) return true;
-        auto r = isPalindrome_recursion(head->next) && head->val == temp->val;
-        temp = temp->next;
-        return r;
+        if (!temp_head) temp_head = head;
+        if (!head) return true;
+        auto result = isPalindrome_recursion(head->next) && head->val == temp_head->val;
+        temp_head = temp_head->next;
+        return result;
     }
     
-    bool isPalindrome_reversehalf(ListNode* head) {
-        if (head == nullptr) return true;
-        auto slow = head;
-        auto fast = head;
-        while (fast->next != nullptr && fast->next->next != nullptr) {
-            fast = fast->next->next;
-            slow = slow->next;
+    bool isPalindrome_twopointers(ListNode* head) {
+        if (!head || !head->next) return true;
+        
+        // find half
+        auto s = head;
+        auto f = head;
+        while (f->next && f->next->next) {
+            s = s->next;
+            f = f->next->next;
         }
-        
-        auto reverseHead = reverse(slow->next);
-        slow->next = nullptr;
-        
-        while (reverseHead != nullptr) {
-            if (reverseHead->val != head->val) return false;
-            reverseHead = reverseHead->next;
-            head = head->next;
-        }
-        
-        return true;
-    }
-    
-    ListNode* reverse(ListNode* node) {
+
+        // reverse second half
+        s = s->next;
         ListNode* pre = nullptr;
-        ListNode* nxt = nullptr;
-        while (node != nullptr) {
-            nxt = node->next;
-            node->next = pre;
-            pre = node;
-            node = nxt;
+        while (s) {
+            auto n = s->next;
+            s->next = pre;
+            pre = s;
+            s = n;
         }
-        
-        return pre;
+
+        auto firsthalf = head;
+        auto secondhalf = pre;
+
+        while (firsthalf && secondhalf) {
+            if (firsthalf->val != secondhalf->val) return false;
+            firsthalf = firsthalf->next;
+            secondhalf = secondhalf->next;
+        }
+
+        return true;
     }
     
     bool isPalindrome(ListNode* head) {
-        //return isPalindrome_copy(head);
+        //return isPalindrome_iteration_stack(head);
         //return isPalindrome_recursion(head);
-        return isPalindrome_reversehalf(head);
+        return isPalindrome_twopointers(head);
     }
 };
 
