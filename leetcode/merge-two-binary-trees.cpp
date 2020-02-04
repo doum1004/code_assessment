@@ -8,100 +8,93 @@ using namespace std;
 
 /**
 https://leetcode.com/problems/merge-two-binary-trees/
-Merge Bin tree
-
-// two ways. create new or use exist t1
-
-// Recursive DSF preorder
-// time: o(n)
-// space: o(n) : avg(logn)
-    if t1 == nullptr return t1
-    if t2 == nullptr return t1
-    t1->val += t2->val
-    t1->left = merge(t1->left, t2->left)
-    t1->right = merge(t1->right, t2->right)
-    return t1
-
-// Iteration DSF
-// time: o(n)
-// space: o(n) : avg(logn)
-queue: (1 2)
-queue: (3,1), (2,3)
-queue: null, 7
-
-if (t1 == null) t1 = t2 return t1
-if (t2 == null) reutnr t1
-
-q push {t1, t2}
-while (q)
-l = q.front.frist
-r = q.front.second
-
-l->val += r->val
-
-if both left are not empty queue.push
-else if l.left empty left = r.left
-
-
-q({t1, t2})
-while (!q.empty())
-    auto cur = q.front()
-    auto l = cur.first
-    auto r = cur.second
-    q.pop()
+ 
+//Soltuion1. recursive DSF preorder (merge into node1)
+//time: o(n)
+//space: o(n) recursion
+merge_recursive(node1, node2)
+    if (node1 == nullptr) return node2;
+    if (node2 == nullptr) return node1;
     
-    if (l->left && r->left) {
-        q.push({l1})
-    }
-    else 
+    node1->val += node2->val;
+    node1->left = merge_recursive(node1->left, node2->left);
+    node1->right = merge_recursive(node2->right, node2->right);
+    return node1;
+
+//Soltuion2. iteration BSF (merge into node1)
+//time: o(n)
+//space: o(n) queue
+1. add t1, t2 in queue
+2. iterate to pop node1 node2
+3. merge val in node1
+4. push both left if both are not empty
+5. if one of them empty set on node1
+6. same for right
+
+
+merge_recursive(node1, node2)
+    if (node1 == nullptr) return node2;
+    if (node2 == nullptr) return node1;
+    
+    node1->val += node2->val;
+    node1->left = merge_recursive(node1->left, node2->left);
+    node1->right = merge_recursive(node2->right, node2->right);
+    return node1;
     
 */
-
 class Solution {
 public:
-    TreeNode* mergeTrees_recursive(TreeNode* t1, TreeNode* t2) {
-        if (t1 == nullptr) {
-            return t2;
-        }
-        
-        if (t2 == nullptr) {
-            return t1;
-        }
-        
+    TreeNode* mergeTrees_recursion(TreeNode* t1, TreeNode* t2) {
+        if (t1 == nullptr) return t2;
+        if (t2 == nullptr) return t1;
+
         t1->val += t2->val;
-        t1->left = mergeTrees(t1->left, t2->left);
-        t1->right = mergeTrees(t1->right, t2->right);
+        
+        t1->left = mergeTrees_recursion(t1->left, t2->left);
+        t1->right = mergeTrees_recursion(t1->right, t2->right);
+        
+        return t1;
+    }
+    
+    TreeNode* mergeTrees_iteration(TreeNode* t1, TreeNode* t2) {
+        if (t1 == nullptr) return t2;
+        if (t2 == nullptr) return t1;
+        
+        queue<TreeNode*> q;
+        q.push(t1);
+        q.push(t2);
+        
+        while (!q.empty()) {
+            auto n1 = q.front();
+            q.pop();
+            auto n2 = q.front();
+            q.pop();
+            cout << n1->val << "," << n2->val << endl;
+            n1->val += n2->val;
+            
+            if (n1->left && n2->left) {
+                q.push(n1->left);
+                q.push(n2->left);
+            }
+            else if (n1->left || n2->left) {
+                n1->left = (n1->left) ? n1->left : n2->left;
+            }
+            
+            if (n1->right && n2->right) {
+                q.push(n1->right);
+                q.push(n2->right);
+            }
+            else if (n1->right || n2->right) {
+                n1->right = (n1->right) ? n1->right : n2->right;
+            }
+        }
         
         return t1;
     }
     
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
-        if (t1 == nullptr) return t2;
-        if (t2 == nullptr) return t1;
-        
-        queue<pair<TreeNode*, TreeNode*>> q;
-        q.push({t1, t2});
-        while (!q.empty()) {
-            auto l = q.front().first;
-            auto r = q.front().second;
-            q.pop();
-            
-            l->val += r->val;
-            if (l->left != nullptr && r->left != nullptr) {
-                q.push({l->left, r->left});
-            }
-            else if (l->left == nullptr) {
-                l->left = r->left;
-            }
-            
-            if (l->right != nullptr && r->right != nullptr) {
-                q.push({l->right, r->right});
-            }
-            else if (l->right == nullptr) {
-                l->right = r->right;
-            }
-        }
-        return t1;
+        //return mergeTrees_recursion(t1, t2);
+        return mergeTrees_iteration(t1, t2);
     }
 };
 

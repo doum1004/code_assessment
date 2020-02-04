@@ -31,6 +31,13 @@ s: 5 3      r = 2(v: 2)
 s: 5 3 1
 
 //Solution3. without extra space. set min(left->right), max(right->left) if not sorted. And find when unsorted started from min, max
+// time: o(n) : n + n + n + n
+// space: o(1)
+1. find minv which against order
+2. find maxv which against order
+3. find lmost which bigger than minv
+4. find rmost which smaller than maxv
+
 1 3 2 5
 min: 0(v: 1), max: 3(v: 5)
 
@@ -95,30 +102,32 @@ public:
     }
     
     int findUnsortedSubarray_nospace(vector<int>& nums) {
-        auto minv = INT_MAX;
-        auto maxv = INT_MIN;
-        for (int i=0; i<nums.size(); i++) {
-            int j = nums.size() - 1 - i;
-            if (i > 0) {
-                if (minv != INT_MAX || nums[i] < nums[i-1])
-                    minv = min(minv, nums[i]);
+        int n = nums.size();
+        int minv = INT_MAX;
+        int maxv = INT_MIN;
+        
+        for (int i=1; i<n; ++i) {
+            if (nums[i] < nums[i-1]) {
+                minv = min(minv, nums[i]);
             }
-            if (j < nums.size() - 1) {
-                if (maxv != INT_MIN || nums[j] > nums[j+1])
-                    maxv = max(maxv, nums[j]);
+        }
+        for (int i=n-2; i>=0; --i) {
+            if (nums[i] > nums[i+1]) {
+                maxv = max(maxv, nums[i]);
             }
         }
         
-        int l, r;
-        for (l = 0; l<nums.size(); ++l) {
-            if (nums[l] > minv)
-                break;
+        int l = 0;
+        for (; l<n; ++l) {
+            if (minv < nums[l]) break;
         }
-        for (r = nums.size()-1; r>=0; --r) {
-            if (nums[r] < maxv)
-                break;
+        
+        int r = n-1;
+        for (; r>=0; --r) {
+            if (maxv > nums[r]) break;
         }
-        return (r - l > 0) ? r - l + 1 : 0;
+
+        return (r > l) ? r - l + 1 : 0;
     }
     
     int findUnsortedSubarray(vector<int>& nums) {

@@ -13,56 +13,79 @@ using namespace std;
 /**
 https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
-Condition: time: o(n), space: o(1) except return
+input: 1 2 2
+output: 3
 
-// Solution 1. accepted
-// time: o(2n)
-// space: o(1) except return value
-ex) 1 2 3 3
--1 -2 -3 3
-ans: 4(index:3)
+condition o(n) o(1)
 
+// Solution1. hash map to count
+// time: o(n)
+// space: o(n) hash
 
-1. iterate vector
-1.1 get index from num (nums[i] - 1)
-1.2 set value of -1 multiply result
+// Solution2. ans modifiation (time exceeded)
+// time: o(n) n + n + n
+// space: o(1) except ans
+1. put nums in ans o(n)
+1 2 3
+2. iterate input and set 0 o(n)
+0 0 3
+3. find 0 and erase o(n)
 
-2. iterate vector
-2.1 set index when it's value over 0 (which never appear)
+// Solution3. in place modifiation
+// time: o(n) : n + n
+// space: o(1) except ans
+1. iterate and mark -1 on the index which comes from value
+1 2 2
+-1 -2 2
+index 2 is positive so return 3
 
-// Soution 2.
-// time: o(3n)
-// space: o(1) except return
-ex) 1 2 2 4
+for i to n
+    nums[i] = abs(nums[i]) * -1;
+    
+for i to n
+    if (nums[i] < 0) ans.push
 
-1. vector to store n o(n)
-1 2 3 4
-
-2. Iterate vector and set if num appear o(n)
-0 0 3 0
-
-3. erase num==0 in vector o(n)
 
 */
 
 class Solution {
 public:
-    vector<int> findDisappearedNumbers(vector<int>& nums) {
+    vector<int> findDisappearedNumbers_ans_modifiation(vector<int>& nums) {
+        vector<int> ans;
+        
+        for (int i=0; i<nums.size(); ++i) {
+            ans.push_back(i+1);
+        }
+        
+        for (int i=0; i<nums.size(); ++i) {
+            ans[nums[i] - 1] = 0;
+        }
+        
+        for (int i=0; i<ans.size(); ++i) {
+            if (ans[i] == 0) {
+                ans.erase(ans.begin() + i);
+                i--;
+            }
+        }
+        return ans;
+    }
+    
+    vector<int> findDisappearedNumbers_inplace_modification(vector<int>& nums) {
         for (int i=0; i<nums.size(); ++i) {
             auto index = abs(nums[i]) - 1;
-            if (nums[index] > 0) {
-                nums[index] *= -1;
-            }
+            nums[index] = abs(nums[index]) * -1;
         }
         
         vector<int> ans;
         for (int i=0; i<nums.size(); ++i) {
-            if (nums[i] > 0) {
-                ans.push_back(i+1);
-            }
+            if (nums[i] > 0) ans.push_back(i+1);
         }
-        
         return ans;
+    }
+    
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        //return findDisappearedNumbers_ans_modifiation(nums);
+        return findDisappearedNumbers_inplace_modification(nums);
     }
 };
 

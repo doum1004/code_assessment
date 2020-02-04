@@ -9,48 +9,49 @@ using namespace std;
 /**
 https://leetcode.com/problems/daily-temperatures/
 
-// Soluiton1. using stack (stack can be replaced by vector)
+// Soltuion1. Brute force (no accepted)
+iterate i
+    itreate j
+// time o(n^2)
+// space o(1)
+
+// Solution2. linear with stack (same for other top to bottom)
 // time: o(n)
-// space: o(n) : stack(n)
-73, 74, 75, 71, 69, 72, 76, 73
-
-1. iterate n and while (!s.empty && s.top.value < n)
-[0] 73
-s: (73,0)
-
-[1] 74
-s: 73,0 -> 73 < 74
-o: [1][0][0][0][0][0][0][0]
-s: (74,1)
-[2] 75
-s: 74,1 -> 74 < 75
-o: [1][1][0][0][0][0][0][0]
-s: (75,2)
-[3] 71
-s: (75,2) (71,3)
-[4] 69
-s: (75,2) (71,3) (69,4)
-[5] 72
-s: (75,2) (71,3) (69,4) 69, 72
-o: [1][1][0][2][1][0][0][0]
-
-...
-
-// Solution2. same as solution1 but reverse
+// space: o(n) stack
+1. iterate T
+    2. if stack.top is not smaller than cur, put it in stack
+    3. if top is smaller then, pop and put ans
 
 */
 
 class Solution {
 public:
-    vector<int> dailyTemperatures_solution1(vector<int>& T) {
-        stack<pair<int,int>> s;
-        for (int i=0; i<T.size(); ++i) {
-            while (!s.empty() && s.top().first < T[i]) {
-                auto t = s.top();
-                s.pop();
-                T[t.second] = i - t.second;
+    vector<int> dailyTemperatures_bruteforce(vector<int>& T) {
+        int n = T.size();
+        for (int i=0; i<n; ++i) {
+            auto r = 0;
+            for (int j=i+1; j<n; ++j) {
+                if (T[i] < T[j]) {
+                    r = j - i;
+                    break;
+                }
             }
-            s.push({exchange(T[i], 0), i}); // same as below
+            T[i] = r;
+        }
+        
+        return T;
+    }
+    vector<int> dailyTemperatures_stack(vector<int>& T) {
+        int n = T.size();
+        stack<pair<int,int>> s;
+        
+        for (int i=0; i<n; ++i) {
+            while (!s.empty() && s.top().first < T[i]) {
+                auto cur = s.top();
+                s.pop();
+                T[cur.second] = i - cur.second;
+            }
+            s.push({exchange(T[i], 0), i}); // same as below. exchange return first one
             //s.push({T[i], i});
             //T[i] = 0;
         }
@@ -58,18 +59,9 @@ public:
         return T;
     }
     
-    vector<int> dailyTemperatures_solution2(vector<int>& T) {
-        stack<pair<int,int>> s;
-        for (int i=T.size()-1; i>=0; --i) {
-            while (!s.empty() && s.top().first <= T[i]) s.pop();
-            s.push({exchange(T[i], s.empty() ? 0 : s.top().second - i), i});
-        }
-        return T;
-    }
-    
     vector<int> dailyTemperatures(vector<int>& T) {
-        return dailyTemperatures_solution1(T);
-        //return dailyTemperatures_solution2(T);
+        //return dailyTemperatures_bruteforce(T);
+        return dailyTemperatures_stack(T);
     }
 };
 
