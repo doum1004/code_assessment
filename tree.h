@@ -12,6 +12,11 @@ struct TreeNode {
     : val(x), left(NULL), right(NULL) {}
 };
 
+bool isEqual(TreeNode* l, TreeNode* r) {
+    if (l != nullptr && r != nullptr) return (l->val == r->val && isEqual(l->left, r->left) && isEqual(l->right, r->right));
+    return (l == nullptr && r == nullptr) ? true : false;
+}
+
 TreeNode* vectorToTree(vector<int> list) {
     TreeNode* tree = nullptr;
     
