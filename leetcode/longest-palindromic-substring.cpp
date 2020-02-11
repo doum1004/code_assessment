@@ -6,6 +6,7 @@
 using namespace std;
 
 /**
+https://leetcode.com/problems/longest-palindromic-substring/
 
 // solution1. expand from center
 time: o(n^2) : iterate(n) expand(n)
