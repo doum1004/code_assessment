@@ -8,77 +8,78 @@ using namespace std;
 /**
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
-// Solution1. Two path
+// solution1. two pointers
 // time: o(n)
 // space: o(1)
-1. one pass goes first and after n the other pass goes
-2. when a first pass the end, do remove next of the other pass
+1. two pointers. one for wait n times
+2. once fast pointer arrives, relink to remove the target
 
-  1 2 3 4 5 (n=2)
-      s
-          f
-          
-// Solution2. one path
-// time: o(n) n+n-t
+n=2
+  2. 1  0
+  1->2->3->4->5
+        s
+              f
+
+// solution2. one pointers
+// time: o(n)
 // space: o(1)
-1. count number of node
-2. diff count - target
-3. travel in diff and remove item
+1. get total count
+2. iterate till total - n
+3. relink to remove next cur->next = cur->next->next
+
+d 1 2 3 4 5
+      *
 
 */
 class Solution {
 public:
-    ListNode* removeNthFromEnd_twopass(ListNode* head, int n) {
-        if (n < 0) return head;
-        auto prehead = new ListNode(-1);
-        prehead->next = head;
-        auto fast = prehead;
-        auto slow = prehead;
-        int i = 0;
-        while (fast->next) {
-            if (i++ >= n) slow = slow->next;
-            fast = fast->next;
-        }
-        // remove next of slow
-        if (head && head->next) {
-            auto tobedeleted = head->next;
-            head->next = head->next->next;
-            delete tobedeleted;
+    ListNode* removeNthFromEnd_twopointers(ListNode* head, int n) {
+        auto dummy = new ListNode(-1);
+        dummy->next = head;
+        
+        auto slow = dummy;
+        head = dummy;
+        while (head->next) {
+            if (n-- <= 0) slow = slow->next;
+            head = head->next;
         }
         
-        return prehead->next;
+        if (slow && slow->next) {
+            auto debedelted = slow->next;
+            slow->next = debedelted->next;
+            delete debedelted;
+        }
+        
+        return dummy->next;
     }
     
-    ListNode* removeNthFromEnd_onepass(ListNode* head, int n) {
-        if (n < 0) return head;
-        
-        auto prehead = new ListNode(-1);
-        prehead->next = head;
-        head = prehead;
-        
+    ListNode* removeNthFromEnd_onepointer(ListNode* head, int n) {
+        auto dummy = new ListNode(-1);
+        dummy->next = head;
         int count = 0;
-        while (head->next) {
+        while (head) {
             count++;
             head = head->next;
         }
         
-        head = prehead;
-        int diff = count - n;
-        while (--diff >= 0) {
+        head = dummy;
+        for (int i=1; i<=count-n; ++i) {
+            if (!head) break;
             head = head->next;
         }
-        if (head && head->next) {
-            auto tobedeleted = head->next;
-            head->next = head->next->next;
-            delete tobedeleted;
-        }
         
-        return prehead->next;
+        if (head && head->next){
+            auto debedelted = head->next;
+            head->next = head->next->next;
+            delete debedelted;
+        } 
+        
+        return dummy->next;
     }
     
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        //return removeNthFromEnd_twopass(head, n);
-        return removeNthFromEnd_onepass(head, n);
+        //return removeNthFromEnd_twopointers(head, n);
+        return removeNthFromEnd_onepointer(head, n);
     }
 };
 
