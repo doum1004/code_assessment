@@ -9,102 +9,70 @@ using namespace std;
 /**
 https://leetcode.com/problems/merge-k-sorted-lists/
 
-// Solution1. brute force iterate each one and find the position
-// time: o(n^2)
-// space: o(1)
-
-// Solution2. brute force. save all val in vector. and sort. and put it in new list
+// solution1. add all node in vector and sort and make list again
 // time: o(nlogn)
-// space: o(n)
+// space: o(1) use pointer (no extra mem)
 
-// Solution3. Put all head in min heap(priority queue) and take the top
-// time: o(nlogn) : n * insert/pop(logn)
-// space: o(1) : no copy
+// solution2. (reduce space) min-heap
+// time: o(nlogn) n*logn
+// space: o(1) use pointer (no extra mem)
 
 */
+
 class Solution {
 public:
-    ListNode* mergeKLists_bruteforce(vector<ListNode*>& lists) {
-        auto ansDummy = new ListNode(-1);
-        for (auto &node:lists) {
-            if (ansDummy->next == nullptr) {
-                ansDummy->next = node;
-            }
-            else {
-                while (node) {
-                    auto next = node->next;
-                    
-                    auto pre = ansDummy;
-                    auto ansNode = pre->next;
-                    while (ansNode) {
-                        if (ansNode->val > node->val) break;
-                        pre = ansNode;
-                        ansNode = ansNode->next;
-                    }
-                    auto t = pre->next;
-                    pre->next = node;
-                    node->next = t;
-                    
-                    node = next;
-                }
-            }
-        }
-        return ansDummy->next;
-    }
-    
     ListNode* mergeKLists_sort(vector<ListNode*>& lists) {
-        vector<int> sorted;
-        for (auto &n:lists) {
-            while (n) {
-                sorted.push_back(n->val);
-                n = n->next;
+        vector<ListNode*> nodes;
+        for (auto &node:lists) {
+            while (node) {
+                nodes.push_back(node);
+                node = node->next;
             }
         }
+        sort(nodes.begin(), nodes.end(), [&](auto &l, auto &r) {
+            return l->val < r->val;
+        });
         
-        sort(sorted.begin(), sorted.end());
-        
-        auto ansDummy = new ListNode(-1);
-        auto cur = ansDummy;
-        for (auto &v:sorted) {
-            cur->next = new ListNode(v);
+        auto dummy = new ListNode(-1);
+        auto cur = dummy;
+        for (auto &node:nodes) {
+            cur->next = node;
             cur = cur->next;
+            cur->next = nullptr;
         }
         
-        return ansDummy->next;
+        return dummy->next;
     }
     
-    struct compare {
+    struct compare_greater {
         bool operator()(const ListNode* l, const ListNode* r) {
             return l->val > r->val;
         }
     };
     
-    ListNode* mergeKLists_pointer(vector<ListNode*>& lists) {
-        auto ansDummy = new ListNode(-1);
-        
-        priority_queue<ListNode*, vector<ListNode*>, compare> q; //min-heap
-        for (auto &n:lists) {
-            while (n) {
-                q.push(n);
-                n = n->next;
+    ListNode* mergeKLists_heap(vector<ListNode*>& lists) {
+        priority_queue<ListNode*, vector<ListNode*>, compare_greater> q;
+        for (auto &node:lists) {
+            while (node) {
+                q.push(node);
+                node = node->next;
             }
         }
         
-        auto cur = ansDummy;
+        auto dummy = new ListNode(-1);
+        auto cur = dummy;
         while (!q.empty()) {
             cur->next = q.top();
             q.pop();
             cur = cur->next;
             cur->next = nullptr;
         }
-        
-        return ansDummy->next;
+        return dummy->next;
     }
     
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        //return mergeKLists_bruteforce(lists);
-        //return mergeKLists_sort(lists);
-        return mergeKLists_pointer(lists);
+        return mergeKLists_sort(lists);
+        //return mergeKLists_heap(lists);
     }
 };
 
