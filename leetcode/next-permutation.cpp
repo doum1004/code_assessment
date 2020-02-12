@@ -7,52 +7,56 @@ using namespace std;
 /**
 https://leetcode.com/problems/next-permutation/
 
-1 2 3 -> 1 3 2 -> 2 1 3 -> 2 3 1 -> 3 1 2 -> 3 2 1 -> 1 2 3
+// Solution1. built in function
 
-1 2 3 4 -> 1 2 4 3 -> 1 3 2 4 -> 1 3 4 2 -> 1 4 2 3 -> 1 4 3 2 -> 2 1 3 4 -> 2 1 4 3 -> 2 3 1 4 -> 2 3 4 1 -> 2 4 1 3
-
-1 2 3 4 5 -> 1 2 3 5 4 -> 1 2 4 3 5 -> 1 2 4 5 3 -> 1 2 5 3 4 -> 1 2 5 4 3 -> 1 3 2 4 5
-
-// solution1. built in
+// Solution2. two passes
 // time: o(n)
 // space: o(1)
 
-// solution2. swap, reverse
-1. find largest index k (nums[k] < nums[k+1]), if not reverse all
-2. find the largest index l > k (nums[k] < nums[l])
-3. swap nums[k], nums[l]
-4. reverse nums[k+1]
-// time: o(n) : n + n + ... n
-// space: o(1)
+1 2 3 4 -> 1 2 4 3 -> 1 3 2 4 -> 1 3 4 2 -> 1 2 3 4
+    * %      *   %        * %      *   %  
+  4 3 2 1 -> 1 2 3 4
+*
+    
+1. find * from right which is smaller than before
+2. in case there is *, reverse all, otherwise do 3~5
+3. find % from end which is larger than *
+4. swap(*,%)
+5. and reverse after *
 
 */
 
 class Solution {
 public:
-    void nextPermutation_1(vector<int>& nums) {
-        next_permutation(begin(nums), end(nums));
+    void nextPermutation_builtin(vector<int>& nums) {
+        next_permutation(nums.begin(), nums.end());
     }
     
-    void nextPermutation_2(vector<int>& nums) {
-        int n = nums.size(), k, l;
-        for (k = n-2; k>=0; --k) {
-            if (nums[k] < nums[k+1]) {
-                break;
-            }
+    void nextPermutation_twopasses(vector<int>& nums) {
+        int n = nums.size();
+        
+        int i;
+        for (i=n-2; i>=0; --i) {
+            if (nums[i] < nums[i+1]) break;
         }
-        if (k < 0) reverse(nums.begin(), nums.end());
+        
+        if (i<0) {
+            reverse(nums.begin(), nums.end());
+        }
         else {
-            for (l=n-1; l>k; --l) {
-                if (nums[k] < nums[l]) break;
+            // find smallest in largers
+            int j;
+            for (j=n-1; j>=i+1; --j) {
+                if (nums[i] < nums[j]) break;
             }
-            swap(nums[k], nums[l]);
-            reverse(nums.begin()+k+1, nums.end());
+            swap(nums[i], nums[j]);
+            reverse(nums.begin() + i + 1, nums.end());
         }
     }
     
     void nextPermutation(vector<int>& nums) {
-        //nextPermutation_1(nums);
-        nextPermutation_2(nums);
+        //nextPermutation_builtin(nums);
+        nextPermutation_twopasses(nums);
     }
 };
 
