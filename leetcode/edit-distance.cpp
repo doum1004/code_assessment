@@ -6,62 +6,57 @@ using namespace std;
 
 /**
 https://leetcode.com/problems/edit-distance/
-edit distance
-https://www.youtube.com/watch?v=We3YDTzNXEk
-https://www.youtube.com/watch?v=MiqoA-yF-0M
 
-// Solution1. edit distance
-// time: o(n*m)
-// space: o(n*m)
-1. init board for dp
-2. set i==0 || j==0 as i,j value
-ex)
-0 1 2 3 4
-1 0 0 0 0
-2 0 0 0 0
-3. iterate from i(1), j(1) to end
-4. board[i][j] = (word1[i+1] == word2[j+1]) ? board[i-1][j-1] : min(board[i-1][j-1], board[i-1][j], board[i][j-1])
+// solution1. dp for edit distance
+1. init board with addtional space(1)
+2. iterate board.
+3. in iteration, if i==0, set j. if j==0, set i.
+4. in iteration, if word[i-1] == word[j-1] take dp[i-1][j-1]. otherwise take min amost top, left, top left.
 
-replace insert
-delete  ...
+------------
+replace add
+delete   .
+-----------
 
-    h o r s e
-  0 1 2 3 4 5
-r 1 1 2 2 3 4
-o 2 2 1 2 3 4
-s 3 3 2 2 2 3 
+   '' h o r s e
+'' 0  1 2 3 4 5   
+r  1  1 2 2 3 4
+o  2  2 1 2 3 4 
+s  3  3 2 2 2 3 
 
+horse -> ros. 3 operations.
 e -> delete
-s -> do nothing
+s -> .
 r -> delete
-o -> do nothing
-h -> replace
+o -> .
+h -> replace(r)
+
 
 */
 
 class Solution {
 public:
     int minDistance(string word1, string word2) {
-        int n_word1 = word1.size();
-        int n_word2 = word2.size();
+        vector<vector<int>> dp(word2.size() + 1, vector<int>(word1.size() + 1, 0));
         
-        // init board
-        vector<vector<int>> board(n_word1+1, vector<int>(n_word2+1));
-        for (int r=0; r<=n_word1; ++r) {
-            board[r][0] = r;
-        }
-        for (int c=0; c<=n_word2; ++c) {
-            board[0][c] = c;
-        }
-        
-        for (int r=1; r<=n_word1; ++r) {
-            for (int c=1; c<=n_word2; ++c) {
-                if (word1[r-1] == word2[c-1]) board[r][c] = board[r-1][c-1];
-                else board[r][c] = min(min(board[r-1][c-1], board[r-1][c]), board[r][c-1]) + 1;
+        int row_size = dp.size();
+        int col_size = dp[0].size();
+        for (int i=0; i<row_size; ++i) {
+            for (int j=0; j<col_size; ++j) {
+                if (i == 0) {
+                    dp[i][j] = j;
+                }
+                else if (j == 0) {
+                    dp[i][j] = i;
+                }
+                else {
+                    if (word2[i-1] == word1[j-1]) dp[i][j] = dp[i-1][j-1];
+                    else dp[i][j] = min(min(dp[i-1][j-1], dp[i-1][j]), dp[i][j-1]) + 1;
+                }
             }
         }
         
-        return board[n_word1][n_word2];
+        return dp[row_size-1][col_size-1];
     }
 };
 
