@@ -9,138 +9,127 @@ using namespace std;
 /**
 https://leetcode.com/problems/decode-string/
 
-// solution1. using stack to accumulate nums
-// time: o(n)
+// solution1. iteration with stack
+// time: o(n) : 2n
 // space: o(n)
-1. detect num and deconding input
-using stack. once hits ] than pop to get str and numerber after
-2. deconding function
-decoding with str and num
-3. if stack is empty than return, otherwise put them back into stack
+1. iterate car in string
+2. in case of char is not ']', add char in stack
+3. in case of char is ']', pop stack to find str, and int. and decode it
+3.1 if stack is not empty, then put string in stack again for later decoding
+3.2 otherwise, add it in result.
+4. when iteration done, check data in stack to accumulate value in final result
 
-// solution2. recursive without stack
+// solution2. recursion
 // time: o(n)
-// space: o(m) recursion: number of set of brackets
+// space: o(m) max of brackets (inner)
+1. recursive string s, idx
+2. iterate till idx < s.size && s[idx] == ']'
+3. in iteration, if s[idx] none digit accumulate str
+4.               else get number and recursion call again with get the string and decoded string with number
 
-recursive(&s, &i) {
-    // return string in [] or out
-    
-    string str;
-    while (i < s.size() && s[i] == ']') {
-        if (!isdigit(s[i])) {
-            str += s[i]; // get inner str
-        }
-        else {
-            // encoding process
-            int n = 0;
-            while (isdigit(s[i])) {
-                n = n * 10 + (s[i] - '0');
-                i++;
-            }
-            i++ // [
-            auto toDecode = recursive(s, i); // get inner str
-            i++ // ]
-            while (n-- > 0) {
-                str += toDecode; // decoded result
-            }
-        }
-    }
-    
-    return str;
-}
+3[a]2[bc]
+r(3[a]2[bc], 0)
+    r(3[a]2[bc], 2) -> a
+    aaa
+ 
+    r(3[a]2[bc], 4) -> bc
+    bcbc
 
+3[a2[c]]
+r(3[a2[c]], 0)
+    r(3[a2[c]], 2) -> acc
+        r(3[a2[c]], 5) -> c
+        cc
+    accaccacc
+ 
 */
 
 class Solution {
-public:
-    string deconding(string &s, int n) {
-        string deconded;
-        for (int i=0; i<n; ++i) {
-            deconded += s; 
+private:
+    string decode(string &s, int num) {
+        string decoded{};
+        for (int i=1; i<=num; ++i) {
+            decoded += s;
         }
-        return deconded;
+        return decoded;
     }
     
-    string decodeString_stack(string &input) {
-        string ans = "";
+public:
+    string decodeString_stack(string &s) {
+        stack<char> stack_char;
         
-        stack<char> s;
-        for (int i=0; i<input.size(); ++i) {
-            auto c = input[i];
+        string decoded{};
+        for (auto &c:s) {
             if (c == ']') {
-                string str;
-                while (s.top() != '[') {
-                    str = s.top() + str;
-                    s.pop(); //pop char
+                // find str
+                string str{};
+                while (!stack_char.empty() && stack_char.top() != '[') {
+                    str = stack_char.top() + str;
+                    stack_char.pop();
                 }
-                s.pop(); //pop [
-                cout << str << endl;
-
+                stack_char.pop(); //[
+                
+                // find n
                 int n = 0;
                 int place = 0;
-                while (!s.empty() && isdigit(s.top())) {
-                    int d = (s.top() - '0') * pow(10, place++);
-                    n += d;
-                    s.pop(); //pop num
+                while (!stack_char.empty() && isdigit(stack_char.top())) {
+                    n += pow(10, place++) * (stack_char.top() - '0');
+                    stack_char.pop();
                 }
-                cout << n << endl;
-
-                auto decoded = deconding(str, n);
-                cout << decoded << endl;
-                if (s.empty()) {
-                    ans += decoded;
-                }
+                
+                str = decode(str, n);
+                if (stack_char.empty()) decoded += str;
                 else {
-                    for (auto &dc:decoded) {
-                        s.push(dc);
+                    for (auto &dc:str) {
+                        stack_char.push(dc);
                     }
                 }
             }
             else {
-                s.push(c);
+                stack_char.push(c);
             }
         }
         
         string str = "";
-        while (!s.empty()) {
-            str = s.top() + str;
-            s.pop(); //pop char
+        while (!stack_char.empty()) {
+            str = stack_char.top() + str;
+            stack_char.pop(); //pop char
         }
-
-        return ans + str;
+        
+        return decoded + str;
     }
     
-    string decodeString_recursive(string &s, int &i) {
+    string decodeString_recursion(string &s, int &i) {
         string str;
-        while (i < s.size() && s[i] != ']') {
+        while (i<s.size() && s[i] != ']') {
             if (!isdigit(s[i])) {
                 str += s[i++];
-            }
+            }    
             else {
-                int n = 0;
+                int n=0;
                 while (isdigit(s[i])) {
-                    n = n * 10 + (s[i++] - '0');
+                    n = n*10 + (s[i++] - '0');
                 }
-                i++; // [
-                auto toDecode = decodeString_recursive(s, i);
-                i++; // ]
-                while (n-- > 0) {
+                i++; //[
+                auto toDecode = decodeString_recursion(s, i);
+                i++; //]
+                while (n-->0) {
                     str += toDecode;
                 }
             }
         }
-
+        
         return str;
     }
     
-    string decodeString_recursive(string s) {
-        int i=0;
-        return decodeString_recursive(s, i);
+    string decodeString_recursion(string &s) {
+        int i{};
+        return decodeString_recursion(s,i);
     }
     
     string decodeString(string s) {
         //return decodeString_stack(s);
-        return decodeString_recursive(s);
+        return decodeString_recursion(s);
     }
 };
 

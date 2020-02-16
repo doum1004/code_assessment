@@ -20,6 +20,20 @@ https://leetcode.com/problems/search-a-2d-matrix-ii/
 // time: o(m+n)
 // space: o(1)
 
+1 4 7
+2 5 8
+3 6 9
+target: 8
+3 < 8, 3->6
+6 < 8, 6->9
+9 > 8, 9->8
+8 == 8
+
+target: 4
+3 < 4, 3->6
+6 > 4, 6->5
+5 > 4, 5->4
+4 == 4
 
 */
 

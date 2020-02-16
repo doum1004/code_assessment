@@ -6,18 +6,38 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/design-tic-tac-toe/
+/**
+https://leetcode.com/problems/design-tic-tac-toe/submissions/
+
+winning conditions
+- win matches all in horizontal
+- win matches all in vertical
+- win matches all in diag
+- win matches all in anti diag
+
+player X: 1
+player Y: -1
+
+if one of sum equals to n. win player
+
+// Time: o(n) : n(number of moves)
+// space: o(n*n) or (n+n) in case of no board
+
+1. create a board n*n vector<vector<int>> board(n, vector<int>(n, 0))
+2. and plus create other winning condition to calculate early as possible (rows, cols, diag, anti)
+3. in move, mark value 1 or -1. and add val in all variables. and check winning condition
+
+*/
+
 
 class TicTacToe {
 public:
     /** Initialize your data structure here. */
     TicTacToe(int n)
     : n_(n)
+    , board_(n, vector<int>(n, 0))
     , rows_(n)
-    , cols_(n)
-    , diag_(0)
-    , anti_diag_(0) {
-        
+    , cols_(n) {
     }
     
     /** Player {player} makes a move at ({row}, {col}).
@@ -29,23 +49,29 @@ public:
                 1: Player 1 wins.
                 2: Player 2 wins. */
     int move(int row, int col, int player) {
-        auto add = (player == 1) ? 1 : -1;
+        if (board_[row][col] != 0) return 0;
+        
+        int add = (player == 1) ? 1 : -1;
+        board_[row][col] = add;
+        
         rows_[row] += add;
         cols_[col] += add;
-        diag_ += row == col ? add : 0;
-        anti_diag_ += row == n_ - col - 1 ? add : 0;
-        if (abs(rows_[row]) == n_ || abs(cols_[col]) == n_ || abs(diag_) == n_ || abs(anti_diag_) == n_)
-            return player;
-
+        if (row == col) diag_ += add;
+        if (row+col+1 == n_) anti_diag_ += add;
+        
+        if (abs(rows_[row]) == n_ || abs(cols_[col]) == n_ || abs(diag_) == n_ || abs(anti_diag_) == n_) return player;
+        
         return 0;
     }
-
 private:
+    int n_{};
+    vector<vector<int>> board_;
+    
+    // sum
     vector<int> rows_;
     vector<int> cols_;
-    int diag_;
-    int anti_diag_;
-    int n_;
+    int diag_{};
+    int anti_diag_{};
 };
 
 /**
