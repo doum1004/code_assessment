@@ -8,11 +8,7 @@ using namespace std;
 /**
 https://leetcode.com/problems/push-dominoes/
 
-".L.R...LR..L.."
-"LL.RR.LLRRLL.."
-
-
-// Solution1. iterate and save in stack
+// Solution1. iterate and save in stack (better to do it in two pointers instead of saving it)
 // time: o(n) : n + m(number .)
 // space: o(m) : stack
 1. iterate from begining to face 'L' or 'R'.
@@ -21,16 +17,19 @@ https://leetcode.com/problems/push-dominoes/
 4. if it faces 'R', remove all in stack. and make a flag and put all index after in stack
     5. if they face 'R', make all 'R' in stack. if they face 'L' make after R and L
 
-// Solution2. two pointers
-// time: o(n) : n + n
-// space: o(1) : o(1) + 2
+// Solution2. two pointers. find pattern
+// time: o(n). n(l) + n(r)
+// space: o(1)
+1. add L in the beginning and R at the end
+ex) .L.R. -> 'L'.L.R.'R'
+2. iterate string till the 'L' or 'R' appear. And do work for the pattern
+3. return substr to extract of first and last char
 
-L...L = LLLLL
-L...R = L...R
-R...R = RRRRR
-R...L = RR.LL
-R....L = RRRLLL
-
+L...L LLLLL add L between
+R...R RRRRR add R between
+L...R L...R do nothing shift L to R
+R...L RR.LL add R and L expect middle in odd
+R..L RRLL same as above
 
 */
 
@@ -85,43 +84,39 @@ public:
         return dominoes;
     }
     
-    string pushDominoes_two_pointers(string &dominoes) {
-        int n = dominoes.size();
-        if (n < 2) return dominoes;
-        dominoes = "L" + dominoes + "R";
+    string pushDominoes_twopointers(string &dominoes) {
+        if (dominoes.size() < 1) return "";
         
-        int i,j;
-        for (i=0,j=1;j<dominoes.size();++j) {
-            if (dominoes[j] == '.') continue;
-            if (dominoes[i] == dominoes[j]) {
-                while (++i < j) {
-                    dominoes[i] = dominoes[j];
+        dominoes = "L" + dominoes + "R";
+        int l=0, r=0;
+        for (r=1;r<dominoes.size(); ++r) {
+            if (dominoes[r] == '.') continue;
+            if (dominoes[r] == dominoes[l]) {
+                while (l<r) {
+                    dominoes[++l] = dominoes[r];
                 }
             }
-            else if (dominoes[i] == 'R') {
-                //R...L = RR.LL
-                //12345 3
-                //R....L = RRRLLL
-                //123456 4
-                int len = j - i - 1;
-                int half1 = i + len/2;
-                int half2 = j - len/2;
-                while (++i < j) {
-                    if (i <= half1) dominoes[i] = 'R';
-                    if (i >= half2) dominoes[i] = 'L';
+            else if (dominoes[r] == 'L') {
+                int mid = (r-l-1) / 2;
+                int mid_l = mid+l;
+                int mid_r = r-mid;
+                while (l<r) {
+                    l++;
+                    if (l <= mid_l) dominoes[l] = 'R';
+                    else if (l >= mid_r) dominoes[l] = 'L';
                 }
             }
             else {
-                i = j;
+                l = r;
             }
         }
         
-        return dominoes.substr(1,n);
+        return dominoes.substr(1, dominoes.size()-2);
     }
     
     string pushDominoes(string dominoes) {
         //return pushDominoes_stack(dominoes);
-        return pushDominoes_two_pointers(dominoes);
+        return pushDominoes_twopointers(dominoes);
     }
 };
 

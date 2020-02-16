@@ -7,46 +7,50 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/partition-labels/
+/**
+https://leetcode.com/problems/partition-labels/
 
-// Greedy by selection
-// time: o(n)
-// space: o(n)
+// Solution1. Greedy (why greedy?)
+// time: o(n). n+n
+// space: o(1). map to store 26 chars only
+1. map<char, int>. it contains last index of char
+2. iterate s,   and store last most index of char while iterating.
+3.              if i is equal to last most index. then store. and update left(anchor)
 
-//[a] = 5
-//[b] = 7
-//[c] = 4
-//[d] = 6
-//[e] = 11
+ex)
+l = 0, max_idx = 0
 
-//j=0, anchor=0
-//012345678901
-//abccaddbeffe
-//i             j=5
-// i            j=7
-//  i           j=7
-// ...
-//       i      j=7 ans.push_back(i-anchor+1) anchor=i+1
+    012345678901
+    abccaddbeffe
+i=0 max_idx = 4
+i=1 max_idx = 7
+...
+i=7 store (i-l+1, 8) l =8
+i=8 max_idx = 11
+...
+i=11 store (i-l+1, 4)
 
-
+*/
 
 class Solution {
 public:
     vector<int> partitionLabels(string S) {
-        auto map = unordered_map<char, int>();
+        
+        unordered_map<char, int> m;
         for (int i=0; i<S.size(); ++i) {
-            map[S[i]] = i;
+            m[S[i]] = i;
         }
         
         vector<int> ans;
-        int j = 0, anchor = 0;
-        for (int i=0; i<S.size(); ++i) {
-            j = max(j, map[S[i]]);
-            if (i == j) {
-                ans.push_back(i-anchor+1);
-                anchor = i+1;
+        int l=0, max_idx=0;
+        for (int r=0; r<S.size(); ++r) {
+            max_idx = max(max_idx, m[S[r]]);
+            if (r == max_idx) {
+                ans.push_back(r-l+1);
+                l = r+1;
             }
         }
+        
         return ans;
     }
 };

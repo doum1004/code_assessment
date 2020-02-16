@@ -9,95 +9,118 @@ using namespace std;
 
 /**
 https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
- 
-// Solution1. One pass
-// time: o(n) : n + m(number of sum 0)
-// space: o(n) : map
 
-1. add dummy node
+// Solution1. brute force with two pointers (98%, 100%)
+// time: o(n^2)
+// space: o(1)
+1. itreate two passes. one from head to last. second from head->next to last.
+2. if sum of second iteration is zero, relink and reset sum.
+
+    1 2 -3 3 1 (#pre, *cur)
+  # * sum=1
+  #   * sum=3
+  #      * sum=0. relink
+    3 1
+  # * sum=3
+  #   * sum=4
+    # * sum=1
+      # * 
+      
+// Solution2. one pass with map
+// time: o()
+1. add dummy node and unordered_map<int, node*>
 2. iterate from dummy to end
-3. accumulate val in sum
-4. if cur sum isn't in map, add it
-5. else erase nodes in between, and relink node
+3. accumulate sum, if sum not exist, add it in map with cur pointer
+4. if exist, erase node and map in between
 
-1)
- 0 | 1 2 -3 3 1
- 0   1 3  0
+ex 1)
+    dummy 1 2 -3 3 1
+map     0 1 3  0    
+    dummy 3 1
+        0 3 4
 
- 0 | 3 1
- 0   3 4
-2)
- 0 | 1,2,3,-3,4
- 0   1 3 6  3
+ex 2)
+    dummy 1,2,3,-3,4
+map     0 1 3 6  3    
+    dummy 1 3 4
+        0 1 3 7
+        
+// Solution3. two passes with map
+1. add dummy node and unordered_map<int, node*>
+2. iterate from dummy to store acuumulate sum and node (last node will be stored)
+3. iterate from dummy again, if accumulated sum exist in map
 
- 0 | 1 2 4
- 0   1 3 7
-3)
- 0 | 1,2,3,-3,-2
- 0   1 3 6  3
-
- 0 | 1 2 -2
- 0 | 1 3  1
-
- 0 | 1
- 0 | 1
- 
-// Solution2. Two passes
-// time: o(n) : n + n
-// space: o(n) : map
-
-1. add dummy node
-2. first iteration. put it in map (if the sum exist, it will be replace by new one)
-3. second iteration. iterate again and relink
-
-1)
-first iteration
- 0 | 1 2 -3 3 1
- 0   1 3  0 3 4 (map)
-second iteration
- 0 | 1 2 -3 3 1
- 0   1 3  0 3 4
-       2------1
+ex 1)
+    dummy 1 2 -3 3 1
+map     0 1 3  0 3 1
+    dummy 1 2 -3 3 1
+    sum 0 1 3 ---->4
 
 
- */
+
+
+    
+*/
 class Solution {
 public:
-    ListNode* removeZeroSumSublists_onepass(ListNode* head) {
-        auto dummy = new ListNode(0);
+    ListNode* removeZeroSumSublists_bruteforce(ListNode* head) {
+        auto dummy = new ListNode(-1);
         dummy->next = head;
-        auto cur = dummy;
-
-        unordered_map<int, ListNode*> m;
-        int sum = 0;
-        while (cur) {
-            sum += cur->val;
-            if (m.count(sum)) {
-                cur = m[sum]->next;
-                int p = sum + cur->val;
-                while (p != sum) {
-                    m.erase(p);
-                    cur = cur->next;
-                    p += cur->val;
+        
+        auto pre = dummy;
+        while (pre) {
+            auto cur = pre->next;
+            int sum = 0;
+            while (cur) {
+                sum += cur->val;
+                if (sum == 0) {
+                    pre->next = cur->next;
+                    sum = 0;
                 }
-                m[sum]->next = cur->next;
+                cur = cur->next;
             }
-            else {
-                m[sum] = cur;
-            }
-            cur = cur->next;
+            pre = pre->next;
         }
-
+        
         return dummy->next;
     }
     
-    ListNode* removeZeroSumSublists_twopass(ListNode* head) {
+    ListNode* removeZeroSumSublists_onepass_map(ListNode* head) {
         auto dummy = new ListNode(0);
         dummy->next = head;
         
         unordered_map<int, ListNode*> m;
         auto cur = dummy;
-        int sum = 0;
+        int sum=0;
+        while (cur) {
+            sum += cur->val;
+            if (!m.count(sum)) {
+                m[sum] = cur;
+            }
+            else {
+                auto p = m[sum]->next;
+                auto p_val = sum;
+                while (p != cur) { //erase map
+                    p_val += p->val;
+                    m.erase(p_val);
+                    p = p->next;
+                }
+                m[sum]->next = cur->next;
+            }
+            
+            cur = cur->next;
+        }
+        
+        return dummy->next;
+    }
+    
+    ListNode* removeZeroSumSublists_twopass_map(ListNode* head) {
+        auto dummy = new ListNode(0);
+        dummy->next = head;
+        
+        unordered_map<int, ListNode*> m;
+        auto cur = dummy;
+        int sum=0;
         while (cur) {
             sum += cur->val;
             m[sum] = cur;
@@ -116,8 +139,9 @@ public:
     }
     
     ListNode* removeZeroSumSublists(ListNode* head) {
-        //return removeZeroSumSublists_onepass(head);
-        return removeZeroSumSublists_twopass(head);
+        //return removeZeroSumSublists_bruteforce(head);
+        //return removeZeroSumSublists_onepass_map(head);
+        return removeZeroSumSublists_twopass_map(head);
     }
 };
 
