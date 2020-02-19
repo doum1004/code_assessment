@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <sstream>
 
 using namespace std;
 
@@ -15,6 +16,10 @@ https://leetcode.com/problems/compare-version-numbers/
 2. compare vectors
 
 // solution2. Find version before and compare till end
+// time: o(n+m)
+// space: o(1)
+
+// solution3. Istringstream. iss >> long >> char
 // time: o(n+m)
 // space: o(1)
 
@@ -80,9 +85,24 @@ public:
         return 0;
     }
     
+    int compareVersion_solution3(string &version1, string &version2) {
+        istringstream iss1(version1), iss2(version2);
+        while (iss1 || iss2) {
+            char dot;
+            long v1 = 0, v2 = 0;
+            if (iss1) iss1 >> v1 >> dot;
+            if (iss2) iss2 >> v2 >> dot;
+            
+            if (v1 != v2) return (v1 > v2) ? 1 : -1;
+        }
+        
+        return 0;
+    }
+    
     int compareVersion(string version1, string version2) {
         //return compareVersion_solution1(version1, version2);
-        return compareVersion_solution2(version1, version2);
+        //return compareVersion_solution2(version1, version2);
+        return compareVersion_solution3(version1, version2);
     }
 };
 
