@@ -8,63 +8,79 @@ using namespace std;
 /**
 https://leetcode.com/problems/course-schedule/
 
-// solution1. Recursion DSF preorder with visited and instack
-// time: o(n)
-// space: o(n) : visited(n), instack(n), recursion(n)
+// Solution1. BFS Iteration (Topological Sort). Kahn's algorithm
+// time: o(V+E). V(vertices) E(Edges)
+// space: o(V+E). graph(V+E) + indegree(V)
 
-// solution2. Iteation DSF with visited and stack
-// time: o(n)
-// space: o(n) : visited(n), stack(n)
+1. build graph and count indegree
+2. BSF to to order indepedent to depedent
 
-1. build map for graph
-2. iterate graph, init stack to start
-3.  iterate stack till stack is empty
-4.      if adj is not visited, add in stack to visit
-5.      if adj is in stack, return it has cycle
-6.      if all adjs are visited, pop node
+// Solution2. DFS recursion (Topological Sort) with visited and instack to detact cycle
+// time: o(V+E). V(vertices) E(edges). graph(V+E). cycle check(V+E)
+// space: o(V+E). graph(V+E) recursion(V+E)
 
+1. save as directed graph
+2. DFS recursion call on each node. add visited to skip. push and pop instack to detact cycle
 
 */
 
 class Solution {
 public:
-    bool hasCycle(unordered_map<int, vector<int>>& m, unordered_set<int>& v, unordered_set<int>& instack, int node) {
-        //cout << node << endl;
-        v.insert(node);
-        instack.insert(node);
+    bool canFinish_BFS_Iteration(int numCourses, vector<vector<int>>& prerequisites) {
+        // build graph & count indegree
+        vector<unordered_set<int>> graph(numCourses);
+        vector<int> indegree(numCourses, 0);
+        for (auto &preq:prerequisites) {
+            graph[preq[1]].insert(preq[0]);
+            indegree[preq[0]]++;
+        }
         
-        if (m.find(node) != m.end()) {
-            for (auto &adj:m[node]) {
-                if (v.find(adj) == v.end() && hasCycle(m, v, instack, adj)) {
-                    return true;
-                }
-                else if (instack.find(adj) != instack.end()) {
-                    return true;
-                }
+        vector<int> bfs;
+        for (int i=0; i<numCourses; ++i) {
+            if (indegree[i] == 0) bfs.push_back(i);
+        }
+        
+        for (int i=0; i<bfs.size(); ++i) {
+            for (auto &adj:graph[bfs[i]]) {
+                if (--indegree[adj] == 0) bfs.push_back(adj);
             }
+        }
+        
+        return bfs.size() == numCourses;
+    }
+    
+    bool hasCycle(vector<unordered_set<int>>& graph, unordered_set<int>& visited, unordered_set<int>& instack, int node) {
+        if (instack.find(node) != instack.end()) return true;
+        if (visited.find(node) != visited.end()) return false;
+        
+        visited.insert(node);
+        instack.insert(node);
+        for (auto &adj:graph[node]) {
+            if (hasCycle(graph, visited, instack, adj)) return true;
         }
         
         instack.erase(node);
         return false;
     }
     
-    bool canFinish_dsf(int numCourses, vector<vector<int>>& prerequisites) {
-        unordered_map<int, vector<int>> m;
-        for (auto &p:prerequisites) {
-            m[p[0]].push_back(p[1]);
+    bool canFinish_DSF_recursion(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<unordered_set<int>> graph(numCourses);
+        for (auto &preq:prerequisites) {
+            graph[preq[1]].insert(preq[0]);
         }
         
-        unordered_set<int> v;
+        unordered_set<int> visited;
         unordered_set<int> instack;
-        for (auto &node:m) {
-            if (hasCycle(m, v, instack, node.first)) return false;
+        for (int i=0;i<numCourses;++i) {
+            if (hasCycle(graph, visited, instack, i)) return false;
         }
         
         return true;
     }
     
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        return canFinish_dsf(numCourses, prerequisites);
+        return canFinish_BFS_Iteration(numCourses, prerequisites);
+        //return canFinish_DSF_recursion(numCourses, prerequisites);
     }
 };
 
