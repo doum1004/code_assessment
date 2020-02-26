@@ -18,16 +18,16 @@ space: o(E + N), E(all edges in graph), N(nodes in stack)
 2. start recursion from K (graph, map<int, int> receivedtime, node, delay). add delay.
 3. check receivedtime and return max delay
 
-solution 2. Dijkstra's algorithm
+solution 2. Dijkstra's algorithm (none negative)
 https://www.youtube.com/watch?v=XB4MIexjvY0
-// time: o(n^n). visit(n)* relaxation(n. update vertiex)
-// space: o(n)
+// time: o(n^n). graph(E). visit(n)* relaxation(n-1. update vertiex)
+// space: o(N+E). graph(E). table(N)
 
 
-solution 3. Bellman Ford
+solution 3. Bellman Ford (negative, no cycle negative sum)
 https://www.youtube.com/watch?v=FtN3BYH2Zes
-// time: o(n^n). visit(n) * relaxation (n-1)
-// space: o(n). table
+// time: o(n^n)
+// space: o(n)
 
 
 */
@@ -72,24 +72,40 @@ public:
     }
     
     int networkDelayTime_dijkstra(vector<vector<int>>& times, int N, int K) {
-        // build graph. g[u] = {v,w}
-        vector<vector<pair<int,int>>> g(N);
-        for (int i=0; i<times.size(); ++i) {
-            int u = times[i][0]-1, v = times[i][1]-1, w = times[i][2];
-            g[u].push_back({v,w});
+        // build graph
+        vector<vector<pair<int,int>>> g(N+1);
+        for (auto &e:times) {
+            int u = e[0], v = e[1], w = e[2];
+            g[u].push_back({v, w});
+        }        
+        
+        // dijkstra
+        vector<int> table(N+1, -1);
+        
+        priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> q;
+        q.push({0, K});
+        
+        while (!q.empty()) {
+            auto delay = q.top().first;
+            auto node = q.top().second;
+            q.pop();
+            
+            if (table[node] != -1) continue;
+            table[node] = delay;
+            
+            for (auto &adj:g[node]) {
+                q.push({adj.second+delay, adj.first});
+            }
         }
         
-        // run dijkstra and get table
-        auto ret = dijkstra(g, K-1);
-        
-        // get max delay
-        int res = 0;
-        for (auto &delay:ret) {
-            if (delay == -1) return -1;
-            res = max(res, delay);
+        // get maxDelay
+        int maxDelay = 0;
+        for (int i=1; i<=N; ++i) {
+            if (table[i] == -1) return -1;
+            maxDelay = max(maxDelay, table[i]);
         }
         
-        return res;
+        return maxDelay;
     }
     
     int networkDelayTime_bellmanford(vector<vector<int>>& times, int N, int K) {
@@ -106,40 +122,17 @@ public:
         
         int maxDelay = 0;
         for (int i=1; i<=N; ++i) {
+            if (dist[i] == INT_MAX) return -1;
             maxDelay = max(maxDelay, dist[i]);
         }
-        return (maxDelay == INT_MAX) ? -1 : maxDelay;
+        
+        return maxDelay;
     }
     
     int networkDelayTime(vector<vector<int>>& times, int N, int K) {
         //return networkDelayTime_dsf(times, N, K);
         //return networkDelayTime_dijkstra(times, N, K);
         return networkDelayTime_bellmanford(times, N, K);
-    }
-    
-private:
-    vector<int> dijkstra(vector<vector<pair<int,int>>>& g, int s){
-        // build table
-        int n = g.size();
-        vector<int> table(n, -1);
-        
-        // min heap to take min delay for next candidate
-        priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> q;
-        q.push({0, s});
-        
-        while (!q.empty()) {
-            auto delay = q.top().first;
-            auto node = q.top().second;
-            q.pop();
-            
-            if (table[node] != -1) continue;
-            table[node] = delay;
-            for (auto &adj:g[node]) {
-                q.push({adj.second+delay, adj.first});
-            }
-        }
-
-        return table;
     }
 };
 
