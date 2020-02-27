@@ -8,7 +8,7 @@ using namespace std;
 /**
 https://leetcode.com/problems/course-schedule/
 
-// Solution1. BFS Iteration (Topological Sort). Kahn's algorithm
+// Solution1. BFS Iteration (Topological Sort). Kahn's algorithm. Not really BFS basically.
 // time: o(V+E). V(vertices) E(Edges)
 // space: o(V+E). graph(V+E) + indegree(V)
 
@@ -49,30 +49,28 @@ public:
         return bfs.size() == numCourses;
     }
     
-    bool hasCycle(vector<unordered_set<int>>& graph, unordered_set<int>& visited, unordered_set<int>& instack, int node) {
-        if (instack.find(node) != instack.end()) return true;
-        if (visited.find(node) != visited.end()) return false;
-        
-        visited.insert(node);
+    bool hasCycle(vector<vector<int>>& g, vector<bool>& v, unordered_set<int>& instack, int node) {
+        if (instack.find(node) != instack.end()) return false;
+        if (v[node]) return true;
+        v[node] = true;
         instack.insert(node);
-        for (auto &adj:graph[node]) {
-            if (hasCycle(graph, visited, instack, adj)) return true;
+        for (auto &adj:g[node]) {
+            if (!hasCycle(g, v, instack, adj)) return false;
         }
-        
         instack.erase(node);
-        return false;
+        return true;
     }
     
     bool canFinish_DSF_recursion(int numCourses, vector<vector<int>>& prerequisites) {
-        vector<unordered_set<int>> graph(numCourses);
-        for (auto &preq:prerequisites) {
-            graph[preq[1]].insert(preq[0]);
+        vector<vector<int>> g(numCourses, vector<int>());            
+        for (auto &p:prerequisites) {
+            g[p[1]].push_back(p[0]);
         }
         
-        unordered_set<int> visited;
-        unordered_set<int> instack;
-        for (int i=0;i<numCourses;++i) {
-            if (hasCycle(graph, visited, instack, i)) return false;
+        vector<bool> v(numCourses, false);
+        for (auto &p:prerequisites) {
+            unordered_set<int> instack;
+            if (!hasCycle(g, v, instack, p[0])) return false;
         }
         
         return true;

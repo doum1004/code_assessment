@@ -9,7 +9,7 @@ https://leetcode.com/problems/implement-queue-using-stacks/
 
 // Solution1. one stack
 // time: push(n), pop(1), peek(1), empty(1)
-// space: push(n). recursion
+// space: o(2n). stack(n). recursion(n) in push
 
 at push, taking all stack, put value on the bottom, and stack values again
 

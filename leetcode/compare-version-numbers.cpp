@@ -8,18 +8,17 @@ using namespace std;
 /**
 https://leetcode.com/problems/compare-version-numbers/
 
-// solution1. String to vector. and vector comparison
+return (version1 > version2) ? 1 : (version1 < version2) ? -1 : 0
+
+// Solution1. get vectors of both and compare
 // time: o(n+m)
 // space: o(n+m)
 
-1. get vector from string. iterate string accumulate int and add in vector if it faces '.'
-2. compare vectors
-
-// solution2. Find version before and compare till end
+// Solution2. two pointers to iterate each till '.' or end and compare
 // time: o(n+m)
 // space: o(1)
 
-// solution3. Istringstream. iss >> long >> char
+// Solution3. istringstream
 // time: o(n+m)
 // space: o(1)
 
@@ -27,82 +26,77 @@ https://leetcode.com/problems/compare-version-numbers/
 
 class Solution {
 public:
-    vector<int> versionVector(string &s) {
-        vector<int> versions;
-        
-        int v = 0;
-        for (auto &c:s) {
-            if (isdigit(c)) {
-                v = v * 10 + (c - '0');
+    vector<int> getVersions(string &version) {
+        vector<int> v;
+        int n=0;
+        for (int i=0; i<version.size(); ++i) {
+            if (isdigit(version[i])) {
+                n = n*10 + version[i] - '0';
             }
             else {
-                versions.push_back(v);
-                v = 0;
+                v.push_back(n);
+                n = 0;
             }
         }
-        versions.push_back(v);
-        
-        return versions;
+        v.push_back(n);
+        return v;
     }
     
-    int compareVersion_solution1(string &version1, string &version2) {
-        auto v1 = versionVector(version1);
-        auto v2 = versionVector(version2);
+    int compareVersion_verter(string &version1, string &version2) {
+        if (version1 == version2) return 0;
         
-        int n = max(v1.size(), v2.size());
-        for (int i=0; i<n; ++i) {
-            auto v1_val = (v1.size() <= i) ? 0 : v1[i];
-            auto v2_val = (v2.size() <= i) ? 0 : v2[i];
-            if (v1_val > v2_val) return 1;
-            else if (v1_val < v2_val) return -1;
+        auto v1 = getVersions(version1);
+        auto v2 = getVersions(version2);
+        for (int i=0; i<max(v1.size(), v2.size()); ++i) {
+            auto v1_num = (i < v1.size()) ? v1[i] : 0;
+            auto v2_num = (i < v2.size()) ? v2[i] : 0;
+            if (v1_num > v2_num) return 1;
+            else if (v1_num < v2_num) return -1;
         }
         
         return 0;
     }
     
-    int compareVersion_solution2(string &version1, string &version2) {
+    int compareVersion_twopointers(string &version1, string &version2) {
+        if (version1 == version2) return 0;
+        
         int n1 = version1.size();
         int n2 = version2.size();
-        
-        int i = 0, j = 0;
-        while (i < n1 || j < n2) {
-            int v1 = 0;
-            while (i < n1 && isdigit(version1[i])) {
-                v1 = v1 * 10 + (version1[i++] - '0');
-            }
-            i++;
-            
-            int v2 = 0;
-            while (j < n2 && isdigit(version2[j])) {
-                v2 = v2 * 10 + (version2[j++] - '0');
-            }
-            j++;
+        int l=0, r=0;
+        int v1=0, v2=0;
+        while (l<n1 || r<n2) {
+            while (l < n1 && isdigit(version1[l])) v1 = v1*10 + version1[l++] - '0';
+            l++;
+            while (r < n2 && isdigit(version2[r])) v2 = v2*10 + version2[r++] - '0';
+            r++;
             
             if (v1 > v2) return 1;
             else if (v1 < v2) return -1;
+            v1 = 0;
+            v2 = 0;
         }
         
         return 0;
     }
     
-    int compareVersion_solution3(string &version1, string &version2) {
+    int compareVersion_stringstream(string &version1, string &version2) {
         istringstream iss1(version1), iss2(version2);
         while (iss1 || iss2) {
-            char dot;
-            long v1 = 0, v2 = 0;
-            if (iss1) iss1 >> v1 >> dot;
-            if (iss2) iss2 >> v2 >> dot;
+            char c;
+            int n1 = 0, n2 = 0;
+            if (iss1) iss1 >> n1 >> c;
+            if (iss2) iss2 >> n2 >> c;
             
-            if (v1 != v2) return (v1 > v2) ? 1 : -1;
+            if (n1 > n2) return 1;
+            if (n1 < n2) return -1;
         }
-        
         return 0;
     }
     
     int compareVersion(string version1, string version2) {
-        //return compareVersion_solution1(version1, version2);
-        //return compareVersion_solution2(version1, version2);
-        return compareVersion_solution3(version1, version2);
+        //return compareVersion_verter(version1, version2);
+        //return compareVersion_twopointers(version1, version2);
+        return compareVersion_stringstream(version1, version2);
     }
 };
 
