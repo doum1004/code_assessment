@@ -7,10 +7,13 @@ using namespace std;
 /**
 
 // Solution1. Backtracking(DSF) with Trie
-backtracking: change, recursion, undo
 // time: o( m ( 4*3^(L-1) )). m(board) L(length of word)
-// space: o(w + L). w(words in tires) + L(length of word)
+// space: o(w + L). w(words in tires) + L(length of word. recursion)
 
+- backtracking: change, recursion, undo
+- trie hold dictionary of words.
+time: insert/search o(n)
+space: o(W*L) W(number of word) L(length of word)
 
 1. build tries from words
 2. backtracking on board to find words(tries)
