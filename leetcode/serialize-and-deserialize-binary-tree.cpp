@@ -83,6 +83,26 @@ private:
         node->right = deserialize_(data, p);
         return node;
     }
+
+    // second version
+    string getNext(string &s, int& i) {
+        if (i >= s.size()) return "";
+        auto p = s.find(",", i);
+        auto str = s.substr(i, p-i);
+        i += p-i+1;
+        return str;
+    }
+    
+    TreeNode* deserialize_dfs(string& data, int &i) {
+        auto cur = getNext(data, i);
+        if (cur.empty() || cur == "*") return nullptr;
+        
+        auto node = new TreeNode(stoi(cur));
+        node->left = deserialize_dfs(data, i);
+        node->right = deserialize_dfs(data, i);
+        
+        return node;
+    }
 };
 
 // Your Codec object will be instantiated and called as such:
