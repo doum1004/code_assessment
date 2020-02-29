@@ -7,11 +7,15 @@ using namespace std;
 /**
 https://leetcode.com/problems/missing-number/
 
-// solution1. sort and iterate
+//solution1. prepare set and mark
+// time: o(n). 2n
+// space: o(n)
+
+// solution2. sort and iterate
 // time: o(nlogn + n)
 // space: o(1)
 
-// solution2. bit manipulation (xor)
+// solution3. bit manipulation (xor)
 // time: o(n)
 // space: o(1)
 
@@ -22,8 +26,7 @@ size ^ (0 to size-1) ^ (values)
 = 0 ^ 0 ^ 0 ^ 2
 = 2
 
-
-// solution3. math(gauss). get expected sum. and extract actual sum.
+// solution4. math(gauss). get expected sum. and extract actual sum.
 // time: o(n)
 // space: o(1)
 
@@ -31,6 +34,13 @@ size ^ (0 to size-1) ^ (values)
 
 class Solution {
 public:
+    int missingNumber_list(vector<int>& nums) {
+        vector<bool> l(nums.size()+1,false);
+        for (auto &n:nums) l[n] = true;
+        for (int i=0; i<l.size(); ++i) if (l[i] == false) return i;
+        return -1;
+    }
+
     int missingNumber_sort(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         for (int i=0; i<nums.size(); ++i) {
@@ -55,6 +65,7 @@ public:
     }
     
     int missingNumber(vector<int>& nums) {
+        //return missingNumber_list(nums);
         //return missingNumber_sort(nums);
         //return missingNumber_bitmanipulation(nums);
         return missingNumber_gauss(nums);
