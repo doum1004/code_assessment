@@ -16,12 +16,26 @@ https://www.youtube.com/watch?v=_fgjrs570YE
 1. create dp table (it can be one vector since it uses previous)
 2. calculate new dp with coin
 
-ex) coin (1,2,3) target (5)
-  0 1 2 3 4 5
-0 1 0 0 0 0 0
-1 1 1 1 1 1 1 (1,1,1,1,1)
-2 1 1 2 2 3 3 (2,1,1,1) (2,2,1)
-3 1 1 2 3 4 5 (3,2) (3,1,1)
+amount=6, coins=[1,2,5]
+  0 1 2 3 4 5 6
+0 0 0 0 0 0 0 0
+1 1 1 1 1 1 1 1
+2 1 1 2 2 3 3 4
+5 1 1 2 2 3 4 5
+
+1: (1)
+2: (1 1) (2)
+3: (1 1 1) (2 1)
+4: (1 1 1 1) (1 1 2) (2 2)
+5: (1 1 1 1 1) (1 1 1 2) (1 2 2) (5)
+6: (1 1 1 1 1 1) (1 1 1 1 2) (1 1 2 2) (1 5) (2 2 2)
+
+amount=6, coins=[2,5]
+  0 1 2 3 4 5 6
+0 0 0 0 0 0 0 0
+2 1 0 1 0 1 0 1
+5 1 0 1 0 1 1 1
+f(x) = f(x) + f(x-coin)
 
 */
 
@@ -29,16 +43,16 @@ class Solution {
 public:
     int change_dp(int amount, vector<int>& coins) {
         // create dp table or vector
-        vector<int> dp(amount + 1, 0);
-        dp[0] = 1;
+        vector<int> cur(amount+1, 0);
+        cur[0] = 1;
         
+        sort(coins.begin(), coins.end());
         for (auto &coin:coins) {
-            for (int i=1; i<=amount; ++i) {
-                if (i - coin >= 0) dp[i] += dp[i - coin];    
+            for (int i=coin; i<=amount; ++i) {
+                cur[i] += cur[i - coin];
             }
         }
-        
-        return dp[amount];
+        return cur.back();
     }
     
     int change(int amount, vector<int>& coins) {
