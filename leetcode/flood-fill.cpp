@@ -9,83 +9,74 @@ using namespace std;
 /**
 https://leetcode.com/problems/flood-fill/
 
-1 1 1
-1 1 0
-1 0 1
+input
+1 1 1 1  (1,1) 3
+0 1 0 0
+1 0 1 0
 
-2 2 2
-2 2 0
-2 0 1
+output
+3 3 3 3
+0 3 0 0
+1 0 1 0
 
-// solution1. DSF preorder recursion
-// time: o(n) visiting connected
-// space: o(n) recursion. visited
+solution1 DFS recursion
+// time: o(n). n=r*c
+// space: o(n). n=r*c
 
-1. recursion from sr, sc
-2. check input validation with visitied status. and mark visited and set new color. and visit adjacent nodes
+from sr,sc. mark visited(new color could be marker)
+def recursion(image, r, c, newColor)
+#1 check r,c range and visited mark
+#2 change color
+#3 visit adjacents
 
-// soluiton2. BSF iteration with queue
+solution2 BSF iteration with queue
 // time: o(n)
-// space: o(n). queue, visited
-
-1. put sr, sc in queue
-2. iterate queue. put visited and set new color. and put adjacent nodes in queue.
-
-1. 
+// space: o(n)
 
 */
 
 class Solution {
 public:
     int offset[5] = {0,1,0,-1,0};
-    void bdsf_recursion(vector<vector<int>>& image, vector<vector<bool>>& visited, int r, int c, int reference, int newColor) {
-        if (r<0 || c<0 || r>=image.size() || c>=image[0].size() || image[r][c] != reference || visited[r][c] == true) return;
-        
-        visited[r][c] = true;
-        image[r][c] = newColor;
-        
-        for (int i=0; i<=3; ++i) {
-            bdsf_recursion(image, visited, r+offset[i], c+offset[i+1], reference, newColor);
-        }
+    void fillNewColor(vector<vector<int>>& image, int sr, int sc, int refColor, int newColor) {
+        if (sr<0 || sc<0 || sr>=image.size() || sc>=image[0].size() || image[sr][sc] != refColor || image[sr][sc] == newColor) return;
+        image[sr][sc] = newColor;
+        for (int i=0; i<=3; ++i) fillNewColor(image, sr+offset[i], sc+offset[i+1], refColor, newColor);
     }
     
-    vector<vector<int>> floodFill_dsf_recursion(vector<vector<int>>& image, int sr, int sc, int newColor) {
+    vector<vector<int>> floodFill_dsf(vector<vector<int>>& image, int sr, int sc, int newColor) {
         if (image.size() < 1 || image[0].size() < 1 || sr<0 || sc<0 || sr>=image.size() || sc>=image[0].size()) return image;
-        
-        vector<vector<bool>> v(image.size(), vector<bool>(image[0].size(), false));
-        bdsf_recursion(image, v, sr, sc, image[sr][sc], newColor);
+        fillNewColor(image, sr, sc, image[sr][sc], newColor);
         return image;
     }
     
-    vector<vector<int>> floodFill_bsf_iteration(vector<vector<int>>& image, int sr, int sc, int newColor) {
+    vector<vector<int>> floodFill_bsf(vector<vector<int>>& image, int sr, int sc, int newColor) {
         if (image.size() < 1 || image[0].size() < 1 || sr<0 || sc<0 || sr>=image.size() || sc>=image[0].size()) return image;
         
+        int refColor = image[sr][sc];
         queue<pair<int,int>> q;
         q.push({sr,sc});
         
-        auto reference = image[sr][sc];
-        vector<vector<bool>> v(image.size(), vector<bool>(image[0].size(), false));
         while (!q.empty()) {
             auto node = q.front();
             q.pop();
             auto r = node.first;
             auto c = node.second;
-            if (r<0 || c<0 || r>=image.size() || c>=image[0].size() || image[r][c] != reference || v[r][c] == true) continue;
-
-            v[r][c] = true;
+            if (r<0 || c<0 || r>=image.size() || c>=image[0].size() || image[r][c] != refColor || image[r][c] == newColor) continue;
             image[r][c] = newColor;
-
+            
             for (int i=0; i<=3; ++i) {
                 q.push({r+offset[i], c+offset[i+1]});
             }
         }
         
+        
         return image;
     }
     
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
-        //return floodFill_dsf_recursion(image, sr, sc, newColor);
-        return floodFill_bsf_iteration(image, sr, sc, newColor);
+        //return floodFill_dsf(image, sr, sc, newColor);
+        return floodFill_bsf(image, sr, sc, newColor);
     }
 };
 
