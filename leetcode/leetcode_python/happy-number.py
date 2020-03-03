@@ -8,7 +8,7 @@ class Solution:
         s = 0
         while n:
             digit = n % 10
-            s += digit * digit
+            s += digit ** 2
             n = n // 10
         return s
     
