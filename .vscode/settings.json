@@ -72,5 +72,6 @@
         "deque": "cpp",
         "map": "cpp",
         "set": "cpp"
-    }
+    },
+    "python.pythonPath": "/usr/local/bin/python"
 }
