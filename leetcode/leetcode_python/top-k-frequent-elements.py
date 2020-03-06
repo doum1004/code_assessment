@@ -1,3 +1,5 @@
+from typing import List
+
 """
 https://leetcode.com/problems/top-k-frequent-elements/
 

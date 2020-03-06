@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def find(self, board, trie, r, c, word, res):
         if r<0 or c<0 or r>=len(board) or c>=len(board[0]) or board[r][c] == '*' or not board[r][c] in trie:

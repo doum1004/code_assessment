@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def canFinish_dfs_recursion(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         #build graph

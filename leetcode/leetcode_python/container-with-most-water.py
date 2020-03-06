@@ -1,3 +1,5 @@
+from typing import List
+
 """
 https://leetcode.com/problems/container-with-most-water/
 """
@@ -20,3 +22,4 @@ class Solution:
                 
         return maxArea
         
+assert(Solution().maxArea([1,8,6,2,5,4,8,3,7]) == 49)
