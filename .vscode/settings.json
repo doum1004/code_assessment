@@ -71,7 +71,11 @@
         "__tree": "cpp",
         "deque": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "__errc": "cpp",
+        "__node_handle": "cpp",
+        "bit": "cpp",
+        "optional": "cpp"
     },
     "python.pythonPath": "/usr/local/bin/python"
 }
