@@ -25,7 +25,7 @@ using namespace std;
 
 class Solution {
 public:
-    string intToRoman(int num) {
+    string intToRoman1(int num) {
         vector<pair<string, int>> romans;
         romans.push_back({"M", 1000});
         romans.push_back({"CM", 900});
@@ -49,6 +49,29 @@ public:
             }
         }
         return ans;
+    }
+
+    string intToRoman2(int num) {
+        vector<int> nums = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        vector<string> symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        
+        string res;
+        for (int i=0; i<nums.size(); ++i) {
+            auto c = num / nums[i];
+            if (c > 0) {
+                for (auto j=1; j<=c; ++j) {
+                    res += symbols[i];
+                }
+            }
+            num %= nums[i];
+        }
+            
+        return res;
+    }
+
+    string intToRoman(int num) {
+        //return intToRoman1(num);
+        return intToRoman2(num);
     }
 };
 
