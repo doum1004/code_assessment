@@ -1,4 +1,5 @@
 from typing import List
+import bisect
 
 """
 https://leetcode.com/problems/search-suggestions-system/submissions/
