@@ -36,17 +36,16 @@ public:
     }
     
     void sortColors_onepass(vector<int>& nums) {
-        int n = nums.size();
-        int l=0,r=n-1,cur=0;
-        while (cur<=r) {
-            if (nums[cur] == 0) {
-                swap(nums[cur++], nums[l++]);
+        int l=0, r=nums.size()-1, i=0;
+        while (i<=r) {
+            if (nums[i] == 2) {
+                swap(nums[i], nums[r--]);
             }
-            else if (nums[cur] == 2) {
-                swap(nums[cur], nums[r--]);
+            else if (i > l && nums[i] == 0) {
+                swap(nums[i], nums[l++]);
             }
             else {
-                cur++;
+                i++;
             }
         }
     }
