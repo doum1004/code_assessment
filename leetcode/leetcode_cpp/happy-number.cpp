@@ -23,49 +23,40 @@ public:
     int nextNum(int n) {
         int sum = 0;
         while (n) {
-            auto digit = n % 10;
+            int d = n % 10;
+            sum += d * d;
             n /= 10;
-            sum += digit * digit;
         }
         return sum;
     }
     
-    bool isHappy_set(int n) {
-        unordered_set<int> m;
-        int sum=0;
-        while (true) {
-            sum = nextNum(n);
-            
-            if (m.count(sum)) return false;
-            if (sum == 1) return true;
-            
-            n = sum;
-            m.insert(sum);
+    bool isHappy_hash(int n) {
+        unordered_set<int> s;
+        while (n != 1) {
+            if (s.count(n)) return false;
+            s.insert(n);
+            n = nextNum(n);
         }
         
-        return false;
+        return true;
     }
     
-    bool isHappy_twopointers(int n) {
-        if (n == 1) return true;
-        
-        int slow = n, fast = n;
+    bool isHappy_fastslow(int n) {
         bool flag = false;
-        while (true) {
+        int slow = n, fast = n;
+        while (fast != 1) {
             fast = nextNum(fast);
             if (flag) slow = nextNum(slow);
-            flag = !flag;
-            
             if (slow == fast) return false;
-            if (slow == 1 || fast == 1) return true;
+            flag = !flag;
         }
         
-        return false;
+        return true;
     }
     
     bool isHappy(int n) {
-        //return isHappy_set(n);
-        return isHappy_twopointers(n);
+        //return isHappy_hash(n);
+        return isHappy_fastslow(n);
     }
 };
 

@@ -5,50 +5,37 @@ https://leetcode.com/problems/happy-number/
 
 class Solution:
     def nextNum(self, n):
-        s = 0
+        sum = 0
         while n:
-            digit = n % 10
-            s += digit ** 2
-            n = n // 10
-        return s
-    
-    def isHappy_set(self, n: int) -> bool:
-        if n == 1:
-            return True
+            d = n % 10
+            sum += d ** 2
+            n //= 10
+        return sum
         
+    def isHappy_hash(self, n: int) -> bool:
         h = {}
-        while (True):
-            s = self.nextNum(n)
-            if s == 1:
-                return True
-            if s in h:
+        while n != 1:
+            if n in h:
                 return False
-            n = s
-            h[s] = 1
+            h[n] = True
+            n = self.nextNum(n)
             
-        return False
-    
-    def isHappy_twopointers(self, n: int) -> bool:
-        if n == 1:
-            return True
+        return True
         
-        slow,fast = n,n
+    def isHappy_fastslow(self, n: int) -> bool:
         flag = False
-        while (True):
+        slow, fast = n, n
+        while fast != 1:
             fast = self.nextNum(fast)
             if flag:
                 slow = self.nextNum(slow)
-            flag = not flag
-            
-            if fast == 1 or slow == 1:
-                return True
-            if fast == slow:
+            if slow == fast:
                 return False
+            flag = not flag
+        
+        return True
             
-        return False
-        
+    
     def isHappy(self, n: int) -> bool:
-        #return self.isHappy_set(n)
-        return self.isHappy_twopointers(n)
-        
-        
+        #return self.isHappy_hash(n)
+        return self.isHappy_fastslow(n)
