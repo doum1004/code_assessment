@@ -24,31 +24,31 @@ class Solution {
 public:
     string fractionToDecimal(int numerator, int denominator) {
         if (numerator == 0) return "0";
-        if (denominator == 0) throw invalid_argument("wrong input of denominator");
+        if (numerator == denominator) return "1";
         
         string res;
-        if (numerator < 0 ^ denominator < 0) res += "-";
+        if ((numerator < 0 ^ denominator < 0)) res += '-';
         
         long long n = labs(numerator);
         long long d = labs(denominator);
-        
         res += to_string(n/d);
-        long long r = n % d;
-        if (r == 0) return res;
+        if (n % d == 0) return res;
         
         res += ".";
+        n %= d;
         
-        unordered_map<int,int> m;
-        for (; r; r%=d) {
-            cout << r << endl;
-            if (m.count(r)) {
-                res.insert(m[r], "(");
+        unordered_map<int,int> h;
+        while (n) {
+            n *= 10;
+            if (h.count(n)) {
+                res.insert(h[n], "(");
                 res += ")";
                 break;
             }
-            m[r] = res.size();
-            r *= 10;
-            res += to_string(r/d);
+            
+            h[n] = res.size();
+            res += to_string(n / d);
+            n %= d;
         }
         
         return res;
