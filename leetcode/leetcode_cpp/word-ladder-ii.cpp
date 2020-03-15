@@ -10,13 +10,14 @@ using namespace std;
 /**
 https://leetcode.com/problems/word-ladder-ii/
 
+// time complexcity
+https://www.quora.com/What-is-the-time-complexity-of-Word-Ladder-II
+
 //Soltuion1. DSF
-//time: o(n*m). build dict(n*m) + DSF(n*m)
-//space: o(n*m). dict(n*m) + recursion(n*m) + visited(n). except ans
 
 //Soltuion2. BSF would be better for shortest path
-//time: o(n*m). build dict(n*m) + DSF(n*m)
-//space: o(n*m). dict(n*m) + queue(n) + visited(n)
+//time: o(b^d). b(branch factor) ^ d(depth). ?
+//space: o(b^d). dict(b^d) + queue(n) + visited(n). ?
 
 1. Make wordList dictionary for finding availibilities
 ex)
@@ -29,8 +30,8 @@ ho*: hot
 
 //Solution3. BSF(gen next children) + DSF(generate ladder)
 https://leetcode.com/problems/word-ladder-ii/discuss/241927/C%2B%2B-BFS-%2B-DFS
-//time: o(n*m*26). build dict(n) + BSF_buildChildren(n*m*26) + DSF_buildLadders(n)
-//space: o(n). dict(n). children(n)
+//time: o(n*L*26 + nlogn). build next (n*L*26) + build ladder (L*M == L*2^L == nlogn) O(L*M), where L is the length of the shortest path and M is the number of possible shortest paths.
+//space:? o(n). graph(n) + children(n) + buildnext(n)
 
 1. set dict set
 2. BSF to gen next and children map from current
@@ -151,63 +152,53 @@ public:
         return res;
     }
     
-    void buildLadders(string& word, string& endWord, unordered_map<string, vector<string>>& children, vector<string>& ladder, vector<vector<string>>& res) {
-        if (word == endWord) {
-            res.push_back(ladder);
+    void buildLadder(string& beginWord, string& endWord, unordered_map<string, vector<string>>& children, vector<string>& path, vector<vector<string>>& res) {
+        path.push_back(beginWord);
+        if (beginWord == endWord) {
+            res.push_back(path);
         }
         else {
-            for (auto& child:children[word]) {
-                //cout << child << endl;
-                ladder.push_back(child);
-                buildLadders(child, endWord, children, ladder, res);
-                ladder.pop_back();
-                //cout << endl;
+            for (auto &c:children[beginWord]) {
+                buildLadder(c,endWord,children,path,res);
             }
         }
+        path.pop_back();
     }
     
-    vector<vector<string>> findLadders_BFS_DFS(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> dict(wordList.begin(), wordList.end()), current, next;
-        if (!dict.count(endWord)) return {};
+    vector<vector<string>> findLadders_BFS_DFS(string& beginWord, string& endWord, vector<string>& wordList) {
+        unordered_set<string> g(wordList.begin(), wordList.end()); // graph(n)
+        if (!g.count(endWord)) return {};
         
-        vector<vector<string>> res;
-        
-        current.insert(beginWord);
-        vector<string> ladder;
-        ladder.push_back(beginWord);
+        unordered_set<string> cur, next;
+        cur.insert(beginWord);
         
         unordered_map<string, vector<string>> children;
-        while (true) {
-            for (auto &word:current) {
-                dict.erase(word);
+        vector<vector<string>> res;
+        while (cur.size()) {
+            for (auto &s:cur) { // filter for next
+                g.erase(s);
             }
             
-            // build children and next
-            for (auto &parent:current) {
-                auto word = parent;
-                for (int j=0; j<word.size(); ++j) {
-                    auto t = word[j];
-                    for (int k=0; k<26; ++k) {
-                        word[j] = 'a' + k;
-                        if (dict.count(word)) {
-                            next.insert(word);
-                            children[parent].push_back(word);
-                            //cout << word << endl;
+            for (auto &s:cur) { // build next (n*26*wordLength)
+                for (auto i=0; i<s.size(); ++i) { 
+                    auto copied_s = s;
+                    for (auto j=0; j<26; ++j) {
+                        copied_s[i] = 'a' + j;
+                        if (g.count(copied_s)) {
+                            next.insert(copied_s);
+                            children[s].push_back(copied_s);
                         }
                     }
-                    word[j] = t;
                 }
             }
-            //cout << "... " << next.size() << endl;
-            if (next.empty()) break;
             
             if (next.count(endWord)) {
-                buildLadders(beginWord, endWord, children, ladder, res);
-                //break;
+                vector<string> path;
+                buildLadder(beginWord, endWord, children, path, res); // DFS O(L*M), where L is the length of the shortest path and M is the number of possible shortest paths.
             }
             
-            current.clear();
-            swap(current, next);
+            cur.clear();
+            swap(cur, next);
         }
         
         return res;

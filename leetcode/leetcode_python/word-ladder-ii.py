@@ -12,13 +12,13 @@ class Solution:
             return []
         
         def buildLadders(word, children, ladder, res):
+            ladder.append(word)
             if word == endWord:
                 res.append(list(ladder))
             else:
                 for child in children[word]:
-                    ladder.append(child)
                     buildLadders(child, children, ladder, res)
-                    ladder.pop()
+            ladder.pop()
         
         word_current = collections.defaultdict(int)
         word_next = collections.defaultdict(int)
@@ -27,7 +27,6 @@ class Solution:
         
         word_current[beginWord] = 1
         ladder = []
-        ladder.append(beginWord)
         
         children = collections.defaultdict(list)
         while (True):
