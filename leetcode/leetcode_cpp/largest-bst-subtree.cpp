@@ -36,24 +36,35 @@ https://leetcode.com/problems/largest-bst-subtree/
  */
 class Solution {
 public:
-    vector<int> nbSubBSF(TreeNode* node) {
-        if (!node) return {INT_MAX,INT_MIN,0};
-        
-        auto l = nbSubBSF(node->left);
-        auto r = nbSubBSF(node->right);
-        auto v = node->val;
-        if (l[1] < v && r[0] > v) {
-            return {min(v,l[0]), max(v,r[1]), l[2]+r[2]+1};
+    void BSF(TreeNode* root, int& min_v, int& max_v, int& count) {
+        if (root == nullptr) {
+            min_v = INT_MAX;
+            max_v = INT_MIN;
+            count = 0;
+            return;
         }
-        return {INT_MIN,INT_MAX,max(l[2],r[2])};
-    }
-    
-    int largestBSTSubtree_DSF(TreeNode* root) {
-        return nbSubBSF(root)[2];
+        
+        int min_l, max_l, count_l;
+        int min_r, max_r, count_r;
+        BSF(root->left, min_l, max_l, count_l);
+        BSF(root->right, min_r, max_r, count_r);
+        
+        if (max_l < root->val && min_r > root->val) {
+            min_v = min(min_l, root->val);
+            max_v = max(max_r, root->val);
+            count = count_l + count_r + 1;
+        }
+        else {
+            min_v = INT_MIN;
+            max_v = INT_MAX;
+            count = max(count_l, count_r);
+        }
     }
     
     int largestBSTSubtree(TreeNode* root) {
-        return largestBSTSubtree_DSF(root);
+        int min_v, max_v, count;
+        BSF(root, min_v, max_v, count);
+        return count;
     }
 };
 
