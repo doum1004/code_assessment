@@ -68,7 +68,6 @@ public:
 
 int main()
 {
-    auto input1 = vector<int> {1,1,1,2,2,3};
     auto expact1 = vector<string> {"1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz","16","17"};
     assert(Solution().fizzBuzz(17) == (expact1));
     return 0;
