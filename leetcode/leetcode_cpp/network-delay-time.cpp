@@ -29,12 +29,12 @@ solution 3. Dijkstra's algorithm (none negative)
 https://www.youtube.com/watch?v=XB4MIexjvY0
 https://www.hackerearth.com/practice/algorithms/graphs/shortest-path-algorithms/tutorial/
 // time: o(n^2). graph(E). visit(n)*relaxation(n-1. update vertiex)
-// space: o(N+E). graph(E). table(N)
+// space: o(V+E). graph(E). table(V)
 
 solution 4. Bellman Ford (negative, no cycle negative sum)
 https://www.youtube.com/watch?v=FtN3BYH2Zes
-// time: o(n^3)
-// space: o(n)
+// time: o(n^3). graph(E). visit&update(V^3. (v*v-1)*v)
+// space: o(V+E). graph(E). table(V)
 
 */
 
