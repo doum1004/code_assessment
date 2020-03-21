@@ -108,35 +108,61 @@ public:
         return res;
     }
     
-    void storeParentInfo(TreeNode* node, TreeNode* parent, unordered_map<TreeNode*, TreeNode*>& parentInfo) {
+    void buildParent(TreeNode* parent, TreeNode* node, unordered_map<TreeNode*,TreeNode*>& p) {
         if (node == nullptr) return;
-        parentInfo[node] = parent;
-        storeParentInfo(node->left, node, parentInfo);
-        storeParentInfo(node->right, node, parentInfo);
+        p[node] = parent;
+        
+        buildParent(node, node->left, p);
+        buildParent(node, node->right, p);
     }
     
-    vector<int> distanceK_searchFromTarget(TreeNode* root, TreeNode* target, int K) {
-        unordered_map<TreeNode*, TreeNode*> parentInfo;
-        storeParentInfo(root, nullptr, parentInfo);
+    void dsf(TreeNode* node, unordered_map<TreeNode*,TreeNode*>& p, int distance, int target, vector<int>& res, unordered_set<TreeNode*>& v) {
+        if (node == nullptr || v.count(node)) return;
+        v.insert(node);
+        if (target == distance) {
+            res.push_back(node->val);
+            return;
+        }
         
-        queue<pair<TreeNode*, int>> q;
-        q.push({target, 0});
+        dsf(node->left, p, distance+1, target, res, v);
+        dsf(node->right, p, distance+1, target, res, v);
+        dsf(p[node], p, distance+1, target, res, v);
+    }
+    
+    vector<int> distanceK_DSF(TreeNode* root, TreeNode* target, int K) {
+        unordered_map<TreeNode*,TreeNode*> p;
+        buildParent(nullptr, root, p);
         
-        unordered_set<TreeNode*> v;
         vector<int> res;
+        unordered_set<TreeNode*> v;
+        dsf(target, p, 0, K, res, v);
+        return res;
+    }
+    
+    vector<int> distanceK_BSF(TreeNode* root, TreeNode* target, int K) {
+        unordered_map<TreeNode*,TreeNode*> p;
+        buildParent(nullptr, root, p);
+        
+        vector<int> res;
+        unordered_set<TreeNode*> v;
+        queue<pair<TreeNode*, int>> q;
+        q.push({target,0});
+        
         while (!q.empty()) {
             auto node = q.front().first;
-            auto dist = q.front().second;
+            auto distance = q.front().second;
             q.pop();
+            
             if (!node || v.count(node)) continue;
             v.insert(node);
+            if (distance == K) {
+                res.push_back(node->val);
+                continue;
+            }
             
-            if (dist > K) continue;
-            if (dist == K) res.push_back(node->val);
-            
-            q.push({node->left, dist+1});
-            q.push({node->right, dist+1});
-            q.push({parentInfo[node], dist+1});
+            q.push({node->left, distance+1});
+            q.push({node->right, distance+1});
+            q.push({p[node], distance+1});
         }
         
         return res;
@@ -144,7 +170,8 @@ public:
     
     vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
         //return distanceK_searchFromRoot(root, target, K);
-        return distanceK_searchFromTarget(root, target, K);
+        //return distanceK_DSF(root, target, K);
+        return distanceK_BSF(root, target, K);
     }
 };
 
