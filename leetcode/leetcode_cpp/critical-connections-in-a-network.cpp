@@ -7,10 +7,16 @@ using namespace std;
 /**
 https://leetcode.com/problems/critical-connections-in-a-network/
 
-//Solution1. Tajan
+//Solution1. Bridge find. Simular like Tajan for articution point
 https://leetcode.com/problems/critical-connections-in-a-network/discuss/389841/C%2B%2B-tarjon-clear-solution
-//time: o(v+e)
-//space: o(v)
+https://www.youtube.com/watch?v=2kREIkF9UAs
+https://www.youtube.com/watch?v=jFZsDDB0-vo
+//time: o(v+e). visit(v+e)
+//space: o(v+e). graph(e+v) low(v) discovery(v)
+
+// build graph
+// DSF from root to build discovery and low(min(dist[cur], dist[adj]) table.
+// if discovery[cur] < low[adj] : articulation edge (cur,adj)
 
 1. build graph
 2. BFS from random node. Here from 0
