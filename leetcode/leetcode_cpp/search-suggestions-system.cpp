@@ -11,11 +11,11 @@ using namespace std;
 https://leetcode.com/problems/search-suggestions-system/
 
 //Solution1. Sort and bin search
-//time:o(nlogn+Llogn)
+//time:o(nlogn+Llogn). sort(nlogn). binsearch(Llogn. Length of word)
 //space:o(1): answer(logn)
 
 //Solution2. Trie and build suggestion by BSF
-//time: o(N+M). N(total length) + M(total decendents)
+//time: o(n^2). N(total length) + M(total decendents)
 //space: o(N+M)
 1. build trie (with array or map. array goes faster)
 2. visit node by prefix and build suggestion by BSF (less space)

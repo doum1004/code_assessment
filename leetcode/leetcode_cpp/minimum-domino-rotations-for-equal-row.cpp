@@ -73,31 +73,25 @@ public:
         return minRotation == INT_MAX ? -1 : minRotation;
     }
     
-    int minDominoRotations_greedy(vector<int>& A, vector<int>& B, int num) {
-        int rotation_a = 0;
-        int rotation_b = 0;
+    int rotateResult(vector<int>& A, vector<int>& B, int num) {
+        int rotate_a = 0;
+        int rotate_b = 0;
         for (int i=0; i<A.size(); ++i) {
-            if (A[i] != num && B[i] != num) return -1;
-            
-            if (A[i] != num) rotation_a++;
-            if (B[i] != num) rotation_b++;
+            if (num != A[i] && num != B[i]) return -1;
+            if (A[i] == B[i]) continue;
+            if (num == A[i]) rotate_a++;
+            if (num == B[i]) rotate_b++;
         }
-        return min(rotation_a, rotation_b);
+        return min(rotate_a, rotate_b);
     }
     
     int minDominoRotations_greedy(vector<int>& A, vector<int>& B) {
-        int n1 = A.size();
-        int n2 = B.size();
-        if (n1 < 1 || n2 < 1 || n1 != n2) throw invalid_argument("");
+        auto result_1 = rotateResult(A, B, A[0]);
+        auto result_2 = (A[0] != B[0]) ? rotateResult(A, B, B[0]) : result_1;
         
-        auto num1 = A[0];
-        auto num2 = B[0];
-        auto result1 = minDominoRotations_greedy(A, B, num1);
-        auto result2 = result1;
-        if (num1 != num2) result2 = minDominoRotations_greedy(A, B, num2);
-        
-        if (result1 == -1 || result2 == -1) return max(result1, result2);
-        return min(result1, result2);
+        if (result_1 == -1) return result_2;
+        if (result_2 == -1) return result_1;
+        return min(result_1, result_2);
     }
     
     int minDominoRotations(vector<int>& A, vector<int>& B) {
