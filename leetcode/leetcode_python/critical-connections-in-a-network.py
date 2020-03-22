@@ -1,4 +1,5 @@
 from typing import List
+import collections
 
 """
 https://leetcode.com/problems/critical-connections-in-a-network/
