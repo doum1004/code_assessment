@@ -1,4 +1,5 @@
 from typing import List
+import collections
 
 """
 https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
