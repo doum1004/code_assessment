@@ -1,6 +1,6 @@
 
 from typing import List
-from collections
+import collections
 
 """
 https://leetcode.com/problems/evaluate-division/
