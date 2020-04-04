@@ -35,8 +35,8 @@ int solution_slidingwindow(vector<int> &A) {
     for (int r=0; r<n; ++r) {
         counter[A[r]]++;
         
-        while (l<=r && (int)counter.size() >= n_locations) {
-            if ((int)counter.size() == n_locations) res = min(res, r-l+1);
+        while (l<=r && (int)counter.size() == n_locations) {
+            res = min(res, r-l+1);
             if (--counter[A[l]] == 0) counter.erase(A[l]);
             l++;
         }
@@ -49,5 +49,11 @@ int solution(vector<int> &A) {
 }
 
 int main() {
+    auto input1 = vector<int>{7,3,7,3,1,3,4,1};
+    assert(solution(input1) == (5));
+
+    auto input2 = vector<int>{6,6,6,6,7,3,7,3,1,3,4,1,6,6};
+    assert(solution(input2) == (7));
+
     return 0;
 }

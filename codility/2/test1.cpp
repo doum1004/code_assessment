@@ -41,8 +41,7 @@ int solution_bucketsort(int N) {
     
     int res = 0;
     for (int i=9; i>=0; --i) {
-        while (bucket[i]) {
-            bucket[i]--;
+        while (bucket[i]--) {
             res = res * 10 + i;
         }
     }
@@ -55,5 +54,7 @@ int solution(int N) {
 }
 
 int main() {
+    assert(solution(123) == (321));
+    assert(solution(355) == (553));
     return 0;
 }
