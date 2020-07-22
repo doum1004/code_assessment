@@ -57,20 +57,33 @@ public:
             return maxl;
         }
         else {
-            // solution 2-1
-            int n = s.size();
-            int l=0, r=0, maxl=0;
-            unordered_map<char, int> cache;
-            while (l<n && r<n) {
-                if (cache.find(s[r]) != cache.end()) {
-                    l = max(cache[s[r]], l);
-                }
-                maxl = max(maxl, r - l + 1);
-                cache[s[r]] = r + 1;
+//             // solution 2-1
+//             int n = s.size();
+//             int l=0, r=0, maxl=0;
+//             unordered_map<char, int> cache;
+//             while (l<n && r<n) {
+//                 if (cache.find(s[r]) != cache.end()) {
+//                     l = max(cache[s[r]], l);
+//                 }
+//                 maxl = max(maxl, r - l + 1);
+//                 cache[s[r]] = r + 1;
+//                 r++;
+//             }
+            
+//             return maxl;
+            
+            unordered_map<char,int> m;
+            int res = 0;
+            int l=0,r=0;
+            while (r < s.size()) {
+                auto c = s[r];
+                if (m.find(c) != m.end()) l = max(l, m[c] + 1);
+                m[c] = r;
+                res = std::max(res, r-l+1);
                 r++;
             }
-            
-            return maxl;
+
+            return res;
         }
     }
 };
