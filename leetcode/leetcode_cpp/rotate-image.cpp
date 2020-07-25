@@ -54,18 +54,18 @@ using namespace std;
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
-        if (true) {
-            // solution1 reverse and swap symmetry
+        int mode = 2;
+        if (mode == 0)
+        {
             reverse(matrix.begin(), matrix.end());
             int n = matrix.size();
             for (int i=0; i<n; ++i) {
-                for (int j=i+1; j<n; ++j) {
+                for (int j=i; j<n; ++j) {
                     swap(matrix[i][j], matrix[j][i]);
                 }
             }
         }
-        else {
-            // solution2 rotate 4 rectangles
+        else if (mode == 1) {
             auto n = matrix.size();
             for (int i=0; i<n/2+n%2; ++i) {
                 for (int j=0; j<n/2; ++j) {
@@ -88,6 +88,18 @@ public:
                         row = col;
                         col = n - 1 -t;
                     }
+                }
+            }
+        }
+        else if (mode == 2) {
+            int n = matrix.size();
+            for (int i=0; i<n/2+(n%2); ++i) {
+                for (int j=0; j<n/2; ++j) {
+                    auto temp = matrix[i][j];
+                    matrix[i][j] = matrix[n-1-j][i];
+                    matrix[n-1-j][i] = matrix[n-1-i][n-1-j];
+                    matrix[n-1-i][n-1-j] = matrix[j][n-1-i];
+                    matrix[j][n-1-i] = temp;
                 }
             }
         }
