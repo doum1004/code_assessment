@@ -41,28 +41,31 @@ class Solution {
 public:
     int trap(vector<int>& height) {
         if (height.size() < 3) return 0;
-        int l = 0, r = height.size() - 1;
-        int lhMax = height[l], rhMax = height[r];
         
-        int ans = 0;
-        while (l<r) {
-            auto h = 0;
+        int res = 0;
+        int l = 0, r = height.size()-1;
+        int max_l = 0, max_r = 0;
+        while (l < r) {
+            auto curL = height[l];
+            auto curR = height[r];
+            max_l = max(curL, max_l); 
+            max_r = max(curR, max_r);      
             
-            if (height[l] < height[r]) {
-                lhMax = max(height[++l], lhMax);
-                h = height[l];
+            auto h = 0;
+            if (curL < curR) {
+                h = curL;            
+                l++;
             }
             else {
-                rhMax = max(height[--r], rhMax);
-                h = height[r];
+                h = curR;   
+                r--;
             }
-            auto h2 = min(lhMax, rhMax);
-            if (h2 > h) {
-                ans += h2 - h;
-            }
+            
+            auto ref = min(max_l, max_r);
+            if (ref > h) res += ref - h;
         }
         
-        return ans;
+        return res;
     }
 };
 
