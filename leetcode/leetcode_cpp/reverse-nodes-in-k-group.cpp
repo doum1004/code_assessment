@@ -66,32 +66,34 @@ while (num >= k)
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        // get num
+        // get nb nodes o(n)
         int num = 0;
         auto cur = head;
-        while (cur != nullptr) {
+        while (cur) {
             num++;
             cur = cur->next;
         }
         
-        // h, hn, c, cn, cnn
-        auto ansDummy = new ListNode(-1);
+        // iternate and reverse o(n)
+        auto ansDummy = new ListNode();
         ansDummy->next = head;
         
-        auto prehead = ansDummy;
+        auto pre = ansDummy;
         while (num >= k) {
-            for (int i=1; i<k; ++i) {
-                auto hn = prehead->next;
-                auto n = head->next;
-                auto nn = n->next;
-                prehead->next = n;
-                n->next = hn;
-                head->next = nn;
+            for (int i=0; i<k-1; ++i) {
+                auto pre_next = pre->next;
+                auto head_next = head->next;
+                auto head_next_next = head_next->next;
+                pre->next = head_next;
+                head_next->next = pre_next;
+                head->next = head_next_next;
             }
-            prehead = head;
-            head = prehead->next;
+            pre = head;
+            head = head->next;
+            
             num -= k;
         }
+        
         return ansDummy->next;
     }
 };
