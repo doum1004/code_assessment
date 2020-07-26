@@ -42,4 +42,11 @@
   - again !!
 
 2020-07-26
-- 
+- https://leetcode.com/problems/group-anagrams/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/group-anagrams.cpp
+- https://leetcode.com/problems/validate-binary-search-tree/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/validate-binary-search-tree.cpp
+  - again !!
+- https://leetcode.com/problems/symmetric-tree/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/symmetric-tree.cpp
+  - updated ans
