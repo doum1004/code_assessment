@@ -87,36 +87,36 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
+        // o(2n) / o(n) answer
         if (head == nullptr) return nullptr;
+        auto dummy = new Node(0);
+        auto newCur = dummy;
+        auto cur = head;
         
-        auto prehead = new Node(-1);
-        prehead->next = head;
-
-        auto new_prehead = new Node(-1);
-        auto newhead = new_prehead;
-
-        auto map = unordered_map<Node*, Node*>();
-        while (head != nullptr) {
-            // add copied list with data
-            newhead->next = new Node(head->val);
-            newhead = newhead->next;
-            map[head] = newhead; // store in map with exist and new
+        unordered_map<Node*, Node*> m;     
+        // add next. put old and new in map
+        while (cur) {
+            newCur->next = new Node(cur->val);
+            m[cur] = newCur->next;
             
-            head = head->next; // move to next
+            cur = cur->next;
+            newCur = newCur->next;
         }
         
-        head = prehead->next;
-        newhead = new_prehead->next;
-        
-        while (head != nullptr) {
-            auto random = head->random;
-            if (random != nullptr && map.find(head->random) != map.end())
-                newhead->random = map[head->random];
-            head = head->next;
-            newhead = newhead->next;
+        cur = head;
+        newCur = dummy->next;
+        // add random. find it from map
+        while (cur) {
+            auto r = cur->random;
+            if (r != nullptr && m.find(r) != m.end()) {
+                newCur->random = m[r];
+            }
+            
+            cur = cur->next;
+            newCur = newCur->next;
         }
         
-        return new_prehead->next;
+        return dummy->next;
     }
 };
 
