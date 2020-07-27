@@ -53,7 +53,7 @@
 - https://leetcode.com/problems/symmetric-tree/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/symmetric-tree.cpp
   - updated ans
-- https://leetcode.com/problems/copy-list-with-random-pointer/submissions/
+- https://leetcode.com/problems/copy-list-with-random-pointer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/copy-list-with-random-pointer.cpp
 - review failer
   - https://leetcode.com/problems/3sum/
@@ -62,3 +62,11 @@
   - https://leetcode.com/problems/rotate-image/
 
 2020-07-27
+- https://leetcode.com/problems/product-of-array-except-self/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/product-of-array-except-self.cpp
+  - again !!
+  - added new answer
+- https://leetcode.com/problems/most-common-word/
+- https://leetcode.com/problems/reorder-data-in-log-files/
+
+202-07-28
