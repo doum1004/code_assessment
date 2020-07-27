@@ -2,7 +2,8 @@
 
 [History of solving](./History.md)
 
-Reference: https://leetcode.com/
+Reference
+- https://leetcode.com/
 
 
 Etc
