@@ -15,7 +15,7 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/container-with-most-water.cpp
 - https://leetcode.com/problems/integer-to-roman/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/integer-to-roman.cpp
-- review failer
+- Revisit
   - https://leetcode.com/problems/two-sum/
 
 
@@ -55,7 +55,7 @@
   - updated ans
 - https://leetcode.com/problems/copy-list-with-random-pointer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/copy-list-with-random-pointer.cpp
-- review failer
+- Revisit
   - https://leetcode.com/problems/3sum/
   - https://leetcode.com/problems/reverse-nodes-in-k-group/
   - https://leetcode.com/problems/trapping-rain-water/
@@ -67,6 +67,11 @@
   - again !!
   - added new answer
 - https://leetcode.com/problems/most-common-word/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/most-common-word.cpp
+  - again !!  
 - https://leetcode.com/problems/reorder-data-in-log-files/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reorder-data-in-log-files.cpp
+- Revisit
+- https://leetcode.com/problems/validate-binary-search-tree/
 
 202-07-28
