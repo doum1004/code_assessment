@@ -72,6 +72,6 @@
 - https://leetcode.com/problems/reorder-data-in-log-files/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reorder-data-in-log-files.cpp
 - Revisit
-- https://leetcode.com/problems/validate-binary-search-tree/
+  - https://leetcode.com/problems/validate-binary-search-tree/
 
 202-07-28
