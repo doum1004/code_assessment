@@ -78,8 +78,21 @@
 
 2020-07-28
 - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/median-of-two-sorted-arrays.cpp
+  - https://www.youtube.com/watch?v=LPFhl65R7ww
+  - again !!
+  - make this as youtube or blog !!
 - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/letter-combinations-of-a-phone-number.cpp
+  - again !!
+  - updaged answer
 - https://leetcode.com/problems/generate-parentheses/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/generate-parentheses.cpp
+  - again !!
+  - updated answer
+- Revisit
+  - https://leetcode.com/problems/product-of-array-except-self/
+  - https://leetcode.com/problems/most-common-word/
 
 2020-07-29
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
