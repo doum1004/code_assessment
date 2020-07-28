@@ -11,44 +11,58 @@ using namespace std;
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        if (nums1.size() > nums2.size())
-        {
-            return findMedianSortedArrays(nums2, nums1);
-        }
-        auto n1 = nums1.size();
-        auto n2 = nums2.size();
-
-        int low = 0, high = n1;
-        while (low <= high) {
-            auto p1 = (low + high) / 2;
-            auto p2 = (nums1.size() + nums2.size() + 1) / 2 - p1;
-
-            auto maxLeft_p1 = (p1 == 0) ? INT_MIN : nums1[p1 - 1];
-            auto minRight_p1 = (p1 == nums1.size()) ? INT_MAX : nums1[p1];
-
-            auto maxLeft_p2 = (p2 == 0) ? INT_MIN : nums2[p2 - 1];
-            auto minRight_p2 = (p2 == nums2.size()) ? INT_MAX : nums2[p2];
-
-            if (maxLeft_p1 <= minRight_p2 && maxLeft_p2 <= minRight_p1) {
-                if ((n1 + n2) % 2 == 0) {
-                    return ((double)max(maxLeft_p1, maxLeft_p2) + (double)min(minRight_p1, minRight_p2)) / 2;
+        if (true) {
+            // log(m+n) / o(1) use binsearch to find median in two sorted arrays
+            int n1 = nums1.size();
+            int n2 = nums2.size();
+            if (n1 > n2) return findMedianSortedArrays(nums2, nums1);
+            
+            int l = 0, r = n1;
+            while (l<=r) {
+                auto px = (l+r) / 2;
+                auto py = (n1+n2+1) / 2 - px;
+                
+                auto x1 = (px == 0) ? INT_MIN : nums1[px-1];
+                auto x2 = (px == n1) ? INT_MAX : nums1[px];
+                
+                auto y1 = (py == 0) ? INT_MIN : nums2[py-1];
+                auto y2 = (py == n2) ? INT_MAX : nums2[py];
+                
+                if (x1 <= y2 && y1 <= x2) {
+                    if ((n1 + n2) % 2 == 1) return max(x1,y1);
+                    else return (max(x1,y1) + min(x2,y2)) / 2.0;
                 }
-                else
-                {
-                    return max(maxLeft_p1, maxLeft_p2);
+                else if (x1 < y2) {
+                    l = px + 1;
+                }
+                else {
+                    r = px - 1;
                 }
             }
-            else if (maxLeft_p1 < maxLeft_p2) {
-                // move right
-                low = p1 + 1;
-            }
-            else {
-                // move left
-                high = p1 - 1;
-            }
+            return -1;
         }
-
-        return -1;
+        else {
+            // merge and sort in new place and return median
+            // o(n+m) / o(n+m)
+            int n1 = nums1.size(), n2 = nums2.size();
+            
+            vector<int> ans;
+            int l=0, r=0;
+            while (l<n1 && r<n2) {
+                if (nums1[l] < nums2[r]) {
+                    ans.push_back(nums1[l++]);
+                }
+                else {
+                    ans.push_back(nums2[r++]);
+                }
+            }
+            while (l < n1) ans.push_back(nums1[l++]);
+            while (r < n2) ans.push_back(nums2[r++]);
+            
+            auto m = ans.size() / 2;
+            if (ans.size() % 2 == 1) return ans[m];
+            else return (ans[m-1] + ans[m]) / 2.0;
+        }
     }
 };
 
