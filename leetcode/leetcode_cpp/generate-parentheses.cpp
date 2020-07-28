@@ -50,21 +50,19 @@ return ans;
 
 class Solution {
 public:
-    vector<string> ans;
-    void generateParenthesis(int n, string result, int n_o, int n_c) {
-        if (n_o == n && n_c == n) {
-            ans.push_back(result);
+    void backtracking(int n, int n_o, int n_c, string combi, vector<string>& ans) {
+        if (n == n_o && n == n_c) {
+            ans.push_back(combi);
         }
         else {
-            if (n_o < n)
-                generateParenthesis(n, result + "(", n_o + 1, n_c);
-            if (n_c < n_o)
-                generateParenthesis(n, result + ")", n_o, n_c + 1);
+            if (n_o > n_c) backtracking(n, n_o, n_c + 1, combi+")", ans);
+            if (n_o < n) backtracking(n, n_o + 1, n_c, combi+"(", ans);
         }
     }
     
     vector<string> generateParenthesis(int n) {
-        generateParenthesis(n, "", 0, 0);
+        vector<string> ans;
+        backtracking(n, 0, 0, "", ans);
         return ans;
     }
 };
