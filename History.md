@@ -74,8 +74,6 @@
 - Revisit
   - https://leetcode.com/problems/validate-binary-search-tree/
 
-// Todo
-
 2020-07-28
 - https://leetcode.com/problems/median-of-two-sorted-arrays/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/median-of-two-sorted-arrays.cpp
@@ -98,3 +96,8 @@
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
 - https://leetcode.com/problems/maximum-subarray/
 - https://leetcode.com/problems/merge-intervals/
+
+2020-07-30
+- https://leetcode.com/problems/binary-tree-level-order-traversal/
+- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
