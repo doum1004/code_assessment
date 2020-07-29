@@ -94,8 +94,17 @@
 
 2020-07-29
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/search-in-rotated-sorted-array.cpp
+  - again !!
 - https://leetcode.com/problems/maximum-subarray/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/maximum-subarray.cpp
+  - again !!
 - https://leetcode.com/problems/merge-intervals/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-intervals.cpp
+- Revisit
+  - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
 
 2020-07-30
 - https://leetcode.com/problems/binary-tree-level-order-traversal/
