@@ -47,59 +47,58 @@ levelOrder(root, 0)
 
 class Solution {
 public:
-    vector<vector<int>> zigzagLevelOrder_iteration(TreeNode* root) {
-        if (root == nullptr) return vector<vector<int>>();
-            
+    void zigzagLevelOrder_dfs(TreeNode* node, int level, vector<vector<int>>& ans) {
+        if (node == nullptr) return;
+                
+        if (ans.size() < level + 1) ans.push_back({});             
+        if (level % 2 == 0) ans[level].push_back(node->val);
+        else ans[level].insert(ans[level].begin(), node->val);
+        
+        zigzagLevelOrder_dfs(node->left, level+1, ans);
+        zigzagLevelOrder_dfs(node->right, level+1, ans);
+    }
+
+    vector<vector<int>> zigzagLevelOrder_dfs(TreeNode* root) {
+        vector<vector<int>> res;
+        zigzagLevelOrder_dfs(root, 0, res);
+        return res;
+    }
+    
+    vector<vector<int>> zigzagLevelOrder_bfs(TreeNode* root) {
+        if (!root) return {};
+        
         queue<TreeNode*> q;
         q.push(root);
         
-        int level = -1;
-        vector<vector<int>> ans;
+        vector<vector<int>> res;
+        
+        int level=-1;
         while (!q.empty()) {
-            level++;
             auto n = q.size();
+            level++;
             
-            vector<int> vals(n, 0);
+            vector<int> level_values(n);
             for (int i=0; i<n; ++i) {
                 auto node = q.front();
                 q.pop();
                 
-                auto p = i;
+                int p = i;
                 if (level % 2 == 1) p = n - 1 - i;
-                vals[p] = node->val;
+                level_values[p] = node->val;
                 
-                if (node->left != nullptr) q.push(node->left);
-                if (node->right != nullptr) q.push(node->right);
-            }
-            
-            ans.push_back(vals);
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+            }   
+            res.push_back(level_values);
         }
         
-        return ans;
+        return res;
     }
     
-    vector<vector<int>> ans;
-    void zigzagLevelOrder_recursion(TreeNode* root, int level) {
-        if (root == nullptr) return;
-        
-        if (ans.size() < level + 1) ans.push_back(vector<int>());
-        if (level % 2 == 0)
-            ans[level].push_back(root->val);
-        else
-            ans[level].insert(ans[level].begin(), root->val);
-        
-        zigzagLevelOrder_recursion(root->left, level + 1);
-        zigzagLevelOrder_recursion(root->right, level + 1);
-    }
-    
-    vector<vector<int>> zigzagLevelOrder_recursion(TreeNode* root) {
-        zigzagLevelOrder_recursion(root, 0);
-        return ans;
-    }
     
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        //return zigzagLevelOrder_iteration(root);
-        return zigzagLevelOrder_recursion(root);
+        //return zigzagLevelOrder_dfs(root);
+        return zigzagLevelOrder_bfs(root);
     }
 };
 
