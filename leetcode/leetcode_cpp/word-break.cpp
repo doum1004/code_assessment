@@ -21,36 +21,59 @@ using namespace std;
 
 class Solution {
 public:
-    bool wordBreak(string s, vector<string>& wordDict) {
-        if (s.size() < 1 || wordDict.size() < 1) return false;
+    bool dfs(unordered_set<string>& wordBooks, string s) {
+        if (s.empty()) return true;
         
-        auto wordMap = unordered_set<string>();
-        for (auto &s : wordDict) {
-            wordMap.insert(s);
+        for (auto word:wordBooks) { // D
+            auto scopy = s;
+            bool found = false;
+            while (scopy.find(word) == 0) { // W + W * N
+                found = true;
+                scopy.erase(0, word.size());
+            }
+            if (found && dfs(wordBooks, scopy)) return true;
         }
+        
+        return false;
+    }
+    
+    bool dfs(string s, vector<string>& wordDict) {
+        unordered_set<string> wordBooks(wordDict.begin(), wordDict.end());
+        return dfs(wordBooks, s);
+    }
+    
+    bool bfs(string s, vector<string>& wordDict) {
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
         
         queue<int> q;
         q.push(0);
         
-        auto visited = unordered_set<int>();
+        unordered_set<int> v;
         while (!q.empty()) {
             auto l = q.front();
             q.pop();
             
-            if (visited.find(l) == visited.end()) {
-                for (int r = l + 1; r<=s.size(); ++r) {
-                    if (wordMap.find(s.substr(l, r - l)) != wordMap.end()) {
-                        if (r == s.size()) {
-                            return true;
-                        }
-                        q.push(r);
-                    }
+            if (v.find(l) != v.end()) continue;
+            v.insert(l);
+            
+            for (int r=l; r<s.size(); ++r) {
+                auto str = s.substr(l, r-l+1);
+                if (wordSet.find(str) != wordSet.end()) {
+                    if (r == s.size() - 1) return true;
+                    q.push(r+1);
                 }
-                visited.insert(l);
             }
         }
         
         return false;
+    }
+    
+    bool wordBreak(string s, vector<string>& wordDict) {
+        if (s.empty()) return true;
+        if (wordDict.size() < 1) return false;
+        
+        //return dfs(s, wordDict);
+        return bfs(s, wordDict);
     }
 };
 
