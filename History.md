@@ -130,3 +130,29 @@
 - Revisit
   - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
   
+2020-08-01
+- https://leetcode.com/problems/lru-cache/
+- https://leetcode.com/problems/min-stack/
+- https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+2020-08-02
+- https://leetcode.com/problems/number-of-islands/
+- https://leetcode.com/problems/kth-largest-element-in-an-array/
+- https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+
+- Revisit
+  - https://leetcode.com/problems/word-break/
+  - https://leetcode.com/problems/two-sum/
+  - https://leetcode.com/problems/3sum/
+  - https://leetcode.com/problems/reverse-nodes-in-k-group/
+  - https://leetcode.com/problems/trapping-rain-water/
+  - https://leetcode.com/problems/rotate-image/
+  - https://leetcode.com/problems/validate-binary-search-tree/
+  - https://leetcode.com/problems/product-of-array-except-self/
+  - https://leetcode.com/problems/most-common-word/
+  - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
+  - https://leetcode.com/problems/search-in-rotated-sorted-array/
+  - https://leetcode.com/problems/maximum-subarray/
+  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
