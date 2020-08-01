@@ -8,72 +8,50 @@ using namespace std;
 /**
 https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
-input: 2 7 11 15. target=9
-output: vector [1, 2]
+solution1. store set and find expect in one iteration
+o(n) / o(n)
 
-1. if not sorted
-svae answer for each elements
-
-2. if it is sorted
-sling window
-time: o(n)
-space: o(1)
-
-2 7 11 15
-l       r
-2+15 > 9 -> r--;
-
-2 7 11 15
-l    r
-2+11 > 9 -> r--;
-
-2 7 11 15
-l r
-2+7 > 9 -> r--;
+solution2. sliding window
+o(n) / o(1)
 
 */
 
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& numbers, int target) {
-        if (numbers.size() < 1) return vector<int>();
-        if (numbers.size() == 1) return (numbers[0] == target) ? vector<int> {1} : vector<int>();
-        
-        int l = 0, r = numbers.size() - 1;
-        while (l < r) {
-            auto sum = numbers[l] + numbers[r];
-            if (sum == target) {
-                return vector<int> {l + 1, r + 1};
+    vector<int> twoSum_sol1(vector<int>& numbers, int target) {
+        unordered_map<int,int> s;
+        for (int i=0; i<numbers.size(); ++i) {
+            int expect = target - numbers[i];
+            if (s.find(expect) != s.end()) {
+                return {s[expect], i+1};
             }
-            else if (sum > target) {
-                --r;
-            }
-            else {
-                ++l;
-            }
+            s[numbers[i]] = i+1;
         }
         
-        return vector<int>();
+        return {};
     }
     
-    vector<int> twoSum2(vector<int>& numbers, int target) {
-        // diff map to store answer
-        auto diff = unordered_map<int, int>();
-        for (int i=0; i<numbers.size(); ++i) {
-            diff[target - numbers[i]] = i;
-        }
-        
-        vector<int> ans;
-        for (int i=0; i<numbers.size(); ++i) {
-            if (diff.find(numbers[i]) != diff.end()) {
-                auto j = diff[numbers[i]];
-                ans.push_back((i < j) ? i + 1 : j + 1);
-                ans.push_back((i < j) ? j + 1 : i + 1);
-                return ans;
+    vector<int> twoSum_sol2(vector<int>& numbers, int target) {
+        int l=0, r = numbers.size()-1;
+        while (l<r) {
+            auto sum = numbers[l] + numbers[r];
+            if (sum == target) {
+                return {l+1, r+1};
+            }
+            else if (sum < target) {
+                l++;
+            }
+            else {
+                r--;
             }
         }
-        return ans;
+        return {};
+    }
+    
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        //return twoSum_sol1(numbers, target);
+        return twoSum_sol2(numbers, target);
     }
 };
 
