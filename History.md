@@ -15,8 +15,8 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/container-with-most-water.cpp
 - https://leetcode.com/problems/integer-to-roman/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/integer-to-roman.cpp
-- Revisit
-  - https://leetcode.com/problems/two-sum/
+Revisit
+- https://leetcode.com/problems/two-sum/
 
 
 2020-07-24 (1)
@@ -55,10 +55,10 @@
   - updated ans
 - https://leetcode.com/problems/copy-list-with-random-pointer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/copy-list-with-random-pointer.cpp
-- Revisit
-  - https://leetcode.com/problems/3sum/
-  - https://leetcode.com/problems/reverse-nodes-in-k-group/
-  - https://leetcode.com/problems/trapping-rain-water/
+Revisit
+- https://leetcode.com/problems/3sum/
+- https://leetcode.com/problems/reverse-nodes-in-k-group/
+- https://leetcode.com/problems/trapping-rain-water/
   - https://leetcode.com/problems/rotate-image/
 
 2020-07-27 (3,1)
@@ -71,8 +71,8 @@
   - again !!  
 - https://leetcode.com/problems/reorder-data-in-log-files/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reorder-data-in-log-files.cpp
-- Revisit
-  - https://leetcode.com/problems/validate-binary-search-tree/
+Revisit
+- https://leetcode.com/problems/validate-binary-search-tree/
 
 2020-07-28
 - https://leetcode.com/problems/median-of-two-sorted-arrays/
@@ -88,9 +88,9 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/generate-parentheses.cpp
   - again !!
   - updated answer
-- Revisit
-  - https://leetcode.com/problems/product-of-array-except-self/
-  - https://leetcode.com/problems/most-common-word/
+Revisit
+- https://leetcode.com/problems/product-of-array-except-self/
+- https://leetcode.com/problems/most-common-word/
 
 2020-07-29
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
@@ -101,10 +101,10 @@
   - again !!
 - https://leetcode.com/problems/merge-intervals/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-intervals.cpp
-- Revisit
-  - https://leetcode.com/problems/median-of-two-sorted-arrays/
-  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-  - https://leetcode.com/problems/generate-parentheses/
+Revisit
+- https://leetcode.com/problems/median-of-two-sorted-arrays/
+- https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+- https://leetcode.com/problems/generate-parentheses/
 
 2020-07-30
 - https://leetcode.com/problems/binary-tree-level-order-traversal/
@@ -114,9 +114,9 @@
   - again !!
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/best-time-to-buy-and-sell-stock.cpp
-- Revisit
-  - https://leetcode.com/problems/search-in-rotated-sorted-array/
-  - https://leetcode.com/problems/maximum-subarray/
+Revisit
+- https://leetcode.com/problems/search-in-rotated-sorted-array/
+- https://leetcode.com/problems/maximum-subarray/
 
 2020-07-31
 - https://leetcode.com/problems/binary-tree-maximum-path-sum/
@@ -127,32 +127,37 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/word-break.cpp
   - again !!
   - updated answer
-- Revisit
-  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+Revisit
+- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
   
 2020-08-01
 - https://leetcode.com/problems/lru-cache/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/lru-cache.cpp
+  - again !!
 - https://leetcode.com/problems/min-stack/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/min-stack.cpp
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
-
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/two-sum-ii-input-array-is-sorted.cpp
+revist
+  - https://leetcode.com/problems/word-break/
+  - https://leetcode.com/problems/two-sum/
+  - https://leetcode.com/problems/3sum/
+  - https://leetcode.com/problems/reverse-nodes-in-k-group/
+  
 2020-08-02
 - https://leetcode.com/problems/number-of-islands/
 - https://leetcode.com/problems/kth-largest-element-in-an-array/
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
-- Revisit
-  - https://leetcode.com/problems/word-break/
-  - https://leetcode.com/problems/two-sum/
-  - https://leetcode.com/problems/3sum/
-  - https://leetcode.com/problems/reverse-nodes-in-k-group/
-  - https://leetcode.com/problems/trapping-rain-water/
-  - https://leetcode.com/problems/rotate-image/
-  - https://leetcode.com/problems/validate-binary-search-tree/
-  - https://leetcode.com/problems/product-of-array-except-self/
-  - https://leetcode.com/problems/most-common-word/
-  - https://leetcode.com/problems/median-of-two-sorted-arrays/
-  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-  - https://leetcode.com/problems/generate-parentheses/
-  - https://leetcode.com/problems/search-in-rotated-sorted-array/
-  - https://leetcode.com/problems/maximum-subarray/
-  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+Revisit
+- https://leetcode.com/problems/trapping-rain-water/
+- https://leetcode.com/problems/rotate-image/
+- https://leetcode.com/problems/validate-binary-search-tree/
+- https://leetcode.com/problems/product-of-array-except-self/
+- https://leetcode.com/problems/most-common-word/
+- https://leetcode.com/problems/median-of-two-sorted-arrays/
+- https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+- https://leetcode.com/problems/generate-parentheses/
+- https://leetcode.com/problems/search-in-rotated-sorted-array/
+- https://leetcode.com/problems/maximum-subarray/
+- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
