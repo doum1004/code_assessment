@@ -15,8 +15,8 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/container-with-most-water.cpp
 - https://leetcode.com/problems/integer-to-roman/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/integer-to-roman.cpp
-Revisit
-- https://leetcode.com/problems/two-sum/
+- Revisit
+  - https://leetcode.com/problems/two-sum/
 
 
 2020-07-24 (1)
@@ -55,7 +55,7 @@ Revisit
   - updated ans
 - https://leetcode.com/problems/copy-list-with-random-pointer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/copy-list-with-random-pointer.cpp
-Revisit
+- Revisit
 - https://leetcode.com/problems/3sum/
 - https://leetcode.com/problems/reverse-nodes-in-k-group/
 - https://leetcode.com/problems/trapping-rain-water/
@@ -71,7 +71,7 @@ Revisit
   - again !!  
 - https://leetcode.com/problems/reorder-data-in-log-files/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reorder-data-in-log-files.cpp
-Revisit
+- Revisit
 - https://leetcode.com/problems/validate-binary-search-tree/
 
 2020-07-28
@@ -88,7 +88,7 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/generate-parentheses.cpp
   - again !!
   - updated answer
-Revisit
+- Revisit
 - https://leetcode.com/problems/product-of-array-except-self/
 - https://leetcode.com/problems/most-common-word/
 
@@ -101,7 +101,7 @@ Revisit
   - again !!
 - https://leetcode.com/problems/merge-intervals/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-intervals.cpp
-Revisit
+- Revisit
 - https://leetcode.com/problems/median-of-two-sorted-arrays/
 - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 - https://leetcode.com/problems/generate-parentheses/
@@ -114,7 +114,7 @@ Revisit
   - again !!
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/best-time-to-buy-and-sell-stock.cpp
-Revisit
+- Revisit
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
 - https://leetcode.com/problems/maximum-subarray/
 
@@ -138,7 +138,7 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/min-stack.cpp
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/two-sum-ii-input-array-is-sorted.cpp
-Revisit
+- Revisit
   - https://leetcode.com/problems/word-break/
   - https://leetcode.com/problems/two-sum/
   - https://leetcode.com/problems/3sum/
@@ -149,7 +149,7 @@ Revisit
 - https://leetcode.com/problems/kth-largest-element-in-an-array/
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
-Revisit
+- Revisit
 - https://leetcode.com/problems/trapping-rain-water/
 - https://leetcode.com/problems/rotate-image/
 - https://leetcode.com/problems/validate-binary-search-tree/
