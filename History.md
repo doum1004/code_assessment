@@ -72,7 +72,7 @@
 - https://leetcode.com/problems/reorder-data-in-log-files/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reorder-data-in-log-files.cpp
 - Revisit
-- https://leetcode.com/problems/validate-binary-search-tree/
+  - https://leetcode.com/problems/validate-binary-search-tree/
 
 2020-07-28
 - https://leetcode.com/problems/median-of-two-sorted-arrays/
@@ -89,8 +89,8 @@
   - again !!
   - updated answer
 - Revisit
-- https://leetcode.com/problems/product-of-array-except-self/
-- https://leetcode.com/problems/most-common-word/
+  - https://leetcode.com/problems/product-of-array-except-self/
+  - https://leetcode.com/problems/most-common-word/
 
 2020-07-29
 - https://leetcode.com/problems/search-in-rotated-sorted-array/
@@ -102,9 +102,9 @@
 - https://leetcode.com/problems/merge-intervals/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-intervals.cpp
 - Revisit
-- https://leetcode.com/problems/median-of-two-sorted-arrays/
-- https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-- https://leetcode.com/problems/generate-parentheses/
+  - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
 
 2020-07-30
 - https://leetcode.com/problems/binary-tree-level-order-traversal/
@@ -115,8 +115,8 @@
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/best-time-to-buy-and-sell-stock.cpp
 - Revisit
-- https://leetcode.com/problems/search-in-rotated-sorted-array/
-- https://leetcode.com/problems/maximum-subarray/
+  - https://leetcode.com/problems/search-in-rotated-sorted-array/
+  - https://leetcode.com/problems/maximum-subarray/
 
 2020-07-31
 - https://leetcode.com/problems/binary-tree-maximum-path-sum/
@@ -143,6 +143,7 @@ Revisit
   - https://leetcode.com/problems/two-sum/
   - https://leetcode.com/problems/3sum/
   - https://leetcode.com/problems/reverse-nodes-in-k-group/
+  - https://leetcode.com/problems/trapping-rain-water/
   
 2020-08-02
 - https://leetcode.com/problems/number-of-islands/
@@ -150,14 +151,13 @@ Revisit
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 
 - Revisit
-- https://leetcode.com/problems/trapping-rain-water/
-- https://leetcode.com/problems/rotate-image/
-- https://leetcode.com/problems/validate-binary-search-tree/
-- https://leetcode.com/problems/product-of-array-except-self/
-- https://leetcode.com/problems/most-common-word/
-- https://leetcode.com/problems/median-of-two-sorted-arrays/
-- https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-- https://leetcode.com/problems/generate-parentheses/
-- https://leetcode.com/problems/search-in-rotated-sorted-array/
-- https://leetcode.com/problems/maximum-subarray/
-- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+  - https://leetcode.com/problems/rotate-image/
+  - https://leetcode.com/problems/validate-binary-search-tree/
+  - https://leetcode.com/problems/product-of-array-except-self/
+  - https://leetcode.com/problems/most-common-word/
+  - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
+  - https://leetcode.com/problems/search-in-rotated-sorted-array/
+  - https://leetcode.com/problems/maximum-subarray/
+  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
