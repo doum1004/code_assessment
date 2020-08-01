@@ -138,7 +138,7 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/min-stack.cpp
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/two-sum-ii-input-array-is-sorted.cpp
-revist
+Revisit
   - https://leetcode.com/problems/word-break/
   - https://leetcode.com/problems/two-sum/
   - https://leetcode.com/problems/3sum/
