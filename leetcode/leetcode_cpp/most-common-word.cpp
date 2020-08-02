@@ -10,8 +10,8 @@
 using namespace std;
 
 // Counting
-// time: o(n): b(banned) + p(paragraph) + p(istringstream)
-// space: o(n): b(banned) + c(count)
+// time: o(B+P): b(banned) + p(paragraph)
+// space: o(B+P): b(banned) + c(word of paragraph)
 
 // map for banned vector (better for get)
 // iterate string
