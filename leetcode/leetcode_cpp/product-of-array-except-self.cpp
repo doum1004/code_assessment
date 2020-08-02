@@ -38,15 +38,18 @@ public:
         }
         else {
             int n = nums.size();
-            vector<int> res(n, 1);
+            vector<int> res(n);
+            res[0] = 1;
             for (int i=1; i<n; ++i) {
-                res[i] = nums[i-1] * res[i-1];
-            } 
-            int r = 1;
-            for (int i=n-1; i>=0; --i) {
-                res[i] *= r;
-                r *= nums[i];
+                res[i] = res[i-1] * nums[i-1];
             }
+
+            int R = 1;
+            for (int j=n-1; j>0; --j) {
+                R *= nums[j];
+                res[j-1] *= R;
+            }
+
             return res;
         }
     }
