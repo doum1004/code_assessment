@@ -163,6 +163,7 @@ Revisit
   - https://leetcode.com/problems/most-common-word/
   - https://leetcode.com/problems/median-of-two-sorted-arrays/
   - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
   
 2020-08-03
 - https://leetcode.com/problems/find-median-from-data-stream/
@@ -184,7 +185,6 @@ Revisit
   - https://leetcode.com/problems/number-of-islands/
   - https://leetcode.com/problems/kth-largest-element-in-an-array/
   - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-  - https://leetcode.com/problems/generate-parentheses/
   - https://leetcode.com/problems/search-in-rotated-sorted-array/
   - https://leetcode.com/problems/maximum-subarray/
   - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
