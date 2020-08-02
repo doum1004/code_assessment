@@ -1,4 +1,4 @@
-2020-07-22 (3)
+2020-07-22
 - https://leetcode.com/problems/two-sum/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/two-sum.cpp
   - again
@@ -8,7 +8,7 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/longest-substring-without-repeating-characters.cpp
   - updated the code commit
   
-2020-07-23 (3,1)
+2020-07-23
 - https://leetcode.com/problems/string-to-integer-atoi/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/string-to-integer-atoi.cpp
 - https://leetcode.com/problems/container-with-most-water/
@@ -19,12 +19,12 @@
   - https://leetcode.com/problems/two-sum/
 
 
-2020-07-24 (1)
+2020-07-24
 - https://leetcode.com/problems/roman-to-integer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/roman-to-integer.cpp
   
   
-2020-07-25 (6)
+2020-07-25
 - https://leetcode.com/problems/3sum/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/3sum.cpp
   - again !
@@ -44,7 +44,7 @@
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/rotate-image.cpp
   - again !
 
-2020-07-26 (4,4)
+2020-07-26
 - https://leetcode.com/problems/group-anagrams/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/group-anagrams.cpp
 - https://leetcode.com/problems/validate-binary-search-tree/
@@ -61,7 +61,7 @@
 - https://leetcode.com/problems/trapping-rain-water/
   - https://leetcode.com/problems/rotate-image/
 
-2020-07-27 (3,1)
+2020-07-27
 - https://leetcode.com/problems/product-of-array-except-self/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/product-of-array-except-self.cpp
   - again !!
