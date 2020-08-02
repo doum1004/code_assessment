@@ -162,22 +162,12 @@ Revisit
   - https://leetcode.com/problems/product-of-array-except-self/
   
   
-- Revisit
-  - https://leetcode.com/problems/most-common-word/
-  - https://leetcode.com/problems/median-of-two-sorted-arrays/
-  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-  - https://leetcode.com/problems/generate-parentheses/
-  - https://leetcode.com/problems/search-in-rotated-sorted-array/
-  - https://leetcode.com/problems/maximum-subarray/
-  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
-
 2020-08-03
 - https://leetcode.com/problems/find-median-from-data-stream/
 - https://leetcode.com/problems/k-closest-points-to-origin/
 - https://leetcode.com/problems/binary-tree-inorder-traversal/
 
-
-
+More
 - https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
 - https://leetcode.com/problems/single-number/
 - https://leetcode.com/problems/linked-list-cycle/
@@ -188,3 +178,14 @@ Revisit
 - https://leetcode.com/problems/reverse-linked-list/
 - https://leetcode.com/problems/invert-binary-tree/
 
+Revisit
+  - https://leetcode.com/problems/number-of-islands/
+  - https://leetcode.com/problems/kth-largest-element-in-an-array/
+  - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+  - https://leetcode.com/problems/most-common-word/
+  - https://leetcode.com/problems/median-of-two-sorted-arrays/
+  - https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  - https://leetcode.com/problems/generate-parentheses/
+  - https://leetcode.com/problems/search-in-rotated-sorted-array/
+  - https://leetcode.com/problems/maximum-subarray/
+  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
