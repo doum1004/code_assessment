@@ -167,20 +167,10 @@ Revisit
   
 2020-08-03
 - https://leetcode.com/problems/find-median-from-data-stream/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/find-median-from-data-stream.cpp
+  - again !!
 - https://leetcode.com/problems/k-closest-points-to-origin/
 - https://leetcode.com/problems/binary-tree-inorder-traversal/
-
-More
-- https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
-- https://leetcode.com/problems/single-number/
-- https://leetcode.com/problems/linked-list-cycle/
-- https://leetcode.com/problems/intersection-of-two-linked-lists/
-- https://leetcode.com/problems/majority-element/
-- https://leetcode.com/problems/number-of-1-bits/
-- https://leetcode.com/problems/house-robber/
-- https://leetcode.com/problems/reverse-linked-list/
-- https://leetcode.com/problems/invert-binary-tree/
-
 Revisit
   - https://leetcode.com/problems/number-of-islands/
   - https://leetcode.com/problems/kth-largest-element-in-an-array/
@@ -188,3 +178,17 @@ Revisit
   - https://leetcode.com/problems/search-in-rotated-sorted-array/
   - https://leetcode.com/problems/maximum-subarray/
   - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+
+2020-08-04
+- https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+- https://leetcode.com/problems/single-number/
+- https://leetcode.com/problems/linked-list-cycle/
+
+
+More
+- https://leetcode.com/problems/intersection-of-two-linked-lists/
+- https://leetcode.com/problems/majority-element/
+- https://leetcode.com/problems/number-of-1-bits/
+- https://leetcode.com/problems/house-robber/
+- https://leetcode.com/problems/reverse-linked-list/
+- https://leetcode.com/problems/invert-binary-tree/
