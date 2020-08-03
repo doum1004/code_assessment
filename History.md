@@ -174,7 +174,7 @@ Revisit
   - again !!
 - https://leetcode.com/problems/binary-tree-inorder-traversal/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/binary-tree-inorder-traversal.cpp
-Revisit
+- Revisit
   - https://leetcode.com/problems/number-of-islands/
   - https://leetcode.com/problems/kth-largest-element-in-an-array/
   - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
