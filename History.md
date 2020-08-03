@@ -186,15 +186,36 @@ Revisit
 - https://leetcode.com/problems/single-number/
 - https://leetcode.com/problems/linked-list-cycle/
 Revisit
+  - https://leetcode.com/problems/find-median-from-data-stream/
+  - https://leetcode.com/problems/k-closest-points-to-origin/
+  - https://leetcode.com/problems/binary-tree-inorder-traversal/
   - https://leetcode.com/problems/maximum-subarray/
-  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 
 2020-08-05
 - https://leetcode.com/problems/intersection-of-two-linked-lists/
 - https://leetcode.com/problems/majority-element/
 - https://leetcode.com/problems/number-of-1-bits/
-
-2020-08-06
 - https://leetcode.com/problems/house-robber/
+Revisit
+  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+  
+2020-08-06
 - https://leetcode.com/problems/reverse-linked-list/
 - https://leetcode.com/problems/invert-binary-tree/
+- https://leetcode.com/problems/palindrome-linked-list/
+- https://leetcode.com/problems/move-zeroes/
+
+2020-08-07
+- https://leetcode.com/problems/counting-bits/
+- https://leetcode.com/problems/queue-reconstruction-by-height/
+- https://leetcode.com/problems/path-sum-iii/
+- https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+
+2020-08-08
+- https://leetcode.com/problems/diameter-of-binary-tree/
+- https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
+- https://leetcode.com/problems/merge-two-binary-trees/
+- https://leetcode.com/problems/daily-temperatures/
+
+
+
