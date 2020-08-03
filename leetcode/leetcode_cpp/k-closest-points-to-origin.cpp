@@ -38,30 +38,105 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> kClosest_sort(vector<vector<int>>& points, int K) {
-        if (points.size() < 2) {
-            if (points.size() == 1 && K == 1)
-                return points;
-            return vector<vector<int>>();
-        }
-        
-        if (false) {
-            sort(points.begin(), points.end(), [&](auto &a, auto&b) {
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        int mode = 5;
+        if (mode == 0) {
+            // o(nlogn), o(1)
+            sort(points.begin(), points.end(), [&](auto &a, auto &b){
                 return (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
             });
+            return vector<vector<int>>(points.begin(), points.begin() + K);
         }
-        else if (false) {
-            partial_sort(points.begin(), points.begin() + K, points.end(), [&](auto& a, auto& b) {
-                return (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
-        });
-        }
-        else {
-            nth_element(points.begin(), points.begin() + K - 1, points.end(), [&](auto& a, auto& b) {
+        else if (mode == 1) {
+            // o(NlogN), o(1). N=last-first
+            nth_element(points.begin(), points.begin() + K - 1, points.end(), [&](auto &a, auto &b){
                 return (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
             });
+            return vector<vector<int>>(points.begin(), points.begin() + K);
         }
-        
-        return vector<vector<int>>(points.begin(), points.begin()+K);
+        else if (mode == 2) {
+            // o(NlogM), o(1). N=last-first, M=middle-first
+            partial_sort(points.begin(), points.begin() + K, points.end(), [&](auto &a, auto &b){
+                return (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
+            });
+            return vector<vector<int>>(points.begin(), points.begin() + K);
+        }
+        else if (mode == 3) {
+            // max-heap. o(nlogk + k), o(k)
+            auto compare_less = [](auto &a, auto &b) {
+                return   (a[0] * a[0] + a[1] * a[1]) < (b[0] * b[0] + b[1] * b[1]);
+            };
+            priority_queue<vector<int>, vector<vector<int>>, decltype(compare_less)> pq(compare_less);
+            for (auto &p:points) {
+                pq.push(p);
+                if (pq.size() > K) pq.pop();
+            }
+
+            vector<vector<int>> res;
+            while (!pq.empty()) {
+                res.push_back(pq.top());
+                pq.pop();
+            }
+            return res;
+        }
+        else if (mode == 4) {
+            // min-heap. o(nlogn + n), o(n)
+            auto compare_greater = [](auto &a, auto &b) {
+                return (a[0] * a[0] + a[1] * a[1]) > (b[0] * b[0] + b[1] * b[1]);
+            };
+            priority_queue<vector<int>, vector<vector<int>>, decltype(compare_greater)> pq(compare_greater);
+            for (auto &p:points) {
+                pq.push(p);
+            }
+
+            vector<vector<int>> res;
+            for (int i=0; i<K; ++i) {
+                res.push_back(pq.top());
+                pq.pop();
+            }
+            return res;
+        }
+        else if (mode == 5) {
+            // quick selection
+            // partitioning, bin search. avg: o(n). worst: o(n^2)
+            
+            auto partition = [](vector<vector<int>>& points, int l, int r) {
+                if (l == r) return l;
+                int randPivot = rand() % (r - l) + l;
+                swap(points[randPivot], points[r]);
+                int idx = l;
+                while (l < r) {
+                    auto a = points[l];
+                    auto b = points[r];
+                    if (a[0] * a[0] + a[1] * a[1] < b[0] * b[0] + b[1] * b[1]) {
+                        swap(points[idx++], points[l]);
+                    }
+                    l++;
+                }
+                swap(points[idx], points[r]);
+                return idx;
+            };
+            
+            int l = 0, r = points.size() - 1;
+            vector<vector<int>> res;
+            while (l<=r) {
+                auto pivot = partition(points, l, r);
+                if (pivot == K - 1) {
+                    for (int i=0; i<K; ++i) {
+                        res.push_back(points[i]);
+                    }
+                    return res;
+                }
+                else if (pivot < K - 1) {
+                    l = pivot + 1;
+                }
+                else {
+                    r = pivot - 1;
+                }
+            }
+        }
+        return {};
+    }
     }
     
     vector<vector<int>> kClosest_heap_priorityqueue(vector<vector<int>>& points, int K) {
