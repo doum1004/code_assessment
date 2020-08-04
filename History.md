@@ -183,7 +183,11 @@ Revisit
 
 2020-08-04
 - https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/populating-next-right-pointers-in-each-node.cpp
+  - again !!
 - https://leetcode.com/problems/single-number/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/single-number.cpp
+  - again !!
 - https://leetcode.com/problems/linked-list-cycle/
 - https://leetcode.com/problems/intersection-of-two-linked-lists/
 - Revisit
