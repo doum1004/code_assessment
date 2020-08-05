@@ -206,12 +206,12 @@ Revisit
 - https://leetcode.com/problems/reverse-linked-list/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reverse-linked-list.cpp
   - again !!
-  
-2020-08-06
 - https://leetcode.com/problems/invert-binary-tree/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/invert-binary-tree.cpp
 - https://leetcode.com/problems/palindrome-linked-list/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/palindrome-linked-list.cpp
+  
+2020-08-06
 - https://leetcode.com/problems/move-zeroes/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/move-zeroes.cpp
 - https://leetcode.com/problems/counting-bits/
