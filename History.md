@@ -192,23 +192,20 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/linked-list-cycle.cpp
 - https://leetcode.com/problems/intersection-of-two-linked-lists/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/intersection-of-two-linked-lists.cpp
-- Revisit
-  - https://leetcode.com/problems/find-median-from-data-stream/
-  - https://leetcode.com/problems/k-closest-points-to-origin/
-  - https://leetcode.com/problems/binary-tree-inorder-traversal/
-  - https://leetcode.com/problems/maximum-subarray/
 
 2020-08-05
 - https://leetcode.com/problems/majority-element/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/majority-element.cpp
+  - again !!
 - https://leetcode.com/problems/number-of-1-bits/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/number-of-1-bits.cpp
+  - again !!
 - https://leetcode.com/problems/house-robber/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/house-robber.cpp
+  - again !!
 - https://leetcode.com/problems/reverse-linked-list/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reverse-linked-list.cpp
-- Revisit
-  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+  - again !!
   
 2020-08-06
 - https://leetcode.com/problems/invert-binary-tree/
@@ -240,3 +237,15 @@ Revisit
 
 
 
+- Revisit
+  - https://leetcode.com/problems/find-median-from-data-stream/
+  - https://leetcode.com/problems/k-closest-points-to-origin/
+  - https://leetcode.com/problems/binary-tree-inorder-traversal/
+  - https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+  - https://leetcode.com/problems/single-number/
+  - https://leetcode.com/problems/majority-element/
+  - https://leetcode.com/problems/number-of-1-bits/!!
+  - https://leetcode.com/problems/house-robber/
+  - https://leetcode.com/problems/reverse-linked-list/
+  - https://leetcode.com/problems/maximum-subarray/
+  - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
