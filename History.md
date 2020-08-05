@@ -191,6 +191,7 @@ Revisit
 - https://leetcode.com/problems/linked-list-cycle/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/linked-list-cycle.cpp
 - https://leetcode.com/problems/intersection-of-two-linked-lists/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/intersection-of-two-linked-lists.cpp
 - Revisit
   - https://leetcode.com/problems/find-median-from-data-stream/
   - https://leetcode.com/problems/k-closest-points-to-origin/
@@ -199,28 +200,43 @@ Revisit
 
 2020-08-05
 - https://leetcode.com/problems/majority-element/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/majority-element.cpp
 - https://leetcode.com/problems/number-of-1-bits/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/number-of-1-bits.cpp
 - https://leetcode.com/problems/house-robber/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/house-robber.cpp
 - https://leetcode.com/problems/reverse-linked-list/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reverse-linked-list.cpp
 - Revisit
   - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
   
 2020-08-06
 - https://leetcode.com/problems/invert-binary-tree/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/invert-binary-tree.cpp
 - https://leetcode.com/problems/palindrome-linked-list/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/palindrome-linked-list.cpp
 - https://leetcode.com/problems/move-zeroes/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/move-zeroes.cpp
 - https://leetcode.com/problems/counting-bits/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/counting-bits.cpp
 
 2020-08-07
 - https://leetcode.com/problems/queue-reconstruction-by-height/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/queue-reconstruction-by-height.cpp
 - https://leetcode.com/problems/path-sum-iii/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/path-sum-iii.cpp
 - https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/find-all-numbers-disappeared-in-an-array.cpp
 - https://leetcode.com/problems/diameter-of-binary-tree/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/diameter-of-binary-tree.cpp
 
 2020-08-08
 - https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/shortest-unsorted-continuous-subarray.cpp
 - https://leetcode.com/problems/merge-two-binary-trees/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-two-binary-trees.cpp
 - https://leetcode.com/problems/daily-temperatures/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/daily-temperatures.cpp
 
 
 
