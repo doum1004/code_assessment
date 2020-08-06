@@ -224,16 +224,22 @@ Revisit
 - https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/find-all-numbers-disappeared-in-an-array.cpp
   
-2020-08-07
 - https://leetcode.com/problems/diameter-of-binary-tree/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/diameter-of-binary-tree.cpp
 - https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/shortest-unsorted-continuous-subarray.cpp
+  
+2020-08-07
 - https://leetcode.com/problems/merge-two-binary-trees/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-two-binary-trees.cpp
 - https://leetcode.com/problems/daily-temperatures/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/daily-temperatures.cpp
-  
+- https://leetcode.com/problems/longest-palindromic-substring/
+- https://leetcode.com/problems/reverse-integer/
+- https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+- https://leetcode.com/problems/merge-k-sorted-lists/
+- https://leetcode.com/problems/next-permutation/
+
 2020-08-08
 
 
