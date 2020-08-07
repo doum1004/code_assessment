@@ -242,8 +242,11 @@ Revisit
 - https://leetcode.com/problems/reverse-integer/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reverse-integer.cpp
 - https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/remove-nth-node-from-end-of-list.cpp
 - https://leetcode.com/problems/merge-k-sorted-lists/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/merge-k-sorted-lists.cpp
 - https://leetcode.com/problems/next-permutation/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/next-permutation.cpp
 
 2020-08-08
 
