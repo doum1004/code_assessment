@@ -249,7 +249,11 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/next-permutation.cpp
 
 2020-08-08
-
+- https://leetcode.com/problems/unique-paths/
+- https://leetcode.com/problems/unique-paths-ii/
+- https://leetcode.com/problems/edit-distance/
+- https://leetcode.com/problems/minimum-window-substring/
+- https://leetcode.com/problems/word-search/
 
 - Revisit
   - https://leetcode.com/problems/find-median-from-data-stream/
