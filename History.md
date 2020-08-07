@@ -238,7 +238,9 @@ Revisit
   
 2020-08-07
 - https://leetcode.com/problems/longest-palindromic-substring/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/longest-palindromic-substring.cpp
 - https://leetcode.com/problems/reverse-integer/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/reverse-integer.cpp
 - https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 - https://leetcode.com/problems/merge-k-sorted-lists/
 - https://leetcode.com/problems/next-permutation/
