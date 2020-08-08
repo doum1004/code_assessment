@@ -255,10 +255,21 @@ Revisit
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/unique-paths-ii.cpp
 - https://leetcode.com/problems/edit-distance/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/edit-distance.cpp
+  - again !!
 - https://leetcode.com/problems/minimum-window-substring/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/minimum-window-substring.cpp
+  - again !!
 - https://leetcode.com/problems/word-search/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/word-search.cpp
+- https://leetcode.com/problems/course-schedule/
+- https://leetcode.com/problems/word-search-ii/
+- https://leetcode.com/problems/evaluate-division/
+- https://leetcode.com/problems/redundant-connection/
+
+
+
+
+
 
 - Revisit
   - https://leetcode.com/problems/find-median-from-data-stream/
