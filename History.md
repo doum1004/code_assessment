@@ -262,10 +262,19 @@ Revisit
 - https://leetcode.com/problems/word-search/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/word-search.cpp
 - https://leetcode.com/problems/course-schedule/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/course-schedule.cpp
+  - again !!
 - https://leetcode.com/problems/word-search-ii/
-- https://leetcode.com/problems/evaluate-division/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/word-search-ii.cpp
+  - again !!
 - https://leetcode.com/problems/redundant-connection/
-
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/redundant-connection.cpp
+  - again !!
+  - blog about union-find (disjoint set)
+- https://leetcode.com/problems/network-delay-time/
+  - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/network-delay-time.cpp
+  - again !!
+  - blog about Dijkstra Bellman Ford
 
 
 
