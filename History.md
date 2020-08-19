@@ -279,6 +279,116 @@ Revisit
 
 
 
+Todo
+https://leetcode.com/problems/search-a-2d-matrix-ii/
+https://leetcode.com/problems/meeting-rooms-ii/
+https://leetcode.com/problems/coin-change/
+https://leetcode.com/problems/design-tic-tac-toe/
+https://leetcode.com/problems/decode-string/
+https://leetcode.com/problems/subarray-sum-equals-k/
+https://leetcode.com/problems/partition-labels/
+https://leetcode.com/problems/push-dominoes/
+https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+https://leetcode.com/problems/3sum-closest/
+https://leetcode.com/problems/implement-strstr/
+https://leetcode.com/problems/spiral-matrix/
+https://leetcode.com/problems/climbing-stairs/
+https://leetcode.com/problems/decode-ways/
+https://leetcode.com/problems/compare-version-numbers/
+https://leetcode.com/problems/basic-calculator-ii/
+https://leetcode.com/problems/implement-queue-using-stacks/
+https://leetcode.com/problems/missing-number/
+https://leetcode.com/problems/integer-to-english-words/
+https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+https://leetcode.com/problems/top-k-frequent-elements/
+https://leetcode.com/problems/insert-delete-getrandom-o1/
+https://leetcode.com/problems/first-unique-character-in-a-string/
+https://leetcode.com/problems/coin-change-2/
+https://leetcode.com/problems/flood-fill/
+https://leetcode.com/problems/prison-cells-after-n-days/
+https://leetcode.com/problems/count-and-say/
+https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/permutations/
+https://leetcode.com/problems/sort-colors/
+https://leetcode.com/problems/word-ladder-ii/
+https://leetcode.com/problems/fraction-to-recurring-decimal/
+https://leetcode.com/problems/happy-number/
+https://leetcode.com/problems/count-univalue-subtrees/
+https://leetcode.com/problems/game-of-life/
+https://leetcode.com/problems/largest-bst-subtree/
+https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+https://leetcode.com/problems/fizz-buzz/
+https://leetcode.com/problems/student-attendance-record-i/
+https://leetcode.com/problems/design-search-autocomplete-system/
+https://leetcode.com/problems/network-delay-time/
+https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+https://leetcode.com/problems/maximum-frequency-stack/
+https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
+https://leetcode.com/problems/critical-connections-in-a-network/
+https://leetcode.com/problems/search-suggestions-system/
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+https://leetcode.com/problems/multiply-strings/
+https://leetcode.com/problems/jump-game/
+https://leetcode.com/problems/plus-one/
+https://leetcode.com/problems/reverse-words-in-a-string/
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
+https://leetcode.com/problems/missing-ranges/
+https://leetcode.com/problems/largest-number/
+https://leetcode.com/problems/summary-ranges/
+https://leetcode.com/problems/meeting-rooms/
+https://leetcode.com/problems/longest-increasing-subsequence/
+https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
+https://leetcode.com/problems/intersection-of-two-arrays/
+https://leetcode.com/problems/logger-rate-limiter/
+https://leetcode.com/problems/evaluate-division/
+https://leetcode.com/problems/cut-off-trees-for-golf-event/
+https://leetcode.com/problems/next-closest-time/
+https://leetcode.com/problems/cracking-the-safe/
+https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+https://leetcode.com/problems/angle-between-hands-of-a-clock/
+https://leetcode.com/problems/palindrome-number/
+https://leetcode.com/problems/longest-common-prefix/
+https://leetcode.com/problems/minimum-path-sum/
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+https://leetcode.com/problems/pascals-triangle/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+https://leetcode.com/problems/maximum-product-subarray/
+https://leetcode.com/problems/excel-sheet-column-number/
+https://leetcode.com/problems/rotate-array/
+https://leetcode.com/problems/valid-anagram/
+https://leetcode.com/problems/strobogrammatic-number-ii/
+https://leetcode.com/problems/count-of-smaller-numbers-after-self/
+https://leetcode.com/problems/android-unlock-patterns/
+https://leetcode.com/problems/contiguous-array/
+https://leetcode.com/problems/valid-parenthesis-string/
+https://leetcode.com/problems/redundant-connection/
+https://leetcode.com/problems/backspace-string-compare/
+https://leetcode.com/problems/middle-of-the-linked-list/
+https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
+https://leetcode.com/problems/last-stone-weight/
+https://leetcode.com/problems/insert-interval/
+https://leetcode.com/problems/candy/
+https://leetcode.com/problems/read-n-characters-given-read4-ii-call-multiple-times/
+https://leetcode.com/problems/bitwise-and-of-numbers-range/
+https://leetcode.com/problems/isomorphic-strings/
+https://leetcode.com/problems/contains-duplicate/
+https://leetcode.com/problems/maximal-square/
+https://leetcode.com/problems/strobogrammatic-number/
+https://leetcode.com/problems/first-bad-version/
+https://leetcode.com/problems/bulls-and-cows/
+https://leetcode.com/problems/range-sum-query-mutable/
+https://leetcode.com/problems/reverse-string/
+https://leetcode.com/problems/intersection-of-two-arrays-ii/
+https://leetcode.com/problems/ransom-note/
+https://leetcode.com/problems/split-array-largest-sum/
+https://leetcode.com/problems/word-squares/
+https://leetcode.com/problems/number-complement/
+https://leetcode.com/problems/course-schedule-iii/
+https://leetcode.com/problems/my-calendar-ii/
+https://leetcode.com/problems/longest-common-subsequence/
+
+
+
 
 - Revisit
   - https://leetcode.com/problems/find-median-from-data-stream/
@@ -290,6 +400,17 @@ Revisit
   - https://leetcode.com/problems/number-of-1-bits/!!
   - https://leetcode.com/problems/house-robber/
   - https://leetcode.com/problems/reverse-linked-list/
+  - https://leetcode.com/problems/counting-bits/
+  - https://leetcode.com/problems/path-sum-iii/
+  - https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+  - https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
+  - https://leetcode.com/problems/daily-temperatures/
+  - https://leetcode.com/problems/edit-distance/
+  - https://leetcode.com/problems/minimum-window-substring/
+  - https://leetcode.com/problems/course-schedule/
+  - https://leetcode.com/problems/word-search-ii/
+  - https://leetcode.com/problems/redundant-connection/
+  - https://leetcode.com/problems/network-delay-time/
   - https://leetcode.com/problems/counting-bits/
   - https://leetcode.com/problems/path-sum-iii/
   - https://leetcode.com/problems/maximum-subarray/
