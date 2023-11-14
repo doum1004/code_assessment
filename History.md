@@ -1,3 +1,10 @@
+2023-11-13
+- https://leetcode.com/problems/merge-sorted-array/
+- https://leetcode.com/problems/remove-element/
+- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- https://leetcode.com/problems/valid-palindrome/
+- https://leetcode.com/problems/is-subsequence
+
 2020-07-22
 - https://leetcode.com/problems/two-sum/
   - https://github.com/doum1004/code_assessment/blob/master/leetcode/leetcode_cpp/two-sum.cpp
