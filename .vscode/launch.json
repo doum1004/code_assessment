@@ -15,7 +15,7 @@
             "name": "clang++ build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/output_/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/_output/${fileBasenameNoExtension}",
             // "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
@@ -31,10 +31,31 @@
             }
         },
         {
+          "name": "g++.exe - Build and debug active file",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/_output/${fileBasenameNoExtension}.exe",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}",
+          "environment": [],
+          "externalConsole": true,
+          "MIMode": "gdb",
+          "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",
+          "setupCommands": [
+              {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              }
+          ],
+          "preLaunchTask": "C/C++: g++.exe build active file"
+        },
+        {
             "name": "(lldb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/output_/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/_output/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -42,12 +63,12 @@
             "externalConsole": false,
             "MIMode": "lldb"
         }
-        {
-            "name": "Launch",
-            "type": "lldb",
-            "request": "launch",
-            "preLaunchTask": "clang++ build active file",
-            "program": "${workspaceFolder}/output_/${fileBasenameNoExtension}",
-        }
+        // {
+        //     "name": "Launch",
+        //     "type": "lldb",
+        //     "request": "launch",
+        //     "preLaunchTask": "clang++ build active file",
+        //     "program": "${workspaceFolder}/_output/${fileBasenameNoExtension}",
+        // }
     ]
 }

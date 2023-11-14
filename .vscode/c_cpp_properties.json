@@ -1,6 +1,9 @@
 {
     "configurations": [
         {
+            "name": "Window"
+        },
+        {
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**"
