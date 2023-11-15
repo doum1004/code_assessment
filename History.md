@@ -1,9 +1,9 @@
 2023-11-14
 - https://leetcode.com/problems/linked-list-cycle/
-- https://leetcode.com/problems/valid-parentheses/
-//- https://leetcode.com/problems/summary-ranges/
+- https://leetcode.com/problems/valid-parentheses
+- https://leetcode.com/problems/summary-ranges/
 - https://leetcode.com/problems/isomorphic-strings/
-//- https://leetcode.com/problems/ransom-note/
+- https://leetcode.com/problems/ransom-note/
 
 2023-11-13
 - https://leetcode.com/problems/merge-sorted-array/
@@ -396,7 +396,6 @@ https://leetcode.com/problems/bulls-and-cows/
 https://leetcode.com/problems/range-sum-query-mutable/
 https://leetcode.com/problems/reverse-string/
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
-https://leetcode.com/problems/ransom-note/
 https://leetcode.com/problems/split-array-largest-sum/
 https://leetcode.com/problems/word-squares/
 https://leetcode.com/problems/number-complement/
