@@ -1,4 +1,5 @@
 2023-11-15
+- https://leetcode.com/problems/minimum-absolute-difference-in-bst
 - https://leetcode.com/problems/maximum-depth-of-binary-tree
 
 2023-11-14
