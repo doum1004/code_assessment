@@ -75,7 +75,8 @@
         "__errc": "cpp",
         "__node_handle": "cpp",
         "bit": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "xiosbase": "cpp"
     },
     "python.pythonPath": "/usr/local/bin/python"
 }

@@ -1,14 +1,16 @@
 ## TODO
 
 2023-11-16
-- https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/add-binary/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/reverse-bits/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/palindrome-number/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/climbing-stairs/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-16
+- https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+- https://leetcode.com/problems/search-insert-position/
+- https://leetcode.com/problems/add-binary
 
 2023-11-15
 - https://leetcode.com/problems/minimum-absolute-difference-in-bst
