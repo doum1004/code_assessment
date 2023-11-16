@@ -17,55 +17,75 @@ bool isEqual(ListNode* l, ListNode* r) {
     return (l == nullptr && r == nullptr) ? true : false;
 }
 
-/**
-https://leetcode.com/problems/merge-two-sorted-lists/
+/*
+https://leetcode.com/problems/merge-two-sorted-lists
 
-1 2 4
-    l
-1 3 4
-      r
------
-1 1 2 3 4 ... l
+Solution1. iterate with sorted vector
+time: o(n)
+space: o(n)
 
-Solution1. iterate l1, l2. and compare and add
-time: o(max(m, n))
+solution2. iterate without sorted vector
+time: o(n)
 space: o(1)
 
-ansDummy = new listnode;
-cur = ansDummy;
-while (l1 != NULL && l2 != NULL)
-    if (l1->v > l2->v)
-        cur->next = l2
-        l2 = l2->next
-    else
-        cur->next = l1
-        l1 = l1->next
-    cur = cur->next
-if (l1 != NULL) cur->next = l1
-else cur->next = l2
-return cur
-**/
+solution3. recursive
+time: o(n)
+space: o(n)
 
+
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        auto ansDummy = new ListNode(-1);
-        auto cur = ansDummy;
-        while (l1 != nullptr && l2 != nullptr) {
-            if (l1->val > l2->val) {
-                cur->next = l2;
-                l2 = l2->next;
+    ListNode* mergeTwoLists_2(ListNode* list1, ListNode* list2) {
+        if (!list1) return list2;
+        if (!list2) return list1;
+
+        ListNode* dummy = new ListNode();
+        ListNode* cur = dummy;
+        while (list1 && list2) {
+            if (list1->val <= list2->val) {
+                cur->next = list1;
+                list1 = list1->next;
             }
             else {
-                cur->next = l1;
-                l1 = l1->next;
+                cur->next = list2;
+                list2 = list2->next;
             }
             cur = cur->next;
         }
-        if (l1 != NULL) cur->next = l1;
-        else cur->next = l2;
-        
-        return ansDummy->next;
+
+        if (list1) cur->next = list1;
+        else cur->next = list2;
+
+        return dummy->next;        
+    }
+
+    ListNode* mergeTwoLists_3(ListNode* list1, ListNode* list2) {
+        if (!list1) return list2;
+        if (!list2) return list1;
+        if (list1->val <= list2->val) {
+            list1->next = mergeTwoLists_3(list1->next, list2);
+            return list1;
+        }
+        else {
+            list2->next = mergeTwoLists_3(list1, list2->next);
+            return list2;
+        }
+    }
+
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        return mergeTwoLists_2(list1, list2);
     }
 };
 
