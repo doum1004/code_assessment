@@ -2,6 +2,7 @@
 - https://leetcode.com/problems/minimum-absolute-difference-in-bst
 - https://leetcode.com/problems/maximum-depth-of-binary-tree
 - https://leetcode.com/problems/merge-two-sorted-lists
+- https://leetcode.com/problems/same-tree
 
 2023-11-14
 - https://leetcode.com/problems/linked-list-cycle/
