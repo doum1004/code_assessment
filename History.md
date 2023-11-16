@@ -3,6 +3,7 @@
 - https://leetcode.com/problems/maximum-depth-of-binary-tree
 - https://leetcode.com/problems/merge-two-sorted-lists
 - https://leetcode.com/problems/same-tree
+- https://leetcode.com/problems/average-of-levels-in-binary-tree
 
 2023-11-14
 - https://leetcode.com/problems/linked-list-cycle/
