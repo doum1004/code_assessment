@@ -8,7 +8,6 @@
 - https://leetcode.com/problems/single-number/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/invert-binary-tree/?envType=study-plan-v2&envId=top-interview-150
 
-
 ## History
 
 2023-11-16
