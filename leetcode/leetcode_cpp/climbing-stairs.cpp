@@ -13,17 +13,20 @@ using namespace std;
 /**
 https://leetcode.com/problems/climbing-stairs/
 
-// solution1. db in recursion
-// time: o(n)
-// space: o(n). dp(n) + recursion(n)
+Solution0. Recursion
+time: o(2^n)
 
-// solution2. db in iteration
-// time: o(n)
-// space: o(n). dp(n)
+solution1. dp(memorization) in recursion
+time: o(n)
+space: o(n). dp(n) + recursion(n)
 
-// solution3. fibonacci number
-// time: o(n)
-// space: o(1)
+solution2. dp(memorization) in iteration
+time: o(n)
+space: o(n). dp(n)
+
+solution3. fibonacci number
+time: o(n)
+space: o(1)
 
 1: 1 (1)
 2: 2 (11,2)
@@ -34,6 +37,11 @@ https://leetcode.com/problems/climbing-stairs/
 
 class Solution {
 public:
+    int climbStaris_recursion(int n) {
+       if (n == 0 || n == 1) return 1;       
+       return  climbStaris_recursion(n - 1) + climbStaris_recursion(n - 2);
+    }
+    
     vector<int> dp_;
     int recursion(int n) {
         if (n <= 2) return n;
