@@ -1,14 +1,22 @@
 ## TODO
 
-2023-11-17
-- https://leetcode.com/problems/climbing-stairs/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/plus-one/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/sqrtx/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/number-of-1-bits/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/single-number/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/invert-binary-tree/?envType=study-plan-v2&envId=top-interview-150
+2023-11-18
+- https://leetcode.com/problems/symmetric-tree/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/word-pattern/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/valid-anagram/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-17
+- https://leetcode.com/problems/climbing-stairs
+- https://leetcode.com/problems/plus-one
+- https://leetcode.com/problems/sqrtx
+- https://leetcode.com/problems/number-of-1-bits
+- https://leetcode.com/problems/single-number
+- https://leetcode.com/problems/invert-binary-tree
+
 
 2023-11-16
 - https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/

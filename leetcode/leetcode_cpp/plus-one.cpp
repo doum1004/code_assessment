@@ -7,7 +7,7 @@ using namespace std;
 /**
 https://leetcode.com/problems/plus-one/
 
-- Solution1: in place modification
+- Solution1: in place modification Iteration
 - time: o(n)
 - space: o(1)
 
@@ -15,7 +15,7 @@ https://leetcode.com/problems/plus-one/
 
 class Solution {
 public:
-    vector<int> plusOne(vector<int>& digits) {
+    vector<int> plusOne_1(vector<int>& digits) {
         int n = digits.size();
         for (int i=n-1; i>=0; --i) {
             digits[i] += 1;
@@ -28,6 +28,22 @@ public:
         }
         
         digits.insert(digits.begin(), 1);
+        return digits;
+    }
+    
+    vector<int> plusOne(vector<int>& digits) {
+        int n = digits.size();
+        if (n == 0) return digits;
+        int i = n - 1;
+        while (i>=0) {
+            digits[i]++;
+            if (digits[i] != 10)
+                break;
+            digits[i] = 0;
+            if (i == 0) digits.insert(digits.begin(), 1);
+            i--;
+        }
+
         return digits;
     }
 };
