@@ -1,12 +1,25 @@
 ## TODO
 
-2023-11-18
-- https://leetcode.com/problems/symmetric-tree/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/word-pattern/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/valid-anagram/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/best-time-to-buy-and-sell-stock/?envType=study-plan-v2&envId=top-interview-150
+2023-11-19
+- https://leetcode.com/problems/longest-common-prefix/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/two-sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/happy-number/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/contains-duplicate-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/path-sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/count-complete-tree-nodes/?envType=study-plan-v2&envId=top-interview-150
+
+
 ## History
+
+2023-11-18
+- https://leetcode.com/problems/symmetric-tree
+- https://leetcode.com/problems/word-pattern
+- https://leetcode.com/problems/valid-anagram
+- https://leetcode.com/problems/majority-element
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+- https://leetcode.com/problems/roman-to-integer
+- https://leetcode.com/problems/length-of-last-word
 
 2023-11-17
 - https://leetcode.com/problems/climbing-stairs
