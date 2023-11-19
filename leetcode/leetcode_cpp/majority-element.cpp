@@ -11,19 +11,19 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/majority-element/submissions/
+https://leetcode.com/problems/majority-element/
  
-// Solution1. sort and find 1/2 index
-// time o(nlogn) o(nlogk) nth_element
-// space o(1)
+Solution1. sort and find 1/2 index
+time o(nlogn) o(nlogk) nth_element
+space o(1)
 
-// Solution2. hash map if hit value is over 1/2 return
-// time o(n)
-// space o(n)
+Solution2. hash map if hit value is over 1/2 return
+time o(n)
+space o(n)
 
-// Soltuion3. bit manipulation
-// time o(n * m) : m=32bit
-// space o(1)
+Soltuion3. bit manipulation
+time o(n * m) : m=32bit
+space o(1)
 1. int32 iterate i o to 31
     1.1 iternate nums
         1.1.1 hit count of i'th bit
@@ -33,13 +33,12 @@ i=0 hit 1 (001'1')
 i=1 hit 3 (00'1'0 00'1'1 00'1'0) ans += 1 << 1 = 0010 = 2
   
   
-// Solution4. randomization. take rand candidate and count
-// time: o(infinite) : but runtime is far faster than linear. because majority is more than half
+Solution4. randomization. take rand candidate and count
+time: o(infinite) : but runtime is far faster than linear. because majority is more than half
 
-
-// Solution5. Moore voting
-// time o(n)
-// space o(1)
+Solution5. Moore voting
+time o(n)
+space o(1)
 vote count if count goes 0 and change candidate
 last stand man is the majority
 ex) 2 3 3 2 2

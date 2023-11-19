@@ -1,50 +1,26 @@
-#include <iostream>
-#include <vector>
-#include <cassert>
-#include "../utils.h"
+/*
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 
-using namespace std;
+Solution1. Find min value before index and find max value from it
 
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+   3 2 1 5 7
+l: 3. max value: 0
+l: 2. max value: 0
+l: 1. max value: 0
+l: 1. max value: 4
+l: 1. max value: 6
 
-// one path linear
-// time: o(n)
-// space: o(1)
-
-// minPrice = prices[0]
-// maxProfit = 0
-// 7,1,5,3,6,4
-//   i          maxProfit=0 minPrice=1
-//     i        maxProfit=4 minPrice=1
-//      ...i    maxProfit=5 minPrice=1
-
-
+*/
 
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        if (prices.size() < 2) return 0;
-        
-        int minPrice = prices[0];
-        int maxProfit = 0;
-        for (int i=1; i<prices.size(); ++i) {
-            maxProfit = max(maxProfit, prices[i] - minPrice);
-            minPrice = min(minPrice, prices[i]);
+        int l = INT_MAX;
+        int res = 0;
+        for (int i=0; i<prices.size(); ++i) {
+            l = min(l, prices[i]);
+            res = max(res, prices[i] - l);
         }
-        
-        return maxProfit;
+        return res;
     }
 };
-
-int main()
-{
-    auto input1_1 = vector<int> {7,1,5,3,6,4};
-    assert(Solution().maxProfit(
-        input1_1
-    ) == (5));
-    auto input2_1 = vector<int> {7,6,4,3,1};
-    assert(Solution().maxProfit(
-        input2_1
-    ) == (0));
-    return 0;
-}
