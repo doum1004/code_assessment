@@ -1,16 +1,16 @@
 ## TODO
 
-2023-11-19
-- https://leetcode.com/problems/longest-common-prefix/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/two-sum/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/happy-number/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/contains-duplicate-ii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/path-sum/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/count-complete-tree-nodes/?envType=study-plan-v2&envId=top-interview-150
-
 
 ## History
+
+2023-11-19
+- https://leetcode.com/problems/longest-common-prefix
+- https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string
+- https://leetcode.com/problems/two-sum
+- https://leetcode.com/problems/happy-number
+- https://leetcode.com/problems/contains-duplicate-ii
+- https://leetcode.com/problems/path-sum
+- https://leetcode.com/problems/count-complete-tree-nodes
 
 2023-11-18
 - https://leetcode.com/problems/symmetric-tree

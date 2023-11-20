@@ -5,27 +5,38 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/two-sum/
+/*
+https://leetcode.com/problems/two-sum/
+
+Solutions1. Brute force
+time: o(n^2)
+space: o(1)
+
+Solutions2. Hashmap, Two pass
+time: o(n) N*2
+space: o(1)
+
+Solutions3. Hashmap, one pass
+time: o(n)
+space: o(1)
 
 // [2, 7, 11, 15] t = 9
 // Solution. one-path map, two-path map
 // answerMap
 // time: o(n): one-path(iternate and put o(n)) two-path(generate and iterate o(2n))
 // space: o(n)
+*/
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // one path map
-        auto map = unordered_map<int, int>();
+        unordered_map<int, int> answer;
         for (int i=0; i<nums.size(); ++i) {
-            if (map.find(nums[i]) != map.end()) {
-                return vector<int> {map[nums[i]], i};
-            }
-            auto ans = target - nums[i];
-            map[ans] = i;
+            if (answer.count(nums[i])) return {i, answer[nums[i]]};
+            answer[target-nums[i]] = i;
         }
-        return vector<int>();
+        return {};
     }
 };
 
