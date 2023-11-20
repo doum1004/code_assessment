@@ -13,13 +13,11 @@ space: o(n)
 """
 class Solution:
     def twoSum_hash(self, nums: List[int], target: int) -> List[int]:
-        h = {}
-        for i in range(len(nums)):
-            complement = target-nums[i]
-            if complement in h:
-                return h[complement], i
-            h[nums[i]] = i
-        
+        ans = {}
+        for i, n in enumerate(nums):
+            if n in ans:
+                return [ans[n], i]
+            ans[target - n] = i
         return -1
         
     def twoSum(self, nums: List[int], target: int) -> List[int]:

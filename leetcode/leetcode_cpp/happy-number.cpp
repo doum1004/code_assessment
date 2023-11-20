@@ -8,13 +8,13 @@ using namespace std;
 /**
 https://leetcode.com/problems/happy-number/
 
-// Solution1. find cycle with set
-// time: o(logn). o(243*3+logn+loglogn+... processing each digit in the number, and the number of digits in a number is given by logn.
-// space: o(n) cycle
+Solution1. find cycle with set
+time: o(logn). o(243*3+logn+loglogn+... processing each digit in the number, and the number of digits in a number is given by logn.
+space: o(n) cycle
 
-// Solution2. find cycle with two pointers(slow,fast)
-// time: o(logn)
-// space: o(1)
+Solution2. find cycle with two pointers(slow,fast)
+time: o(logn)
+space: o(1)
 
 */
 
