@@ -64,8 +64,7 @@
 - https://leetcode.com/problems/rotate-array
 - https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
 - https://leetcode.com/problems/container-with-most-water
-
-- https://leetcode.com/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/minimum-size-subarray-sum
 
 2023-11-19
 - https://leetcode.com/problems/longest-common-prefix
