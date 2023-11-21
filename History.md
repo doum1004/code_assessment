@@ -1,12 +1,5 @@
 ## TODO
 
-2023-11-21
-- https://leetcode.com/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/valid-sudoku/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/spiral-matrix/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/group-anagrams/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/longest-consecutive-sequence/?envType=study-plan-v2&envId=top-interview-150
-
 2023-11-22
 - https://leetcode.com/problems/simplify-path/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/min-stack/?envType=study-plan-v2&envId=top-interview-150
@@ -58,6 +51,13 @@
 
 
 ## History
+
+2023-11-21
+- https://leetcode.com/problems/longest-substring-without-repeating-characters
+- https://leetcode.com/problems/valid-sudoku/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/spiral-matrix/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/group-anagrams/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/longest-consecutive-sequence/?envType=study-plan-v2&envId=top-interview-150
 
 2023-11-20
 - https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii
