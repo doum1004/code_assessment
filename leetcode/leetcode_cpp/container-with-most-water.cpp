@@ -5,7 +5,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/container-with-most-water/submissions/
+https://leetcode.com/problems/container-with-most-water
 
 Solution1. Brute force...
 time: o(n^2)
