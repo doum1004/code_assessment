@@ -1,4 +1,6 @@
 /*
+https://leetcode.com/problems/minimum-size-subarray-sum
+
 Solutions1. slinding window
 time: o(n)
 space: o(1)
@@ -6,6 +8,16 @@ space: o(1)
 Solutions2. binary search
 time: o(nlogn)
 space: o(1)
+
+2 3 1 2 4 3 (7)
+
+0 2 5 6 8 12 15
+
+1 4 4 (4)
+
+9 1 2 3 4 5 (10)
+
+0 10 11 13 16 20 25
 
 */
 
@@ -36,7 +48,10 @@ public:
             sums[i] = sums[i - 1] + nums[i - 1];
         }
         for (int i = n; i >= 0 && sums[i] >= target; i--) {
-            int j = upper_bound(sums.begin(), sums.end(), sums[i] - target) - sums.begin();
+            // i == r_idx
+            if (sums[i] < target)
+                break;
+            int l_idx = upper_bound(sums.begin(), sums.end(), sums[i] - target) - sums.begin();
             len = min(len, i - j + 1);
         }
         return len == INT_MAX ? 0 : len;
