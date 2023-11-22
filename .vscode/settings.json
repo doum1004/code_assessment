@@ -76,7 +76,8 @@
         "__node_handle": "cpp",
         "bit": "cpp",
         "optional": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "xstring": "cpp"
     },
     "python.pythonPath": "/usr/local/bin/python"
 }

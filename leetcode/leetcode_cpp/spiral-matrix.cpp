@@ -84,19 +84,25 @@ public:
         vector<int> ans;
         while (top<=bottom && left<=right) {
             // top to right
-            if (top<=bottom) {
+            //if (top<=bottom)
+            {
                 for (int c=left; c<=right; ++c) {
                     ans.push_back(matrix[top][c]);
                 }
                 top++;
             }
-            if (left<=right) {
+            //if (left<=right)
+            {
                 for (int r=top; r<=bottom; ++r) {
                     ans.push_back(matrix[r][right]);
                 }
                 right--;
             }
-            if (top<=bottom) {
+
+            if (!(top<=bottom && left<=right)) break;
+
+            //if (top<=bottom)
+            {
                 for (int c=right; c>=left; --c) {
                     ans.push_back(matrix[bottom][c]);
                 }
