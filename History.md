@@ -49,7 +49,6 @@
 - https://leetcode.com/problems/minimum-path-sum/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/unique-paths-ii/?envType=study-plan-v2&envId=top-interview-150
 
-
 ## History
 
 2023-11-21
