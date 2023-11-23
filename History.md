@@ -1,12 +1,5 @@
 ## TODO
 
-2023-11-22
-- https://leetcode.com/problems/simplify-path/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/min-stack/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/add-two-numbers/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/copy-list-with-random-pointer/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?envType=study-plan-v2&envId=top-interview-150
-
 2023-11-23
 - https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150
@@ -50,6 +43,13 @@
 - https://leetcode.com/problems/unique-paths-ii/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-22
+- https://leetcode.com/problems/simplify-path
+- https://leetcode.com/problems/min-stack
+- https://leetcode.com/problems/add-two-numbers
+- https://leetcode.com/problems/copy-list-with-random-pointer
+- https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
 
 2023-11-21
 - https://leetcode.com/problems/longest-substring-without-repeating-characters
