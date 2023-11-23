@@ -1,7 +1,6 @@
 ## TODO
 
 2023-11-24
-- https://leetcode.com/problems/number-of-islands/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/surrounded-regions/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/snakes-and-ladders/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/minimum-genetic-mutation/?envType=study-plan-v2&envId=top-interview-150
@@ -43,6 +42,7 @@
 - https://leetcode.com/problems/binary-tree-level-order-traversal
 - https://leetcode.com/problems/kth-smallest-element-in-a-bst
 - https://leetcode.com/problems/validate-binary-search-tree
+- https://leetcode.com/problems/number-of-islands
 
 2023-11-22
 - https://leetcode.com/problems/simplify-path
