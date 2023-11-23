@@ -31,28 +31,29 @@ space: o(max(n,m))
 
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        auto ansDummy = new ListNode(-1);
-        auto cur = ansDummy;
-        auto c = 0;
-        while (l1 != nullptr || l2 != nullptr) {
-            auto sum = c;
-            if (l1 != nullptr) {
+    ListNode* addTwoNumbers_1(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode();
+        ListNode* head = dummy;
+        int carry = 0;
+        while (l1 || l2 || carry) {
+            int sum = carry;
+            if (l1)
                 sum += l1->val;
-                l1 = l1->next;
-            }
-            if (l2 != nullptr) {
+            if (l2)
                 sum += l2->val;
-                l2 = l2->next;
+
+            carry = (sum >= 10);
+            if (carry) {
+                sum %= 10;
             }
-            c = sum >= 10 ? 1 : 0;
-            cur->next = new ListNode(sum % 10);
-            cur = cur->next;
+            head->next = new ListNode(sum);
+            head = head->next;
+            if (l1) l1 = l1->next;
+            if (l2) l2 = l2->next;
         }
-        if (c != 0)
-            cur->next = new ListNode(c);
-        
-        return ansDummy->next;
+        auto ans = dummy->next;
+        delete dummy;
+        return ans;
     }
 };
 

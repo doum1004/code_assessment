@@ -19,11 +19,11 @@ class ListNode:
         self.next = None
 
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        dummyNode = ListNode(-1)
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        dummyNode = ListNode()
         cur = dummyNode
         c = 0
-        while l1 or l2:
+        while l1 or l2 or c:
             s = c
             if l1:
                 s += l1.val
@@ -35,7 +35,5 @@ class Solution:
             c = s // 10
             cur.next = ListNode(s % 10)
             cur = cur.next
-        if c:
-            cur.next = ListNode(c)
                 
         return dummyNode.next
