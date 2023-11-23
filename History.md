@@ -1,12 +1,5 @@
 ## TODO
 
-2023-11-23
-- https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/binary-tree-level-order-traversal/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/kth-smallest-element-in-a-bst/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/validate-binary-search-tree/?envType=study-plan-v2&envId=top-interview-150
-
 2023-11-24
 - https://leetcode.com/problems/number-of-islands/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/surrounded-regions/?envType=study-plan-v2&envId=top-interview-150
@@ -41,7 +34,15 @@
 - https://leetcode.com/problems/triangle/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/minimum-path-sum/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/unique-paths-ii/?envType=study-plan-v2&envId=top-interview-150
+
 ## History
+
+2023-11-23
+- https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
+- https://leetcode.com/problems/binary-tree-right-side-view
+- https://leetcode.com/problems/binary-tree-level-order-traversal
+- https://leetcode.com/problems/kth-smallest-element-in-a-bst
+- https://leetcode.com/problems/validate-binary-search-tree
 
 2023-11-22
 - https://leetcode.com/problems/simplify-path
