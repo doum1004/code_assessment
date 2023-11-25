@@ -1,13 +1,10 @@
 ## TODO
 
-2023-11-24
-- https://leetcode.com/problems/snakes-and-ladders/?envType=study-plan-v2&envId=top-interview-150
+2023-11-25
 - https://leetcode.com/problems/minimum-genetic-mutation/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/implement-trie-prefix-tree/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/design-add-and-search-words-data-structure/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/letter-combinations-of-a-phone-number/?envType=study-plan-v2&envId=top-interview-150
-
-2023-11-25
 - https://leetcode.com/problems/combinations/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/sort-list/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/construct-quad-tree/?envType=study-plan-v2&envId=top-interview-150
@@ -34,6 +31,9 @@
 - https://leetcode.com/problems/unique-paths-ii/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-24
+- https://leetcode.com/problems/snakes-and-ladders
 
 2023-11-23
 - https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
