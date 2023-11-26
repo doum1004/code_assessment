@@ -8,11 +8,14 @@
 using namespace std;
 
 /*
-https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+https://leetcode.com/problems/letter-combinations-of-a-phone-number
 solution1. iteration
 o(N*4^N) / o(N*4*N)
 
 solution2. recursion (backtracking of all possibilities)
+Backtracking is a general algorithm for finding all (or some) solutions to a computational problem (particularly those that incrementally build candidates for a solution).
+It's often used when a problem can be broken down into a set of choices, and the algorithm systematically explores each possibility until it finds a solution or exhausts all options.
+
 o(N*4^N) / o(N*4*N)
 
 */
@@ -51,7 +54,7 @@ public:
         }
     }
         
-    vector<string> letterCombinations(string digits) {
+    vector<string> letterCombinations_2(string digits) {
         unordered_map<char, vector<char>> m;
         m['2'] = {'a', 'b', 'c'};
         m['3'] = {'d', 'e', 'f'};
@@ -65,6 +68,35 @@ public:
         //return letterCombinations_iterate(m, digits);
         vector<string> ans;
         letterCombinations_recursive_backtrack(m, "", digits, ans);
+        return ans;
+    }
+
+    void backtracking(string& str, int i, string b, unordered_map<char, string>& m, vector<string>& ans) {
+        if (i >= str.size()) {
+            if (b != "")
+                ans.push_back(b);
+            return;            
+        }
+        
+        for (auto c : m[str[i]]) {
+            backtracking(str, i+1, b + c, m, ans);
+        }        
+    }
+        
+    vector<string> letterCombinations(string digits) {
+        unordered_map<char, string> m;
+        m['2'] = "abc";
+        m['3'] = "def";
+        m['4'] = "ghi";
+        m['5'] = "jkl";
+        m['6'] = "mno";
+        m['7'] = "pqrs";
+        m['8'] = "tuv";
+        m['9'] = "wxyz";
+        
+        //return letterCombinations_iterate(m, digits);
+        vector<string> ans;
+        backtracking(digits, 0, "", m, ans);
         return ans;
     }
 };
