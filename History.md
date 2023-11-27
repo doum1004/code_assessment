@@ -1,14 +1,7 @@
 ## TODO
 
-2023-11-26
-- https://leetcode.com/problems/construct-quad-tree/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/maximum-subarray/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/maximum-sum-circular-subarray/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/search-a-2d-matrix/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-peak-element/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/kth-largest-element-in-an-array/?envType=study-plan-v2&envId=top-interview-150
-
 2023-11-27
+- https://leetcode.com/problems/kth-largest-element-in-an-array/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/find-k-pairs-with-smallest-sums/editorial/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/single-number-ii/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/bitwise-and-of-numbers-range/?envType=study-plan-v2&envId=top-interview-150
@@ -23,6 +16,13 @@
 - https://leetcode.com/problems/word-break/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-26
+- https://leetcode.com/problems/construct-quad-tree
+- https://leetcode.com/problems/maximum-subarray
+- https://leetcode.com/problems/maximum-sum-circular-subarray
+- https://leetcode.com/problems/search-a-2d-matrix
+- https://leetcode.com/problems/find-peak-element
 
 2023-11-25
 - https://leetcode.com/problems/minimum-genetic-mutation
