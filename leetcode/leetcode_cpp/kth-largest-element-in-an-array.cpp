@@ -20,7 +20,6 @@ using namespace std;
 // quickselection (partion + quicksort)
 // time: avg( o(n) ) worst o(n^2)
 
-
 class Solution {
 public:
     int findKthLargest_sort(vector<int>& nums, int k) {
@@ -84,6 +83,7 @@ public:
         //return findKthLargest_heap(nums, k);
         return findKthLargest_quickselection(nums, k);
     }
+
 private:
     int partition(vector<int>& nums, int l, int r) {
         if (l == r) return l;
