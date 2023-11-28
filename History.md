@@ -1,6 +1,7 @@
 ## TODO
 
 2023-11-28
+- https://leetcode.com/problems/powx-n/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/triangle/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/minimum-path-sum/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/unique-paths-ii/?envType=study-plan-v2&envId=top-interview-150
@@ -14,8 +15,7 @@
 - https://leetcode.com/problems/find-k-pairs-with-smallest-sums (heap)
 - https://leetcode.com/problems/single-number-ii (bit)
 - https://leetcode.com/problems/bitwise-and-of-numbers-range (bit)
-- https://leetcode.com/problems/factorial-trailing-zeroes/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/powx-n/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/factorial-trailing-zeroes (math)
 
 2023-11-26
 - https://leetcode.com/problems/construct-quad-tree
