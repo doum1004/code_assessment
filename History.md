@@ -10,8 +10,8 @@
 ## History
 
 2023-11-27
-- https://leetcode.com/problems/kth-largest-element-in-an-array (heap, do more)
-- https://leetcode.com/problems/find-k-pairs-with-smallest-sums (heap, do more)
+- https://leetcode.com/problems/kth-largest-element-in-an-array (heap)
+- https://leetcode.com/problems/find-k-pairs-with-smallest-sums (heap)
 - https://leetcode.com/problems/single-number-ii (bit)
 - https://leetcode.com/problems/bitwise-and-of-numbers-range (bit)
 - https://leetcode.com/problems/factorial-trailing-zeroes/?envType=study-plan-v2&envId=top-interview-150
