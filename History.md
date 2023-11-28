@@ -1,13 +1,5 @@
 ## TODO
 
-2023-11-27
-- https://leetcode.com/problems/kth-largest-element-in-an-array/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-k-pairs-with-smallest-sums/editorial/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/single-number-ii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/bitwise-and-of-numbers-range/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/factorial-trailing-zeroes/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/powx-n/?envType=study-plan-v2&envId=top-interview-150
-
 2023-11-28
 - https://leetcode.com/problems/triangle/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/minimum-path-sum/?envType=study-plan-v2&envId=top-interview-150
@@ -16,6 +8,14 @@
 - https://leetcode.com/problems/word-break/?envType=study-plan-v2&envId=top-interview-150
 
 ## History
+
+2023-11-27
+- https://leetcode.com/problems/kth-largest-element-in-an-array (heap, do more)
+- https://leetcode.com/problems/find-k-pairs-with-smallest-sums (heap, do more)
+- https://leetcode.com/problems/single-number-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/bitwise-and-of-numbers-range/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/factorial-trailing-zeroes/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/powx-n/?envType=study-plan-v2&envId=top-interview-150
 
 2023-11-26
 - https://leetcode.com/problems/construct-quad-tree
