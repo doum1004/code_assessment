@@ -1,10 +1,43 @@
 ## TODO
 
-2023-11-29
-- https://leetcode.com/problems/house-robber/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/word-break/?envType=study-plan-v2&envId=top-interview-150
+2023-11-30
+- https://leetcode.com/problems/search-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/permutations/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/combination-sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/clone-graph/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-01
+- https://leetcode.com/problems/evaluate-division/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/flatten-binary-tree-to-linked-list/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/reverse-linked-list-ii/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-02
+- https://leetcode.com/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/merge-intervals/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/insert-interval/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/rotate-image/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-02
+- https://leetcode.com/problems/set-matrix-zeroes/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/jump-game-ii/?envType=study-plan-v2&envId=top-interview-150
+
 
 ## History
+
+2023-11-29
+- https://leetcode.com/problems/house-robber (dp)
+- https://leetcode.com/problems/word-break (dp)
+- https://leetcode.com/problems/h-index (array)
+- https://leetcode.com/problems/longest-palindromic-substring
+- https://leetcode.com/problems/interleaving-string/?envType=study-plan-v2&envId=top-interview-150
+
 
 2023-11-28
 - https://leetcode.com/problems/powx-n (math)
