@@ -6,74 +6,60 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/word-break/
+/*
+https://leetcode.com/problems/word-break
 
-// "leetcode" -> ["leet", "code"]
-// l ->
-// le ->
-// leet ->
-// c ->
-// co ->
-// code ...
+1. dp memorization (top down)
+time: o(N^3) recursion(N^2) * substr(N)
+space: o(N^2)
 
-// BFS
-// time: o(n^2)
+2. dp tabulation (bottom up)
+time: o(N^3) recursion(N^2) * substr(N)
+space: o(n) n + n
 
+3. Trie
+time: o(n^2). n^2(dp) + t(trie)
+space: o(n). n(dp) + t(trie)
+
+*/
 class Solution {
 public:
-    bool dfs(unordered_set<string>& wordBooks, string s) {
-        if (s.empty()) return true;
-        
-        for (auto word:wordBooks) { // D
-            auto scopy = s;
-            bool found = false;
-            while (scopy.find(word) == 0) { // W + W * N
-                found = true;
-                scopy.erase(0, word.size());
-            }
-            if (found && dfs(wordBooks, scopy)) return true;
+    bool recursion(const string& s, const unordered_set<string>& hs, vector<int>& dp, int start) {
+        if (start == s.size()) return true;
+        if (dp[start] != -1) return dp[start];
+        for (int i=start; i<s.size(); ++i) {
+            auto ss = s.substr(start, i+1-start);
+            if (hs.count(ss) && recursion(s, hs, dp, i+1)) {
+                return dp[start] = true;
+            }                
         }
-        
-        return false;
+        return dp[start] = false;
     }
-    
-    bool dfs(string s, vector<string>& wordDict) {
-        unordered_set<string> wordBooks(wordDict.begin(), wordDict.end());
-        return dfs(wordBooks, s);
+
+    bool wordBreak_1(string s, vector<string>& wordDict) {
+        unordered_set<string> hs(wordDict.begin(), wordDict.end());
+        vector<int> dp(s.size(), -1);
+        return recursion(s, hs, dp, 0);
     }
-    
-    bool bfs(string s, vector<string>& wordDict) {
-        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
-        
-        queue<int> q;
-        q.push(0);
-        
-        unordered_set<int> v;
-        while (!q.empty()) {
-            auto l = q.front();
-            q.pop();
-            
-            if (v.find(l) != v.end()) continue;
-            v.insert(l);
-            
-            for (int r=l; r<s.size(); ++r) {
-                auto str = s.substr(l, r-l+1);
-                if (wordSet.find(str) != wordSet.end()) {
-                    if (r == s.size() - 1) return true;
-                    q.push(r+1);
+    bool wordBreak_2(string s, vector<string>& wordDict) {
+        unordered_set<string> hs(wordDict.begin(), wordDict.end());
+        int n = s.size();
+        vector<bool> dp(n + 1, false);
+        dp[n] = true;
+        for (int i=n-1; i>=0; --i) {
+            for (int j=i+1; j<=n; ++j) {                
+                if (!dp[j]) continue;
+                auto ss = s.substr(i, j-i);
+                if (hs.count(ss)) {
+                    dp[i] = true;
+                    break;
                 }
             }
         }
-        
-        return false;
+        return dp[0];
     }
-    
     bool wordBreak(string s, vector<string>& wordDict) {
-        if (s.empty()) return true;
-        if (wordDict.size() < 1) return false;
-        
-        //return dfs(s, wordDict);
-        return bfs(s, wordDict);
+        return wordBreak_2(s, wordDict);
     }
 };
 

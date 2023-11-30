@@ -5,82 +5,56 @@
 #include <queue>
 
 using namespace std;
+/*
+https://leetcode.com/problems/house-robber
 
-/**
-https://leetcode.com/problems/house-robber/
+Solution1. DP top down Recursion with Memorization in place
+time: o(n)
+space: o(n) recursion + hashmap (memorization)
 
-// Solution1. Recursive (give index 2, 3 steps futher and sum of money)
-// time o(2^n)
-// space o(2^n)
-ans = 0
-recursive(nums, i, money)
-    if (i >= nums.size()) {
-       ans = max(ans, money) 
-    }
-    money += nums[i];
-    recursive(nums, i+2, money)
-    recursive(nums, i+3, money)
-
-// Solution2. Iterative with dp (presum, cursum, ans)
-// time o(n)
-// space o(1)
-
-     1 2 3 1
-p 0
-c 0
-a    1
-
-p 0
-c 1
-a      2
-
-p 1
-c 2
-a        4
-
-p 2
-c 4
-a         4
-
-     2 6 9 3 1
-p 0
-c 0
-a    2
-
-p 0
-c 2
-a      6
-
-p 2
-c 6
-a        11
-
-p 6
-c 11
-a          11
-
-p 11
-c 11
-a            12
+Solution2. DP bottom down with Tabulation (in place)
+time: o(n)
+space: o(1)
 
 */
 
 class Solution {
 public:
-    int rob_iteration(vector<int>& nums) {
-        if (nums.size() < 1) return 0;
-        
-        auto pre = 0, cur = 0;
-        for (auto &n:nums) {
-            auto t = cur;
-            cur = max(pre + n, cur);
-            pre = t;
-        }
-        return cur;
+    int recurse(vector<int>& nums, int i, unordered_map<int, int>& hm) {
+        if (i >= nums.size()) return 0;
+        if (hm.count(i)) return hm[i];
+        int v = nums[i];
+        int v1 = recurse(nums, i+2, hm);
+        int v2 = recurse(nums, i+3, hm);
+        hm[i] = v + max(v1, v2);
+        return hm[i];
     }
-    
+
+    int rob_1(vector<int>& nums) {
+        if (nums.size() == 0) return 0;
+        if (nums.size() == 1) return nums[0];
+        unordered_map<int, int> hm;
+        recurse(nums, 0, hm);
+        recurse(nums, 1, hm);
+        return max(hm[0], hm[1]);
+    }
+
+    int rob_2(vector<int>& nums) {
+        int n1 = nums.size();
+        if (n1 == 0) return 0;
+        if (n1 == 1) return nums[0];
+        for (int i = n1-3; i>=0; --i) {
+            if (i == n1-3)
+                nums[i] += nums[i+2];
+            else
+                nums[i] += max(nums[i+2], nums[i+3]);
+        }
+
+        return max(nums[0], nums[1]);
+    }
+
     int rob(vector<int>& nums) {
-        return rob_iteration(nums);
+        return rob_2(nums);
     }
 };
 
