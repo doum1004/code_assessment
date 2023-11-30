@@ -35,8 +35,8 @@
 - https://leetcode.com/problems/house-robber (dp)
 - https://leetcode.com/problems/word-break (dp)
 - https://leetcode.com/problems/h-index (array)
-- https://leetcode.com/problems/longest-palindromic-substring
-- https://leetcode.com/problems/interleaving-string/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/longest-palindromic-substring (dp)
+- https://leetcode.com/problems/interleaving-string (dp)
 
 
 2023-11-28
