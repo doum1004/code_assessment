@@ -33,24 +33,27 @@ babbad
 
 class Solution {
 public:
-    string longestPalindrome(string s) {
-        int len_palindorme = 0;
-        int start=-1;
+    string longestPalindrome_1(string& s) {
+        if (s.size() < 2) return s;
+        int maxLength = 1;
+        int start = 0;
         for (int i=0; i<s.size(); ++i) {
             int l = i;
-            while (i+1 < s.size() && s[i+1] == s[i]) i++;
+            while (i < s.size()-1 && s[i+1] == s[l]) i++;
+
             int r = i;
             while (l >= 0 && r<s.size() && s[l] == s[r]) {
-                if (len_palindorme < r-l+1) {
-                    len_palindorme = r-l+1;
+                int length = r - l + 1;
+                if (maxLength < length) {
                     start = l;
+                    maxLength = length;
                 }
                 l--;
                 r++;
             }
-            if (r+1 == s.size()) break;
+            if (r == s.size() - 1) break;
         }
-        return (start >= 0) ? s.substr(start,len_palindorme) : "";
+        return s.substr(start, maxLength);
     }
 };
 
