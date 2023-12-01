@@ -1,7 +1,25 @@
 from typing import List
 
 """
-https://leetcode.com/problems/permutations/submissions/
+https://leetcode.com/problems/permutations
+
+soltuion1. permute_nextpermute. two pointers (swap, reverse)
+// time; o(n*n!). n(len(nums))*n!(all number of permutation)
+// space: o(1). answer(n!)
+
+1. itearte in factorial (n)
+2. find l idx from last (nums[l] < nums[l+1])
+2.1 if l is none. break iteration
+2.2 else find r idx from l (nums[r] > nums[l], most right most)
+2.2.1 swap l,r. and reverse(l+1,r). add nums into answer
+
+solution2. backtracking(change, recursion, undo)
+// time: o(n*n!)
+// space: o(n!) recursion
+
+In recursion(nums, i, ans)
+if i == nums.size. add in ans
+else iterate j (i to end). swap(i,j) and call recursion(num, i+1)
 
 """
 
@@ -58,6 +76,21 @@ class Solution:
         return res
         
         
+    def permute_backtracking2(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        def recursive(i):
+            n = len(nums)
+            if n == i:
+                ans.append(nums[:])
+                return
+            for j in range(i,n):
+                nums[i], nums[j] = nums[j], nums[i]
+                recursive(i+1)
+                nums[i], nums[j] = nums[j], nums[i]
+                
+        recursive(0)
+        return ans
+            
     def permute(self, nums: List[int]) -> List[List[int]]:
         #return self.permute_nextpermutation(nums)
         return self.permute_backtracking(nums)
