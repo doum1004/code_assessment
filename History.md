@@ -1,11 +1,5 @@
 ## TODO
 
-2023-11-30
-- https://leetcode.com/problems/search-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/permutations/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/combination-sum/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/clone-graph/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-01
 - https://leetcode.com/problems/evaluate-division/?envType=study-plan-v2&envId=top-interview-150
@@ -30,6 +24,13 @@
 
 
 ## History
+
+2023-11-30
+- https://leetcode.com/problems/search-in-rotated-sorted-array (bs)
+- https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array (bs)
+- https://leetcode.com/problems/permutations (backtracking)
+- https://leetcode.com/problems/combination-sum
+- https://leetcode.com/problems/clone-graph
 
 2023-11-29
 - https://leetcode.com/problems/house-robber (dp)
