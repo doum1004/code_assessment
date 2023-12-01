@@ -4,8 +4,18 @@
 #include "../utils.h"
 
 using namespace std;
+/*
+https://leetcode.com/problems/search-in-rotated-sorted-array
 
-// https://leetcode.com/problems/search-in-rotated-sorted-array/
+Solution1. Iteration
+time: o(n)
+space: o(1)
+
+Solution2. binary search
+time: o(logn)
+space: o(1)
+
+Solution0. 
 // o(log(n)) -> bin search
 // find pivot by bin search
 // 4 5 6 7 0 1 2
@@ -21,6 +31,7 @@ using namespace std;
 //         p -> bingo
 // return p
 
+*/
 
 class Solution {
 public:
@@ -43,7 +54,7 @@ public:
         return -1;
     }
     
-    int search(vector<int>& nums, int target) {
+    int search_0(vector<int>& nums, int target) {
         if (nums.size() == 0) return -1;
         if (nums.size() == 1) {
             return nums[0] == target ? 0 : -1;
@@ -80,6 +91,51 @@ public:
         }
         return binsearch(nums, target, l, r);
     }
+
+    int search_1(vector<int>& nums, int target) {
+        for (int i=0; i<nums.size(); ++i) {
+            if (target == nums[i])
+                return i;
+        }
+        return -1;
+    }
+
+    int search_2(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1;
+        while (l<=r) {
+            int m = l + (r-l) / 2;
+            int mNum = nums[m];
+            if (mNum == target)
+                return m;
+            if (mNum > nums[r]) {
+                if (target < mNum && target >= nums[l])
+                    r = m-1;
+                else
+                    r = m+1;
+            }
+            else if (mNum < nums[l]) {
+                if (target > mNum && target <= nums[r])
+                    l = m+1;
+                else
+                    r = m-1;
+            }
+            else {
+                if (target < mNum)
+                    r = m - 1;
+                else
+                    l = m + 1;
+            }
+        }
+        return -1;
+    }
+
+    int search(vector<int>& nums, int target) {
+        return search_1(nums, target);
+    }
+};
+
+class Solution {
+public:
 };
 
 int main()
