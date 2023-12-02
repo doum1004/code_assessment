@@ -22,7 +22,7 @@
 - https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
 - https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii
 - https://leetcode.com/problems/flatten-binary-tree-to-linked-list
-- https://leetcode.com/problems/reverse-linked-list-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/reverse-linked-list-ii
 
 2023-11-30
 - https://leetcode.com/problems/search-in-rotated-sorted-array (bs)
