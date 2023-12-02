@@ -1,13 +1,5 @@
 ## TODO
 
-
-2023-12-01
-- https://leetcode.com/problems/evaluate-division/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/flatten-binary-tree-to-linked-list/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/reverse-linked-list-ii/?envType=study-plan-v2&envId=top-interview-150
-
 2023-12-02
 - https://leetcode.com/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=study-plan-v2&envId=top-interview-150
@@ -24,6 +16,13 @@
 
 
 ## History
+
+2023-12-01
+- https://leetcode.com/problems/evaluate-division (graph)
+- https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+- https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii
+- https://leetcode.com/problems/flatten-binary-tree-to-linked-list
+- https://leetcode.com/problems/reverse-linked-list-ii/?envType=study-plan-v2&envId=top-interview-150
 
 2023-11-30
 - https://leetcode.com/problems/search-in-rotated-sorted-array (bs)
