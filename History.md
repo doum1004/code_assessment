@@ -1,13 +1,6 @@
 ## TODO
 
-2023-12-02
-- https://leetcode.com/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/merge-intervals/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/insert-interval/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/rotate-image/?envType=study-plan-v2&envId=top-interview-150
-
-2023-12-02
+2023-12-03
 - https://leetcode.com/problems/set-matrix-zeroes/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150
@@ -16,6 +9,16 @@
 
 
 ## History
+
+### 2023
+
+2023-12-02
+- https://leetcode.com/problems/network-delay-time (shortest path)
+- https://leetcode.com/problems/remove-nth-node-from-end-of-list
+- https://leetcode.com/problems/evaluate-reverse-polish-notation
+- https://leetcode.com/problems/merge-intervals
+- https://leetcode.com/problems/insert-interval 
+- https://leetcode.com/problems/rotate-image
 
 2023-12-01
 - https://leetcode.com/problems/evaluate-division (graph)
@@ -66,7 +69,6 @@
 - https://leetcode.com/problems/letter-combinations-of-a-phone-number
 - https://leetcode.com/problems/combinations
 - https://leetcode.com/problems/sort-list
-
 
 2023-11-24
 - https://leetcode.com/problems/snakes-and-ladders

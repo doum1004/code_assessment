@@ -10,99 +10,72 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/rotate-image/submissions/
-
-// Solution 1. 
 /*
- * clockwise rotate
- * first reverse up to down, then swap the symmetry 
+https://leetcode.com/problems/rotate-image
+
+Solution 1. Rotate four trectangles
+time: o(n^2)
+space: o(1)
+// 1 2 3        7 4 1
+// 4 5 6        8 5 2
+// 7 8 9        9 6 3
+
+Solution 2. clockwise rotate. first reverse up to down, then swap the symmetry 
+time: o(n^2)
+space: o(1)
  * 1 2 3     7 8 9     7 4 1
  * 4 5 6  => 4 5 6  => 8 5 2
  * 7 8 9     1 2 3     9 6 3
-*/
-// 1. reverse
-// 2. swap symmetry
-/*
+ * 
+// 1. swap symmetry
+// 2. reverse
+(or 2->1)
+
  * anticlockwise rotate
  * first reverse left to right, then swap the symmetry
  * 1 2 3     3 2 1     3 6 9
  * 4 5 6  => 6 5 4  => 2 5 8
  * 7 8 9     9 8 7     1 4 7
-*/
+ * 
 // 1. reverse (for (auto &it : matrix) reverse(it.begin(), it.end()))
 // 2. swap symmetry. same
 
-// Solution 2. Rotate four trectangles
-// time: o(n^2)
-// space: o(1)
-// 1 2 3        7 4 1
-// 4 5 6        8 5 2
-// 7 8 9        9 6 3
-
-// 0 < i < n/2+n%2
-// 0 < j < n/2
-// i = 0, j = 0, temp = 1, 3, 9, 7 rotate
-// 7 2 1
-// 4 5 6
-// 9 8 3
-
-// i = 1, j = 0, temp = 2, 6, 8, 4 rotate
-// 7 4 1
-// 8 5 2
-// 9 6 3
+*/
 
 class Solution {
 public:
+    void rotate_1(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int n1 = n / 2;
+        for (int i=0; i<n; ++i) {
+            int n2 = n - 2 * i - 1;
+            for (int j=i; j<n2+i; ++j) {
+                int p1_x = i, p1_y = j;
+                int p2_x = j, p2_y = n-i-1;
+                int p3_x = n-i-1, p3_y = n-j-1;
+                int p4_x = n-j-1, p4_y = i;
+                auto t = matrix[p1_x][p1_y];
+                matrix[p1_x][p1_y] = matrix[p4_x][p4_y];
+                matrix[p4_x][p4_y] = matrix[p3_x][p3_y];
+                matrix[p3_x][p3_y] = matrix[p2_x][p2_y];
+                matrix[p2_x][p2_y] = t;
+            }
+        }
+    }
+    void rotate_2(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        for (int i=0; i<n; ++i) {
+            for (int j=0; j<i; ++j) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+        
+        for (int i=0; i<n; ++i) {
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
     void rotate(vector<vector<int>>& matrix) {
-        int mode = 2;
-        if (mode == 0)
-        {
-            reverse(matrix.begin(), matrix.end());
-            int n = matrix.size();
-            for (int i=0; i<n; ++i) {
-                for (int j=i; j<n; ++j) {
-                    swap(matrix[i][j], matrix[j][i]);
-                }
-            }
-        }
-        else if (mode == 1) {
-            auto n = matrix.size();
-            for (int i=0; i<n/2+n%2; ++i) {
-                for (int j=0; j<n/2; ++j) {
-                    auto tmp = new int[4];
-                    auto row = i;
-                    auto col = j;
-
-                    // store temp
-                    for (int k=0; k<4; ++k) {
-                        tmp[k] = matrix[row][col];
-                        auto t = row;
-                        row = col;
-                        col = n - 1 - t;
-                    }
-
-                    // rotate by storing temp
-                    for (int k=0; k<4; ++k) {
-                        matrix[row][col] = tmp[(k+3) % 4];
-                        auto t = row;
-                        row = col;
-                        col = n - 1 -t;
-                    }
-                }
-            }
-        }
-        else if (mode == 2) {
-            int n = matrix.size();
-            for (int i=0; i<n/2+(n%2); ++i) {
-                for (int j=0; j<n/2; ++j) {
-                    auto temp = matrix[i][j];
-                    matrix[i][j] = matrix[n-1-j][i];
-                    matrix[n-1-j][i] = matrix[n-1-i][n-1-j];
-                    matrix[n-1-i][n-1-j] = matrix[j][n-1-i];
-                    matrix[j][n-1-i] = temp;
-                }
-            }
-        }
+        return rotate_2(matrix);
     }
 };
 
