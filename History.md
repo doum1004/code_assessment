@@ -7,7 +7,7 @@
 
 2023-12-03
 - https://leetcode.com/problems/set-matrix-zeroes
-- https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/3sum
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/jump-game-ii/?envType=study-plan-v2&envId=top-interview-150
