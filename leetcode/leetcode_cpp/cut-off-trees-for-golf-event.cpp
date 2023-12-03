@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/cut-off-trees-for-golf-event/submissions/
+https://leetcode.com/problems/cut-off-trees-for-golf-event
 
 - Solution1. Sort and BSF to find shortest next paths
 - time: o((m*n)^2)
