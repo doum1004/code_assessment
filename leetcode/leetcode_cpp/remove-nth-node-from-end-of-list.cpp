@@ -6,80 +6,123 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+ /*
+ https://leetcode.com/problems/remove-nth-node-from-end-of-list
 
-// solution1. two pointers
-// time: o(n)
-// space: o(1)
-1. two pointers. one for wait n times
-2. once fast pointer arrives, relink to remove the target
+ Solution1. iterate once + extra space
+ time: o(n)
+ space: o(n)
 
-n=2
-  2. 1  0
-  1->2->3->4->5
-        s
-              f
+ Solution2. Iterate twice
+ time: o(n): n+n
+ space: o(1)
 
-// solution2. one pointers
-// time: o(n)
-// space: o(1)
-1. get total count
-2. iterate till total - n
-3. relink to remove next cur->next = cur->next->next
+ Solution3. Iterate once (two pointers)
+ time: o(n)
+ space: o(1)
 
-d 1 2 3 4 5
-      *
+ d   1 2 3 4 5 (1)
+ s,f
+ s   f
+           s f(x)
+ 
+ d   1 2 3 4 5 (3)
+ s,f
+ s       f
+       s x   f
 
-*/
+ Solution4. Iterate once (one pointer)
+ time: o(n)
+ space: o(1)
+ */
 class Solution {
 public:
-    ListNode* removeNthFromEnd_twopointers(ListNode* head, int n) {
-        auto dummy = new ListNode(-1);
+    ListNode* removeNthFromEnd_1(ListNode* head, int n) {
+        ListNode* dummy = new ListNode(0);
         dummy->next = head;
-        
-        auto slow = dummy;
-        head = dummy;
-        while (head->next) {
-            if (n-- <= 0) slow = slow->next;
-            head = head->next;
+        auto cur = dummy;
+
+        vector<ListNode*> list;
+        while (cur) {
+            list.push_back(cur);
+            cur = cur->next;
         }
-        
-        if (slow && slow->next) {
-            auto debedelted = slow->next;
-            slow->next = debedelted->next;
-            delete debedelted;
+
+        int i = list.size() - n;
+        if (i >= 1) {
+            list[i-1]->next = list[i]->next;
+            //delete list[i]; list[i] = nullptr;
         }
-        
         return dummy->next;
     }
-    
-    ListNode* removeNthFromEnd_onepointer(ListNode* head, int n) {
-        auto dummy = new ListNode(-1);
+
+    ListNode* removeNthFromEnd_2(ListNode* head, int n) {
+        auto dummy = new ListNode(0);
         dummy->next = head;
-        int count = 0;
+        auto pre = dummy;
+        int total = 0;
+        while (pre->next) {
+            total++;
+            pre = pre->next;
+        }
+
+        pre = dummy;
+        while (pre->next) {
+            if (--total < n)
+                break;
+            pre = pre->next;
+        }
+        //auto tobeDeleted = pre->next;
+        pre->next = pre->next->next;
+        //delete tobeDeleted; tobeDeleted = nullptr;
+        return dummy->next;
+    }
+
+    ListNode* removeNthFromEnd_3(ListNode* head, int n) {
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* slow = dummy, *fast = dummy;
+        while (n--) fast = fast->next;
+        while (fast->next) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        //auto tobeDeleted = slow->next;
+        slow->next = slow->next->next;
+        //delete tobeDeleted; tobeDeleted = nullptr;
+        return dummy->next;
+    }
+
+    ListNode* removeNthFromEnd_4(ListNode* head, int n) {
+        auto dummy = new ListNode(0);
+        dummy->next = head;
+        int cnt = 0;
         while (head) {
-            count++;
+            cnt++;
             head = head->next;
         }
-        
+
         head = dummy;
-        for (int i=1; i<=count-n; ++i) {
+        for (int i=1; i<=cnt-n; ++i) {
             if (!head) break;
             head = head->next;
         }
-        
-        if (head && head->next){
-            auto debedelted = head->next;
-            head->next = head->next->next;
-            delete debedelted;
-        } 
-        
+
+        head->next = head->next->next;
         return dummy->next;
     }
-    
+
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        //return removeNthFromEnd_twopointers(head, n);
-        return removeNthFromEnd_onepointer(head, n);
+        return removeNthFromEnd_4(head, n);
     }
 };
 
