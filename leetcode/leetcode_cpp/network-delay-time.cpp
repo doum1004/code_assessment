@@ -8,7 +8,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/network-delay-time/
+https://leetcode.com/problems/network-delay-time
 
 solution 1. DSF preorder in recursion
 time: o(ElogE + N^2). sort(ElogE) + visit node from node
