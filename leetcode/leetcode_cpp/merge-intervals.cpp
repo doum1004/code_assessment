@@ -5,42 +5,38 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/merge-intervals/
+/*
+https://leetcode.com/problems/merge-intervals
 
-// sort and merge
-// time: o(nlogn) sort
-// space: o(n) ans vector
+Solution1. two pointers
 
-// [1,3], [2,6], [8,10], [15,18]
 // sort
-// [1,3], [2,6], [8,10], [15,18]
-// merge vector
-// v [1, 3]
-// v [1, 6]
-// v [1, 6] [8, 10]
-// v [1, 6] [8, 10] [15, 18]
+// iterate and merge if needed, if not push to ans
 
+[[1,3],[2,6],[8,10],[15,18]]
+  l r
+
+if ((i >= l && i <= r) || (j >= l && j <= r))
+  // merge
+  [min() max()]
+*/
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        if (intervals.size() < 2) return intervals;
-        
-        // sort
-        sort(intervals.begin(), intervals.end(), [&](auto &a, auto &b){
+        if (intervals.size() <= 1) return intervals;
+        // sort(intervals.begin(), intervals.end());
+        sort(intervals.begin(), intervals.end(), [&](auto &a, auto &b){ // same as default lambda
            return a[0] < b[0]; 
         });
-        
-        // merge
-        vector<vector<int>> ans;
-        for (auto &interval : intervals) {
-            if (ans.empty() || ans.back()[1] < interval[0]) {
-                ans.push_back(interval);
-            }
-            else {
-                ans.back()[1] = max(ans.back()[1], interval[1]);
-            }
+
+        vector<vector<int>> res;
+        for (auto& interval : intervals) {
+            if (res.empty() || res.back()[1] < interval[0])
+                res.push_back(interval);
+            else
+                res.back()[1] = max(res.back()[1], interval[1]);
         }
-        return ans;
+        return res;
     }
 };
 
