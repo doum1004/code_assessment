@@ -10,71 +10,53 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/3sum/
+/*
+https://leetcode.com/problems/3sum
 
-// Three points
-// time: o(n^2) : sort(nlogn) + iterate(i*(l,r))
-// space: o(n) vector for ans
+Solution1. Sliding window (two pointers)
+time: o(n^2) nlogn + n^2(i*(l,r))
+spcae: o(1) answer(n)
 
-// 1. sort then easy to avoid duplicates
-// -1 -1 0 1 2
+1. sort to avoid duplication
+2. iterate nums and try to find target(-nums[i]) from two pointers in nums[l] and nums[r]. l++ r--
+3. Add it in res if find, and try to move till non duplications (l,r)
+4. move i to skip duplication
 
-// 2. iterate nums (i). And skip duplicates
-// for i; i<n
-//  target = -i
-//  front = i + 1
-//  back = n - 1
-//  while (front < back)
-//      sum = front + back
-//      if (sum > target)
-//          back--
-//      else if (sum < target)
-//          front++
-//      else
-//          vector<int> triple(3,0)
-//          triple[0] = nums[i]
-//          triple[1] = nums[front]
-//          triple[2] = nums[back]
-//          while (front < back && nums[front] == triple[1]) front++;
-//          while (front < back && nums[back] == triple[2]) end--;
-//  while (i+1 < n && nums[i] == nums[i+1]) i++;
-
+*/
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        if (nums.size() < 3) return vector<vector<int>>();
-        
+    vector<vector<int>> threeSum_1(vector<int>& nums) {
+        int n = nums.size();
+        if (n < 3) return {};
         sort(nums.begin(), nums.end());
-        
-        vector<vector<int>> ans;
-        for (int i=0; i<nums.size(); ++i) {
-            auto target = -nums[i];
-            auto l = i+1;
-            auto r = nums.size() - 1;
-            
-            while (l < r) {
-                auto sum = nums[l] + nums[r];
-                if (sum < target) {
-                    l++;
-                }
-                else if (sum > target) {
+
+        vector<vector<int>> res;
+        for (int i=0; i<n-2; ++i) {
+            int target = -nums[i];
+            int l = i+1;
+            int r = n-1;
+            while (l<r) {
+                int sum = nums[l] + nums[r];
+                if (target < sum)
                     r--;
-                }
+                else if (target > sum)
+                    l++;
                 else {
-                    vector<int> triple(3, 0);
-                    triple[0] = nums[i];
-                    triple[1] = nums[l];
-                    triple[2] = nums[r];
-                    ans.push_back(triple);
-                    
-                    while (l < r && nums[l] == triple[1]) l++;
-                    while (l < r && nums[r] == triple[2]) r--;
+                    res.push_back({nums[i],nums[l],nums[r]});
+                    int numL = nums[l];
+                    int numR = nums[r];
+                    while (l < r && nums[l] == numL) l++;
+                    while (l < r && nums[r] == numR) r--;
                 }
             }
-            
-            while (i+1 < nums.size() && nums[i+1] == nums[i]) i++;
+            while (i < n - 1 && nums[i] == nums[i+1]) i++;
         }
-        return ans;
+
+        return res;
+    }
+
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        return threeSum_1(nums);
     }
 };
 

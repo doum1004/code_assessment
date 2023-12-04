@@ -1,16 +1,16 @@
 ## TODO
 
-2023-12-03
-- https://leetcode.com/problems/set-matrix-zeroes/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/jump-game-ii/?envType=study-plan-v2&envId=top-interview-150
-
 
 ## History
 
 ### 2023
+
+2023-12-03
+- https://leetcode.com/problems/set-matrix-zeroes
+- https://leetcode.com/problems/3sum
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii
+- https://leetcode.com/problems/jump-game (dp, linear)
+- https://leetcode.com/problems/jump-game-ii (dp, linear)
 
 2023-12-02
 - https://leetcode.com/problems/network-delay-time (shortest path)
