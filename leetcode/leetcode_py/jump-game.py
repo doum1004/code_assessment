@@ -1,11 +1,26 @@
 from typing import List
 
 """
-https://leetcode.com/problems/jump-game/
+https://leetcode.com/problems/jump-game
+- Solution1: backtracking
+- time: o(2^n)
+- space: o(n)
+
+- Solution2: backtracking(top down) with dp
+- time: o(n^2)
+- space: o(2n) recursion + table
+
+- soluiton3: dp(bottom up)
+- time: o(n^2)
+- space: o(n)
+
+- solution4: greedy
+- time: o(n)
+- space: o(1)
 """
 
 class Solution:
-    def canJump_dp(self, nums: List[int]) -> bool:
+    def canJump_3(self, nums: List[int]) -> bool:
         n = len(nums)
         t = [0 for i in range(n)]
         t[n-1] = 1
@@ -21,7 +36,7 @@ class Solution:
         
         return t[0] == 1
         
-    def canJump_greedy(self, nums: List[int]) -> bool:
+    def canJump_4(self, nums: List[int]) -> bool:
         n,m = len(nums),0
         if n < 1: return False
         

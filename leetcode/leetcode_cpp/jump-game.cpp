@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/jump-game/
+https://leetcode.com/problems/jump-game
 
 - Solution1: backtracking
 - time: o(2^n)
@@ -29,7 +29,25 @@ https://leetcode.com/problems/jump-game/
 
 class Solution {
 public:
-    bool canJump_dp(vector<int>& nums) {
+    bool dfs(vector<int>& nums, int cur, unordered_map<int,bool>& dp) {
+        if (cur == nums.size()-1) return true;
+        if (dp.count(cur)) return dp[cur];
+        
+        bool res = false;
+        for (int i=1; i<=nums[cur]; ++i) {
+            res = dfs(nums, cur+i, dp);
+            if (res)
+                break;
+        }
+        dp[cur] = res;
+        return res;
+    }
+    bool canJump_2(vector<int>& nums) {
+        unordered_map<int,bool> dp;
+        return dfs(nums, 0, dp);
+    }
+
+    bool canJump_3(vector<int>& nums) {
         int n = nums.size();
         if (n<1) return false;
         
@@ -49,12 +67,12 @@ public:
         return t[0] == 1;
     }
     
-    bool canJump_linear(vector<int>& nums) {
+    bool canJump_4(vector<int>& nums) {
         int n = nums.size();
         if (n < 1) return false;
         int m = nums[0];
         for (int i=0; i<=m; ++i) {
-            m = max(m, i+nums[i]);
+            if (m >= i) m = max(m, i+nums[i]);
             if (m >= n-1) return true;
         }
         return false;
@@ -62,7 +80,7 @@ public:
     
     bool canJump(vector<int>& nums) {
         //return canJump_dp(nums);
-        return canJump_linear(nums);
+        return canJump_4(nums);
     }
 };
 
