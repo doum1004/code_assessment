@@ -10,7 +10,8 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/product-of-array-except-self
+/*
+https://leetcode.com/problems/product-of-array-except-self
 
 // iterate i: 0 to n
 // iterate j: 0 to n except (i)
@@ -42,6 +43,7 @@ using namespace std;
 // i=n-1 to 0
 //  ans[i] = ans[i] * r
 //  r *= ans[i]
+*/
 
 class Solution {
 public:
