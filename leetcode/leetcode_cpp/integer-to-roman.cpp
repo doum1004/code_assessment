@@ -5,11 +5,12 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/integer-to-roman/
+/*
+https://leetcode.com/problems/integer-to-roman
 
-// subtract maximum possibility
-// o(n) : roman mapper(13 * max(4))
-// o(n) : map(roman mapper)
+Solution. subtract maximum possibility
+time: o(n): roman mapper(13 * max(4))
+space: o(n): map(roman mapper)
 
 // map<int, pair<string, int>>
 // [0] = {M, 1000}
@@ -21,7 +22,7 @@ using namespace std;
 //      ans += map[i].first
 //      n -= map[i].second
 // return ans
-
+*/
 
 class Solution {
 public:
