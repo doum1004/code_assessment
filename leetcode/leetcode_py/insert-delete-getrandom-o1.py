@@ -1,8 +1,11 @@
 from typing import List
 
 """
-https://leetcode.com/problems/insert-delete-getrandom-o1/
+https://leetcode.com/problems/insert-delete-getrandom-o1
 
+1. Hashmap + List (Hashmap points list idx)
+time: o(1). insert(1. hashmap, list) remove(1. indx from hash map)
+space: o(n) n*2
 """
 
 class RandomizedSet:
