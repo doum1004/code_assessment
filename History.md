@@ -1,6 +1,7 @@
 ## TODO
 
 2023-12-07
+- https://leetcode.com/problems/lru-cache/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/sum-root-to-leaf-numbers/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/binary-search-tree-iterator/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/?envType=study-plan-v2&envId=top-interview-150
@@ -26,8 +27,7 @@
 - https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons
 - https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii
 - https://leetcode.com/problems/rotate-list
-- https://leetcode.com/problems/partition-list/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/lru-cache/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/partition-list
 
 2023-12-05
 - adventofcode day1
