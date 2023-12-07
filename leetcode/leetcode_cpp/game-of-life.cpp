@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/game-of-life/
+https://leetcode.com/problems/game-of-life
 
 //Solution1. mn space
 //time: o(m*n)
@@ -30,6 +30,16 @@ case 1, gigantic matrix with few live cells. Entire board is no necessary.
 
 Case 2.if board is too big, input is in file.
 ->Read three lines. pre, cur, next.
+
+Soluiton3. Update board twice
+time: o(mn) m*n*8 + m*n
+space: o(1)
+1. Check neighbors and update (-1 dead, 2 live)
+Lice Cell
+- Live < 2 -> -(v) (dead)
+- Live > 3 -> -(v) (dead)
+Dead Cell
+- Live == 3 -> 2 (live)
 
 */
 
@@ -105,9 +115,50 @@ public:
         }
     }
     
+    int getLiveCount(vector<vector<int>>& board, int i, int j) {
+        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size()) return 0;
+        return abs(board[i][j]) == 1 ? 1 : 0;
+    }
+    void updateBoard(vector<vector<int>>& board, int i, int j) {
+        int v = 0;
+        v += getLiveCount(board, i-1, j-1);
+        v += getLiveCount(board, i-1, j);
+        v += getLiveCount(board, i-1, j+1);
+        v += getLiveCount(board, i, j-1);
+        v += getLiveCount(board, i, j+1);
+        v += getLiveCount(board, i+1, j-1);
+        v += getLiveCount(board, i+1, j);
+        v += getLiveCount(board, i+1, j+1);
+        
+        if (board[i][j] == 1) {
+            // live
+            if (v < 2 || v > 3)
+                board[i][j] = -1;
+        }
+        else {
+            // dead
+            if (v == 3) board[i][j] = 2;
+        }
+    }
+    void gameOfLife_3(vector<vector<int>>& board) {
+        int m = board.size();
+        int n = board[0].size();
+        for (int i=0; i<m; ++i) {
+            for (int j=0; j<n; ++j) {
+                updateBoard(board, i, j);
+            }
+        }
+        for (int i=0; i<m; ++i) {
+            for (int j=0; j<n; ++j) {
+                if (board[i][j] < 0) board[i][j] = 0;
+                else if (board[i][j] > 1) board[i][j] = 1;
+            }
+        }
+    }
     void gameOfLife(vector<vector<int>>& board) {
         //return gameOfLife_mn(board);
-        return gameOfLife_InPlace(board);
+        //return gameOfLife_InPlace(board);
+        return gameOfLife_3(board);
     }
 };
 

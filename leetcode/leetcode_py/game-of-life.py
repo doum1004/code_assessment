@@ -67,8 +67,44 @@ class Solution:
                 elif board[r][c] == -1:
                     board[r][c] = 0
         
+    def gameOfLife_3(self, board: List[List[int]]) -> None:
+        m = len(board)
+        n = len(board[0])
+        def liveCount(i, j):
+            if i < 0 or i >= m or j < 0 or j >= n:
+                return 0
+            return 1 if abs(board[i][j]) == 1 else 0
+
+        def updateBoard(i, j):
+            v = 0
+            v += liveCount(i-1, j-1)
+            v += liveCount(i-1, j)
+            v += liveCount(i-1, j+1)
+            v += liveCount(i, j-1)
+            v += liveCount(i, j+1)
+            v += liveCount(i+1, j-1)
+            v += liveCount(i+1, j)
+            v += liveCount(i+1, j+1)
+            if board[i][j] == 1:
+                if v < 2 or v > 3:
+                    board[i][j] = -1
+            else:
+                if v == 3:
+                    board[i][j] = 2
+        
+        for i in range(m):
+            for j in range(n):
+                updateBoard(i,j)
+        
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == -1:
+                    board[i][j] = 0
+                elif board[i][j] == 2:
+                    board[i][j] = 1
         
     def gameOfLife(self, board: List[List[int]]) -> None:
         #return self.gameOfLife_copy(board)
-        return self.gameOfLife_inplace(board)
+        #return self.gameOfLife_inplace(board)
+        return self.gameOfLife_3(board)
         
