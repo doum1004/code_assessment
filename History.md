@@ -17,7 +17,7 @@
 2023-12-07
 - https://leetcode.com/problems/lru-cache
 - https://leetcode.com/problems/sum-root-to-leaf-numbers
-- https://leetcode.com/problems/binary-search-tree-iterator/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/binary-search-tree-iterator
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/course-schedule/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/course-schedule-ii/?envType=study-plan-v2&envId=top-interview-150
