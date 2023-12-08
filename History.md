@@ -21,7 +21,7 @@
 - https://leetcode.com/problems/binary-search-tree-iterator
 - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
 - https://leetcode.com/problems/course-schedule
-- https://leetcode.com/problems/course-schedule-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/course-schedule-ii
 
 2023-12-06
 - https://leetcode.com/problems/game-of-life
