@@ -26,8 +26,6 @@ class Solution:
             
         return True
         
-            
-        
     def canFinish_bfs_interation(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         # build graph
         g = [[] for i in range(numCourses)]
@@ -48,6 +46,28 @@ class Solution:
                     bfs.append(j)
                 
         return len(bfs) == numCourses
+        
+    def canFinish_1(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        g = defaultdict(list)
+        for p in prerequisites:
+            g[p[0]].append(p[1])
+
+        v = set()
+        def hasCycle(innerV, node):
+            if node in innerV: return True
+            if node in v: return False
+            v.add(node)
+            innerV.add(node)
+            for adj in g[node]:
+                if hasCycle(innerV, adj): return True
+            innerV.remove(node)
+            return False
+
+        for p in prerequisites:
+            innerV = set()
+            if hasCycle(innerV, p[0]): return False
+
+        return True
         
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         #return self.canFinish_bfs_interation(numCourses, prerequisites)

@@ -9,42 +9,93 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 
-// DFS post order
-// time: o(n)
-// space: o(n)
+ /*
+ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
 
-    5(0,2)
-6(1)   2(1)
-    7(0) 4(0)
-p=6, q=2
- 
-  5(1,2)
-6   2(0,1)
- 7(0) 4(1)
-p = 5, q = 4
+ Solution1. Build ChildParent map (child: parent, level) and find common parent
+ time: o(n) n + n + n
+ space: o(n);
 
+ Solution2-3. DFS return pointer if it hits p or q (or null)
+ time: o(n)
+ space: o(n) height
  */
 class Solution {
 public:
-    TreeNode* output = nullptr;
-    int lca(TreeNode* node, TreeNode* p, TreeNode* q) {
-        if (node == NULL) return 0;
+    void buildMap(TreeNode* node, int level, unordered_map<TreeNode*, pair<TreeNode*, int>>& m) {
+        if (!node) return;
+        
+        if (node->left) m[node->left] = {node, level};
+        if (node->right) m[node->right] = {node, level};
+        buildMap(node->left, level+1, m);
+        buildMap(node->right, level+2, m);
+    }
+    TreeNode* lowestCommonAncestor_1(TreeNode* root, TreeNode* p, TreeNode* q) {
+        unordered_map<TreeNode*, pair<TreeNode*, int>> m; // child: (parent, parent level)
+        if (p == q) return p;
+        if (p == root || q == root) return root;
+        m[root] = {nullptr, -1};
+        buildMap(root, 0, m);
 
-        int left = lca(node->left, p, q);
-        int right = lca(node->right, p, q);
-        int valid = (node == p || node == q) ? 1 : 0;
-        if (left + right + valid == 2) {
-            output = node;
+        if (!m.count(p)) return nullptr;
+        if (!m.count(q)) return nullptr;
+
+        auto pLevel = m[p].second;
+        auto qLevel = m[q].second;
+
+        unordered_set<TreeNode*> v;
+        auto cur = pLevel < qLevel ? p : q;
+        while (cur) {
+            v.insert(cur);
+            cur = m[cur].first;
         }
 
-        return (left + right + valid > 0) ? 1 : 0;
+        cur = pLevel < qLevel ? q : p;
+        while (cur) {
+            if (v.count(cur)) return cur;
+            cur = m[cur].first;
+        }
+        return nullptr;
     }
-    
+
+    TreeNode* ans = nullptr;
+    int dfs(TreeNode* node, TreeNode* a, TreeNode* b) {
+        if (!node) return 0;
+        int val = dfs(node->left, a, b);
+        val += dfs(node->right, a, b);
+        val += (node == a || node == b) ? 1 : 0;
+        if (val == 2) {
+            ans = node;
+            return 0;
+        }
+        return val;
+    }
+
+    TreeNode* lowestCommonAncestor_2(TreeNode* root, TreeNode* p, TreeNode* q) {
+        dfs(root, p, q);
+        return ans;
+    }
+
+    TreeNode* lowestCommonAncestor_3(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (!root || root == p || root == q) return root;
+        auto l = lowestCommonAncestor_3(root->left, p, q);
+        auto r = lowestCommonAncestor_3(root->right, p, q);
+        if (l != nullptr && r != nullptr) return root;
+        return l ? l : r;
+    }
+
+
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        lca(root, p, q);
-        return output;
+        return lowestCommonAncestor_3(root, p, q);
     }
 };
 

@@ -50,15 +50,15 @@ public:
     }
     
     bool hasCycle(vector<vector<int>>& g, vector<bool>& v, unordered_set<int>& instack, int node) {
-        if (instack.find(node) != instack.end()) return false;
-        if (v[node]) return true;
+        if (instack.find(node) != instack.end()) return true;
+        if (v[node]) return false;
         v[node] = true;
         instack.insert(node);
         for (auto &adj:g[node]) {
-            if (!hasCycle(g, v, instack, adj)) return false;
+            if (hasCycle(g, v, instack, adj)) return true;
         }
         instack.erase(node);
-        return true;
+        return false;
     }
     
     bool canFinish_DSF_recursion(int numCourses, vector<vector<int>>& prerequisites) {
@@ -70,9 +70,35 @@ public:
         vector<bool> v(numCourses, false);
         for (auto &p:prerequisites) {
             unordered_set<int> instack;
-            if (!hasCycle(g, v, instack, p[0])) return false;
+            if (hasCycle(g, v, instack, p[0])) return false;
         }
         
+        return true;
+    }
+    
+    bool hasCycle(unordered_map<int, vector<int>>& g, unordered_set<int>& v, unordered_set<int>& innerV, int node) {
+        if (innerV.count(node)) return true;
+        if (v.count(node)) return false;
+        v.insert(node);
+
+        innerV.insert(node);
+        for (auto& adj : g[node]) {
+            if (hasCycle(g, v, innerV, adj)) return true;
+        }
+        innerV.erase(node);
+        return false;
+    }
+
+    bool canFinish_1(int numCourses, vector<vector<int>>& prerequisites) {
+        unordered_map<int, vector<int>> g;
+        for (auto& p:prerequisites)
+            g[p[0]].push_back(p[1]);
+        
+        unordered_set<int> v;
+        for (auto& p:prerequisites) {
+            unordered_set<int> innerV;
+            if (hasCycle(g, v, innerV, p[0])) return false;
+        }
         return true;
     }
     

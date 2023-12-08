@@ -6,37 +6,21 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/lru-cache/
+/*
+https://leetcode.com/problems/lru-cache
 
-// map for cache, list for used
+Solution0. map for cache, list for used
 // time: o(1) // map: get/set o(1), list: erase by iterator and add front/back o(1)
 // space: o(capacity)
-
-// cache.put(1, 1);
-// cache: 1
-
-// cache.put(2, 2);
-// cache: 1 2
-
-// cache.get(1);
-// cache: 2 1
-
-// cache.put(3, 3);
-// cache: 1 3
-
-// cache.get(2);
-// -1
-
-// cache.put(4, 4);
-// cache: 3 4
-
-// cache.get(1);
-// -1
-
 // used: list<key> (bidirectlist)
 // map: map<key, pair<value, used::iterator>>
 
-class LRUCache {
+Solution1. Linked list. Relink node on head and tail.
+time: get(1) put(1)
+space: o(n)
+*/
+
+class LRUCache1 {
 public:
     LRUCache(int capacity) : capacity_(capacity) {}
     
@@ -85,6 +69,85 @@ private:
         it->second.second = used_.begin();
     }
 };
+
+class LRUCache {
+    
+class MyListNode {
+public:
+    MyListNode(int _key, int _val) { key = _key; val = _val; }
+    int key;
+    int val;
+    MyListNode* next = nullptr;
+    MyListNode* prev = nullptr;
+};
+
+public:
+    LRUCache(int capacity) {
+        n = capacity;
+        tail = head;
+    }
+
+    int get(int key) {
+        if (n == 0 || !hm.count(key)) return -1;
+
+        auto node = hm[key];
+        if (node != tail)
+        {
+            // update least used
+            auto prev = node->prev;
+            auto next = node->next;
+            prev->next = next;
+            if (next)
+                next->prev = prev;
+
+            node->next = nullptr;
+            tail->next = node;
+            node->prev = tail;        
+            tail = node;
+        }
+        return node->val;
+    }
+    
+    void put(int key, int value) {
+        if (n == 0) return;
+        if (hm.count(key)) {
+            // update node
+            get(key);
+            hm[key]->val = value;
+            return;
+        }
+
+        if (hm.size() == n) {
+            // delete Node
+            auto tbd = head->next;
+            if (tbd == tail)
+                tail = head;
+
+            head->next = tbd->next;
+            if (tbd->next)
+                tbd->next->prev = head;
+            hm.erase(tbd->key);
+            delete tbd; tbd = nullptr;
+        }
+
+        // add node
+        hm[key] = new MyListNode(key, value);
+        tail->next = hm[key];
+        hm[key]->prev = tail;
+        tail = hm[key];
+    }
+    int n = 0;
+    unordered_map<int, MyListNode*> hm;
+    MyListNode* head = new MyListNode(-1, -1);
+    MyListNode* tail = nullptr;
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
 
 /**
  * Your LRUCache object will be instantiated and called as such:
