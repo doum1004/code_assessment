@@ -5,7 +5,7 @@
 using namespace std;
     
 /**
-https://leetcode.com/problems/word-search/
+https://leetcode.com/problems/word-search
 
 // backtracking (which mark the current path of exploration) recursion DSF preorder
 // time: o(n*4^m) : iterate all board * 4(directions) ^ m(matched words)
