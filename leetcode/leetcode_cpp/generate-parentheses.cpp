@@ -8,44 +8,15 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/generate-parentheses/solution/
+https://leetcode.com/problems/generate-parentheses
 
-// backtraking
-// time: o(4^n/squre(n))  ?????
-// space: o(4^n/squre(n)) + o(n)
-
-// The way I like to think about the runtime of backtracking algorithms is O(b^d), where b is the branching factor and d is the maximum depth of recursion. ... WTF
-
-n = 3
-o = 3
-c = 3
-open
-o < n
-close
-c < o
-
-n = 1
-()
-
-n = 2
-()()
-(())
-
-vector<string> ans;
-generate(int n, str result, int n_o, int n_c)
-    if (n_o == n && n_c == n) {
-        ans.push_back(result);
-    }
-    else {
-        if (n_o < n)
-            generate(n, result + "(", n_o + 1, n_c);
-        if (n_c < n_o)
-            generate(n, result + ")", n_o, n_c + 1);
-    }
-    
-    
-generate(n, "", 0, 0)
-return ans;
+Solution1. Recursion / Backtracking
+time: o(n)
+space: o(n) depth
+1. In recursion (give count of open and close, accumulated string)
+1.1. Add accumulated string into answer list
+1.2. if open < n: add open and call recursion. pop open
+1.3. if open > close and close < n: add close and call recursion. pop open
 */
 
 class Solution {
@@ -59,11 +30,39 @@ public:
             if (n_o < n) backtracking(n, n_o + 1, n_c, combi+"(", ans);
         }
     }
-    
-    vector<string> generateParenthesis(int n) {
+
+    vector<string> generateParenthesis_1(int n) {
         vector<string> ans;
         backtracking(n, 0, 0, "", ans);
         return ans;
+    }
+    
+    void recursion(vector<string>& res, int n, int o, int c, string& s) {
+        if (o == n && c == n) {
+            res.push_back(s);
+            return;
+        }
+        
+        if (o != n) {
+            s += "(";
+            recursion(res, n, o+1, c, s);
+            s.pop_back();
+        }
+        if (o > c && c != n) {
+            s += ")";
+            recursion(res, n, o, c+1, s);
+            s.pop_back();
+        } 
+    }
+    vector<string> generateParenthesis_2(int n) {
+        vector<string> res;
+        string s;
+        recursion(res, n, 0, 0, s);
+        return res;
+    }
+
+    vector<string> generateParenthesis(int n) {
+        return generateParenthesis_2(n);
     }
 };
 
