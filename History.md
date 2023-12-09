@@ -10,7 +10,7 @@
 2023-12-08
 - https://leetcode.com/problems/generate-parentheses
 - https://leetcode.com/problems/word-search
-- https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
 - https://leetcode.com/problems/coin-change/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/longest-increasing-subsequence/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/edit-distance/?envType=study-plan-v2&envId=top-interview-150
