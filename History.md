@@ -1,11 +1,6 @@
 ## TODO
 
-
-2023-12-08
-- https://leetcode.com/problems/generate-parentheses/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/word-search/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/coin-change/?envType=study-plan-v2&envId=top-interview-150
+2023-12-09
 - https://leetcode.com/problems/longest-increasing-subsequence/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/edit-distance/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/maximal-square/?envType=study-plan-v2&envId=top-interview-150
@@ -14,6 +9,12 @@
 ## History
 
 ### 2023
+
+2023-12-08
+- https://leetcode.com/problems/generate-parentheses
+- https://leetcode.com/problems/word-search
+- https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
+- https://leetcode.com/problems/coin-change (dp memorization tabulation)
 
 2023-12-07
 - https://leetcode.com/problems/lru-cache
