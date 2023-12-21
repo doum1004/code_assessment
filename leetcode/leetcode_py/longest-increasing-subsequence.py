@@ -1,7 +1,19 @@
 from typing import List
 
 """
-https://leetcode.com/problems/word-ladder-ii/
+https://leetcode.com/problems/word-ladder-ii
+
+Solution1. recursion memorization
+time: o(n^2)
+space: o(n^2)
+
+Solution2. DP + Tabulation
+time: o(n^2)
+space: o(n)
+
+Solution3. binary search
+time: o(nlogn)
+space: o(n)
 """
 
 class Solution:

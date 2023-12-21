@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/longest-increasing-subsequence/
+https://leetcode.com/problems/longest-increasing-subsequence
 
 //Solution1. Greedy (not acceptable)
 //time: o(2^n)
