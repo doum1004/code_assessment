@@ -38,8 +38,8 @@
 ### 2023
 
 2023-12-21
-- https://leetcode.com/problems/candy
-- https://leetcode.com/problems/trapping-rain-water/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/candy (hard)
+- https://leetcode.com/problems/trapping-rain-water (hard)
 
 2023-12-20
 - https://leetcode.com/problems/longest-increasing-subsequence (dp)
