@@ -1,5 +1,41 @@
 ## TODO
 
+2023-12-21
+- https://leetcode.com/problems/candy/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/trapping-rain-water/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-22
+- https://leetcode.com/problems/text-justification/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/substring-with-concatenation-of-all-words/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-23
+- https://leetcode.com/problems/minimum-window-substring/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/basic-calculator/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-24
+- https://leetcode.com/problems/reverse-nodes-in-k-group/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/binary-tree-maximum-path-sum/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-25
+- https://leetcode.com/problems/word-ladder/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/word-search-ii/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-26
+- https://leetcode.com/problems/n-queens-ii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/merge-k-sorted-lists/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-27
+- https://leetcode.com/problems/median-of-two-sorted-arrays/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/ipo/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-28
+- https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-29
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/?envType=study-plan-v2&envId=top-interview-150
+
 
 ## History
 
