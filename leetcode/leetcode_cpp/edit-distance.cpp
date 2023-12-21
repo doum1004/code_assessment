@@ -5,9 +5,12 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/edit-distance/
+https://leetcode.com/problems/edit-distance
 
-// solution1. dp for edit distance
+Solution1. dp for edit distance (2 dimensions)
+https://www.youtube.com/watch?v=We3YDTzNXEk
+time: o(mn)
+space: o(mn)
 1. init board with addtional space(1)
 2. iterate board.
 3. in iteration, if i==0, set j. if j==0, set i.
@@ -31,6 +34,9 @@ r -> delete
 o -> .
 h -> replace(r)
 
+Solution2. dp with 1 dimension
+time: o(mn)
+space: o(n)
 
 */
 
