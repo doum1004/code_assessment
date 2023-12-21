@@ -8,7 +8,7 @@
 2023-12-20
 - https://leetcode.com/problems/longest-increasing-subsequence (dp)
 - https://leetcode.com/problems/edit-distance (dp)
-- https://leetcode.com/problems/maximal-square/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/maximal-square (dp)
 
 2023-12-08
 - https://leetcode.com/problems/generate-parentheses
