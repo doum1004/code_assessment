@@ -1,14 +1,14 @@
 ## TODO
 
-2023-12-09
-- https://leetcode.com/problems/longest-increasing-subsequence/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/edit-distance/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/maximal-square/?envType=study-plan-v2&envId=top-interview-150
-
 
 ## History
 
 ### 2023
+
+2023-12-20
+- https://leetcode.com/problems/longest-increasing-subsequence (dp)
+- https://leetcode.com/problems/edit-distance/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/maximal-square/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-08
 - https://leetcode.com/problems/generate-parentheses
