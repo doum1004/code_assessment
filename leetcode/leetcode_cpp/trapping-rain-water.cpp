@@ -10,11 +10,16 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/trapping-rain-water/
+/*
+https://leetcode.com/problems/trapping-rain-water
 
-// Soultion1. Two points. sliding window
-// time: o(n)
-// space: o(1)
+Solution1. Keep max l, r and get space
+time: o(n)
+space: o(n)
+
+Solution2. Sliding window. Two pointers
+time: o(n)
+space: o(1)
 
 // leftMax, rightMax
 // 0 1 0 2 1 0 1
@@ -36,36 +41,57 @@ using namespace std;
 //           l                                                              stack(3, 4, 5)
 //             l    pop stack (5) -> water dist*(min(top,cur)-h[5])         stack(3, 4 6)       water = 2
 //               l  pop stack (6 4) -> water dist*(min(top,cur)-h[5])       stack(7)            water = 5           
+*/
 
 class Solution {
 public:
-    int trap(vector<int>& height) {
-        if (height.size() < 3) return 0;
-        
+    int trap_1(vector<int>& height) {
+        int n = height.size();
+        if (n < 3) return 0;
+        vector<int> l(n, height[0]);
+        vector<int> r(n, height[n-1]);
+        for (int i=1; i<n; ++i) {
+            l[i] = max(l[i-1], height[i]);
+        }
+        for (int i=n-2; i>=0; --i) {
+            r[i] = max(r[i+1], height[i]);
+        }
         int res = 0;
-        int l = 0, r = height.size()-1;
-        int max_l = 0, max_r = 0;
-        while (l < r) {
-            auto curL = height[l];
-            auto curR = height[r];
-            max_l = max(curL, max_l); 
-            max_r = max(curR, max_r);      
-            
-            auto h = 0;
+        for (int i=1; i<n-1; ++i) {
+            auto source = min(l[i], r[i]);
+            if (source > height[i])
+                res += source - height[i];
+        }
+        return res;
+    }
+    int trap_2(vector<int>& height) {
+        int n = height.size();
+        int l = 0, r = n-1;
+        int maxL=0, maxR = 0;
+        int res = 0;
+        while (l<r) {
+            int curL = height[l];
+            int curR = height[r];
+            maxL = max(maxL, curL);
+            maxR = max(maxR, curR);
+
+            int cur = 0;
             if (curL < curR) {
-                h = curL;            
+                cur = curL;
                 l++;
             }
             else {
-                h = curR;   
+                cur = curR;
                 r--;
             }
-            
-            auto ref = min(max_l, max_r);
-            if (ref > h) res += ref - h;
+
+            int ref = min(maxL, maxR);
+            if (ref > cur) res += ref - cur;
         }
-        
         return res;
+    }
+    int trap(vector<int>& height) {
+        return trap_2(height);
     }
 };
 

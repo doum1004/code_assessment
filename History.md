@@ -1,9 +1,5 @@
 ## TODO
 
-2023-12-21
-- https://leetcode.com/problems/candy/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/trapping-rain-water/?envType=study-plan-v2&envId=top-interview-150
-
 2023-12-22
 - https://leetcode.com/problems/text-justification/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/substring-with-concatenation-of-all-words/?envType=study-plan-v2&envId=top-interview-150
@@ -40,6 +36,10 @@
 ## History
 
 ### 2023
+
+2023-12-21
+- https://leetcode.com/problems/candy (hard)
+- https://leetcode.com/problems/trapping-rain-water (hard)
 
 2023-12-20
 - https://leetcode.com/problems/longest-increasing-subsequence (dp)
