@@ -1,9 +1,5 @@
 ## TODO
 
-2023-12-22
-- https://leetcode.com/problems/text-justification/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/substring-with-concatenation-of-all-words/?envType=study-plan-v2&envId=top-interview-150
-
 2023-12-23
 - https://leetcode.com/problems/minimum-window-substring/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/basic-calculator/?envType=study-plan-v2&envId=top-interview-150
@@ -36,6 +32,10 @@
 ## History
 
 ### 2023
+
+2023-12-22
+- https://leetcode.com/problems/text-justification (hard)
+- https://leetcode.com/problems/substring-with-concatenation-of-all-words/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-21
 - https://leetcode.com/problems/candy (hard)
