@@ -1,9 +1,5 @@
 ## TODO
 
-2023-12-24
-- https://leetcode.com/problems/reverse-nodes-in-k-group/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/binary-tree-maximum-path-sum/?envType=study-plan-v2&envId=top-interview-150
-
 2023-12-25
 - https://leetcode.com/problems/word-ladder/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/word-search-ii/?envType=study-plan-v2&envId=top-interview-150
@@ -29,7 +25,12 @@
 
 ### 2023
 
-2023-12-23
+2023-12-25
+- https://leetcode.com/problems/basic-calculator-ii (hard)
+- https://leetcode.com/problems/reverse-nodes-in-k-group/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/binary-tree-maximum-path-sum/?envType=study-plan-v2&envId=top-interview-150
+
+2023-12-24
 - https://leetcode.com/problems/minimum-window-substring (hard)
 - https://leetcode.com/problems/basic-calculator (hard)
 
