@@ -70,6 +70,32 @@ public:
         
         return (min_len == INT_MAX) ? "" : s.substr(min_starter, min_len);
     }
+
+    string minWindow_1(string s, string t) {
+        unordered_map<char, int> m;
+        for (auto c:t) m[c] += 1;
+        int res_len = INT_MAX, res_start = 0;
+        int cnt = 0, l = 0;
+        for (int r=0; r<s.size(); ++r) {
+            if (m[s[r]] > 0) cnt += 1;
+            m[s[r]] -= 1;
+
+            if (cnt == t.size()) {
+                while (l < r && m[s[l]] < 0) {
+                    m[s[l]] += 1;
+                    l += 1;
+                }
+                if (res_len > r - l + 1) {
+                    res_len = r-l+1;
+                    res_start = l;
+                }
+                m[s[l]] += 1;
+                l += 1;
+                cnt -= 1;
+            }
+        }
+        return res_len == INT_MAX ? "" : s.substr(res_start, res_len);
+    }
     
     string minWindow(string s, string t) {
         return minWindow_slidingwindow(s, t);
