@@ -27,7 +27,7 @@
 
 2023-12-25
 - https://leetcode.com/problems/basic-calculator-ii (hard)
-- https://leetcode.com/problems/reverse-nodes-in-k-group/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/reverse-nodes-in-k-group (hard)
 - https://leetcode.com/problems/binary-tree-maximum-path-sum/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-24

@@ -19,7 +19,7 @@ bool isEqual(ListNode* l, ListNode* r) {
 }
 
 /**
-https://leetcode.com/problems/reverse-nodes-in-k-group/
+https://leetcode.com/problems/reverse-nodes-in-k-group
 
 Iterate and swap
 time: o(n)
