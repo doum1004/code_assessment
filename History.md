@@ -31,7 +31,7 @@
 
 2023-12-23
 - https://leetcode.com/problems/minimum-window-substring (hard)
-- https://leetcode.com/problems/basic-calculator/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/basic-calculator (hard)
 
 2023-12-22
 - https://leetcode.com/problems/text-justification (hard)
