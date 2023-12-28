@@ -8,7 +8,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/word-ladder-ii/
+https://leetcode.com/problems/word-ladder-ii
 
 // time complexcity
 https://www.quora.com/What-is-the-time-complexity-of-Word-Ladder-II
@@ -29,7 +29,6 @@ ho*: hot
 3. When transformed result meet cog. store visited path 
 
 //Solution3. BSF(gen next children) + DSF(generate ladder)
-https://leetcode.com/problems/word-ladder-ii/discuss/241927/C%2B%2B-BFS-%2B-DFS
 //time: o(n*L*26 + nlogn). build next (n*L*26) + build ladder (L*M == L*2^L == nlogn) O(L*M), where L is the length of the shortest path and M is the number of possible shortest paths.
 //space:? o(n). graph(n) + children(n) + buildnext(n)
 
@@ -204,11 +203,54 @@ public:
         return res;
     }
     
+    void help(const string& s, unordered_map<string, pair<int, unordered_set<string>>>& m, vector<vector<string>>& res, vector<string>& sofar) {
+        sofar.push_back(s);
+        if (m[s].second.size() == 0) res.push_back(sofar);
+        else for (const string& str : m[s].second) help(str, m, res, sofar);
+        sofar.pop_back();
+    }
+
+    vector<vector<string>> findLadders_bfs_dfs_latest(string& beginWord, string& endWord, vector<string>& wordList) {
+        unordered_map<string, pair<int, unordered_set<string>>> m;
+        for (const string& s : wordList) m[s] = {0, {}};
+
+        m[beginWord] = {1, {}};
+
+        queue<string> q;
+        q.push(beginWord);
+
+        while (!q.empty()) {
+            string word = q.front(); q.pop();
+            int dist = m[word].first;
+            for (int i = 0; i < word.size(); i++) {
+                string temp = word;
+                for (char c = 'a'; c <= 'z'; c++) {
+                    temp[i] = c;
+                    if (m.count(temp) && temp != word) {
+                        if (m[temp].first == dist + 1) m[temp].second.insert(word);
+                        else if (m[temp].first == 0 || m[temp].first > dist + 1) {
+                            m[temp].first = dist + 1;
+                            m[temp].second.clear();
+                            m[temp].second.insert(word);
+                            if (temp != endWord) q.push(temp);
+                        }
+                    } 
+                }
+            }
+        }
+        if (m[endWord].first == 0) return {};
+        vector<vector<string>> res;
+        vector<string> sofar;
+        help(endWord, m, res, sofar);
+        for (auto& v : res) reverse(v.begin(), v.end());
+        return res;
+    }
     
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
         //return findLadders_DSF(beginWord, endWord, wordList);
         //return findLadders_BSF(beginWord, endWord, wordList);
-        return findLadders_BFS_DFS(beginWord, endWord, wordList);
+        //return findLadders_BFS_DFS(beginWord, endWord, wordList);
+        return findLadders_bfs_dfs_latest(beginWord, endWord, wordList);
     }
 };
 

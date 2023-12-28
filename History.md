@@ -24,6 +24,7 @@
 2023-12-27
 - https://leetcode.com/problems/word-ladder (hard)
 - https://leetcode.com/problems/word-search-ii (hard)
+- https://leetcode.com/problems/word-ladder-ii (hard)
 
 2023-12-25
 - https://leetcode.com/problems/basic-calculator-ii (hard)
