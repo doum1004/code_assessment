@@ -9,7 +9,7 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/word-ladder/
+https://leetcode.com/problems/word-ladder
 
 // BFS
 // time: o(n*m) n = number of words, m = size of word
@@ -84,11 +84,20 @@ while (!q.empty())
 
 return 0;
 
+
+Soltuion1. BFS with transformed map
+time: o(n*wordsize + n)
+space: o(n*wordSize)
+
+Soltuion2. BFS with set
+time: o(n*wordsize + n)
+space: o(n)
+
 **/
 
 class Solution {
 public:
-    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+    int ladderLength_0(string beginWord, string endWord, vector<string>& wordList) {
         if (wordList.size() < 1) return 0;
 
         auto n = beginWord.size();
@@ -132,6 +141,73 @@ public:
         }
 
         return 0;
+    }
+    int ladderLength_1(string& beginWord, string& endWord, vector<string>& wordList) {
+        unordered_map<string, vector<string>> ts;
+        int n = beginWord.size();
+        bool foundEndWord = false;
+        for (auto& word:wordList) {
+            foundEndWord |= word == endWord;
+            for (int i=0; i<n; ++i) {
+                auto word2 = word;
+                word2[i] = '*';
+                ts[word2].push_back(word);
+            }
+        }
+        if (!foundEndWord) return 0;
+
+        queue<pair<string,int>> q;
+        q.push({beginWord, 1});
+
+        unordered_set<string> v;
+        while (!q.empty()) {
+            auto w = q.front().first;
+            auto l = q.front().second;
+            q.pop();
+
+            for (int i=0; i<n; ++i) {
+                auto word = w;
+                word[i] = '*';
+                if (ts.count(word)) {
+                    for (auto& next:ts[word]) {
+                        if (next == endWord) return l + 1;
+                        if (v.count(next)) continue;
+                        q.push({next, l+1});
+                        v.insert(next);
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+    int ladderLength_2(string& beginWord, string& endWord, vector<string>& wordList) {
+        unordered_set<string> s;
+        for (auto& word:wordList) s.insert(word);
+        if (!s.count(endWord)) return 0;
+
+        queue<pair<string, int>> q;
+        q.push({beginWord, 1});
+        while (!q.empty()) {
+            auto w = q.front().first;
+            auto l = q.front().second;
+            q.pop();
+            if (w == endWord) return l;
+
+            for (int i=0; i<w.size(); ++i) {
+                auto w2 = w;
+                for (int c='a'; c<='z'; ++c) {
+                    w2[i] = c;
+                    if (s.count(w2)) {
+                        q.push({w2, l+1});
+                        s.erase(w2);
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        return ladderLength_2(beginWord, endWord, wordList);
     }
 };
 

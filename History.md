@@ -1,26 +1,18 @@
 ## TODO
 
-2023-12-24
-- https://leetcode.com/problems/reverse-nodes-in-k-group/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/binary-tree-maximum-path-sum/?envType=study-plan-v2&envId=top-interview-150
-
-2023-12-25
-- https://leetcode.com/problems/word-ladder/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/word-search-ii/?envType=study-plan-v2&envId=top-interview-150
-
-2023-12-26
+2023-12-28
 - https://leetcode.com/problems/n-queens-ii/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/merge-k-sorted-lists/?envType=study-plan-v2&envId=top-interview-150
 
-2023-12-27
+2023-12-29
 - https://leetcode.com/problems/median-of-two-sorted-arrays/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/ipo/?envType=study-plan-v2&envId=top-interview-150
 
-2023-12-28
+2023-12-30
 - https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
 
-2023-12-29
+2023-12-31
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/?envType=study-plan-v2&envId=top-interview-150
 
@@ -29,7 +21,17 @@
 
 ### 2023
 
-2023-12-23
+2023-12-27
+- https://leetcode.com/problems/word-ladder (hard)
+- https://leetcode.com/problems/word-search-ii (hard)
+- https://leetcode.com/problems/word-ladder-ii (hard)
+
+2023-12-25
+- https://leetcode.com/problems/basic-calculator-ii (hard)
+- https://leetcode.com/problems/reverse-nodes-in-k-group (hard)
+- https://leetcode.com/problems/binary-tree-maximum-path-sum (hard)
+
+2023-12-24
 - https://leetcode.com/problems/minimum-window-substring (hard)
 - https://leetcode.com/problems/basic-calculator (hard)
 

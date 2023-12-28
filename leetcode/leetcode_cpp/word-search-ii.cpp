@@ -5,6 +5,7 @@
 using namespace std;
 
 /**
+https://leetcode.com/problems/word-search-ii
 
 // Solution1. Backtracking(DSF) with Trie
 // time: o( m ( 4*3^(L-1) )). m(board) L(length of word)
@@ -23,80 +24,62 @@ space: o(W*L) W(number of word) L(length of word)
 
 class Trie {
 public:
-    Trie()
-    : exist_(false) {
-        fill_n(chidlren_, 26, nullptr);
-    }
-    
+    Trie() { m = vector<Trie*>(26, nullptr); }
     ~Trie() {
-        for (int i=0; i<26; ++i) delete chidlren_[i];
+        for (auto v : m) delete v;
+        m.clear();
     }
-    
-    void addWord(const string& word) {
-        auto iter = this;
-        for (int i=0; i<word.size(); ++i) {
-            if (iter->chidlren_[word[i] - 'a'] == nullptr) iter->chidlren_[word[i] - 'a'] = new Trie();
-            iter = iter->chidlren_[word[i] - 'a'];
-        }
-        iter->exist_ = true;
-    }
-    
-    Trie** children() { return chidlren_; }
 
-    bool exist() { return exist_; }
-    
-    void setExist(const bool v) { exist_ = v; }
-    
-private:
-    Trie* chidlren_[26];
-    bool exist_;
+    void addWord(string& word) {
+        auto cur = this;
+        for (auto c:word) {
+            int idx = c - 'a';
+            if (!cur->m[idx]) cur->m[idx] = new Trie();
+            cur = cur->m[idx];
+        }
+        cur->isWord = true;
+    }
+    vector<Trie*> m;
+    bool isWord = false;
 };
 
 class Solution {
 public:
+    void dfs(vector<vector<char>>& board, int i, int j, Trie* node, string& cur, vector<string>& res) {
+        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || board[i][j] == '*') return;
+        node = node->m[board[i][j] - 'a'];
+        if (!node) return;
+
+        auto t = board[i][j];
+        cur.push_back(t);
+
+        board[i][j] = '*';
+        if (node->isWord) {
+            res.push_back(cur);
+            node->isWord = false;
+        }
+        dfs(board, i - 1, j, node, cur, res);
+        dfs(board, i, j - 1, node, cur, res);
+        dfs(board, i + 1, j, node, cur, res);
+        dfs(board, i, j + 1, node, cur, res);
+
+        board[i][j] = t;
+        cur.pop_back();
+    }
+
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        if (board.size() < 1 || board[0].size() < 1) return vector<string>();
-        
-        auto root = buildTrie(words);
-        
-        vector<string> ans;
-        string word;
+        Trie* root = new Trie();
+        for (auto& word: words) {
+            root->addWord(word);
+        }
+        vector<string> res;
+        string cur;
         for (int i=0; i<board.size(); ++i) {
             for (int j=0; j<board[0].size(); ++j) {
-                backTrackFindWord(board, root, i, j, word, ans);
+                dfs(board, i, j, root, cur, res);
             }
         }
-        
-        return ans;
-    }
-    
-private:
-    Trie* buildTrie(vector<string>& words) {
-        auto root = new Trie();
-        for (auto &word:words) root->addWord(word);
-        return root;
-    }
-    
-    int offset[5] = {0,1,0,-1,0};
-    void backTrackFindWord(vector<vector<char>>& board, Trie* node, int r, int c, string& word, vector<string>& ans) {
-        if (r<0 || c<0 || r>=board.size() || c>=board[0].size() || board[r][c] == '*') return;
-        auto temp = board[r][c];
-        if (node->children()[temp - 'a'] == nullptr) return;
-        
-        node = node->children()[temp - 'a'];
-        word.push_back(temp);
-        board[r][c] = '*';
-        if (node->exist()) {
-            ans.push_back(word);
-            node->setExist(false);
-        }
-        
-        for (int i=0; i<=3; ++i) {
-            backTrackFindWord(board, node, r+offset[i], c+offset[i+1], word, ans);
-        }
-        
-        word.pop_back();
-        board[r][c] = temp;
+        return res;
     }
 };
 
