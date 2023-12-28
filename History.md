@@ -1,9 +1,5 @@
 ## TODO
 
-2023-12-28
-- https://leetcode.com/problems/n-queens-ii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/merge-k-sorted-lists/?envType=study-plan-v2&envId=top-interview-150
-
 2023-12-29
 - https://leetcode.com/problems/median-of-two-sorted-arrays/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/ipo/?envType=study-plan-v2&envId=top-interview-150
@@ -20,6 +16,10 @@
 ## History
 
 ### 2023
+
+2023-12-28
+- https://leetcode.com/problems/n-queens-ii (hard)
+- https://leetcode.com/problems/merge-k-sorted-lists/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-27
 - https://leetcode.com/problems/word-ladder (hard)
