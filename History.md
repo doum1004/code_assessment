@@ -14,7 +14,7 @@
 ### 2024
 
 2023-01-04
-- https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/find-median-from-data-stream (hard)
 
 2023-01-03
 - https://leetcode.com/problems/median-of-two-sorted-arrays (hard)
