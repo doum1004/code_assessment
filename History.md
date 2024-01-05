@@ -2,7 +2,6 @@
 
 2023-12-30
 - https://leetcode.com/problems/ipo/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
 
 2023-12-31
@@ -13,6 +12,9 @@
 ## History
 
 ### 2024
+
+2023-01-04
+- https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150
 
 2023-01-03
 - https://leetcode.com/problems/median-of-two-sorted-arrays (hard)
