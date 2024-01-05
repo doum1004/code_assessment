@@ -7,31 +7,33 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/find-median-from-data-stream/
+/*
+https://leetcode.com/problems/find-median-from-data-stream
 
-// Solution1 simple sort at findMedian
-// time: o(nlogn). add: o(1). median: sort o(nlogn)
-// space: o(n) vector
+Solution1 simple sort at findMedian
+time: o(nlogn). add: o(1). median: sort o(nlogn)
+space: o(n) vector
 
-// Solution2 insertion sort
-// time: o(n). add: bin search(logn) insertion(n). median: o(1)
-// space: o(n)
-//auto it = lower_bound(v.begin(), v.end(), num);
-//v.insert(it, num)
+Solution2 insertion sort
+time: o(n). add: bin search(logn) insertion(n). median: o(1)
+space: o(n)
+auto it = lower_bound(v.begin(), v.end(), num);
+v.insert(it, num)
 
-// Solution3 heaps. min-heap, max-heap
-// time: o(logn) heap delete/insert logn
-// priority_queue<int> lo; //max-heap
-// priority_queue<int, vector<int>, greater<int>> hi; //min-heap
-// add(num)
-//  lo.push(num)
-//  hi.push(num.top())
-//  lo.pop()
-//  if (lo.size() < hi.size())
-//      lo.push(hi.top())
-//      hi.pop()
-//  findMin()
-//      return (lo.size() > hi.size()) ? lo.top() : ((lo.top() + hi.top()) / 2.0)
+Solution3 heaps. min-heap, max-heap
+time: o(logn) heap delete/insert logn
+priority_queue<int> lo; //max-heap
+priority_queue<int, vector<int>, greater<int>> hi; //min-heap
+add(num)
+ lo.push(num)
+ hi.push(num.top())
+ lo.pop()
+ if (lo.size() < hi.size())
+     lo.push(hi.top())
+     hi.pop()
+ findMin()
+     return (lo.size() > hi.size()) ? lo.top() : ((lo.top() + hi.top()) / 2.0)
+*/
 
 class MedianFinder {
 public:
