@@ -1,10 +1,9 @@
 ## TODO
 
-2023-12-30
+2024-01-06
 - https://leetcode.com/problems/ipo/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
 
-2023-12-31
+2024-01-07
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/?envType=study-plan-v2&envId=top-interview-150
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/?envType=study-plan-v2&envId=top-interview-150
 
@@ -13,10 +12,13 @@
 
 ### 2024
 
-2023-01-04
+2024-01-05
+- https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
+
+2024-01-04
 - https://leetcode.com/problems/find-median-from-data-stream (hard)
 
-2023-01-03
+2024-01-03
 - https://leetcode.com/problems/median-of-two-sorted-arrays (hard)
 
 
