@@ -13,7 +13,7 @@
 ### 2024
 
 2024-01-05
-- https://leetcode.com/problems/max-points-on-a-line/?envType=study-plan-v2&envId=top-interview-150
+- https://leetcode.com/problems/max-points-on-a-line (hard)
 
 2024-01-04
 - https://leetcode.com/problems/find-median-from-data-stream (hard)
