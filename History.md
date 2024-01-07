@@ -1,13 +1,15 @@
 ## TODO
 
-2024-01-07
-- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/?envType=study-plan-v2&envId=top-interview-150
-- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/?envType=study-plan-v2&envId=top-interview-150
 
 
 ## History
 
 ### 2024
+
+2024-01-07
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii (hard)
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv (hard)
+
 
 2024-01-06
 - https://leetcode.com/problems/ipo (hard)
