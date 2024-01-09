@@ -6,6 +6,9 @@
 
 ### 2024
 
+2024-01-08
+- https://leetcode.com/problems/merge-strings-alternately
+
 2024-01-07
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii (hard)
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv (hard)
