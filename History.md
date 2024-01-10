@@ -1,10 +1,19 @@
 ## TODO
+https://leetcode.com/studyplan/top-interview-150/
+https://leetcode.com/studyplan/leetcode-75/
+https://leetcode.com/studyplan/top-sql-50/
 
 
 
 ## History
 
 ### 2024
+
+2024-01-09
+- https://leetcode.com/problems/can-place-flowers (75)
+- https://leetcode.com/problems/kids-with-the-greatest-number-of-candies (75)
+- https://leetcode.com/problems/reverse-vowels-of-a-string (75)
+- https://leetcode.com/problems/reverse-words-in-a-string (75, 150, later)
 
 2024-01-08
 - https://leetcode.com/problems/merge-strings-alternately (75)
