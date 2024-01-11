@@ -9,6 +9,9 @@ https://leetcode.com/studyplan/top-sql-50/
 
 ### 2024
 
+2024-01-10
+- https://leetcode.com/problems/product-of-array-except-self (75, 150, later)
+
 2024-01-09
 - https://leetcode.com/problems/can-place-flowers (75)
 - https://leetcode.com/problems/kids-with-the-greatest-number-of-candies (75)
