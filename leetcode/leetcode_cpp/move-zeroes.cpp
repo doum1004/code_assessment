@@ -11,11 +11,11 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/move-zeroes/
+https://leetcode.com/problems/move-zeroes
 
-// Soluiton1 iterate vector and erase and pushback
-// time: o(n)
-// space: o(1)
+Soluiton1 iterate vector and erase and pushback
+time: o(n^2) n(iterate) * n(erase)
+space: o(1)
 
 for (int i=0; i<nums.size(); ++i) {
     if (nums[i] == 0) {
@@ -25,9 +25,9 @@ for (int i=0; i<nums.size(); ++i) {
     }
 }
 
-// Soluiton2 iterate swap none zero nums on left
-// time: o(n)
-// space: o(1)
+Soluiton2 iterate swap none zero nums on left
+time: o(n)
+space: o(1)
 
 auto l=0;
 for (auto &n:nums) { if (n !=0) swap(n, nums[l++])}

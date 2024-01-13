@@ -9,6 +9,16 @@ https://leetcode.com/studyplan/top-sql-50/
 
 ### 2024
 
+2024-01-12
+- https://leetcode.com/problems/move-zeroes (75)
+- https://leetcode.com/problems/is-subsequence (75, 150, later)
+- https://leetcode.com/problems/container-with-most-water (75)
+- https://leetcode.com/problems/max-number-of-k-sum-pairs (75, later)
+
+2024-01-10
+- https://leetcode.com/problems/product-of-array-except-self (75, 150, later)
+- https://leetcode.com/problems/increasing-triplet-subsequence (75, later)
+
 2024-01-09
 - https://leetcode.com/problems/can-place-flowers (75)
 - https://leetcode.com/problems/kids-with-the-greatest-number-of-candies (75)

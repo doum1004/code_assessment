@@ -24,9 +24,10 @@ Solution2_2. reverse words with resize
 time: o(n)
 space: o(1)
 
-1. 
-2. reverse words. and add space
-3. reverse all string
+1. skip empty space
+2. reverse each word
+3. resize string
+
 */
 
 class Solution {

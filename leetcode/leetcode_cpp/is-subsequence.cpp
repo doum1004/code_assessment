@@ -5,50 +5,47 @@
 using namespace std;
 
 /*
-https://leetcode.com/problems/is-subsequence/
-solution1. two pointers
-time: n(o)
-space: n(1)
+https://leetcode.com/problems/is-subsequence
 
-sol2. Recursive
+sol0. Recursive
 time: o(n^2)
 space: o(n)
 
-*/
+Solution1. Two Pointer
+time: o(n)
+space: o(1)
 
+Solution2. Follow up problem. Using Map 
+time: o(n) m + n
+space: o(m)
+*/
 class Solution {
 public:
-    int isSubsequence_recursive(string& s, string& t, int i, int j) {
-        if (i == 0 || j == 0) return 0;
-        if (s[i-1] == t[j-1]) return 1 + isSubsequence_recursive(s, t, i - 1, j - 1);
-        return isSubsequence_recursive(s, t, i, j - 1);
-    }
-
-    bool isSubsequence_recursive(string& s, string& t) {
-        if (s == t) return true;
-        int m = s.size();
-        int n = t.size();
-        if (m > n) return false;
-        return isSubsequence_recursive(s, t, m, n) == m;
-    }
-
     bool isSubsequence_1(string& s, string& t) {
-        if (s == t)
-            return true;
-
-        int i = 0, j = 0;
-        int m = s.size();
-        int n = t.size();
-        while (i < m && j < n) {
-            if (s[i] == t[j]) {
-                i++;
-            }
-            j++;            
+        int l = 0, r = 0;
+        while (l < s.size() && r < t.size()) {
+            if (s[l] == t[r]) l++;
+            r++;
         }
-        return i == m;
+        return l == s.size();
     }
+    bool isSubsequence_2(string& s, string& t) {
+        unordered_map<char, vector<int>> m;
+        for (int i=0; i<t.size(); ++i) {
+            m[t[i]].push_back(i);
+        }
 
+        int l=-1;
+        for (int i=0; i<s.size(); ++i) {
+            if (!m.count(s[i])) return false;
+            auto& idxList = m[s[i]];
+            auto x = upper_bound(idxList.begin(), idxList.end(), l);
+            if (x == idxList.end()) return false;
+            l = *x;
+        }
+        return true;
+    }
     bool isSubsequence(string s, string t) {
-        return isSubsequence_recursive(s,t);
+        return isSubsequence_2(s, t);
     }
 };
