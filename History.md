@@ -9,6 +9,9 @@ https://leetcode.com/studyplan/top-sql-50/
 
 ### 2024
 
+2024-01-12
+- https://leetcode.com/problems/move-zeroes (75)
+
 2024-01-10
 - https://leetcode.com/problems/product-of-array-except-self (75, 150, later)
 - https://leetcode.com/problems/increasing-triplet-subsequence (75, later)
