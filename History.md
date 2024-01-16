@@ -3,11 +3,52 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
+find-the-difference-of-two-arrays/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/determine-if-two-strings-are-close/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/removing-stars-from-a-string/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/number-of-recent-calls/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/search-in-a-binary-search-tree/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/keys-and-rooms/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/kth-largest-element-in-an-array/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/guess-number-higher-or-lower/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/successful-pairs-of-spells-and-potions/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/n-th-tribonacci-number/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/house-robber/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/unique-paths/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/longest-common-subsequence/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/counting-bits/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/non-overlapping-intervals/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/daily-temperatures?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan-v2&envId=leetcode-75
+
 
 
 ## History
 
 ### 2024
+
+2024-01-15
+- https://leetcode.com/problems/maximum-average-subarray-i (75)
+- https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element (75)
+- https://leetcode.com/problems/find-the-highest-altitude (75)
+- find-the-difference-of-two-array (75)
+
+2024-01-14
+- hackerrank - graph
+- hackerrank - iteration one pass pointer
+
+2024-01-13
+- https://leetcode.com/problems/move-zeroes (75)
+- https://leetcode.com/problems/is-subsequence (75, 150, later)
+- https://leetcode.com/problems/container-with-most-water (75)
+- https://leetcode.com/problems/max-number-of-k-sum-pairs (75, later)
 
 2024-01-12
 - https://leetcode.com/problems/move-zeroes (75)
