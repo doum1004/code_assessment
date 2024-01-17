@@ -1,5 +1,5 @@
 '''
-https://leetcode.com/problems/find-the-difference-of-two-array
+https://leetcode.com/problems/find-the-difference-of-two-arrays
 
 1. Set
 time: o(n)
