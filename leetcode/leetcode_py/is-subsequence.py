@@ -13,6 +13,9 @@ Solution2. Follow up problem. Using Map
 time: o(n) m + n
 space: o(m)
 '''
+import bisect
+from collections import defaultdict
+
 class Solution:
     def isSubsequence_1(self, s: str, t: str) -> bool:
         l, r = 0, 0
@@ -38,3 +41,5 @@ class Solution:
 
     def isSubsequence(self, s: str, t: str) -> bool:
         return self.isSubsequence_2(s, t)
+    
+print(Solution().isSubsequence("abc", "ahbgdc"))

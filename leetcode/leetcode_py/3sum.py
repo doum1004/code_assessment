@@ -10,6 +10,9 @@ spcae: o(1) answer(n)
 3. Add it in res if find, and try to move till non duplications (l,r)
 4. move i to skip duplication
 '''
+
+from typing import List
+
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
@@ -36,3 +39,5 @@ class Solution:
                     while l < r and nums[l] == numL: l += 1
                     while l < r and nums[r] == numR: r -= 1
         return res
+    
+print(Solution().threeSum([-1,0,1,2,-1,-4]))
