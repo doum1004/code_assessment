@@ -3,10 +3,7 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-find-the-difference-of-two-arrays/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/determine-if-two-strings-are-close/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/removing-stars-from-a-string/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/number-of-recent-calls/description/?envType=study-plan-v2&envId=leetcode-75
+
 https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=leetcode-75
@@ -34,11 +31,16 @@ https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan
 
 ### 2024
 
+2024-01-16
+- https://leetcode.com/problems/determine-if-two-strings-are-close (75, later)
+- https://leetcode.com/problems/removing-stars-from-a-string (75)
+- https://leetcode.com/problems/number-of-recent-calls (75, later)
+
 2024-01-15
 - https://leetcode.com/problems/maximum-average-subarray-i (75)
 - https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element (75)
 - https://leetcode.com/problems/find-the-highest-altitude (75)
-- find-the-difference-of-two-array (75)
+- https://leetcode.com/problems/find-the-difference-of-two-arrays (75)
 
 2024-01-14
 - hackerrank - graph
