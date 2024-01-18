@@ -4,13 +4,9 @@ https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
 
-https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/search-in-a-binary-search-tree/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/keys-and-rooms/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/kth-largest-element-in-an-array/description/?envType=study-plan-v2&envId=leetcode-75
+
 https://leetcode.com/problems/guess-number-higher-or-lower/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/successful-pairs-of-spells-and-potions/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/?envType=study-plan-v2&envId=leetcode-75
@@ -30,6 +26,13 @@ https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan
 ## History
 
 ### 2024
+
+2024-01-17
+- https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list (75)
+- https://leetcode.com/problems/maximum-depth-of-binary-tree (75, 150)
+- https://leetcode.com/problems/binary-tree-right-side-view (75, 150)
+- https://leetcode.com/problems/search-in-a-binary-search-tree (75)
+- https://leetcode.com/problems/keys-and-rooms (75)
 
 2024-01-16
 - https://leetcode.com/problems/determine-if-two-strings-are-close (75, later)
