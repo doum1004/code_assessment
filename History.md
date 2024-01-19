@@ -4,20 +4,13 @@ https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
 
-https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/kth-largest-element-in-an-array/description/?envType=study-plan-v2&envId=leetcode-75
-
-https://leetcode.com/problems/guess-number-higher-or-lower/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/successful-pairs-of-spells-and-potions/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/n-th-tribonacci-number/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/house-robber/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/unique-paths/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/longest-common-subsequence/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/counting-bits/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/description/?envType=study-plan-v2&envId=leetcode-75
+
 https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/non-overlapping-intervals/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/non-overlapping-intervals/description/?envType=fstudy-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/daily-temperatures?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan-v2&envId=leetcode-75
 
@@ -26,6 +19,15 @@ https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan
 ## History
 
 ### 2024
+
+2024-01-18
+- https://leetcode.com/problems/nearest-exit-from-entrance-in-maze (75)
+- https://leetcode.com/problems/kth-largest-element-in-an-array (75, 150, later)
+- https://leetcode.com/problems/guess-number-higher-or-lower (75)
+- https://leetcode.com/problems/successful-pairs-of-spells-and-potions (75, later)
+- https://leetcode.com/problems/letter-combinations-of-a-phone-number (75, 150)
+- https://leetcode.com/problems/n-th-tribonacci-number (75)
+- https://leetcode.com/problems/house-robber (75, 150)
 
 2024-01-17
 - https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list (75)

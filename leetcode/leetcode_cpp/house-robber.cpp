@@ -5,6 +5,7 @@
 #include <queue>
 
 using namespace std;
+
 /*
 https://leetcode.com/problems/house-robber
 
@@ -15,41 +16,36 @@ space: o(n) recursion + hashmap (memorization)
 Solution2. DP bottom down with Tabulation (in place)
 time: o(n)
 space: o(1)
-
 */
-
 class Solution {
 public:
-    int recurse(vector<int>& nums, int i, unordered_map<int, int>& hm) {
+    int dfs(vector<int>& nums, int i, vector<int>& dp) {
         if (i >= nums.size()) return 0;
-        if (hm.count(i)) return hm[i];
-        int v = nums[i];
-        int v1 = recurse(nums, i+2, hm);
-        int v2 = recurse(nums, i+3, hm);
-        hm[i] = v + max(v1, v2);
-        return hm[i];
+        if (dp[i] != -1) return dp[i];
+        int l = dfs(nums, i+2, dp);
+        int r = dfs(nums, i+3, dp);
+        return dp[i] = nums[i] + max(l, r);
     }
-
+    
     int rob_1(vector<int>& nums) {
-        if (nums.size() == 0) return 0;
+        if (!nums.size()) return 0;
         if (nums.size() == 1) return nums[0];
-        unordered_map<int, int> hm;
-        recurse(nums, 0, hm);
-        recurse(nums, 1, hm);
-        return max(hm[0], hm[1]);
+        vector<int> dp(nums.size(), -1);
+        dfs(nums, 0, dp);
+        dfs(nums, 1, dp);
+        return max(dp[0], dp[1]);
     }
-
+    
     int rob_2(vector<int>& nums) {
-        int n1 = nums.size();
-        if (n1 == 0) return 0;
-        if (n1 == 1) return nums[0];
-        for (int i = n1-3; i>=0; --i) {
-            if (i == n1-3)
-                nums[i] += nums[i+2];
+        int n = nums.size();
+        if (n == 0) return 0;
+        if (n == 1) return nums[0];
+        for (int i=n-3; i>=0; --i) {
+            if (i == n-3)            
+                nums[i] = nums[i] + nums[i+2];
             else
-                nums[i] += max(nums[i+2], nums[i+3]);
+                nums[i] = nums[i] + max(nums[i+2], nums[i+3]);
         }
-
         return max(nums[0], nums[1]);
     }
 
