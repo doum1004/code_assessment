@@ -71,20 +71,21 @@ public:
         return ans;
     }
 
-    void backtracking(string& str, int i, string b, unordered_map<char, string>& m, vector<string>& ans) {
-        if (i >= str.size()) {
-            if (b != "")
-                ans.push_back(b);
-            return;            
+    void backtracking(unordered_map<int, string>& m, string& digits, string& cur, int i, vector<string>& res) {
+        if (i == digits.size()) {
+            if (cur != "") res.push_back(cur);
+            return;
+        }
+
+        for (auto c : m[digits[i]]) {
+            cur.push_back(c);
+            backtracking(m, digits, cur, i + 1, res);
+            cur.pop_back();
         }
         
-        for (auto c : m[str[i]]) {
-            backtracking(str, i+1, b + c, m, ans);
-        }        
     }
-        
     vector<string> letterCombinations(string digits) {
-        unordered_map<char, string> m;
+        unordered_map<int, string> m;
         m['2'] = "abc";
         m['3'] = "def";
         m['4'] = "ghi";
@@ -93,11 +94,10 @@ public:
         m['7'] = "pqrs";
         m['8'] = "tuv";
         m['9'] = "wxyz";
-        
-        //return letterCombinations_iterate(m, digits);
-        vector<string> ans;
-        backtracking(digits, 0, "", m, ans);
-        return ans;
+        string s = "";
+        vector<string> res;
+        backtracking(m, digits, s, 0, res);
+        return res;
     }
 };
 
