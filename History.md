@@ -4,11 +4,6 @@ https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
 
-https://leetcode.com/problems/unique-paths/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/longest-common-subsequence/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/counting-bits/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/description/?envType=study-plan-v2&envId=leetcode-75
-
 https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/non-overlapping-intervals/description/?envType=fstudy-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/daily-temperatures?envType=study-plan-v2&envId=leetcode-75
@@ -19,6 +14,12 @@ https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan
 ## History
 
 ### 2024
+
+2024-01-19
+- https://leetcode.com/problems/unique-paths (75)
+- https://leetcode.com/problems/longest-common-subsequence (75, later)
+- https://leetcode.com/problems/counting-bits (75, later)
+- https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c (75, later)
 
 2024-01-18
 - https://leetcode.com/problems/nearest-exit-from-entrance-in-maze (75)
