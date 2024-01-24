@@ -9,11 +9,13 @@ https://leetcode.com/studyplan/top-sql-50/
 
 ### 2024
 
-2024-01-21
-https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
+2024-01-23
 https://leetcode.com/problems/non-overlapping-intervals/description/?envType=fstudy-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/daily-temperatures?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan-v2&envId=leetcode-75
+
+2024-01-22
+- https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
 
 2024-01-19
 - https://leetcode.com/problems/unique-paths (75)
