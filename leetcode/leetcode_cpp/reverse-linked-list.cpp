@@ -1,84 +1,95 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
-#include <queue>
+#include <stack>
 #include "../listnode.h"
 
 using namespace std;
 
 /**
-https://leetcode.com/problems/reverse-linked-list
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 
-// Soluiton1. Recursive
-// time o(n)
-// space o(n)
-ListNode* recursive(ListNode* node)
-    if (node == nullptr) return nullptr;
-    if (node->next == nullptr) return node;
-    auto tail = recursive(node->next);
-    node->next->next = node;
-    node->next = nullptr;
-    return tail;
-    
-// Soluiton2. Iteration with stack
-// time o(n)
-// space o(n) stack
-s 1 2 3 4 5
-tail = s.top
-pre = nullptr
-while (!s.empty())
-    auto cur = s.pop();
-    if (pre) pre->next = cur;
-    pre = cur;
-    cur->next = null
-return tail
+ /*
+ https://leetcode.com/problems/reverse-linked-list
+ 
+ 1. Recursive
+ time: o(n)
+ space: o(n)
 
-// Solution3. Iteration without stack
-// time o(n)
-// space o(1)
-use two pointers to change next
-  1 2 3 4 5
-p c n
-  p c n
-    p c n
-      p c n
-        p c n
-c->p
-p = c
-c = n
-n = n->next
+ 2. Itearte using Stack
+ time: o(n)
+ space: o(n)
 
-*/
-
+ 3. Iterate in space
+ time: o(n)
+ space: o(1)
+ */
 class Solution {
 public:
-    ListNode* reverseList_recursive(ListNode* node) {
-        if (node == nullptr || node->next == nullptr) return node;
+    void recursive(ListNode* head, ListNode** res) {
+        if (!head) return;
         
-        auto tail = reverseList_recursive(node->next);
-        node->next->next = node;
-        node->next = nullptr;
+        recursive(head->next, res);
+        (*res)->next = new ListNode(head->val);
+        *res = (*res)->next;
+    }
+
+    ListNode* reverseList_1_2(ListNode* head) {
+        // n, n
+        ListNode* dummy = new ListNode(0);
+        auto result = dummy;
+        recursive(head, &result);
+        return dummy->next;
+    }
+
+    ListNode* reverseList_1(ListNode* head) {
+        if (!head || !head->next) return head;
+        auto tail = reverseList_1(head->next);
+        head->next->next = head;
+        head->next = nullptr;
         return tail;
     }
-    
-    ListNode* reverseList_iteration(ListNode* node) {
-        if (node == nullptr || node->next == nullptr) return node;
-        
+
+    ListNode* reverseList_2(ListNode* head) {
+        // n, n
+        stack<int> v;
+        auto cur = head;
+        while (cur) {
+            v.push(cur->val);
+            cur = cur->next;
+        }
+        ListNode* dummy = new ListNode(0);
+        cur = dummy;
+        while (!v.empty()) {
+            cur->next = new ListNode(v.top());
+            cur = cur->next;
+            v.pop();
+        }
+        return dummy->next;
+    }
+
+    ListNode* reverseList_3(ListNode* head) {
         ListNode* pre = nullptr;
-        auto cur = node;
+        auto cur = head;
         while (cur) {
             auto next = cur->next;
             cur->next = pre;
             pre = cur;
             cur = next;
         }
-        
         return pre;
     }
-    
+
     ListNode* reverseList(ListNode* head) {
-        //return reverseList_recursive(head);
-        return reverseList_iteration(head);
+        return reverseList_3(head);
     }
 };
 
