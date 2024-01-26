@@ -3,20 +3,24 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-
+https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/path-sum-iii/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/smallest-number-in-infinite-set/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/number-of-provinces/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/smallest-number-in-infinite-set/description/?envType=study-plan-v2&envId=leetcode-75
 
 ## History
 
 ### 2024
 
-2024-01-23
-https://leetcode.com/problems/non-overlapping-intervals/description/?envType=fstudy-plan-v2&envId=leetcode-75
-
-https://leetcode.com/problems/daily-temperatures?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/daily-temperatures/description/?envType=study-plan-v2&envId=leetcode-75
+2024-01-25
+- https://leetcode.com/problems/non-overlapping-intervals (75, later)
+- https://leetcode.com/problems/daily-temperatures (75, later)
+- https://leetcode.com/problems/reverse-linked-list (75, later)
+- https://leetcode.com/problems/leaf-similar-trees (75)
 
 2024-01-22
-- https://leetcode.com/problems/implement-trie-prefix-tree?envType=study-plan-v2&envId=leetcode-75
+- https://leetcode.com/problems/implement-trie-prefix-tree (75)
 
 2024-01-19
 - https://leetcode.com/problems/unique-paths (75)
