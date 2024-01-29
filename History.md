@@ -3,15 +3,16 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/path-sum-iii/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/smallest-number-in-infinite-set/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/number-of-provinces/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/smallest-number-in-infinite-set/description/?envType=study-plan-v2&envId=leetcode-75
 
 ## History
 
 ### 2024
+
+2024-01-28
+- https://leetcode.com/problems/count-good-nodes-in-binary-tree (75)
+- https://leetcode.com/problems/path-sum-iii (75, later)
+- https://leetcode.com/problems/smallest-number-in-infinite-set (75, later)
+- https://leetcode.com/problems/number-of-provinces (75, later)
 
 2024-01-25
 - https://leetcode.com/problems/non-overlapping-intervals (75, later)
