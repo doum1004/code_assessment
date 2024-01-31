@@ -42,6 +42,15 @@ r(3[a2[c]], 0)
         cc
     accaccacc
  
+ 
+3. Iterate and store str and num in list(stack) for later operation
+time: o(n)
+space: o(n)
+1. digit: curNum = n*10 + c-'0'
+2. alpha: curStr += c
+3. '[': store curNum and curStr into list (nums, strs)
+4. ']': store last 'nums' * curStr into last 'strs' list. st = strs[-] and pop both list
+
 */
 
 class Solution {
@@ -127,9 +136,40 @@ public:
         return decodeString_recursion(s,i);
     }
     
+    string decodeString_3(string s) {
+        vector<string> strs;
+        vector<int> nums;
+        int n = 0;
+        string st;
+        for (auto c : s) {
+            if (c == '[') {
+                strs.push_back(st);
+                nums.push_back(n);
+                st = "";
+                n = 0;
+            }
+            else if (c == ']') {
+                for (int i=1; i<=nums.back(); ++i)
+                    strs.back() += st;
+
+                st = strs.back(); 
+                strs.pop_back();
+                nums.pop_back();
+            }
+            else if (isdigit(c)) {
+                n = c - '0' + n * 10;
+            }
+            else {
+                st += c;
+            }
+        }
+        return st;
+    }
+
     string decodeString(string s) {
         //return decodeString_stack(s);
-        return decodeString_recursion(s);
+        //return decodeString_recursion(s);
+        return decodeString_3(s);
     }
 };
 
