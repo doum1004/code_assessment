@@ -31,7 +31,7 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 2024-02-04
 - https://leetcode.com/problems/dota2-senate (75, later)
 - https://leetcode.com/problems/odd-even-linked-list (75)
-https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
+- https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list (75)
 
 2024-02-03
 - https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree (75, later)
