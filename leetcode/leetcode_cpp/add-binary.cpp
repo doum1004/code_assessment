@@ -12,6 +12,12 @@ space: o(n)
 
 */
 
+#include <string>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
 class Solution {
 public:
     string addBinary(string a, string b) {
@@ -28,3 +34,7 @@ public:
         return res;
     }
 };
+
+int main() {
+    return 0;
+}
