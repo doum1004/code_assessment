@@ -3,7 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/delete-node-in-a-bst/description/?envType=study-plan-v2&envId=leetcode-75
@@ -29,10 +28,13 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 
 ### 2024
 
-2024-01-31
+2024-02-04
 - https://leetcode.com/problems/dota2-senate/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/odd-even-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
+
+2024-02-03
+- https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree (75, later)
 
 2024-01-30
 - https://leetcode.com/problems/equal-row-and-column-pairs (75)
