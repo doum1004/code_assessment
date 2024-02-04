@@ -29,7 +29,7 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 ### 2024
 
 2024-02-04
-- https://leetcode.com/problems/dota2-senate/description/?envType=study-plan-v2&envId=leetcode-75
+- https://leetcode.com/problems/dota2-senate (75, later)
 https://leetcode.com/problems/odd-even-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/description/?envType=study-plan-v2&envId=leetcode-75
 
