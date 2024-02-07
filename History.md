@@ -3,11 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/delete-node-in-a-bst/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/rotting-oranges/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/maximum-subsequence-score/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/total-cost-to-hire-k-workers/description/?envType=study-plan-v2&envId=leetcode-75
@@ -28,10 +23,19 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 
 ### 2024
 
+2024-02-06
+https://leetcode.com/problems/delete-node-in-a-bst/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
+
+2024-02-05
+- https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree (75)
+
 2024-02-04
 - https://leetcode.com/problems/dota2-senate (75, later)
 - https://leetcode.com/problems/odd-even-linked-list (75)
 - https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list (75)
+- https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree (75, 150, later)
 
 2024-02-03
 - https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree (75, later)
