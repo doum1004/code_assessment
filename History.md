@@ -23,11 +23,12 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 
 ### 2024
 
-2024-02-08
-- https://leetcode.com/problems/delete-node-in-a-bst (75)
+2024-02-09
+- https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
 
-https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
+2024-02-08
+- https://leetcode.com/problems/delete-node-in-a-bst (75, later)
+- https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero (75, later)
 
 2024-02-05
 - https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree (75)
