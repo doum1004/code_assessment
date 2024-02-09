@@ -23,8 +23,9 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 
 ### 2024
 
-2024-02-06
-https://leetcode.com/problems/delete-node-in-a-bst/description/?envType=study-plan-v2&envId=leetcode-75
+2024-02-08
+- https://leetcode.com/problems/delete-node-in-a-bst (75)
+
 https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
 
