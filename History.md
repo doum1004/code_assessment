@@ -3,8 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/rotting-oranges/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/maximum-subsequence-score/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/total-cost-to-hire-k-workers/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/find-peak-element/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/koko-eating-bananas/description/?envType=study-plan-v2&envId=leetcode-75
@@ -24,7 +22,9 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 ### 2024
 
 2024-02-09
-- https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=leetcode-75
+- https://leetcode.com/problems/evaluate-division (75, 150)
+- https://leetcode.com/problems/rotting-oranges (75)
+- https://leetcode.com/problems/maximum-subsequence-score (75, later)
 
 2024-02-08
 - https://leetcode.com/problems/delete-node-in-a-bst (75, later)
