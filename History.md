@@ -3,7 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/total-cost-to-hire-k-workers/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/find-peak-element/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/koko-eating-bananas/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/combination-sum-iii/description/?envType=study-plan-v2&envId=leetcode-75
@@ -20,6 +19,9 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 ## History
 
 ### 2024
+
+2024-02-16
+- https://leetcode.com/problems/total-cost-to-hire-k-workers (75, later)
 
 2024-02-09
 - https://leetcode.com/problems/evaluate-division (75, 150)
