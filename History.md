@@ -3,11 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-
-https://leetcode.com/problems/koko-eating-bananas/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/combination-sum-iii/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/min-cost-climbing-stairs/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/domino-and-tromino-tiling/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/edit-distance/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/single-number/description/?envType=study-plan-v2&envId=leetcode-75
@@ -20,7 +15,12 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 
 ### 2024
 
-2024-02-16
+2024-02-20
+- https://leetcode.com/problems/combination-sum-iii (75)
+- https://leetcode.com/problems/min-cost-climbing-stairs (75, later)
+- https://leetcode.com/problems/domino-and-tromino-tiling (75, later)
+
+2024-02-19
 - https://leetcode.com/problems/find-peak-element (75, 150)
 - https://leetcode.com/problems/koko-eating-bananas (75, later)
 
