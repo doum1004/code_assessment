@@ -8,34 +8,31 @@
 using namespace std;
 
 /**
-https://leetcode.com/problems/search-suggestions-system/
+https://leetcode.com/problems/search-suggestions-system
 
-//Solution1. Sort and bin search
+1. Sort and bin search
 //time:o(nlogn+Llogn). sort(nlogn). binsearch(Llogn. Length of word)
 //space:o(1): answer(logn)
 
-//Solution2. Trie and build suggestion by BSF
+2. Trie and build suggestion by BSF
 //time: o(n^2). N(total length) + M(total decendents)
 //space: o(N+M)
 1. build trie (with array or map. array goes faster)
 2. visit node by prefix and build suggestion by BSF (less space)
 
-//Solution3. Trie and build suggestion by cache (trade off)
-//time: o(N)
-//space: o(N+M^2)
-1. build trie (with array or map. array goes faster)
-1.1 add cache which can see all list of words from the node
-2. visit node by prefix and build suggestion by cache (faster)
+3. Trie with Cache
+time: ?? o(n) 26 * lenth of word * nb product
+space: ?? o(n+m) n (26*maxChar of product * nb product) m(n*number of product)
 
 */
 
-class Trie {
+class Trie2 {
 public:
-    Trie() {
+    Trie2() {
         fill_n(children, 26, nullptr);
     }
     
-    ~Trie() {
+    ~Trie2() {
         //for (int i=0; i<26; ++i) if(children[i]) delete children[i];
         //for (auto &n:children) delete n.second;
     }
@@ -44,7 +41,7 @@ public:
         auto trie = this;
         for (auto &c:word) {
             auto i = c - 'a';
-            if (!trie->children[i]) trie->children[i] = new Trie();
+            if (!trie->children[i]) trie->children[i] = new Trie2();
             trie = trie->children[i];
             //if (!trie->children.count(c)) trie->children[c] = new Trie();
             //trie = trie->children[c];
@@ -53,7 +50,7 @@ public:
         trie->s = word;
     }
     
-    void buildSuggestion(Trie* node, priority_queue<string, vector<string>, greater<void>>& q) {
+    void buildSuggestion(Trie2* node, priority_queue<string, vector<string>, greater<void>>& q) {
         if (!node) return;
         
         for (int i=0; i<26; ++i) {
@@ -96,22 +93,22 @@ public:
         return suggestionCache();
     }
     
-    Trie* child(char& c) {
+    Trie2* child(char& c) {
         //return children.count(c) ? children[c] : nullptr;
         return children[c - 'a'];
     }
     
-    Trie* children[26];
+    Trie2* children[26];
     //unordered_map<char, Trie*> children;
     string s;
     
     vector<string> cache;
 };
 
-class Solution {
+class Solution2 {
 public:
     vector<vector<string>> suggestedProducts_trie(vector<string>& products, string& searchWord) {
-        auto root = new Trie(); 
+        auto root = new Trie2(); 
         for (auto &p:products) {
             root->addWord(p);
         }
@@ -156,6 +153,52 @@ public:
     vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
         return suggestedProducts_sort(products, searchWord);
         //return suggestedProducts_trie(products, searchWord);
+    }
+};
+
+class Solution {
+public:
+    class Trie {
+    public:
+        Trie() {
+            d = vector<Trie*>(26, 0);
+        }
+
+        void addProduct(string& input) {
+            auto cur = this;
+            for (auto c : input) {
+                if (!cur->d[c-'a']) cur->d[c-'a'] = new Trie();
+                cur = cur->d[c-'a'];
+                cur->cache.push_back(input);
+            }
+        }
+
+        vector<string> suggestions() {
+            sort(cache.begin(), cache.end());
+            vector<string> res;
+            for (int i=0; i<3 && i<cache.size(); ++i)
+                res.push_back(cache[i]);
+            return res;
+        }
+
+        vector<Trie*> d;
+        vector<string> cache;
+    };
+
+    vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
+        Trie* root = new Trie();
+        for (auto& product : products)
+            root->addProduct(product);
+
+        vector<vector<string>> res;
+        auto cur = root;
+        for (auto c : searchWord) {
+            if (cur) cur = cur->d[c-'a'];
+            if (cur) res.push_back(cur->suggestions());
+            else res.push_back({});
+        }
+        delete root; root = nullptr;
+        return res;
     }
 };
 

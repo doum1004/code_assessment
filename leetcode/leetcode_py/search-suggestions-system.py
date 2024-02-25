@@ -2,49 +2,37 @@ from typing import List
 import bisect
 
 """
-https://leetcode.com/problems/search-suggestions-system/submissions/
+https://leetcode.com/problems/search-suggestions-system
+
+3. Trie with Cache
+time: ?? o(n) 26 * lenth of word * nb product
+space: ?? o(n+m) n (26*maxChar of product * nb product) m(n*number of product)
 """
 
 class Trie:
     def __init__(self):
-        self.children = {}
-        self.string = ''
+        self.dict = [None] * 26
         self.cache = []
     
-    def addWord(self, s):
-        trie = self
-        for c in s:
-            if c not in trie.children:
-                trie.children[c] = Trie()
-            trie = trie.children[c]
-            trie.cache.append(s)
-            
-        trie.string = s
-    
-    def search(self, keyword):
-        trie = self
-        for c in keyword:
-            trie = trie.children[c] if trie and c in trie.children else None
-            
-        res = trie.cache if trie else []
-        res.sort()
-        
-        return res[:3]
+    def addProduct(self, product):
+        cur = self
+        for c in product:
+            if not cur.dict[ord(c)-ord('a')]:
+                cur.dict[ord(c)-ord('a')] = Trie()
+            cur = cur.dict[ord(c)-ord('a')]
+            cur.cache.append(product)
+
+    def suggestions(self):
+        self.cache.sort()
+        res = []
+        for word in self.cache:
+            res.append(word)
+            if len(res) == 3:
+                break
+        return res
+
 
 class Solution:
-    def suggestedProducts_trie(self, products: List[str], searchWord: str) -> List[List[str]]:
-        root = Trie()
-        for product in products:
-            root.addWord(product)
-            
-        res = []
-        s = ''
-        for c in searchWord:
-            s += c
-            res.append(root.search(s))
-            
-        return res
-        
     def suggestedProducts_sort(self, products: List[str], searchWord: str) -> List[List[str]]:
         products.sort()
         res = []
@@ -61,7 +49,20 @@ class Solution:
             
         return res
     
+    def suggestedProducts_trie(self, products: List[str], searchWord: str) -> List[List[str]]:
+        root = Trie()
+        for product in products:
+            root.addProduct(product)
+
+        res = []
+        cur = root
+        for c in searchWord:
+            if cur: cur = cur.dict[ord(c)-ord('a')]
+            if cur: res.append(cur.suggestions())
+            else: res.append([])
+        return res
+                
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
-        #return self.suggestedProducts_trie(products,searchWord)
-        return self.suggestedProducts_sort(products,searchWord)
+        #return self.suggestedProducts_sort(products,searchWord)
+        return self.suggestedProducts_trie(products,searchWord)
         
