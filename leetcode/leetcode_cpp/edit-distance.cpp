@@ -42,27 +42,51 @@ space: o(n)
 
 class Solution {
 public:
-    int minDistance(string word1, string word2) {
-        vector<vector<int>> dp(word2.size() + 1, vector<int>(word1.size() + 1, 0));
+    int minDistance_1(string word1, string word2) {
+        if (!word1.size() || !word2.size()) return max(word1.size(), word2.size());
+        vector<vector<int>> dp(word2.size()+1, vector<int>(word1.size()+1, 0));
         
-        int row_size = dp.size();
-        int col_size = dp[0].size();
-        for (int i=0; i<row_size; ++i) {
-            for (int j=0; j<col_size; ++j) {
-                if (i == 0) {
-                    dp[i][j] = j;
-                }
-                else if (j == 0) {
-                    dp[i][j] = i;
-                }
-                else {
-                    if (word2[i-1] == word1[j-1]) dp[i][j] = dp[i-1][j-1];
-                    else dp[i][j] = min(min(dp[i-1][j-1], dp[i-1][j]), dp[i][j-1]) + 1;
-                }
+        for (int i=0; i<dp.size(); ++i)
+            dp[i][0] = i;
+
+        for (int j=0; j<dp[0].size(); ++j)
+            dp[0][j] = j;
+
+        for (int i=1; i<dp.size(); ++i) {
+            for (int j=1; j<dp[0].size(); ++j) {
+                if (word2[i-1] == word1[j-1])
+                    dp[i][j] = dp[i-1][j-1];
+                else
+                    dp[i][j] = min({dp[i-1][j-1], dp[i-1][j], dp[i][j-1]}) + 1;
             }
         }
+        return dp[dp.size()-1][dp[0].size()-1];
+    }
+
+    int minDistance_2(string word1, string word2) {
+        if (!word1.size() || !word2.size()) return max(word1.size(), word2.size());
+        vector<int> dp(word1.size()+1, 0);
         
-        return dp[row_size-1][col_size-1];
+        for (int i=0; i<dp.size(); ++i)
+            dp[i] = i;
+
+        for (int i=1; i<word2.size()+1; ++i) {
+            int pre = 0;
+            dp[0] = 0;
+            for (int j=1; j<word1.size()+1; ++j) {
+                int temp = dp[j];
+                if (word2[i-1] == word1[j-1])
+                    dp[j] = pre;
+                else
+                    dp[j] = min({dp[j-1], dp[j], pre}) + 1;
+                pre = temp;
+            }
+        }
+        return dp[dp.size()-1];
+    }
+    
+    int minDistance(string word1, string word2) {
+        return minDistance_2(word1, word2);
     }
 };
 

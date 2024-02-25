@@ -3,9 +3,6 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/edit-distance/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/single-number/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/search-suggestions-system/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/?envType=study-plan-v2&envId=leetcode-75
 https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-v2&envId=leetcode-75
@@ -14,6 +11,11 @@ https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-
 ## History
 
 ### 2024
+
+2024-02-24
+- https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee (75, later)
+- https://leetcode.com/problems/single-number (75, 150, later)
+- https://leetcode.com/problems/edit-distance (75, 150, later)
 
 2024-02-20
 - https://leetcode.com/problems/combination-sum-iii (75)
