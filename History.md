@@ -3,14 +3,16 @@ https://leetcode.com/studyplan/top-interview-150/
 https://leetcode.com/studyplan/leetcode-75/
 https://leetcode.com/studyplan/top-sql-50/
 
-https://leetcode.com/problems/search-suggestions-system/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/?envType=study-plan-v2&envId=leetcode-75
-https://leetcode.com/problems/online-stock-span/description/?envType=study-plan-v2&envId=leetcode-75
 
 
 ## History
 
 ### 2024
+
+2024-02-25
+- https://leetcode.com/problems/search-suggestions-system (75, later)
+- https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons (75, 150)
+- https://leetcode.com/problems/online-stock-span (75, later)
 
 2024-02-24
 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee (75, later)
