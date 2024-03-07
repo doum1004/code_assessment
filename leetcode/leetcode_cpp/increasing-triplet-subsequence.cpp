@@ -28,13 +28,12 @@ public:
         return false;
     }
     bool increasingTriplet_2(vector<int>& nums) {
-        int n = nums.size();
         int low = INT_MAX;
         int middle = INT_MAX;
-        for (int i=0; i<n; ++i) {
-            if (nums[i] > middle) return true;
+        for (int i=0; i<nums.size(); ++i) {
+            if (middle < nums[i]) return true;
             if (nums[i] < low) low = nums[i];
-            else if (low < nums[i] && nums[i] < middle) middle = nums[i];
+            else if (nums[i] > low && nums[i] < middle) middle = nums[i];
         }
         return false;
     }

@@ -83,6 +83,29 @@ public:
         return s;
     }
 
+    string reverseWords_2_3(string s) {
+        int begin = 0;
+        int pos = 0;
+        for (int i=0; i<=s.size(); ++i) {
+            if (i == s.size() || s[i] == ' ') {
+                if (i == 0 || s[i-1] == ' ') {
+                    s[pos] = ' ';
+                }
+                else {
+                    reverse(s.begin() + begin, s.begin() + pos);
+                    s[pos++] = ' ';
+                    begin = pos;
+                }
+            }
+            else {
+                s[pos++] = s[i];
+            }
+        }
+        s.resize(pos-1);
+        reverse(s.begin(), s.end());
+        return s;
+    }
+
     string reverseWords(string s) {
         return reverseWords_2_2(s);
     }

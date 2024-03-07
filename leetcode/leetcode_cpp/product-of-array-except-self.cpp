@@ -13,84 +13,62 @@ using namespace std;
 /*
 https://leetcode.com/problems/product-of-array-except-self
 
-// iterate i: 0 to n
-// iterate j: 0 to n except (i)
+1. brute force
+time: o(n^2)
+space: o(1) without output
 
-// with division. product all and divide
-// 1 2 3 4. all 24
-// 24 / 1. 24 / 2 ...
-// time: o(n)
+2. array of left product and right product
+time: o(n)
+space: o(n)
+   1  2  3  4
+lp 1  1  2  6
+rp 24 12 4  1
 
-// Solution1. store left/right product
-// time: o(n) : n + n + n
-// space: o(n) : n + n (no for ans)
-// 1  2  3 4
-// 1  1  2 3 lp
-// 24 12 4 1 rp
-//
-// [1] 2 3 4 sum[0] = lp[0] * rp[0]
-// 1 [2] 3 4 sum[1] = lp[1] * rp[2]
-// 1 2 [3] 4
-// 1 2 3 [4]
-// iterate 0 to n-1 to store left side product result
-// iterate n-1 to 0 to sotre right side product result
+3. use answer array as lp. And get rp in constant value. and update answer
+time: o(n)
+space: o(1) without output
+    1  2  3  4
+res 1  1  2  6  (lp)
+              
+res 1  1  2  6 i = 3, rp = 1
+res 1  1  8  6 i = 2, rp = 4
+res 1  12  8  6 i = 1, rp = 12
+res 24  12  8  6 i = 0, rp = 24
 
-// solution2. combine lp and rp to ans
-// time: o(n)
-// space: o(1)
-// same for lp for ans. and product ans to make it answer from right side.
-// r = 1
-// i=n-1 to 0
-//  ans[i] = ans[i] * r
-//  r *= ans[i]
 */
 
 class Solution {
 public:
+    vector<int> productExceptSelf_1(vector<int>& nums) {
+        vector<int> res(nums.size(), 1);
+        for (int i=0; i<nums.size(); ++i) {
+            for (int j=0; j<nums.size(); ++j) {
+                if (j == i) continue;
+                res[i] *= nums[j];
+            }
+        }
+        return res;
+    }
+    vector<int> productExceptSelf_2(vector<int>& nums) {
+        vector<int> lp(nums.size(), 1);
+        for (int i=1; i<nums.size(); ++i) lp[i] = lp[i-1] * nums[i-1];
+        vector<int> rp(nums.size(), 1);
+        for (int i=nums.size()-2; i>=0; --i) rp[i] = rp[i+1] * nums[i+1];
+        for (int i=0; i<nums.size(); ++i) nums[i] = lp[i] * rp[i];
+        return nums;
+    }
     vector<int> productExceptSelf(vector<int>& nums) {
-        int n = nums.size();
-        if (n < 0) return vector<int>();
-        
-        if (false) {
-            // solution1
-            vector<int> ans;
-            auto lp = new int[n];
-            lp[0] = 1;
-            for (int i=0; i<n-1; ++i) {
-                lp[i+1] = lp[i] * nums[i];
-            }
-
-            auto rp = new int[n];
-            rp[n-1] = 1;
-            for (int i=n-1; i>0; --i) {
-                rp[i-1] = rp[i] * nums[i];
-            }
-
-            for (int i=0; i<n; ++i) {
-                ans.push_back(lp[i] * rp[i]);
-            }
-            
-            return ans;
-        }
-        else {
-            // solution2
-            auto ans = vector<int>(n, 0);
-            
-            ans[0] = 1;
-            for (int i=0; i<n-1; ++i) {
-                ans[i+1] = ans[i] * nums[i];
-            }
-            
-            int r = 1;
-            for (int i=n-1; i>=0; --i) {
-                ans[i] = ans[i] * r;
-                r *= nums[i];
-            }
-            
-            return ans;
+        vector<int> res(nums.size(), 1);
+        for (int i=1; i<nums.size(); ++i) {
+            res[i] = res[i-1] * nums[i-1];
         }
         
-        return vector<int>();
+        int rp = 1;
+        for (int i=nums.size()-2; i>=0; --i) {
+            rp *= nums[i+1];
+            res[i] *= rp;
+        }
+        return res;
     }
 };
 
