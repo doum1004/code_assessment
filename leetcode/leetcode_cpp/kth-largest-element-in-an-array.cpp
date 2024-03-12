@@ -26,10 +26,12 @@ public:
         nth_element(nums.begin(), nums.begin() + k - 1, nums.end(), greater<int>());
         return nums[k - 1];
     }
+
     int findKthLargest_1_3(vector<int>& nums, int k) {
         partial_sort(nums.begin(), nums.begin() + k, nums.end(), greater<int>());
         return nums[k - 1];
     }
+
     int findKthLargest_2_1(vector<int>& nums, int k) {
         // max heap
         priority_queue<int> pq;
@@ -40,6 +42,7 @@ public:
         }
         return pq.top();
     }
+
     int findKthLargest_2_2(vector<int>& nums, int k) {
         // min heap
         priority_queue<int, vector<int>, greater<int>> pq;
@@ -49,6 +52,7 @@ public:
         }
         return pq.top();
     }
+
     int findKthLargest_3(vector<int>& nums, int k) {
         int l = 0, r = nums.size() - 1;
         while (l <= r) {
@@ -59,18 +63,19 @@ public:
         }
         return 0;
     }
+
     int partition(vector<int>& nums, int l, int r) {
         if (l == r) return l;
         int idx = l;
-        // rand pivot (optional)
-        int randpivot = rand() % (r-l) + l;
-        swap(nums[randpivot], nums[r]);
+        int pivot = rand() % (r-l) + l; // rand pivot (optional)
+        swap(nums[pivot], nums[r]);
         for (int i=l; i<r; ++i) {
             if (nums[i] > nums[r]) swap(nums[i], nums[idx++]);
         }
         swap(nums[idx], nums[r]);
         return idx;
     }
+    
     int findKthLargest(vector<int>& nums, int k) {
         return findKthLargest_3(nums, k);        
     }

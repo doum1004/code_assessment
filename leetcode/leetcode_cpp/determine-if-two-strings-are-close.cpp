@@ -3,12 +3,12 @@ https://leetcode.com/problems/determine-if-two-strings-are-close
 
 1. list and sort
 time: o(nlogn) n(word size) + nlogn (26log26)
-Swap or Replace all occurence
-has to meet
-1. same frequency (no matter chars)
-ex) a:4, b:1 == b:4, a:1
-2. same set values (that can replace or swap)
+space: o(n)
+Swap or Replace all occurence conditions
+1. same set values (to enable swap, the char exist on each other)
 ex) a,b == a,b
+2. same frequency (no matter chars, to replace)
+ex) a:4, b:1 == b:4, a:1
 */
 class Solution {
 public:

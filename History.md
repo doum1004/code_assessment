@@ -9,10 +9,20 @@ https://leetcode.com/studyplan/top-sql-50/
 
 ### 2024
 
+2024-03-11
+- https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c (75, later)
+- https://leetcode.com/problems/longest-common-subsequence (75, later)
+- https://leetcode.com/problems/reverse-linked-list (75, later)
+
+2024-03-10
+- https://leetcode.com/problems/determine-if-two-strings-are-close (75, later2)
+- https://leetcode.com/problems/successful-pairs-of-spells-and-potions (75, later2)
+- https://leetcode.com/problems/kth-largest-element-in-an-array (75, 150, later2)
+
 2024-03-09
 - https://leetcode.com/problems/max-number-of-k-sum-pairs (75, later_done)
 - https://leetcode.com/problems/is-subsequence (75, 150, later2)
-- https://leetcode.com/problems/number-of-recent-calls (75, later)
+- https://leetcode.com/problems/number-of-recent-calls (75, later2)
 
 2024-03-05
 - https://leetcode.com/problems/reverse-words-in-a-string (75, 150, later2)
@@ -96,9 +106,9 @@ https://leetcode.com/studyplan/top-sql-50/
 
 2024-01-18
 - https://leetcode.com/problems/nearest-exit-from-entrance-in-maze (75)
-- https://leetcode.com/problems/kth-largest-element-in-an-array (75, 150, later)
+- https://leetcode.com/problems/kth-largest-element-in-an-array (75, 150, later_done)
 - https://leetcode.com/problems/guess-number-higher-or-lower (75)
-- https://leetcode.com/problems/successful-pairs-of-spells-and-potions (75, later)
+- https://leetcode.com/problems/successful-pairs-of-spells-and-potions (75, later_done)
 - https://leetcode.com/problems/letter-combinations-of-a-phone-number (75, 150)
 - https://leetcode.com/problems/n-th-tribonacci-number (75)
 - https://leetcode.com/problems/house-robber (75, 150)
@@ -111,9 +121,9 @@ https://leetcode.com/studyplan/top-sql-50/
 - https://leetcode.com/problems/keys-and-rooms (75)
 
 2024-01-16
-- https://leetcode.com/problems/determine-if-two-strings-are-close (75, later)
+- https://leetcode.com/problems/determine-if-two-strings-are-close (75, later_done)
 - https://leetcode.com/problems/removing-stars-from-a-string (75)
-- https://leetcode.com/problems/number-of-recent-calls (75, later)
+- https://leetcode.com/problems/number-of-recent-calls (75, later_done)
 
 2024-01-15
 - https://leetcode.com/problems/maximum-average-subarray-i (75)
@@ -127,9 +137,9 @@ https://leetcode.com/studyplan/top-sql-50/
 
 2024-01-13
 - https://leetcode.com/problems/move-zeroes (75)
-- https://leetcode.com/problems/is-subsequence (75, 150, later)
+- https://leetcode.com/problems/is-subsequence (75, 150, later_done)
 - https://leetcode.com/problems/container-with-most-water (75)
-- https://leetcode.com/problems/max-number-of-k-sum-pairs (75, later)
+- https://leetcode.com/problems/max-number-of-k-sum-pairs (75, later_done)
 
 2024-01-10
 - https://leetcode.com/problems/product-of-array-except-self (75, 150, later_done)

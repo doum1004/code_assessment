@@ -23,11 +23,10 @@ public:
     }
 
     vector<int> successfulPairs_2(vector<int>& spells, vector<int>& potions, long long& success) {
-        sort(potions.begin(), potions.end());
-        for (int i=0; i<spells.size(); ++i) {
-            int spell = spells[i];
-            int idx = upper_bound(potions.begin(), potions.end(), success, [&spell](long long success, int& potion) {
-                return success <= (1LL * spell * potion);
+        sort(potions.begin(), potions.end()); // nlogn
+        for (int i=0; i<spells.size(); ++i) { // n
+            int idx = upper_bound(potions.begin(), potions.end(), spells[i], [&success](auto& spell, auto& potion){ // logn
+                return success <= 1ll * spell * potion;
             }) - potions.begin();
             spells[i] = potions.size() - idx;
         }
